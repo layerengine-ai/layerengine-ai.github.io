@@ -572,6 +572,7 @@
   gap: 2rem;
   max-width: 960px;
   margin: 3.5rem auto 0;
+  align-items: start;
 }
 
 @media (max-width: 768px) {
@@ -582,9 +583,11 @@
   background: #0D1117 !important;
   border: 1px solid rgba(37,99,235,0.25);
   border-radius: 20px;
-  overflow: hidden;
+  overflow: visible;
   box-shadow: 0 0 60px rgba(37,99,235,0.1);
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 #le-wrapper .le-pricing-card-featured {
@@ -594,23 +597,31 @@
 
 #le-wrapper .le-pricing-badge {
   position: absolute;
-  top: -14px;
+  top: -16px;
   left: 50%;
   transform: translateX(-50%);
-  background: #2563EB !important;
+  background: #10B981 !important;
   color: #FFFFFF !important;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 4px 16px;
+  padding: 5px 18px;
   border-radius: 20px;
   white-space: nowrap;
+  z-index: 2;
+  box-shadow: 0 2px 12px rgba(16,185,129,0.4);
 }
 
 #le-wrapper .le-pricing-header {
   background: #2563EB !important;
   padding: 2rem 2.5rem;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 #le-wrapper .le-pricing-label {
@@ -1435,7 +1446,7 @@ function leCloseNav() {
           </div>
           <div class="le-pricing-feature">
             <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div class="le-pricing-feature-text"><strong>Replaces your ISA and recruiter</strong> &mdash; at a fraction of the cost, running 24/7</div>
+            <div class="le-pricing-feature-text"><strong>Dedicated growth partner</strong> &mdash; we're invested in your results, not just your setup</div>
           </div>
           <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.07); font-size:12px; color:#6B7280;">Client responsible for: texting/AI usage costs (competitive per-message rates via Teli.ai) + A2P registration (~$100&ndash;$200 one-time)</div>
           <a href="#le-contact" class="le-pricing-cta" style="margin-top:1.5rem;">Book a Strategy Call &rarr;</a>
