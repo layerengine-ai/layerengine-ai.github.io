@@ -1263,8 +1263,8 @@
   <div class="le-container">
     <div style="text-align:center;">
       <div class="le-section-eyebrow">Pricing</div>
-      <h2 class="le-section-h2">Replace Your Recruiter.<br><span>For Less Than Their Salary.</span></h2>
-      <p class="le-section-sub" style="margin: 0 auto; max-width: 620px;">A dedicated recruiter costs $4,000&ndash;$6,000/month and works 40 hours a week. LayerEngine runs 24/7, handles hundreds of conversations simultaneously, and never calls in sick. Two plans. No revenue share. No long-term contracts.</p>
+      <h2 class="le-section-h2">Simple pricing.<br><span>Serious results.</span></h2>
+      <p class="le-section-sub" style="margin: 0 auto; max-width: 620px;">Two plans built for real estate brokerages and lending teams. LayerEngine runs 24/7, handles hundreds of conversations simultaneously, and compounds over time. No revenue share. No long-term contracts.</p>
     </div>
 
     <div class="le-pricing-grid">
@@ -1428,50 +1428,53 @@
 <section class="le-roi-section le-section-pad" id="le-roi">
   <div class="le-container">
     <div style="text-align:center;">
-      <div class="le-section-eyebrow">ROI Calculator</div>
-      <h2 class="le-section-h2">See what LayerEngine<br><span>is worth to your team.</span></h2>
-      <p class="le-section-sub" style="margin: 0 auto; max-width: 520px;">Enter your numbers. See your return. No email required.</p>
+      <div class="le-section-eyebrow">Growth Calculator</div>
+      <h2 class="le-section-h2">What does one new agent<br><span>mean to your bottom line?</span></h2>
+      <p class="le-section-sub" style="margin: 0 auto; max-width: 560px;">Every brokerage and lending team has a different model. Enter your numbers and see what a consistent recruiting system could mean for your organization.</p>
     </div>
 
     <div class="le-roi-card">
       <div class="le-roi-inputs">
         <div>
-          <div class="le-roi-label">Agents you want to recruit / year</div>
+          <div class="le-roi-label">Agents / LOs you want to add this year</div>
           <input class="le-roi-input" id="le-roi-agents" type="number" value="12" min="1" max="500" oninput="leCalcROI()">
         </div>
         <div>
-          <div class="le-roi-label">Avg. GCI per agent / year ($)</div>
-          <input class="le-roi-input" id="le-roi-gci" type="number" value="80000" min="10000" max="500000" oninput="leCalcROI()">
+          <div class="le-roi-label">What one producing agent/LO adds to your bottom line / year ($)</div>
+          <input class="le-roi-input" id="le-roi-value" type="number" value="15000" min="1000" max="500000" oninput="leCalcROI()" placeholder="e.g. 10,000 – 25,000">
         </div>
         <div>
-          <div class="le-roi-label">Your avg. split / override (%)</div>
-          <input class="le-roi-input" id="le-roi-split" type="number" value="5" min="1" max="50" oninput="leCalcROI()">
+          <div class="le-roi-label">Avg. months to recruit &amp; onboard one agent</div>
+          <input class="le-roi-input" id="le-roi-months" type="number" value="3" min="1" max="12" oninput="leCalcROI()">
         </div>
         <div>
-          <div class="le-roi-label">Current recruiter cost / month ($)</div>
-          <input class="le-roi-input" id="le-roi-recruiter" type="number" value="4500" min="0" max="20000" oninput="leCalcROI()">
+          <div class="le-roi-label">LayerEngine plan (monthly)</div>
+          <select class="le-roi-input" id="le-roi-plan" onchange="leCalcROI()" style="cursor:pointer;">
+            <option value="1000">Standard &mdash; $1,000/mo</option>
+            <option value="2000" selected>Managed &mdash; $2,000/mo</option>
+          </select>
         </div>
       </div>
 
       <div class="le-roi-results">
         <div class="le-roi-result-card">
-          <div class="le-roi-result-label">Revenue from new agents</div>
-          <div class="le-roi-result-value" id="le-roi-revenue">$48,000</div>
-          <div class="le-roi-result-sub">annual override/split income</div>
+          <div class="le-roi-result-label">Annual revenue added</div>
+          <div class="le-roi-result-value" id="le-roi-revenue">$180K</div>
+          <div class="le-roi-result-sub">from new agents/LOs this year</div>
         </div>
         <div class="le-roi-result-card">
-          <div class="le-roi-result-label">LayerEngine annual cost</div>
-          <div class="le-roi-result-value le-roi-neutral" id="le-roi-cost">$29,000</div>
-          <div class="le-roi-result-sub">managed plan + setup</div>
+          <div class="le-roi-result-label">LayerEngine investment</div>
+          <div class="le-roi-result-value le-roi-neutral" id="le-roi-cost">$29K</div>
+          <div class="le-roi-result-sub">annual (plan + setup)</div>
         </div>
         <div class="le-roi-result-card">
-          <div class="le-roi-result-label">Net ROI</div>
-          <div class="le-roi-result-value" id="le-roi-net">$19,000</div>
-          <div class="le-roi-result-sub">vs. current recruiter spend</div>
+          <div class="le-roi-result-label">Return on investment</div>
+          <div class="le-roi-result-value" id="le-roi-net">$151K</div>
+          <div class="le-roi-result-sub">net annual return</div>
         </div>
       </div>
 
-      <div class="le-roi-disclaimer">Estimates based on your inputs. Actual results vary. LayerEngine replaces recruiter salary + overhead &mdash; savings shown vs. $4,500/mo recruiter baseline.</div>
+      <div class="le-roi-disclaimer">Estimates based on your inputs. Results vary by market, team, and execution. This calculator is for illustrative purposes only.</div>
     </div>
   </div>
 </section>
@@ -1479,26 +1482,25 @@
 <script>
 function leCalcROI() {
   var agents = parseFloat(document.getElementById('le-roi-agents').value) || 0;
-  var gci = parseFloat(document.getElementById('le-roi-gci').value) || 0;
-  var split = parseFloat(document.getElementById('le-roi-split').value) || 0;
-  var recruiterMo = parseFloat(document.getElementById('le-roi-recruiter').value) || 0;
+  var agentValue = parseFloat(document.getElementById('le-roi-value').value) || 0;
+  var planMo = parseFloat(document.getElementById('le-roi-plan').value) || 2000;
+  var setupFee = planMo === 1000 ? 2500 : 5000;
 
-  var revenue = agents * gci * (split / 100);
-  var layerCost = (2000 * 12) + 5000; // Managed plan: $2k/mo + $5k setup
-  var recruiterAnnual = recruiterMo * 12;
-  var net = revenue - layerCost + recruiterAnnual;
+  var revenue = agents * agentValue;
+  var layerCost = (planMo * 12) + setupFee;
+  var net = revenue - layerCost;
 
   function fmt(n) {
     if (n >= 1000000) return '$' + (n/1000000).toFixed(1) + 'M';
     if (n >= 1000) return '$' + Math.round(n/1000) + 'K';
-    return '$' + Math.round(n).toLocaleString();
+    return '$' + Math.round(Math.abs(n)).toLocaleString();
   }
 
   document.getElementById('le-roi-revenue').textContent = fmt(revenue);
   document.getElementById('le-roi-cost').textContent = fmt(layerCost);
 
   var netEl = document.getElementById('le-roi-net');
-  netEl.textContent = (net >= 0 ? '' : '-') + fmt(Math.abs(net));
+  netEl.textContent = (net < 0 ? '-' : '') + fmt(Math.abs(net));
   netEl.className = 'le-roi-result-value' + (net >= 0 ? '' : ' le-roi-negative');
 }
 leCalcROI();
