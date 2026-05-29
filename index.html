@@ -79,6 +79,65 @@
 
 #le-wrapper .le-nav-cta:hover { background: #3B82F6 !important; }
 
+/* ── HAMBURGER MENU ── */
+#le-wrapper .le-nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+
+#le-wrapper .le-nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #FFFFFF;
+  border-radius: 2px;
+  transition: all 0.25s;
+}
+
+#le-wrapper .le-nav-mobile {
+  display: none;
+  position: fixed;
+  top: 57px;
+  left: 0;
+  right: 0;
+  background: rgba(13,17,23,0.98) !important;
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding: 1.5rem;
+  z-index: 9999;
+  flex-direction: column;
+  gap: 0;
+}
+
+#le-wrapper .le-nav-mobile.le-open { display: flex; }
+
+#le-wrapper .le-nav-mobile a {
+  display: block;
+  padding: 0.9rem 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: #9CA3AF !important;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: color 0.2s;
+}
+
+#le-wrapper .le-nav-mobile a:last-child { border-bottom: none; }
+#le-wrapper .le-nav-mobile a:hover { color: #FFFFFF !important; }
+
+#le-wrapper .le-nav-mobile .le-nav-cta {
+  margin-top: 1rem;
+  text-align: center;
+  padding: 12px 18px;
+  border-radius: 9px;
+  border-bottom: none;
+}
+
 /* ── HERO ── */
 #le-wrapper .le-hero {
   position: relative;
@@ -1003,6 +1062,7 @@
 @media (max-width: 768px) {
   #le-wrapper .le-nav { padding: 1rem 1.25rem; }
   #le-wrapper .le-nav-links { display: none; }
+  #le-wrapper .le-nav-hamburger { display: flex; }
   #le-wrapper .le-hero { min-height: 0 !important; padding: 5.5rem 1.25rem 3rem !important; align-items: flex-start !important; }
   #le-wrapper .le-hero-glow { top: -50px; width: 400px; height: 300px; }
   #le-wrapper .le-container { padding: 0 1.25rem; }
@@ -1046,7 +1106,29 @@
     <li><a href="#le-about">About</a></li>
     <li><a href="#le-contact" class="le-nav-cta">Book a Call</a></li>
   </ul>
+  <button class="le-nav-hamburger" id="le-hamburger" onclick="leToggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE NAV -->
+<div class="le-nav-mobile" id="le-mobile-nav">
+  <a href="#le-how" onclick="leCloseNav()">How It Works</a>
+  <a href="#le-deliverables" onclick="leCloseNav()">What You Get</a>
+  <a href="#le-pricing" onclick="leCloseNav()">Pricing</a>
+  <a href="#le-about" onclick="leCloseNav()">About</a>
+  <a href="#le-contact" class="le-nav-cta" onclick="leCloseNav()">Book a Strategy Call</a>
+</div>
+
+<script>
+function leToggleNav() {
+  var nav = document.getElementById('le-mobile-nav');
+  nav.classList.toggle('le-open');
+}
+function leCloseNav() {
+  document.getElementById('le-mobile-nav').classList.remove('le-open');
+}
+</script>
 
 <!-- HERO -->
 <section class="le-hero">
