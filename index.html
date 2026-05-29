@@ -1070,6 +1070,82 @@
   line-height: 1.6;
 }
 
+#le-wrapper .le-calc-step-num {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #3B82F6 !important;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+#le-wrapper .le-calc-step-q {
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 700;
+  color: #FFFFFF !important;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+#le-wrapper .le-calc-step-hint {
+  font-size: 13px;
+  color: #6B7280 !important;
+  margin-bottom: 1.5rem;
+}
+
+#le-wrapper .le-calc-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+#le-wrapper .le-calc-btn {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  color: rgba(255,255,255,0.8) !important;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+#le-wrapper .le-calc-btn:hover {
+  background: rgba(59,130,246,0.15);
+  border-color: rgba(59,130,246,0.4);
+  color: #FFFFFF !important;
+}
+
+#le-wrapper .le-calc-btn.le-calc-btn-active {
+  background: rgba(59,130,246,0.2);
+  border-color: #3B82F6;
+  color: #FFFFFF !important;
+}
+
+#le-wrapper .le-calc-result-headline {
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 700;
+  color: #FFFFFF !important;
+  line-height: 1.4;
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+#le-wrapper .le-calc-result-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55) !important;
+  line-height: 1.7;
+  text-align: center;
+  margin-top: 1.25rem;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media (max-width: 768px) {
   #le-wrapper .le-nav { padding: 1rem 1.25rem; }
   #le-wrapper .le-nav-links { display: none; }
@@ -1154,12 +1230,12 @@ function leCloseNav() {
       Now accepting new clients
     </div>
     <h1 class="le-hero-h1">
-      Your Team<br>
-      <span class="le-accent">Builds Itself.</span><br>
-      <span class="le-dim">You Focus on Culture.</span>
+      Recruit Them.<br>
+      <span class="le-accent">Activate Them.</span><br>
+      <span class="le-dim">Retain Them.</span>
     </h1>
     <p class="le-hero-sub">
-      LayerEngine.ai is the <strong>done-for-you AI growth system</strong> for real estate brokerages and lending teams — from first recruiting touch to fully onboarded, producing professional. We run the system. You run the team.
+      LayerEngine.ai is the <strong>done-for-you AI recruiting and growth system</strong> for real estate brokerages and mortgage lending teams. We build and manage a 6-layer automated pipeline — from AI-powered outbound recruiting through onboarding — then deploy the <strong>Elite Agent Blueprint</strong> to give every producer their own lead generation and client attraction system. We run the system. They run the team. Their agents run their business.
     </p>
     <div class="le-hero-cta-row">
       <a href="https://calendly.com/adam-layerengine/30min" class="le-btn-primary" target="_blank">
@@ -1200,8 +1276,8 @@ function leCloseNav() {
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
       </div>
       <div>
-        <div class="le-diff-label">6 Layers Deep</div>
-        <div class="le-diff-desc">Recruit → Nurture → Sign → Onboard → Produce → Retain</div>
+        <div class="le-diff-label">Two Engines. One System.</div>
+        <div class="le-diff-desc">Recruit producers in. Activate them with their own lead gen. Retain them.</div>
       </div>
     </div>
   </div>
@@ -1237,8 +1313,8 @@ function leCloseNav() {
 <section class="le-how-section le-section-pad" id="le-how">
   <div class="le-container">
     <div class="le-section-eyebrow">The System</div>
-    <h2 class="le-section-h2">Six layers. One engine.<br><span>Recruit to retain.</span></h2>
-    <p class="le-section-sub">Every layer runs automatically inside your organization — from the moment a candidate first hears about you to the day they close their first deal and beyond. We don't just recruit producers. We help them produce.</p>
+    <h2 class="le-section-h2">Two engines. Six layers.<br><span>Recruit. Activate. Retain.</span></h2>
+    <p class="le-section-sub">The first engine recruits and onboards producers into your organization. The second activates them with their own done-for-you lead generation system. Both run automatically. Both are managed by LayerEngine. You never touch the technology.</p>
 
     <div class="le-layers-stack">
       <div class="le-layer">
@@ -1284,10 +1360,10 @@ function leCloseNav() {
       <div class="le-layer">
         <div class="le-layer-num">06</div>
         <div>
-          <div class="le-layer-title">Elite Agent Blueprint — Producer Lead Engine</div>
-          <div class="le-layer-desc">Every onboarded producer gets their own done-for-you lead generation system — the <strong style="color:rgba(255,255,255,0.85)">Elite Agent Blueprint</strong>. Branded funnels, SEO, Google Business, and lead attraction built and managed for them. They generate business. They stay. Your roster compounds.</div>
+          <div class="le-layer-title">Elite Agent Blueprint — The Activation Engine</div>
+          <div class="le-layer-desc">Once onboarded, every producer gets their own done-for-you lead generation and client attraction system — the <strong style="color:rgba(255,255,255,0.85)">Elite Agent Blueprint</strong>. AI voice and SMS now works for them, generating leads and attracting clients on their behalf. Branded funnels, Google Business, and attraction campaigns built and managed for each agent or LO. They produce. They stay. Your roster compounds.</div>
         </div>
-        <div class="le-layer-badge">Retention Moat</div>
+        <div class="le-layer-badge le-green">Engine 2</div>
       </div>
     </div>
   </div>
@@ -1368,8 +1444,8 @@ function leCloseNav() {
       <!-- STANDARD -->
       <div class="le-pricing-card">
         <div class="le-pricing-header">
-          <div class="le-pricing-label">Standard</div>
-          <div class="le-pricing-name">System Build &amp; Launch</div>
+          <div class="le-pricing-label">Growth</div>
+          <div class="le-pricing-name">Built &amp; Handed Off</div>
         </div>
         <div class="le-pricing-body">
           <div class="le-pricing-setup">
@@ -1414,7 +1490,7 @@ function leCloseNav() {
       <div class="le-pricing-card le-pricing-card-featured">
         <div class="le-pricing-badge">Most Popular</div>
         <div class="le-pricing-header">
-          <div class="le-pricing-label">Managed</div>
+          <div class="le-pricing-label">Enterprise</div>
           <div class="le-pricing-name">Fully Done-For-You</div>
         </div>
         <div class="le-pricing-body">
@@ -1425,7 +1501,7 @@ function leCloseNav() {
           <div class="le-pricing-setup-note">
             + <strong>$5,000 one-time setup fee</strong> &mdash; advanced build with custom agent scripts and strategy
           </div>
-          <div class="le-pricing-includes">Everything in Standard, plus</div>
+          <div class="le-pricing-includes">Everything in Growth, plus</div>
           <div class="le-pricing-feature">
             <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="le-pricing-feature-text"><strong>LayerEngine runs everything</strong> &mdash; fully hands-off for your team, we manage the system daily</div>
@@ -1494,6 +1570,7 @@ function leCloseNav() {
         <div class="le-section-eyebrow">Who's Behind This</div>
         <h2 class="le-section-h2">Built by someone<br>who lived <span>both sides.</span></h2>
         <p class="le-section-sub" style="margin-top:1rem;">LayerEngine.ai was built by <strong style="color:rgba(255,255,255,0.9)">Adam Wilson</strong> — a former top-producing team leader and agent who got tired of watching growth leaders struggle with problems that had solvable, automatable answers.</p>
+        <p class="le-section-sub" style="margin-top:1rem; font-size:0.95rem; color:rgba(255,255,255,0.55);">We build and manage a 6-layer automated pipeline — from AI-powered outbound recruiting and inbound funnels, through candidate nurture, appointment setting, and onboarding — so branch managers and team leaders get a predictable flow of recruited, onboarded, producing professionals without managing the technology themselves. But we don’t stop at the hire. Once producers are onboarded, we deploy the Elite Agent Blueprint — giving each agent or LO their own branded funnel to generate and attract clients. It’s how we turn a new recruit into a producing, retained professional.</p>
         <div class="le-about-cred">
           <div class="le-cred-item"><span class="le-cred-dot"></span>Former top-producing real estate team leader</div>
           <div class="le-cred-item"><span class="le-cred-dot"></span>Top producing agent with direct sales experience</div>
@@ -1525,88 +1602,174 @@ function leCloseNav() {
   <div class="le-container">
     <div style="text-align:center;">
       <div class="le-section-eyebrow">Growth Calculator</div>
-      <h2 class="le-section-h2">What does one new agent<br><span>mean to your bottom line?</span></h2>
-      <p class="le-section-sub" style="margin: 0 auto; max-width: 560px;">Every brokerage and lending team has a different model. Enter your numbers and see what a consistent recruiting system could mean for your organization.</p>
+      <h2 class="le-section-h2">What does your growth<br><span>actually look like?</span></h2>
+      <p class="le-section-sub" style="margin: 0 auto; max-width: 560px;">Answer four questions about your organization and see what a consistent, automated growth system could mean for your bottom line.</p>
     </div>
 
-    <div class="le-roi-card">
-      <div class="le-roi-inputs">
-        <div>
-          <div class="le-roi-label">Agents / LOs you want to add this year</div>
-          <input class="le-roi-input" id="le-roi-agents" type="number" value="12" min="1" max="500" oninput="leCalcROI()">
-        </div>
-        <div>
-          <div class="le-roi-label">What one producing agent/LO adds to your bottom line / year ($)</div>
-          <input class="le-roi-input" id="le-roi-value" type="number" value="15000" min="1000" max="500000" oninput="leCalcROI()" placeholder="e.g. 10,000 – 25,000">
-        </div>
-        <div>
-          <div class="le-roi-label">Avg. months to recruit &amp; onboard one agent</div>
-          <input class="le-roi-input" id="le-roi-months" type="number" value="3" min="1" max="12" oninput="leCalcROI()">
-        </div>
-        <div>
-          <div class="le-roi-label">LayerEngine plan (monthly)</div>
-          <select class="le-roi-input" id="le-roi-plan" onchange="leCalcROI()" style="cursor:pointer;">
-            <option value="1000">Standard &mdash; $1,000/mo</option>
-            <option value="2000" selected>Managed &mdash; $2,000/mo</option>
-          </select>
+    <div class="le-roi-card" id="le-calc-wrapper">
+
+      <!-- STEP 1 -->
+      <div class="le-calc-step" id="le-step-1">
+        <div class="le-calc-step-num">01 / 04</div>
+        <div class="le-calc-step-q">What type of organization are you growing?</div>
+        <div class="le-calc-btn-group">
+          <button class="le-calc-btn" onclick="leSelectOrg('Real Estate Brokerage', this)">Real Estate Brokerage</button>
+          <button class="le-calc-btn" onclick="leSelectOrg('Mortgage Lending Team', this)">Mortgage Lending Team</button>
+          <button class="le-calc-btn" onclick="leSelectOrg('Hybrid Team', this)">Hybrid Team</button>
+          <button class="le-calc-btn" onclick="leSelectOrg('Individual Agent/LO', this)">Individual Agent / LO</button>
         </div>
       </div>
 
-      <div class="le-roi-results">
-        <div class="le-roi-result-card">
-          <div class="le-roi-result-label">Annual revenue added</div>
-          <div class="le-roi-result-value" id="le-roi-revenue">$180K</div>
-          <div class="le-roi-result-sub">from new agents/LOs this year</div>
-        </div>
-        <div class="le-roi-result-card">
-          <div class="le-roi-result-label">LayerEngine investment</div>
-          <div class="le-roi-result-value le-roi-neutral" id="le-roi-cost">$29K</div>
-          <div class="le-roi-result-sub">annual (plan + setup)</div>
-        </div>
-        <div class="le-roi-result-card">
-          <div class="le-roi-result-label">Return on investment</div>
-          <div class="le-roi-result-value" id="le-roi-net">$151K</div>
-          <div class="le-roi-result-sub">net annual return</div>
+      <!-- STEP 2 -->
+      <div class="le-calc-step" id="le-step-2" style="display:none;">
+        <div class="le-calc-step-num">02 / 04</div>
+        <div class="le-calc-step-q">How many producers do you want to add this year?</div>
+        <div class="le-calc-btn-group">
+          <button class="le-calc-btn" onclick="leSelectAgents(3, this)">1 &ndash; 5</button>
+          <button class="le-calc-btn" onclick="leSelectAgents(8, this)">6 &ndash; 10</button>
+          <button class="le-calc-btn" onclick="leSelectAgents(15, this)">11 &ndash; 20</button>
+          <button class="le-calc-btn" onclick="leSelectAgents(30, this)">20+</button>
         </div>
       </div>
 
-      <div class="le-roi-disclaimer">Estimates based on your inputs. Results vary by market, team, and execution. This calculator is for illustrative purposes only.</div>
+      <!-- STEP 3 -->
+      <div class="le-calc-step" id="le-step-3" style="display:none;">
+        <div class="le-calc-step-num">03 / 04</div>
+        <div class="le-calc-step-q">What does one producing agent or LO add to your bottom line per year?</div>
+        <div class="le-calc-step-hint">Include overrides, splits, or fees &mdash; whatever one producer is worth to your organization.</div>
+        <div class="le-calc-btn-group">
+          <button class="le-calc-btn" onclick="leSelectValue(8000, this)">Under $10K</button>
+          <button class="le-calc-btn" onclick="leSelectValue(12500, this)">$10K &ndash; $15K</button>
+          <button class="le-calc-btn" onclick="leSelectValue(20000, this)">$15K &ndash; $25K</button>
+          <button class="le-calc-btn" onclick="leSelectValue(35000, this)">$25K+</button>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="le-calc-step" id="le-step-4" style="display:none;">
+        <div class="le-calc-step-num">04 / 04</div>
+        <div class="le-calc-step-q">How long does it typically take you to recruit and onboard one producer?</div>
+        <div class="le-calc-btn-group">
+          <button class="le-calc-btn" onclick="leSelectMonths(1, this)">Under 1 month</button>
+          <button class="le-calc-btn" onclick="leSelectMonths(2.5, this)">1 &ndash; 3 months</button>
+          <button class="le-calc-btn" onclick="leSelectMonths(5, this)">3 &ndash; 6 months</button>
+          <button class="le-calc-btn" onclick="leSelectMonths(9, this)">6+ months</button>
+        </div>
+      </div>
+
+      <!-- RESULT -->
+      <div class="le-calc-step" id="le-step-result" style="display:none;">
+        <div class="le-calc-result-headline" id="le-calc-headline"></div>
+        <div class="le-roi-results" style="margin-top:1.5rem;">
+          <div class="le-roi-result-card">
+            <div class="le-roi-result-label">Annual revenue added</div>
+            <div class="le-roi-result-value" id="le-roi-revenue">$0</div>
+            <div class="le-roi-result-sub">from new producers this year</div>
+          </div>
+          <div class="le-roi-result-card">
+            <div class="le-roi-result-label">LayerEngine investment</div>
+            <div class="le-roi-result-value le-roi-neutral" id="le-roi-cost">$0</div>
+            <div class="le-roi-result-sub">annual (Enterprise plan + setup)</div>
+          </div>
+          <div class="le-roi-result-card">
+            <div class="le-roi-result-label">Net return</div>
+            <div class="le-roi-result-value" id="le-roi-net">$0</div>
+            <div class="le-roi-result-sub">based on your numbers</div>
+          </div>
+        </div>
+        <div class="le-calc-result-sub" id="le-calc-sub"></div>
+        <div style="text-align:center; margin-top:2rem;">
+          <a href="https://calendly.com/adam-layerengine/30min" class="le-btn-primary" target="_blank" style="display:inline-flex;">
+            See how this works for your team
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="margin-left:8px;"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div style="margin-top:1rem;">
+            <button onclick="leResetCalc()" style="background:none;border:none;color:#6B7280;font-size:13px;cursor:pointer;text-decoration:underline;">Start over</button>
+          </div>
+        </div>
+        <div class="le-roi-disclaimer" style="margin-top:1.5rem;">Estimates based on your inputs. Results vary by market, team, and execution. For illustrative purposes only.</div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <script>
-function leCalcROI() {
-  var agents = parseFloat(document.getElementById('le-roi-agents').value) || 0;
-  var agentValue = parseFloat(document.getElementById('le-roi-value').value) || 0;
-  var planMo = parseFloat(document.getElementById('le-roi-plan').value) || 2000;
-  var setupFee = planMo === 1000 ? 2500 : 5000;
+var leCalcData = { org: '', agents: 0, value: 0, months: 0 };
 
-  var revenue = agents * agentValue;
-  var layerCost = (planMo * 12) + setupFee;
+function leSelectOrg(val, btn) {
+  leCalcData.org = val;
+  leHighlight(btn);
+  setTimeout(function(){ leShowStep('le-step-2'); }, 300);
+}
+function leSelectAgents(val, btn) {
+  leCalcData.agents = val;
+  leHighlight(btn);
+  setTimeout(function(){ leShowStep('le-step-3'); }, 300);
+}
+function leSelectValue(val, btn) {
+  leCalcData.value = val;
+  leHighlight(btn);
+  setTimeout(function(){ leShowStep('le-step-4'); }, 300);
+}
+function leSelectMonths(val, btn) {
+  leCalcData.months = val;
+  leHighlight(btn);
+  setTimeout(function(){ leShowResult(); }, 300);
+}
+function leHighlight(btn) {
+  var btns = btn.parentNode.querySelectorAll('.le-calc-btn');
+  btns.forEach(function(b){ b.classList.remove('le-calc-btn-active'); });
+  btn.classList.add('le-calc-btn-active');
+}
+function leShowStep(id) {
+  var steps = document.querySelectorAll('.le-calc-step');
+  steps.forEach(function(s){ s.style.display = 'none'; });
+  var el = document.getElementById(id);
+  el.style.display = 'block';
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(16px)';
+  setTimeout(function(){
+    el.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0)';
+  }, 10);
+}
+function leShowResult() {
+  var a = leCalcData.agents;
+  var v = leCalcData.value;
+  var revenue = a * v;
+  var layerCost = (2000 * 12) + 5000;
   var net = revenue - layerCost;
-
   function fmt(n) {
     if (n >= 1000000) return '$' + (n/1000000).toFixed(1) + 'M';
     if (n >= 1000) return '$' + Math.round(n/1000) + 'K';
     return '$' + Math.round(Math.abs(n)).toLocaleString();
   }
-
   document.getElementById('le-roi-revenue').textContent = fmt(revenue);
   document.getElementById('le-roi-cost').textContent = fmt(layerCost);
-
   var netEl = document.getElementById('le-roi-net');
   netEl.textContent = (net < 0 ? '-' : '') + fmt(Math.abs(net));
   netEl.className = 'le-roi-result-value' + (net >= 0 ? '' : ' le-roi-negative');
+  var headline = 'Based on your numbers, adding ' + a + ' producers to your ' + leCalcData.org + ' could add ' + fmt(revenue) + ' to your bottom line this year.';
+  document.getElementById('le-calc-headline').textContent = headline;
+  var sub = leCalcData.months >= 5
+    ? 'Your current recruiting cycle is taking ' + leCalcData.months + '+ months per hire. LayerEngine\'s AI outbound engine runs 24/7 and compresses that timeline significantly — so you start seeing returns faster.'
+    : 'LayerEngine handles every step — from first AI outreach to signed producer to activated lead generator — so your team never touches the technology.';
+  document.getElementById('le-calc-sub').textContent = sub;
+  leShowStep('le-step-result');
 }
-leCalcROI();
+function leResetCalc() {
+  leCalcData = { org: '', agents: 0, value: 0, months: 0 };
+  leShowStep('le-step-1');
+}
 </script>
 
 <!-- FINAL CTA -->
 <section class="le-final-cta" id="le-contact">
   <div style="position:relative;z-index:1;">
-    <h2 class="le-final-cta-h2">Ready to stop recruiting manually<br>and start growing systematically?</h2>
-    <p class="le-final-cta-sub">Book a 30-minute strategy call. We'll map out exactly how LayerEngine.ai would work inside your organization.</p>
+    <h2 class="le-final-cta-h2">Ready to recruit, activate,<br>and retain your producers?</h2>
+    <p class="le-final-cta-sub">Book a 30-minute strategy call. We’ll map out exactly how both engines would work inside your organization — and what growth looks like 90 days from now.</p>
     <a href="https://calendly.com/adam-layerengine/30min" class="le-btn-white" target="_blank">
       Book Your Strategy Call
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
