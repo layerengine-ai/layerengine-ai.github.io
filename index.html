@@ -899,10 +899,111 @@
 #le-wrapper .le-footer-links a:hover { color: #9CA3AF !important; }
 
 /* ── RESPONSIVE ── */
+/* ── ROI CALCULATOR ── */
+#le-wrapper .le-roi-section { background: #0D1117 !important; border-top: 1px solid rgba(255,255,255,0.05); }
+
+#le-wrapper .le-roi-card {
+  max-width: 760px;
+  margin: 3rem auto 0;
+  background: #1E293B !important;
+  border: 1px solid rgba(37,99,235,0.2);
+  border-radius: 20px;
+  padding: 2.5rem;
+}
+
+#le-wrapper .le-roi-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 600px) {
+  #le-wrapper .le-roi-inputs { grid-template-columns: 1fr; }
+}
+
+#le-wrapper .le-roi-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #9CA3AF !important;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+#le-wrapper .le-roi-input {
+  width: 100%;
+  background: #0D1117 !important;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: #FFFFFF !important;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#le-wrapper .le-roi-input:focus { border-color: #2563EB !important; }
+
+#le-wrapper .le-roi-results {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+@media (max-width: 600px) {
+  #le-wrapper .le-roi-results { grid-template-columns: 1fr; }
+}
+
+#le-wrapper .le-roi-result-card {
+  background: #0D1117 !important;
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+#le-wrapper .le-roi-result-label {
+  font-size: 11px;
+  color: #6B7280 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+#le-wrapper .le-roi-result-value {
+  font-family: 'Syne', sans-serif !important;
+  font-size: 28px;
+  font-weight: 800;
+  color: #10B981 !important;
+  letter-spacing: -1px;
+}
+
+#le-wrapper .le-roi-result-value.le-roi-negative { color: #EF4444 !important; }
+#le-wrapper .le-roi-result-value.le-roi-neutral { color: #FFFFFF !important; }
+
+#le-wrapper .le-roi-result-sub {
+  font-size: 11px;
+  color: #6B7280 !important;
+  margin-top: 4px;
+}
+
+#le-wrapper .le-roi-disclaimer {
+  text-align: center;
+  font-size: 11px;
+  color: #4B5563 !important;
+  margin-top: 1.5rem;
+  line-height: 1.6;
+}
+
 @media (max-width: 768px) {
   #le-wrapper .le-nav { padding: 1rem 1.25rem; }
   #le-wrapper .le-nav-links { display: none; }
-  #le-wrapper .le-hero { padding: 7rem 1.25rem 4rem; }
+  #le-wrapper .le-hero { min-height: auto !important; padding: 5rem 1.25rem 3rem; }
   #le-wrapper .le-container { padding: 0 1.25rem; }
   #le-wrapper .le-diff-inner { grid-template-columns: 1fr; }
   #le-wrapper .le-diff-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
@@ -913,11 +1014,13 @@
   #le-wrapper .le-layer-badge { display: none; }
   #le-wrapper .le-who-grid { grid-template-columns: 1fr; }
   #le-wrapper .le-about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  #le-wrapper .le-section-pad { padding: 4rem 0; }
 }
 
 @media (max-width: 480px) {
   #le-wrapper .le-deliverables-grid { grid-template-columns: 1fr; }
-  #le-wrapper .le-hero-h1 { letter-spacing: -1px; }
+  #le-wrapper .le-hero-h1 { letter-spacing: -1px; font-size: clamp(36px, 9vw, 56px) !important; }
+  #le-wrapper .le-hero-sub { font-size: 15px; }
 }
 </style>
 
@@ -1319,6 +1422,86 @@
     </div>
   </div>
 </section>
+
+<!-- ROI CALCULATOR -->
+<section class="le-roi-section le-section-pad" id="le-roi">
+  <div class="le-container">
+    <div style="text-align:center;">
+      <div class="le-section-eyebrow">ROI Calculator</div>
+      <h2 class="le-section-h2">See what LayerEngine<br><span>is worth to your team.</span></h2>
+      <p class="le-section-sub" style="margin: 0 auto; max-width: 520px;">Enter your numbers. See your return. No email required.</p>
+    </div>
+
+    <div class="le-roi-card">
+      <div class="le-roi-inputs">
+        <div>
+          <div class="le-roi-label">Agents you want to recruit / year</div>
+          <input class="le-roi-input" id="le-roi-agents" type="number" value="12" min="1" max="500" oninput="leCalcROI()">
+        </div>
+        <div>
+          <div class="le-roi-label">Avg. GCI per agent / year ($)</div>
+          <input class="le-roi-input" id="le-roi-gci" type="number" value="80000" min="10000" max="500000" oninput="leCalcROI()">
+        </div>
+        <div>
+          <div class="le-roi-label">Your avg. split / override (%)</div>
+          <input class="le-roi-input" id="le-roi-split" type="number" value="5" min="1" max="50" oninput="leCalcROI()">
+        </div>
+        <div>
+          <div class="le-roi-label">Current recruiter cost / month ($)</div>
+          <input class="le-roi-input" id="le-roi-recruiter" type="number" value="4500" min="0" max="20000" oninput="leCalcROI()">
+        </div>
+      </div>
+
+      <div class="le-roi-results">
+        <div class="le-roi-result-card">
+          <div class="le-roi-result-label">Revenue from new agents</div>
+          <div class="le-roi-result-value" id="le-roi-revenue">$48,000</div>
+          <div class="le-roi-result-sub">annual override/split income</div>
+        </div>
+        <div class="le-roi-result-card">
+          <div class="le-roi-result-label">LayerEngine annual cost</div>
+          <div class="le-roi-result-value le-roi-neutral" id="le-roi-cost">$29,000</div>
+          <div class="le-roi-result-sub">managed plan + setup</div>
+        </div>
+        <div class="le-roi-result-card">
+          <div class="le-roi-result-label">Net ROI</div>
+          <div class="le-roi-result-value" id="le-roi-net">$19,000</div>
+          <div class="le-roi-result-sub">vs. current recruiter spend</div>
+        </div>
+      </div>
+
+      <div class="le-roi-disclaimer">Estimates based on your inputs. Actual results vary. LayerEngine replaces recruiter salary + overhead &mdash; savings shown vs. $4,500/mo recruiter baseline.</div>
+    </div>
+  </div>
+</section>
+
+<script>
+function leCalcROI() {
+  var agents = parseFloat(document.getElementById('le-roi-agents').value) || 0;
+  var gci = parseFloat(document.getElementById('le-roi-gci').value) || 0;
+  var split = parseFloat(document.getElementById('le-roi-split').value) || 0;
+  var recruiterMo = parseFloat(document.getElementById('le-roi-recruiter').value) || 0;
+
+  var revenue = agents * gci * (split / 100);
+  var layerCost = (2000 * 12) + 5000; // Managed plan: $2k/mo + $5k setup
+  var recruiterAnnual = recruiterMo * 12;
+  var net = revenue - layerCost + recruiterAnnual;
+
+  function fmt(n) {
+    if (n >= 1000000) return '$' + (n/1000000).toFixed(1) + 'M';
+    if (n >= 1000) return '$' + Math.round(n/1000) + 'K';
+    return '$' + Math.round(n).toLocaleString();
+  }
+
+  document.getElementById('le-roi-revenue').textContent = fmt(revenue);
+  document.getElementById('le-roi-cost').textContent = fmt(layerCost);
+
+  var netEl = document.getElementById('le-roi-net');
+  netEl.textContent = (net >= 0 ? '' : '-') + fmt(Math.abs(net));
+  netEl.className = 'le-roi-result-value' + (net >= 0 ? '' : ' le-roi-negative');
+}
+leCalcROI();
+</script>
 
 <!-- FINAL CTA -->
 <section class="le-final-cta" id="le-contact">
