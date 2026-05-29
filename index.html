@@ -507,14 +507,46 @@
 /* ── PRICING ── */
 #le-wrapper .le-pricing-section { background: #1E293B !important; border-top: 1px solid rgba(255,255,255,0.05); }
 
-#le-wrapper .le-pricing-card {
-  max-width: 560px;
+#le-wrapper .le-pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 960px;
   margin: 3.5rem auto 0;
+}
+
+@media (max-width: 768px) {
+  #le-wrapper .le-pricing-grid { grid-template-columns: 1fr; }
+}
+
+#le-wrapper .le-pricing-card {
   background: #0D1117 !important;
   border: 1px solid rgba(37,99,235,0.25);
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 0 60px rgba(37,99,235,0.1);
+  position: relative;
+}
+
+#le-wrapper .le-pricing-card-featured {
+  border-color: #2563EB !important;
+  box-shadow: 0 0 80px rgba(37,99,235,0.25) !important;
+}
+
+#le-wrapper .le-pricing-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2563EB !important;
+  color: #FFFFFF !important;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 16px;
+  border-radius: 20px;
+  white-space: nowrap;
 }
 
 #le-wrapper .le-pricing-header {
@@ -1127,62 +1159,103 @@
   <div class="le-container">
     <div style="text-align:center;">
       <div class="le-section-eyebrow">Pricing</div>
-      <h2 class="le-section-h2">Simple. Transparent.<br><span>No surprises.</span></h2>
-      <p class="le-section-sub" style="margin: 0 auto;">One plan. Everything included. No revenue share, no long-term contracts, no hidden fees.</p>
+      <h2 class="le-section-h2">Replace Your Recruiter.<br><span>For Less Than Their Salary.</span></h2>
+      <p class="le-section-sub" style="margin: 0 auto; max-width: 620px;">A dedicated recruiter costs $4,000&ndash;$6,000/month and works 40 hours a week. LayerEngine runs 24/7, handles hundreds of conversations simultaneously, and never calls in sick. Two plans. No revenue share. No long-term contracts.</p>
     </div>
 
-    <div class="le-pricing-card">
-      <div class="le-pricing-header">
-        <div class="le-pricing-label">LayerEngine Full System</div>
-        <div class="le-pricing-name">Done-For-You Growth Partnership</div>
+    <div class="le-pricing-grid">
+
+      <!-- STANDARD -->
+      <div class="le-pricing-card">
+        <div class="le-pricing-header">
+          <div class="le-pricing-label">Standard</div>
+          <div class="le-pricing-name">System Build &amp; Launch</div>
+        </div>
+        <div class="le-pricing-body">
+          <div class="le-pricing-setup">
+            <div class="le-pricing-amount">$1,000</div>
+            <div class="le-pricing-period">/month</div>
+          </div>
+          <div class="le-pricing-setup-note">
+            + <strong>$2,500 one-time setup fee</strong> &mdash; full system built and launched in 2 weeks
+          </div>
+          <div class="le-pricing-includes">What's included</div>
+          <div class="le-pricing-feature">
+            <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="le-pricing-feature-text"><strong>Full CRM build</strong> &mdash; pipelines, automations, and sequences configured for your organization</div>
+          </div>
+          <div class="le-pricing-feature">
+            <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="le-pricing-feature-text"><strong>AI voice &amp; SMS recruiting engine</strong> &mdash; 24/7 outbound outreach and candidate qualification</div>
+          </div>
+          <div class="le-pricing-feature">
+            <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="le-pricing-feature-text"><strong>Branded recruiting funnel</strong> &mdash; VSL and landing page built under your brand</div>
+          </div>
+          <div class="le-pricing-feature">
+            <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="le-pricing-feature-text"><strong>Onboarding automation</strong> &mdash; every touchpoint from signed to producing</div>
+          </div>
+          <div class="le-pricing-feature">
+            <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="le-pricing-feature-text"><strong>Team training &amp; handoff</strong> &mdash; your team learns to manage and monitor the system</div>
+          </div>
+          <div class="le-pricing-feature">
+            <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="le-pricing-feature-text"><strong>Zero revenue share</strong> &mdash; we never touch your transaction income</div>
+          </div>
+          <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.07); font-size:12px; color:#6B7280;">Client responsible for: texting/AI usage costs (competitive per-message rates via Teli.ai) + A2P registration (~$100&ndash;$200 one-time)</div>
+          <a href="#le-contact" class="le-pricing-cta" style="margin-top:1.5rem;">Book a Strategy Call &rarr;</a>
+          <div class="le-pricing-note">Month-to-month. Cancel anytime.</div>
+        </div>
       </div>
-      <div class="le-pricing-body">
-        <div class="le-pricing-setup">
-          <div class="le-pricing-amount">$2,500</div>
-          <div class="le-pricing-period">/month</div>
-        </div>
-        <div class="le-pricing-setup-note">
-          + <strong>$2,500 one-time setup fee</strong> — your entire system built and launched in 2 weeks
-        </div>
 
-        <div class="le-pricing-includes">Everything included</div>
-
-        <div class="le-pricing-feature">
-          <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="le-pricing-feature-text"><strong>Full CRM sub-account build</strong> — pipelines, automations, sequences, all configured for your organization</div>
+      <!-- MANAGED -->
+      <div class="le-pricing-card le-pricing-card-featured">
+        <div class="le-pricing-badge">Most Popular</div>
+        <div class="le-pricing-header">
+          <div class="le-pricing-label">Managed</div>
+          <div class="le-pricing-name">Fully Done-For-You</div>
         </div>
-        <div class="le-pricing-feature">
-          <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="le-pricing-feature-text"><strong>AI voice &amp; SMS recruiting engine</strong> — 24/7 outbound candidate outreach and qualification, fully automated</div>
+        <div class="le-pricing-body">
+          <div class="le-pricing-setup">
+            <div class="le-pricing-amount">$2,000</div>
+            <div class="le-pricing-period">/month</div>
+          </div>
+          <div class="le-pricing-setup-note">
+            + <strong>$5,000 one-time setup fee</strong> &mdash; advanced build with custom agent scripts and strategy
+          </div>
+          <div class="le-pricing-includes">Everything in Standard, plus</div>
+          <div class="le-pricing-feature">
+            <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="le-pricing-feature-text"><strong>LayerEngine runs everything</strong> &mdash; fully hands-off for your team, we manage the system daily</div>
+          </div>
+          <div class="le-pricing-feature">
+            <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="le-pricing-feature-text"><strong>Custom AI agent scripts</strong> &mdash; tailored recruiting conversations for your market and culture</div>
+          </div>
+          <div class="le-pricing-feature">
+            <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="le-pricing-feature-text"><strong>Elite Agent Blueprint &mdash; unlimited deployments</strong> &mdash; every producer gets their own done-for-you lead generation system</div>
+          </div>
+          <div class="le-pricing-feature">
+            <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="le-pricing-feature-text"><strong>Ongoing optimization &amp; A/B testing</strong> &mdash; sequences, scripts, and funnels continuously improved</div>
+          </div>
+          <div class="le-pricing-feature">
+            <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="le-pricing-feature-text"><strong>Weekly reporting &amp; strategy calls</strong> &mdash; pipeline, appointments booked, producers signed, onboarding status</div>
+          </div>
+          <div class="le-pricing-feature">
+            <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="le-pricing-feature-text"><strong>Replaces your ISA and recruiter</strong> &mdash; at a fraction of the cost, running 24/7</div>
+          </div>
+          <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.07); font-size:12px; color:#6B7280;">Client responsible for: texting/AI usage costs (competitive per-message rates via Teli.ai) + A2P registration (~$100&ndash;$200 one-time)</div>
+          <a href="#le-contact" class="le-pricing-cta" style="margin-top:1.5rem;">Book a Strategy Call &rarr;</a>
+          <div class="le-pricing-note">Month-to-month. Cancel anytime. Results or we'll make it right.</div>
         </div>
-        <div class="le-pricing-feature">
-          <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="le-pricing-feature-text"><strong>Branded VSL recruiting funnel</strong> — custom built under your brand</div>
-        </div>
-        <div class="le-pricing-feature">
-          <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="le-pricing-feature-text"><strong>Complete onboarding automation</strong> — every touchpoint from signed to producing</div>
-        </div>
-        <div class="le-pricing-feature">
-          <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="le-pricing-feature-text"><strong>Ongoing management &amp; optimization</strong> — your dedicated LayerEngine team handles everything</div>
-        </div>
-        <div class="le-pricing-feature">
-          <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="le-pricing-feature-text"><strong>Weekly reporting</strong> — pipeline, appointments booked, producers signed, onboarding status</div>
-        </div>
-        <div class="le-pricing-feature">
-          <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="le-pricing-feature-text"><strong>Zero revenue share</strong> — we don't touch your transaction income, ever</div>
-        </div>
-        <div class="le-pricing-feature">
-          <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="le-pricing-feature-text"><strong>Elite Agent Blueprint — unlimited deployments</strong> — every producer gets their own done-for-you lead generation system (small per-user setup fee)</div>
-        </div>
-
-        <a href="#le-contact" class="le-pricing-cta">Book Your Strategy Call &rarr;</a>
-        <div class="le-pricing-note">Month-to-month. Cancel anytime. Results or we'll make it right.</div>
       </div>
+
     </div>
   </div>
 </section>
