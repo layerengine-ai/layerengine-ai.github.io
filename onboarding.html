@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Onboarding — LayerEngine.ai</title>
+  <meta name="description" content="Start your LayerEngine.ai onboarding. Complete this form to get your account built and your system live." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0D1117;
+      color: #FFFFFF;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    .le-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(13,17,23,0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .le-nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .le-nav-logo-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      color: #FFFFFF;
+      letter-spacing: -0.3px;
+    }
+
+    .le-nav-logo-text span { color: #3B82F6; }
+
+    .le-nav-back {
+      font-size: 13px;
+      color: #9CA3AF;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .le-nav-back:hover { color: #FFFFFF; }
+
+    /* ── HERO ── */
+    .le-ob-hero {
+      text-align: center;
+      padding: 4rem 2rem 2.5rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .le-ob-eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #3B82F6;
+      background: rgba(37,99,235,0.1);
+      border: 1px solid rgba(37,99,235,0.25);
+      border-radius: 20px;
+      padding: 5px 14px;
+      margin-bottom: 1.25rem;
+    }
+
+    .le-ob-hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 1rem;
+    }
+
+    .le-ob-hero h1 span { color: #3B82F6; }
+
+    .le-ob-hero p {
+      font-size: 16px;
+      color: #9CA3AF;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ── STEPS BANNER ── */
+    .le-ob-steps {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      max-width: 720px;
+      margin: 2.5rem auto 0;
+      padding: 0 2rem;
+    }
+
+    .le-ob-step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      text-align: center;
+    }
+
+    .le-ob-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 16px;
+      left: calc(50% + 16px);
+      right: calc(-50% + 16px);
+      height: 1px;
+      background: rgba(37,99,235,0.25);
+    }
+
+    .le-ob-step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(37,99,235,0.15);
+      border: 1px solid rgba(37,99,235,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      color: #3B82F6;
+    }
+
+    .le-ob-step-num.active {
+      background: #2563EB;
+      border-color: #2563EB;
+      color: #FFFFFF;
+    }
+
+    .le-ob-step-label {
+      font-size: 11px;
+      color: #6B7280;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    .le-ob-step-label.active { color: #9CA3AF; }
+
+    /* ── MAIN CONTENT ── */
+    .le-ob-main {
+      max-width: 760px;
+      margin: 3rem auto 0;
+      padding: 0 2rem 5rem;
+    }
+
+    /* ── SECTION CARD ── */
+    .le-ob-card {
+      background: #111827;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .le-ob-card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 1.75rem;
+    }
+
+    .le-ob-card-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      color: #3B82F6;
+      background: rgba(37,99,235,0.1);
+      border: 1px solid rgba(37,99,235,0.25);
+      border-radius: 6px;
+      padding: 4px 10px;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    .le-ob-card-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      color: #FFFFFF;
+      letter-spacing: -0.3px;
+    }
+
+    .le-ob-card-desc {
+      font-size: 13px;
+      color: #6B7280;
+      font-weight: 300;
+      margin-top: 2px;
+    }
+
+    /* ── GHL FORM WRAPPER ── */
+    .le-ghl-form-wrap {
+      width: 100%;
+      min-height: 600px;
+    }
+
+    .le-ghl-form-wrap iframe {
+      width: 100%;
+      border: none;
+      min-height: 800px;
+    }
+
+    /* ── SLACK CARD ── */
+    .le-slack-card {
+      background: linear-gradient(135deg, #1a1f2e 0%, #111827 100%);
+      border: 1px solid rgba(37,99,235,0.2);
+      border-radius: 14px;
+      padding: 2.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .le-slack-icon {
+      flex-shrink: 0;
+      width: 52px;
+      height: 52px;
+      background: rgba(37,99,235,0.1);
+      border: 1px solid rgba(37,99,235,0.25);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .le-slack-content h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      color: #FFFFFF;
+      margin-bottom: 6px;
+      letter-spacing: -0.3px;
+    }
+
+    .le-slack-content p {
+      font-size: 13px;
+      color: #9CA3AF;
+      line-height: 1.6;
+      font-weight: 300;
+      margin-bottom: 1.25rem;
+    }
+
+    .le-slack-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #2563EB;
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .le-slack-btn:hover { background: #3B82F6; }
+
+    /* ── NEXT STEPS CARD ── */
+    .le-next-card {
+      background: #111827;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .le-next-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      color: #FFFFFF;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.3px;
+    }
+
+    .le-next-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .le-next-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .le-next-list-num {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(37,99,235,0.15);
+      border: 1px solid rgba(37,99,235,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #3B82F6;
+      font-family: 'Syne', sans-serif;
+      margin-top: 1px;
+    }
+
+    .le-next-list-text {
+      font-size: 14px;
+      color: #9CA3AF;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .le-next-list-text strong {
+      color: #FFFFFF;
+      font-weight: 500;
+    }
+
+    /* ── FOOTER ── */
+    .le-ob-footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      font-size: 12px;
+      color: #4B5563;
+    }
+
+    .le-ob-footer a { color: #6B7280; text-decoration: none; }
+    .le-ob-footer a:hover { color: #9CA3AF; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .le-ob-hero { padding: 3rem 1.5rem 2rem; }
+      .le-ob-main { padding: 0 1.25rem 4rem; }
+      .le-ob-card { padding: 1.75rem 1.5rem; }
+      .le-slack-card { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+      .le-ob-steps { gap: 0; }
+      .le-ob-step-label { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="le-nav">
+    <a href="/" class="le-nav-logo">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+        <rect width="34" height="34" rx="8" fill="#1E293B"/>
+        <rect x="8" y="10" width="18" height="3" rx="1.5" fill="#3B82F6" opacity="0.4"/>
+        <rect x="8" y="15.5" width="18" height="3" rx="1.5" fill="#3B82F6" opacity="0.7"/>
+        <rect x="8" y="21" width="18" height="3" rx="1.5" fill="#3B82F6"/>
+      </svg>
+      <span class="le-nav-logo-text">Layer<span>Engine</span>.ai</span>
+    </a>
+    <a href="/" class="le-nav-back">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to site
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="le-ob-hero">
+    <div class="le-ob-eyebrow">Client Onboarding</div>
+    <h1>Let's get your<br><span>system built.</span></h1>
+    <p>Complete the form below thoroughly. The more context you give us, the faster and more precisely we build. Your go-live timeline starts the moment this is submitted.</p>
+  </div>
+
+  <!-- PROGRESS STEPS -->
+  <div class="le-ob-steps">
+    <div class="le-ob-step">
+      <div class="le-ob-step-num active">1</div>
+      <div class="le-ob-step-label active">Your Info</div>
+    </div>
+    <div class="le-ob-step">
+      <div class="le-ob-step-num">2</div>
+      <div class="le-ob-step-label">Join Slack</div>
+    </div>
+    <div class="le-ob-step">
+      <div class="le-ob-step-num">3</div>
+      <div class="le-ob-step-label">Get Started</div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="le-ob-main">
+
+    <!-- FORM CARD -->
+    <div class="le-ob-card">
+      <div class="le-ob-card-header">
+        <div>
+          <div class="le-ob-card-num">STEP 01</div>
+        </div>
+        <div>
+          <div class="le-ob-card-title">Tell us about you and your business</div>
+          <div class="le-ob-card-desc">This goes directly to our team and is used to configure your sub-account.</div>
+        </div>
+      </div>
+
+      <!-- GHL FORM EMBED -->
+      <div class="le-ghl-form-wrap">
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/form/KS6zTzbNvgEYwBIiPaCz"
+          style="width:100%;height:800px;border:none;border-radius:4px"
+          id="inline-KS6zTzbNvgEYwBIiPaCz"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="LayerEngine Onboarding"
+          data-height="800"
+          data-layout-iframe-id="inline-KS6zTzbNvgEYwBIiPaCz"
+          data-form-id="KS6zTzbNvgEYwBIiPaCz"
+          title="LayerEngine Onboarding"
+        ></iframe>
+        <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+      </div>
+    </div>
+
+    <!-- SLACK CARD -->
+    <div class="le-slack-card">
+      <div class="le-slack-icon">
+        <!-- Slack-style hash icon -->
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <path d="M9 3H7L5 21h2M17 3h2l2 18h-2M3 9h18M3 15h18" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="le-slack-content">
+        <h3>Join our Slack workspace</h3>
+        <p>This is where you'll reach us for support, questions, and updates. Once you're in, we'll create a dedicated channel just for your account — direct line to our team, no ticket queue.</p>
+        <a href="https://join.slack.com/t/layerengine/shared_invite/zt-40gci5dnq-1DgSUCarF5vZ1TUiHG3sFA" target="_blank" class="le-slack-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M8.5 14.5A2.5 2.5 0 006 17v1h12v-1a2.5 2.5 0 00-2.5-2.5h-7zM12 12a4 4 0 100-8 4 4 0 000 8z" fill="currentColor"/></svg>
+          Join LayerEngine Slack
+        </a>
+      </div>
+    </div>
+
+    <!-- NEXT STEPS CARD -->
+    <div class="le-next-card">
+      <h3>What happens next</h3>
+      <ul class="le-next-list">
+        <li>
+          <div class="le-next-list-num">1</div>
+          <div class="le-next-list-text"><strong>Form received.</strong> Our team reviews your submission within 1 business day and begins your sub-account build.</div>
+        </li>
+        <li>
+          <div class="le-next-list-num">2</div>
+          <div class="le-next-list-text"><strong>Slack channel created.</strong> You'll get a direct message in Slack with your channel invite and a confirmation that your build is underway.</div>
+        </li>
+        <li>
+          <div class="le-next-list-num">3</div>
+          <div class="le-next-list-text"><strong>Access delivered.</strong> Your GoHighLevel sub-account credentials and login instructions will be sent to your email once the build is complete.</div>
+        </li>
+        <li>
+          <div class="le-next-list-num">4</div>
+          <div class="le-next-list-text"><strong>Get Started course.</strong> Inside your account you'll find our onboarding course — covering platform basics, A2P 10DLC registration, and everything you need to hit the ground running.</div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="le-ob-footer">
+    LayerEngine.ai &nbsp;·&nbsp; <a href="mailto:hello@layerengine.ai">hello@layerengine.ai</a> &nbsp;·&nbsp; Confidential
+  </footer>
+
+</body>
+</html>
