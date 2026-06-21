@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — LayerEngine.ai | AI Recruiting & Growth for Real Estate Brokerages</title>
+  <meta name="description" content="Insights on AI recruiting automation, agent retention, GoHighLevel strategies, and done-for-you growth systems for real estate brokerages and mortgage lending teams.">
+  <meta name="keywords" content="real estate recruiting, AI automation, GoHighLevel, agent retention, brokerage growth, mortgage team recruiting">
+  <meta property="og:title" content="Blog — LayerEngine.ai">
+  <meta property="og:description" content="Insights on AI recruiting automation, agent retention, and done-for-you growth systems for real estate brokerages.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://layerengine.ai/blog/">
+  <link rel="canonical" href="https://layerengine.ai/blog/">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'DM Sans', sans-serif; background: #0D1117; color: #FFFFFF; overflow-x: hidden; }
+
+    /* NAV */
+    .le-nav { position: sticky; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; background: rgba(13,17,23,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .le-nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .le-nav-logo-text { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; color: #FFFFFF; letter-spacing: -0.3px; }
+    .le-nav-logo-text span { color: #3B82F6; }
+    .le-nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .le-nav-links a { font-size: 13px; font-weight: 400; color: #9CA3AF; text-decoration: none; transition: color 0.2s; }
+    .le-nav-links a:hover, .le-nav-links a.active { color: #FFFFFF; }
+    .le-nav-cta { background: #2563EB !important; color: #FFFFFF !important; padding: 8px 18px; border-radius: 7px; font-weight: 500 !important; font-size: 13px !important; transition: background 0.2s !important; }
+    .le-nav-cta:hover { background: #3B82F6 !important; }
+    .le-nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .le-nav-hamburger span { display: block; width: 22px; height: 2px; background: #FFFFFF; border-radius: 2px; transition: all 0.25s; }
+    .le-nav-mobile { display: none; position: fixed; top: 57px; left: 0; right: 0; background: rgba(13,17,23,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.07); padding: 1.5rem; z-index: 9999; flex-direction: column; gap: 0; }
+    .le-nav-mobile.le-open { display: flex; }
+    .le-nav-mobile a { display: block; padding: 0.9rem 0; font-size: 16px; color: #9CA3AF; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.05); transition: color 0.2s; }
+    .le-nav-mobile a:last-child { border-bottom: none; }
+    .le-nav-mobile a:hover { color: #FFFFFF; }
+    .le-nav-mobile .le-nav-cta { margin-top: 1rem; text-align: center; padding: 12px 18px; border-radius: 9px; border-bottom: none; }
+
+    /* HERO */
+    .blog-hero { padding: 6rem 2rem 4rem; background: #0D1117; position: relative; overflow: hidden; }
+    .blog-hero-glow { position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 700px; height: 500px; background: radial-gradient(ellipse, rgba(37,99,235,0.15) 0%, transparent 65%); pointer-events: none; }
+    .blog-hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+    .blog-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(37,99,235,0.1); border: 1px solid rgba(37,99,235,0.25); border-radius: 99px; padding: 5px 14px; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #3B82F6; margin-bottom: 1.5rem; }
+    .blog-hero h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 58px); line-height: 1.05; letter-spacing: -1.5px; color: #FFFFFF; margin-bottom: 1.25rem; }
+    .blog-hero h1 span { color: #3B82F6; }
+    .blog-hero p { font-size: 17px; font-weight: 300; color: #9CA3AF; line-height: 1.7; max-width: 560px; }
+
+    /* CONTAINER */
+    .le-container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+    /* BLOG GRID */
+    .blog-section { padding: 4rem 0 6rem; }
+    .blog-filter-row { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 3rem; }
+    .blog-filter-btn { padding: 6px 16px; border-radius: 99px; font-size: 12px; font-weight: 500; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); background: transparent; color: #9CA3AF; transition: all 0.2s; letter-spacing: 0.03em; }
+    .blog-filter-btn:hover, .blog-filter-btn.active { background: rgba(37,99,235,0.15); border-color: rgba(37,99,235,0.4); color: #3B82F6; }
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .blog-card { background: #1E293B; border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; overflow: hidden; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; }
+    .blog-card:hover { border-color: rgba(37,99,235,0.3); transform: translateY(-3px); }
+    .blog-card-img { width: 100%; height: 180px; object-fit: cover; background: linear-gradient(135deg, #1E293B, #131c27); display: flex; align-items: center; justify-content: center; }
+    .blog-card-img-placeholder { width: 100%; height: 180px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #131c27 0%, #1a2540 100%); }
+    .blog-card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .blog-card-meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .blog-card-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #3B82F6; background: rgba(37,99,235,0.1); border: 1px solid rgba(37,99,235,0.2); border-radius: 4px; padding: 2px 8px; }
+    .blog-card-date { font-size: 11px; color: #6B7280; }
+    .blog-card h2 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 17px; line-height: 1.3; letter-spacing: -0.3px; color: #FFFFFF; margin-bottom: 0.75rem; }
+    .blog-card p { font-size: 13px; color: #9CA3AF; line-height: 1.65; font-weight: 300; flex: 1; }
+    .blog-card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .blog-read-more { font-size: 13px; font-weight: 500; color: #3B82F6; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: gap 0.2s; }
+    .blog-read-more:hover { gap: 8px; }
+    .blog-read-time { font-size: 11px; color: #6B7280; }
+
+    /* CTA STRIP */
+    .blog-cta-strip { background: #1E293B; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 4rem 0; text-align: center; }
+    .blog-cta-strip h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(26px, 3.5vw, 38px); letter-spacing: -1px; color: #FFFFFF; margin-bottom: 1rem; }
+    .blog-cta-strip h2 span { color: #3B82F6; }
+    .blog-cta-strip p { font-size: 16px; color: #9CA3AF; line-height: 1.7; font-weight: 300; max-width: 520px; margin: 0 auto 2rem; }
+    .le-btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #2563EB; color: #FFFFFF; padding: 14px 28px; border-radius: 9px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s; }
+    .le-btn-primary:hover { background: #3B82F6; transform: translateY(-1px); box-shadow: 0 8px 30px rgba(37,99,235,0.35); }
+
+    /* FOOTER */
+    .le-footer { background: #0D1117; border-top: 1px solid rgba(255,255,255,0.05); padding: 3rem 2rem; text-align: center; }
+    .le-footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 16px; color: #FFFFFF; margin-bottom: 0.75rem; }
+    .le-footer-logo span { color: #3B82F6; }
+    .le-footer p { font-size: 12px; color: #6B7280; }
+    .le-footer-links { display: flex; justify-content: center; gap: 1.5rem; margin: 1rem 0; }
+    .le-footer-links a { font-size: 12px; color: #6B7280; text-decoration: none; transition: color 0.2s; }
+    .le-footer-links a:hover { color: #9CA3AF; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .le-nav-links { display: none; }
+      .le-nav-hamburger { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="le-nav">
+  <a href="/" class="le-nav-logo">
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+      <rect width="34" height="34" rx="8" fill="#1E293B"/>
+      <rect x="8" y="10" width="18" height="3" rx="1.5" fill="#3B82F6" opacity="0.4"/>
+      <rect x="8" y="15.5" width="18" height="3" rx="1.5" fill="#3B82F6" opacity="0.7"/>
+      <rect x="8" y="21" width="18" height="3" rx="1.5" fill="#3B82F6"/>
+    </svg>
+    <span class="le-nav-logo-text">Layer<span>Engine</span>.ai</span>
+  </a>
+  <ul class="le-nav-links">
+    <li><a href="/#le-how">How It Works</a></li>
+    <li><a href="/#le-deliverables">What You Get</a></li>
+    <li><a href="/#le-pricing">Pricing</a></li>
+    <li><a href="/#le-roi">Calculator</a></li>
+    <li><a href="/#le-about">About</a></li>
+    <li><a href="/blog/" class="active">Blog</a></li>
+    <li><a href="https://calendly.com/adam-layerengine/30min" class="le-nav-cta" target="_blank">Book a Call</a></li>
+  </ul>
+  <button class="le-nav-hamburger" id="le-hamburger" onclick="leToggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="le-nav-mobile" id="le-mobile-nav">
+  <a href="/#le-how" onclick="leCloseNav()">How It Works</a>
+  <a href="/#le-deliverables" onclick="leCloseNav()">What You Get</a>
+  <a href="/#le-pricing" onclick="leCloseNav()">Pricing</a>
+  <a href="/#le-roi" onclick="leCloseNav()">Calculator</a>
+  <a href="/#le-about" onclick="leCloseNav()">About</a>
+  <a href="/blog/" onclick="leCloseNav()">Blog</a>
+  <a href="https://calendly.com/adam-layerengine/30min" class="le-nav-cta" target="_blank" onclick="leCloseNav()">Book a Strategy Call</a>
+</div>
+
+<!-- HERO -->
+<div class="blog-hero">
+  <div class="blog-hero-glow"></div>
+  <div class="blog-hero-inner">
+    <div class="blog-eyebrow">Insights &amp; Strategy</div>
+    <h1>The Growth Playbook for<br><span>Real Estate Leaders</span></h1>
+    <p>AI recruiting automation, agent retention strategies, GoHighLevel deep-dives, and done-for-you growth systems — written for brokerage owners and team leaders who are serious about scaling.</p>
+  </div>
+</div>
+
+<!-- BLOG POSTS -->
+<section class="blog-section">
+  <div class="le-container">
+    <div class="blog-filter-row">
+      <button class="blog-filter-btn active">All Posts</button>
+      <button class="blog-filter-btn">AI Recruiting</button>
+      <button class="blog-filter-btn">Agent Retention</button>
+      <button class="blog-filter-btn">GoHighLevel</button>
+      <button class="blog-filter-btn">Lead Generation</button>
+      <button class="blog-filter-btn">Onboarding</button>
+    </div>
+
+    <div class="blog-grid" id="blog-grid">
+      <!-- Posts are injected here by blog-posts.js -->
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="blog-cta-strip">
+  <div class="le-container">
+    <h2>Ready to stop recruiting manually<br>and <span>let the system run?</span></h2>
+    <p>LayerEngine.ai builds and runs your entire recruiting and growth engine — from AI outbound to producer lead generation. You show up to the appointments.</p>
+    <a href="https://calendly.com/adam-layerengine/30min" class="le-btn-primary" target="_blank">
+      Book a Strategy Call
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="le-footer">
+  <div class="le-footer-logo">Layer<span>Engine</span>.ai</div>
+  <div class="le-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/terms.html">Terms</a>
+  </div>
+  <p>&copy; 2025 LayerEngine.ai. All rights reserved.</p>
+</footer>
+
+<script src="blog-posts.js"></script>
+<script>
+function leToggleNav() {
+  document.getElementById('le-mobile-nav').classList.toggle('le-open');
+}
+function leCloseNav() {
+  document.getElementById('le-mobile-nav').classList.remove('le-open');
+}
+
+// Filter functionality
+document.querySelectorAll('.blog-filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.blog-filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    const filter = this.textContent.trim();
+    renderPosts(filter === 'All Posts' ? null : filter);
+  });
+});
+</script>
+</body>
+</html>
