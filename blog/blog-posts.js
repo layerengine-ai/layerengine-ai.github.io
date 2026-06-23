@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "done-for-you-lead-generation-for-every-agent",
+    title: "Done-For-You Lead Generation for Every Agent",
+    excerpt: "Stop asking agents to generate their own leads. Learn how a done-for-you lead generation system can transform your brokerage's recruiting and retention in 2025 — and become the value proposition that wins every recruiting conversation.",
+    category: "Lead Generation",
+    date: "June 23, 2025",
+    readTime: "5 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M20 12c-4.418 0-8 3.582-8 8s3.582 8 8 8 8-3.582 8-8-3.582-8-8-8z" stroke="#3B82F6" stroke-width="1.5"/><path d="M20 16v4l3 3" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/></svg>`
+  },
+  {
     slug: "why-real-estate-brokerages-lose-agents-in-first-90-days",
     title: "Why Real Estate Brokerages Lose Agents in the First 90 Days (And the Automation Fix)",
     excerpt: "46% of real estate agents changed brokerages or left the industry in a single year. The culprit isn't compensation — it's what happens after they sign. Here's the onboarding failure pattern and how AI automation closes the gap.",
