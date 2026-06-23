@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LayerEngine University — Real Estate Marketing Mastery</title>
+  <meta name="description" content="The complete LayerEngine University curriculum. Systems, offers, ads, and conversion — everything you need to build a fully automated real estate lead generation business." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0D1117;
+      --bg2: #161B22;
+      --bg3: #1C2333;
+      --border: rgba(255,255,255,0.07);
+      --blue: #2563EB;
+      --blue-light: #3B82F6;
+      --text: #E6EDF3;
+      --muted: #8B949E;
+      --accent: #F0B429;
+      --sidebar-w: 280px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── TOP NAV ── */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(13,17,23,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img { height: 28px; width: auto; }
+
+    .nav-logo-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 17px;
+      color: #fff;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-logo-text span { color: var(--blue-light); }
+
+    .nav-badge {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .nav-back {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--text); }
+
+    /* ── LAYOUT ── */
+    .layout {
+      display: flex;
+      min-height: calc(100vh - 60px);
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: var(--sidebar-w);
+      min-width: var(--sidebar-w);
+      background: var(--bg2);
+      border-right: 1px solid var(--border);
+      position: sticky;
+      top: 60px;
+      height: calc(100vh - 60px);
+      overflow-y: auto;
+      padding: 1.5rem 0;
+      scrollbar-width: thin;
+      scrollbar-color: var(--bg3) transparent;
+    }
+
+    .sidebar::-webkit-scrollbar { width: 4px; }
+    .sidebar::-webkit-scrollbar-track { background: transparent; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 4px; }
+
+    .sidebar-section {
+      margin-bottom: 0.25rem;
+    }
+
+    .sidebar-module-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      padding: 1rem 1.25rem 0.4rem;
+    }
+
+    .sidebar-link {
+      display: block;
+      padding: 0.55rem 1.25rem;
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      border-left: 2px solid transparent;
+      transition: all 0.15s;
+      line-height: 1.4;
+    }
+
+    .sidebar-link:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+      border-left-color: var(--blue);
+    }
+
+    .sidebar-link.active {
+      color: var(--blue-light);
+      background: rgba(37,99,235,0.08);
+      border-left-color: var(--blue-light);
+    }
+
+    /* ── MAIN CONTENT ── */
+    .main {
+      flex: 1;
+      max-width: 860px;
+      padding: 3rem 3.5rem;
+      overflow-x: hidden;
+    }
+
+    /* ── LESSON SECTIONS ── */
+    .lesson-section {
+      margin-bottom: 5rem;
+      padding-top: 1rem;
+    }
+
+    .module-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .module-tag {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: rgba(37,99,235,0.15);
+      color: var(--blue-light);
+      border: 1px solid rgba(59,130,246,0.2);
+    }
+
+    .module-tag.intro { background: rgba(240,180,41,0.12); color: var(--accent); border-color: rgba(240,180,41,0.2); }
+    .module-tag.m1 { background: rgba(37,99,235,0.12); color: #60A5FA; border-color: rgba(96,165,250,0.2); }
+    .module-tag.m2 { background: rgba(16,185,129,0.12); color: #34D399; border-color: rgba(52,211,153,0.2); }
+    .module-tag.m3 { background: rgba(239,68,68,0.12); color: #F87171; border-color: rgba(248,113,113,0.2); }
+    .module-tag.m4 { background: rgba(168,85,247,0.12); color: #C084FC; border-color: rgba(192,132,252,0.2); }
+
+    h1.lesson-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    h2.lesson-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+    }
+
+    .lesson-intro {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      border-left: 3px solid var(--blue);
+      padding-left: 1rem;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #C9D1D9;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      margin: 1.75rem 0 0.6rem;
+    }
+
+    h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--blue-light);
+      margin: 1.25rem 0 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 11px;
+    }
+
+    ul, ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    li {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #C9D1D9;
+      margin-bottom: 0.3rem;
+    }
+
+    .callout {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--blue-light);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+    }
+
+    .callout.warning {
+      border-left-color: var(--accent);
+    }
+
+    .callout.success {
+      border-left-color: #34D399;
+    }
+
+    .callout p { margin-bottom: 0; font-size: 14px; }
+    .callout strong { color: #fff; }
+
+    .action-box {
+      background: rgba(37,99,235,0.08);
+      border: 1px solid rgba(37,99,235,0.25);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .action-box-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--blue-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .action-box p { margin-bottom: 0; font-size: 14px; }
+
+    .email-template {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin: 1rem 0;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .email-template .email-subject {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .email-template p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #C9D1D9;
+      margin-bottom: 0.6rem;
+    }
+
+    .offer-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .offer-card h3 {
+      margin-top: 0;
+      font-size: 15px;
+      color: #fff;
+    }
+
+    .offer-card .offer-meta {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .step-list {
+      counter-reset: steps;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .step-list li {
+      counter-increment: steps;
+      padding-left: 2.5rem;
+      position: relative;
+      margin-bottom: 0.75rem;
+    }
+
+    .step-list li::before {
+      content: counter(steps);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 22px;
+      height: 22px;
+      background: var(--blue);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .settings-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 14px;
+    }
+
+    .settings-table th {
+      text-align: left;
+      padding: 0.6rem 1rem;
+      background: var(--bg3);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .settings-table td {
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: #C9D1D9;
+      vertical-align: top;
+    }
+
+    .settings-table tr:last-child td { border-bottom: none; }
+
+    .settings-table td:first-child { color: var(--muted); width: 40%; }
+
+    code {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 7px;
+      font-size: 13px;
+      color: #79C0FF;
+      font-family: 'Courier New', monospace;
+    }
+
+    .sms-template {
+      background: var(--bg3);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin: 0.75rem 0;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #C9D1D9;
+      border-left: 3px solid #34D399;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--bg2) 0%, #0D1117 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 3.5rem 3.5rem 3rem;
+      margin-bottom: 0;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--blue-light);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.75rem;
+      font-weight: 800;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 span { color: var(--blue-light); }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 580px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .hero-stat-label {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── MOBILE ── */
+    .sidebar-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        z-index: 150;
+        height: calc(100vh - 60px);
+        width: 260px;
+      }
+
+      .sidebar.open { display: block; }
+
+      .sidebar-toggle { display: block; }
+
+      .main { padding: 2rem 1.5rem; }
+
+      .hero { padding: 2rem 1.5rem; }
+
+      .hero h1 { font-size: 1.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+  <a href="/" class="nav-logo">
+    <img src="https://layerengine.ai/le-logo.png" alt="LayerEngine" onerror="this.style.display='none'" />
+    <span class="nav-logo-text">Layer<span>Engine</span></span>
+  </a>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <span class="nav-badge">University</span>
+    <button class="sidebar-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰ Menu</button>
+    <a href="https://community.layerengine.ai" class="nav-back" target="_blank">Back to Community →</a>
+  </div>
+</nav>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-module-label">Introduction</div>
+      <a href="#intro" class="sidebar-link">Welcome to LayerEngine University</a>
+      <a href="#roi" class="sidebar-link">ROI & The Business Case</a>
+      <a href="#fishing" class="sidebar-link">Fishing Upstream: The 3% Rule</a>
+      <a href="#timeline" class="sidebar-link">Your Timeline for Success</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-module-label">Module 1 — Systems Mastery</div>
+      <a href="#business-name" class="sidebar-link">Business Name</a>
+      <a href="#godaddy" class="sidebar-link">GoDaddy (Domain)</a>
+      <a href="#business-registration" class="sidebar-link">Business Registration</a>
+      <a href="#zoom" class="sidebar-link">Zoom Setup</a>
+      <a href="#calendly" class="sidebar-link">Calendly Setup</a>
+      <a href="#ghl-settings" class="sidebar-link">GoHighLevel Settings</a>
+      <a href="#a2p" class="sidebar-link">A2P SMS Registration</a>
+      <a href="#funnel" class="sidebar-link">Creating Your Funnel</a>
+      <a href="#active-campaign" class="sidebar-link">ActiveCampaign (Email)</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-module-label">Module 2 — Your Offer & VSL</div>
+      <a href="#offer-formula" class="sidebar-link">The Offer Formula</a>
+      <a href="#buyer-offers" class="sidebar-link">Buyer-Side Offers (All 12)</a>
+      <a href="#seller-offers" class="sidebar-link">Seller-Side Offers (All 5)</a>
+      <a href="#vsl" class="sidebar-link">Video Sales Letter (VSL)</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-module-label">Module 3 — Traffic Engine</div>
+      <a href="#ai-ads" class="sidebar-link">Creating AI Image Ads</a>
+      <a href="#meta-campaign" class="sidebar-link">Meta Campaign Setup</a>
+      <a href="#ad-copy" class="sidebar-link">Ad Copy Library</a>
+      <a href="#instant-form" class="sidebar-link">Instant Form Setup</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-module-label">Module 4 — Conversion & Nurture</div>
+      <a href="#speed-to-lead" class="sidebar-link">Speed to Lead</a>
+      <a href="#email-sequence" class="sidebar-link">30-Day Email Sequence</a>
+      <a href="#content-portal" class="sidebar-link">Authority Content Portal</a>
+      <a href="#strategy-session" class="sidebar-link">The Strategy Session</a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="hero" id="intro">
+      <div class="hero-eyebrow">LayerEngine University</div>
+      <h1>The Complete Real Estate<br /><span>Marketing Playbook</span></h1>
+      <p class="hero-sub">Everything you need to build a fully automated lead generation business — from your first domain purchase to a running Meta ad campaign with a 30-day nurture sequence. Follow this in order. Do not skip steps.</p>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">4</div>
+          <div class="hero-stat-label">Modules</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">20+</div>
+          <div class="hero-stat-label">Lessons</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">30</div>
+          <div class="hero-stat-label">Email Templates</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">17</div>
+          <div class="hero-stat-label">Proven Offers</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding: 3rem 3.5rem 0;" id="roi">
+
+    <!-- ROI -->
+    <div class="lesson-section">
+      <div class="module-header"><span class="module-tag intro">Introduction</span></div>
+      <h2 class="lesson-title">ROI & The Business Case</h2>
+      <p class="lesson-intro">Before you spend a dollar on ads, you need to understand the math. This is not about hope — it is about knowing your numbers so every dollar you invest has a predictable return.</p>
+      <p>The average real estate commission in North America is between $8,000 and $15,000 per transaction. If you close just one extra deal per month from your lead generation system, your annual revenue increases by $96,000 to $180,000. Your ad spend to generate that deal is typically between $300 and $800 per closed transaction when the system is optimized.</p>
+      <p>The question is never "should I spend money on ads?" The question is "what is my cost per closing, and is it less than my commission?" Once you know that number, you scale it.</p>
+      <div class="callout success">
+        <p><strong>The goal:</strong> Get your cost per closing under $1,000. Most agents running this system land between $300–$700 per closed deal once the funnel is dialed in.</p>
+      </div>
+    </div>
+
+    <!-- FISHING UPSTREAM -->
+    <div class="lesson-section" id="fishing">
+      <div class="module-header"><span class="module-tag intro">Introduction</span></div>
+      <h2 class="lesson-title">Fishing Upstream: The 3% Rule</h2>
+      <p class="lesson-intro">Only 3% of your market is actively looking to buy right now. The other 97% are thinking about it, researching, or will be ready in 6–18 months. Most agents compete for the 3%. This system captures the 97%.</p>
+      <p>Portals like Zillow and Realtor.com capture consumers after they are already in search mode. By that point, they have already been sold to by three other agents. You are competing on price and availability — the worst possible position.</p>
+      <p>The strategy here is different. You run ads that attract people who are <em>thinking</em> about buying or selling — not just the ones who are ready today. You capture them early, nurture them with automated emails and texts, and you are the agent they call when they are ready. You fish upstream, before the competition even knows the fish exist.</p>
+      <div class="callout">
+        <p><strong>Why this matters:</strong> A lead that comes in today and buys in 6 months is still a closed deal. The nurture sequence does the work while you focus on active clients.</p>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="lesson-section" id="timeline">
+      <div class="module-header"><span class="module-tag intro">Introduction</span></div>
+      <h2 class="lesson-title">Your Timeline for Success</h2>
+      <p class="lesson-intro">This is a one-time setup. Once it is done, the system runs on autopilot. Block time on your calendar for the next 7 days and work through the modules in order.</p>
+      <table class="settings-table">
+        <thead><tr><th>Days</th><th>Focus</th></tr></thead>
+        <tbody>
+          <tr><td>Days 1–2</td><td>Module 1 — Complete all system setup (domain, GHL, Calendly, A2P)</td></tr>
+          <tr><td>Days 3–4</td><td>Module 2 — Choose your offer and record your VSL</td></tr>
+          <tr><td>Day 5</td><td>Module 3 — Build your Meta ad campaign and launch</td></tr>
+          <tr><td>Days 6–7</td><td>Module 4 — Set up your email sequences and nurture workflows</td></tr>
+        </tbody>
+      </table>
+      <div class="callout warning">
+        <p><strong>Important:</strong> Do not watch everything first and then do it. Complete each task as you go. Imperfect action is always better than delayed perfection.</p>
+      </div>
+    </div>
+
+    <!-- ── MODULE 1 ── -->
+    <div class="lesson-section" id="business-name">
+      <div class="module-header"><span class="module-tag m1">Module 1</span></div>
+      <h1 class="lesson-title">Systems Mastery</h1>
+      <p class="lesson-intro">Build once, benefit forever. This module installs the infrastructure of your business — the tools, accounts, and automations that run everything. You will only do this once.</p>
+      <hr class="divider" />
+      <h2 class="lesson-title">Business Name</h2>
+      <p>Your business name is the foundation of your brand. It will be used on your domain, your social profiles, your ads, and your GHL account. Do not overthink this — you can always evolve it later. The goal is to get started.</p>
+      <h3>Examples to inspire you:</h3>
+      <ul>
+        <li>John Smith Real Estate / Realty</li>
+        <li>John Sells Homes</li>
+        <li>Homes by John Smith</li>
+        <li>Sold by John Smith</li>
+        <li>Vancouver Living by John Smith</li>
+      </ul>
+      <p>If you already have a team name, incorporate it. Make sure the name is available as a domain on GoDaddy before you commit to it.</p>
+      <div class="callout">
+        <p><strong>ChatGPT prompt if you get stuck:</strong> "I want to create a strong, memorable business name for my real estate brand, something that feels modern, trustworthy, and aligned with how today's buyers and sellers think. Give me some name ideas. My name is [Your Name]."</p>
+      </div>
+      <div class="action-box">
+        <div class="action-box-label">Action Item</div>
+        <p>Write down 3–5 name ideas, check availability on GoDaddy, and finalize one before moving to the next lesson.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="godaddy">
+      <div class="module-header"><span class="module-tag m1">Module 1</span></div>
+      <h2 class="lesson-title">GoDaddy (Domain)</h2>
+      <p>Your domain is your digital address. It will be connected to your GoHighLevel funnel so your landing pages have a professional URL instead of a generic GHL link.</p>
+      <ul>
+        <li>Go to <strong>GoDaddy.com</strong> and search for your business name</li>
+        <li>Only purchase a <code>.com</code> or <code>.io</code> — do not buy add-ons like Office 365</li>
+        <li>The domain typically costs $12–$20/year</li>
+        <li>You will connect this to your GHL funnel in a later step</li>
+      </ul>
+      <div class="action-box">
+        <div class="action-box-label">Action Item</div>
+        <p>Purchase your domain on GoDaddy and save the login credentials somewhere safe. Add the domain to your systems checklist.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="business-registration">
+      <div class="module-header"><span class="module-tag m1">Module 1</span></div>
+      <h2 class="lesson-title">Business Registration</h2>
+      <p>Register your real estate business as a legal entity. This is important for tax purposes, opening a business bank account, and protecting your personal assets.</p>
+      <ul>
+        <li><strong>USA:</strong> Register via <a href="https://www.legalzoom.com" target="_blank" style="color:var(--blue-light)">LegalZoom</a> as an LLC</li>
+        <li><strong>Canada:</strong> Register via <a href="https://www.ownr.co" target="_blank" style="color:var(--blue-light)">Ownr</a></li>
+        <li>If you already have an LLC or Corporation, register your real estate brand as a DBA (Doing Business As)</li>
+      </ul>
+      <h3>Business Credit Card</h3>
+      <p>Use a dedicated business credit card for all ad spend and subscriptions. This keeps your accounting clean and earns you points on every dollar spent. Recommended: American Express Cobalt (everyday spending) or American Express Aeroplan Reserve (travel points + lounge access).</p>
+      <div class="action-box">
+        <div class="action-box-label">Action Item</div>
+        <p>Register your business entity and open a dedicated business bank account or credit card before launching ads.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="zoom">
+      <div class="module-header"><span class="module-tag m1">Module 1</span></div>
+      <h2 class="lesson-title">Zoom Setup</h2>
+      <p>Zoom is your video conferencing platform for strategy sessions and client calls. Leads will see your profile picture and display name when they join the call — make sure it is professional.</p>
+      <ol class="step-list">
+        <li>Create or log into your Zoom account at zoom.us</li>
+        <li>Upgrade to the <strong>Pro Plan</strong> ($15/month) for unlimited meeting time</li>
+        <li>Upload a high-quality professional headshot as your profile picture</li>
+        <li>Set your display name to your full name</li>
+        <li>Go to Settings and enable: waiting room, host video on by default, mute participants on entry</li>
+      </ol>
+      <div class="action-box">
+        <div class="action-box-label">Action Item</div>
+        <p>Upgrade to Pro, update your profile photo and name, and confirm your settings are saved.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="calendly">
+      <div class="module-header"><span class="module-tag m1">Module 1</span></div>
+      <h2 class="lesson-title">Calendly Setup</h2>
+      <p>Calendly is your automated booking system. When a lead is ready to talk, they book directly into your calendar without any back-and-forth. It syncs with Zoom and your Google Calendar automatically.</p>
+      <h3>Admin Setup</h3>
+      <ul>
+        <li>Create a Calendly account and set your availability schedule</li>
+        <li>Connect Integrations → Zoom (this auto-generates a Zoom link for every booking)</li>
+        <li>Connect your Google Calendar to check for conflicts</li>
+      </ul>
+      <h3>Create Your Event Type</h3>
+      <table class="settings-table">
+        <thead><tr><th>Setting</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Event Type</td><td>One-on-one</td></tr>
+          <tr><td>Event Name</td><td>[Company Name] Strategy Session</td></tr>
+          <tr><td>Duration</td><td>60 minutes</td></tr>
+          <tr><td>Location</td><td>Zoom (auto-generated)</td></tr>
+          <tr><td>Scheduling Range</td><td>4 calendar days into the future</td></tr>
+          <tr><td>Minimum Notice</td><td>12 hours</td></tr>
+          <tr><td>Start Time Increments</td><td>60 minutes</td></tr>
+          <tr><td>Questions</td><td>Name, Email, Phone Number, SMS consent checkbox</td></tr>
+        </tbody>
+      </table>
+      <h3>Notifications & Reminders</h3>
+      <ul>
+        <li><strong>Email reminders:</strong> 48 hours, 24 hours, and 1 hour before the event</li>
+        <li><strong>Text reminders:</strong> 24 hours and 4 hours before the event</li>
+        <li><strong>Cancellation policy:</strong> "Please let us know if you are unable to attend your appointment."</li>
+      </ul>
+      <div class="action-box">
+        <div class="action-box-label">Action Item</div>
+        <p>Complete the full Calendly setup, copy your booking link, and save it to your systems checklist. You will add the thank-you page redirect after completing the GHL funnel.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="ghl-settings">
+      <div class="module-header"><span class="module-tag m1">Module 1</span></div>
+      <h2 class="lesson-title">GoHighLevel Settings</h2>
+      <p>GoHighLevel (GHL) is your CRM, funnel builder, and automation hub. Before building anything, complete the settings configuration so your account is ready to receive and follow up with leads.</p>
+      <table class="settings-table">
+        <thead><tr><th>Setting</th><th>What to Do</th></tr></thead>
+        <tbody>
+          <tr><td>Business Profile</td><td>Fill in all business information accurately — name, address, phone, email</td></tr>
+          <tr><td>Billing</td><td>Add your business credit card so SMS/email delivery is never interrupted</td></tr>
+          <tr><td>Calendars</td><td>Connect → Add New → Google Calendar and Calendly</td></tr>
+          <tr><td>Email Services</td><td>Add your sending domain and verify it</td></tr>
+          <tr><td>Phone Numbers</td><td>Trust Center → A2P Wizard → Start registering (see A2P lesson)</td></tr>
+          <tr><td>Custom Values</td><td>Fill in your name, business name, calendar link, and city</td></tr>
+          <tr><td>Domains</td><td>Connect the GoDaddy domain you purchased</td></tr>
+        </tbody>
+      </table>
+      <div class="action-box">
+        <div class="action-box-label">Action Item</div>
+        <p>Complete every row in the settings table above before moving to the A2P registration.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="a2p">
+      <div class="module-header"><span class="module-tag m1">Module 1</span></div>
+      <h2 class="lesson-title">A2P SMS Registration</h2>
+      <p>A2P (Application-to-Person) 10DLC is the telecom compliance standard that allows your GHL account to send automated SMS messages to leads. Without A2P approval, your texts will not be delivered. This takes approximately one week to be approved — apply immediately.</p>
+      <div class="callout warning">
+        <p><strong>Do not launch ads until your A2P is approved.</strong> If leads come in and your texts are not delivering, you will lose them in the first 5 minutes.</p>
+      </div>
+      <h3>How to Apply</h3>
+      <ol class="step-list">
+        <li>In GHL: Settings → Phone Numbers → Trust Center → A2P Wizard → Start registering now</li>
+        <li>Brand Details: Select <strong>Low Volume Standard</strong></li>
+        <li>Campaign Use Case: Select <strong>Low Volume Mixed (Recommended)</strong></li>
+      </ol>
+      <h3>Campaign Use Case Description (copy this exactly)</h3>
+      <div class="sms-template">
+        Overall SMS Use: Customer quality experience, improve business processes, and consented marketing.<br /><br />
+        Appointment Reminders: We utilise SMS as a primary mode of reminding customers about their upcoming appointments. Our automated system sends out messages 24, 12, and 1 hour before the scheduled appointment. The SMS includes details such as the date, time, location, and purpose of the appointment, reducing the likelihood of no-shows and late arrivals.
+      </div>
+      <h3>Sample SMS Messages (use these in the application)</h3>
+      <div class="sms-template">
+        <strong>Sample #1:</strong><br />
+        Hi [First Name], this is [Team Member Name] from [BUSINESS NAME]! We've received your request for further details and are looking forward to talking with you. You can schedule your meeting via this link: [Calendar Link]. Standard data rates may apply. Reply STOP to unsubscribe.
+      </div>
+      <div class="sms-template">
+        <strong>Sample #2:</strong><br />
+        Hello [First Name], this is an automated message from [BUSINESS NAME]. Your form has been successfully submitted! One of our team members will reach out to you soon. Reply HELP for help, STOP to stop receiving messages. Data rates may apply.
+      </div>
+      <h3>Other Settings</h3>
+      <ul>
+        <li>Messages will include an embedded link: <strong>Yes</strong></li>
+        <li>Messages will include phone numbers: <strong>Yes</strong></li>
+        <li>Age-gated content: <strong>No</strong></li>
+        <li>Direct lending content: <strong>No</strong></li>
+      </ul>
+      <div class="action-box">
+        <div class="action-box-label">Action Item</div>
+        <p>Submit your A2P application today. While you wait for approval (approx. 1 week), continue building your offer and VSL in Module 2.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="funnel">
+      <div class="module-header"><span class="module-tag m1">Module 1</span></div>
+      <h2 class="lesson-title">Creating Your GHL Funnel</h2>
+      <p>Your funnel is the digital pathway a lead travels from clicking your ad to booking a call with you. It consists of five pages, each with a specific purpose.</p>
+      <table class="settings-table">
+        <thead><tr><th>Page</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>VSL Page</td><td>Hosts your video sales letter and a single CTA button to apply</td></tr>
+          <tr><td>Application Page</td><td>Collects lead info (name, email, phone) before they see the calendar</td></tr>
+          <tr><td>Booking Page</td><td>Shows your Calendly embed so they can book a time</td></tr>
+          <tr><td>Thank You Page</td><td>Confirms the booking and sets expectations for the call</td></tr>
+          <tr><td>Privacy Policy + T&amp;C</td><td>Required for Meta ads compliance and A2P consent</td></tr>
+        </tbody>
+      </table>
+      <h3>Building the VSL Page</h3>
+      <ol class="step-list">
+        <li>Log into GHL → Sites → Funnels → Pick a funnel template (do not overthink this)</li>
+        <li>Name your funnel with your business name</li>
+        <li>Add your VSL video (Wistia embed link from Module 2)</li>
+        <li>Add your headline and subheadline (from your VSL)</li>
+        <li>Add social proof: publication logos, client count, or credible alignment logos (Homes.com, HGTV, Top Producer)</li>
+        <li>Set your CTA button text: "Book A Free Strategy Call" or "Get A Price"</li>
+        <li>Check the mobile version before publishing</li>
+      </ol>
+      <div class="action-box">
+        <div class="action-box-label">Action Item</div>
+        <p>Build all five funnel pages, publish them, and copy the page URLs into your systems checklist. Then go back to Calendly and add the Thank You Page URL as the post-booking redirect.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="active-campaign">
+      <div class="module-header"><span class="module-tag m1">Module 1</span></div>
+      <h2 class="lesson-title">ActiveCampaign (Email Marketing)</h2>
+      <p>ActiveCampaign is your email marketing platform. While GHL handles your SMS automations and CRM, ActiveCampaign handles your long-term email nurture sequences and bulk email blasts. The two systems work together — GHL captures the lead, ActiveCampaign nurtures them over time.</p>
+      <h3>Why Both GHL and ActiveCampaign?</h3>
+      <ul>
+        <li><strong>Better deliverability:</strong> ActiveCampaign has superior email infrastructure for bulk sending</li>
+        <li><strong>Behavioral tracking:</strong> Shows you what links leads click so you can send more relevant follow-ups</li>
+        <li><strong>Automation depth:</strong> Handles complex sequences that GHL alone cannot manage at scale</li>
+        <li><strong>Easy sync:</strong> Connect AC and GHL so lead data stays updated in both systems</li>
+      </ul>
+      <h3>Setup Steps</h3>
+      <ol class="step-list">
+        <li>Sign up for ActiveCampaign Starter plan at activecampaign.com</li>
+        <li>Verify your sending domain: Settings → Advanced → Sending Domain</li>
+        <li>Connect your GHL account via Zapier or native integration</li>
+        <li>Create your contact list and import any existing leads</li>
+        <li>Load the 30-day email sequence from Module 4</li>
+      </ol>
+      <h3>Email Frequency</h3>
+      <p>Send email blasts Monday through Friday daily, and twice per day on weekends. You can schedule the entire week's emails in one sitting on Monday morning. The goal is to stay top of mind with every lead in your database — even the ones who are 6 months away from being ready.</p>
+      <div class="action-box">
+        <div class="action-box-label">Action Item</div>
+        <p>Create your ActiveCampaign account, verify your domain, and connect it to GHL. You will load the email templates in Module 4.</p>
+      </div>
+    </div>
+
+    <!-- ── MODULE 2 ── -->
+    <div class="lesson-section" id="offer-formula">
+      <div class="module-header"><span class="module-tag m2">Module 2</span></div>
+      <h1 class="lesson-title">Your Offer & VSL</h1>
+      <p class="lesson-intro">A great system with a weak offer will not convert. This module teaches you how to build a specific, compelling offer that makes buyers and sellers raise their hand — and how to communicate it through a Video Sales Letter.</p>
+      <hr class="divider" />
+      <h2 class="lesson-title">The Offer Formula</h2>
+      <p>Most agents market themselves with generic statements like "I am a local expert" or "I have 10 years of experience." This sounds like every other agent. A real offer is specific, promises a clear result, and removes a common frustration.</p>
+      <h3>The Formula</h3>
+      <div class="callout">
+        <p><strong>I help [type of client] get [desirable result] without [common frustration] by using [your unique method].</strong></p>
+      </div>
+      <h3>Examples</h3>
+      <ul>
+        <li>"I help first-time buyers own a home with no down payment using a 3-step lender-approved strategy."</li>
+        <li>"I help downsizing seniors sell their homes in 14 days without endless showings using our Private Buyer Pool system."</li>
+        <li>"I help move-up buyers purchase their next home before selling their current one — without carrying two mortgages."</li>
+      </ul>
+      <p>Pick one niche and one promise. You can always expand later. The agents who try to be everything to everyone convert the least.</p>
+    </div>
+
+    <div class="lesson-section" id="buyer-offers">
+      <div class="module-header"><span class="module-tag m2">Module 2</span></div>
+      <h2 class="lesson-title">Buyer-Side Offers (All 12)</h2>
+      <p class="lesson-intro">Choose ONE of these offers for your first ad campaign. Each offer has been tested and proven to generate buyer leads. Pick the one that best fits your market and your personality.</p>
+
+      <div class="offer-card">
+        <h3>Offer 1: "See Homes in [City] Under $X"</h3>
+        <div class="offer-meta">Best for: High-volume markets with clear price points</div>
+        <p>A simple ad that gives buyers a free, verified list of homes under a set price. These are real, active MLS listings updated daily — not fake bait-and-switch listings.</p>
+        <p><strong>Fulfillment:</strong> Check your CRM daily. When a lead comes in, ask their price range and preferred neighborhoods, then send 3–5 matching listings from your MLS. This is a real service, not a trick.</p>
+      </div>
+
+      <div class="offer-card">
+        <h3>Offer 2: "Off-Market / Unlisted Properties"</h3>
+        <div class="offer-meta">Best for: Competitive markets where buyers are frustrated by losing bidding wars</div>
+        <p>Promises buyers access to homes not yet on Zillow or Realtor.com — off-market, Coming Soon, or pre-list properties shared quietly between agents.</p>
+        <p><strong>Fulfillment:</strong> You do not need a secret list. You need speed. Send Coming Soon listings before they hit the public portals. Network with other agents for pre-list opportunities. The value is access and timing, not magic.</p>
+      </div>
+
+      <div class="offer-card">
+        <h3>Offer 3: "Win Your Down Payment Back Challenge"</h3>
+        <div class="offer-meta">Best for: First-time buyer markets</div>
+        <p>A giveaway-style offer. Buyers enter to win their down payment back (up to $10,000) when they buy with you within 60 days. Everyone who does not win gets a smaller bonus like a home warranty.</p>
+        <p><strong>Fulfillment:</strong> Run a quarterly drawing. Fulfill the smaller bonuses (home warranty, gift card) at closing out of your commission. Cap entries at 7 buyers per month to create urgency.</p>
+      </div>
+
+      <div class="offer-card">
+        <h3>Offer 4: "Free Home Warranty + $1,000 Furniture Credit"</h3>
+        <div class="offer-meta">Best for: Move-in ready buyer market</div>
+        <p>A move-in bonus for buyers who choose you as their agent. Takes the sting out of closing costs and makes the decision feel more tangible.</p>
+        <p><strong>Fulfillment:</strong> Purchase a home warranty ($400–$600) and provide a $1,000 gift card (Amazon, Home Depot, or VISA) at closing. Total cost: ~$1,500. Easily covered by your commission.</p>
+      </div>
+
+      <div class="offer-card">
+        <h3>Offer 5: "Zero Stress Home Buyer Guarantee"</h3>
+        <div class="offer-meta">Best for: Agents with strong track records and high confidence</div>
+        <p>If a buyer purchases with you and is not happy with their home within 12 months, you will sell it for free (no listing-side commission). This is a bold guarantee that signals confidence.</p>
+        <p><strong>Fulfillment:</strong> Set clear terms in writing. Most buyers who are happy with their purchase will never invoke this — but the guarantee alone increases conversion dramatically.</p>
+      </div>
+
+      <div class="offer-card">
+        <h3>Offer 6: "Buy Now, Sell Later Bridge Program"</h3>
+        <div class="offer-meta">Best for: Move-up buyer market</div>
+        <p>Helps move-up buyers purchase their new home before their current one sells. If their old home does not sell within 90 days, you cover their first month's mortgage payment (up to a set amount).</p>
+        <p><strong>Fulfillment:</strong> Partner with a bridge loan lender. Set a cap on your mortgage coverage commitment. This offer attracts highly motivated, high-value buyers.</p>
+      </div>
+
+      <div class="offer-card">
+        <h3>Offer 7: "Price Drop Alert Service"</h3>
+        <div class="offer-meta">Best for: Buyers who are watching and waiting</div>
+        <p>A free text alert system that notifies buyers instantly when homes in their target area drop in price. Buyers sign up, you set up an MLS alert, and they get a text the moment a price reduction happens.</p>
+        <p><strong>Fulfillment:</strong> Set up automated MLS alerts in your CRM. When a price drop fires, GHL sends the lead a text. Simple, automated, and highly appreciated.</p>
+      </div>
+
+      <div class="offer-card">
+        <h3>Offer 8: "Home Buyer's Renovation Credit"</h3>
+        <div class="offer-meta">Best for: Fixer-upper or older home markets</div>
+        <p>A $1,000 post-closing credit for buyers to use toward repairs or upgrades. Removes the fear of buying a home that needs work.</p>
+        <p><strong>Fulfillment:</strong> Provide a $1,000 check or gift card at closing. Partner with a local contractor to offer discounted services as an added bonus.</p>
+      </div>
+
+      <div class="offer-card">
+        <h3>Offer 9: "Foreclosure & Bank-Owned List"</h3>
+        <div class="offer-meta">Best for: Value-focused buyer markets</div>
+        <p>A free, daily-updated list of homes priced below market value — foreclosures, bank-owned properties, and distressed sales. Attracts buyers who are motivated by deals.</p>
+        <p><strong>Fulfillment:</strong> Pull foreclosure and REO listings from your MLS daily. Send the list as a PDF or direct MLS link. Update it every 24–48 hours to maintain credibility.</p>
+      </div>
+
+      <div class="offer-card">
+        <h3>Offer 10: "Local Buyer Market Report"</h3>
+        <div class="offer-meta">Best for: Educating early-stage buyers</div>
+        <p>A monthly report showing local housing trends — average prices, days on market, inventory levels, and rate updates. Positions you as the local market expert.</p>
+        <p><strong>Fulfillment:</strong> Pull data from your MLS monthly. Format it as a simple PDF or email. Use Canva to make it look professional. Send to your entire lead database.</p>
+      </div>
+
+      <div class="offer-card">
+        <h3>Offer 11: "Homes by Monthly Payment"</h3>
+        <div class="offer-meta">Best for: Budget-conscious buyers who think in payments, not prices</div>
+        <p>Buyers tell you their ideal monthly payment, and you send them a list of homes that fit it based on current rates and down payment assumptions.</p>
+        <p><strong>Fulfillment:</strong> Use a mortgage calculator to back into the purchase price from their target payment. Send matching listings. Partner with a lender to provide pre-approval support.</p>
+      </div>
+
+      <div class="offer-card">
+        <h3>Offer 12: "Homes That Pay You Back"</h3>
+        <div class="offer-meta">Best for: Investor-minded buyers or high cost-of-living markets</div>
+        <p>A list of homes with rentable suites, basement apartments, or ADUs (accessory dwelling units) that generate rental income to offset the mortgage payment.</p>
+        <p><strong>Fulfillment:</strong> Search your MLS for listings with secondary suites or legal rental units. Include estimated rental income and net mortgage cost in your list.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="seller-offers">
+      <div class="module-header"><span class="module-tag m2">Module 2</span></div>
+      <h2 class="lesson-title">Seller-Side Offers (All 5)</h2>
+      <p class="lesson-intro">If you are focusing on listings, choose one of these seller offers. Each one removes a specific fear or frustration that prevents sellers from taking action.</p>
+
+      <div class="offer-card">
+        <h3>Offer 1: "Sell for Top Dollar or We Sell It for Free"</h3>
+        <p>If the home sells below your recommended price range, you waive your listing commission. This signals extreme confidence in your pricing strategy and marketing.</p>
+        <p><strong>How to protect yourself:</strong> Set the price range conservatively. If the home sells within your range, you earn your full commission. If it sells below, you waive the listing side only — the buyer's agent commission still applies.</p>
+      </div>
+
+      <div class="offer-card">
+        <h3>Offer 2: "The Market Timing Guarantee"</h3>
+        <p>If the local market drops by more than 5% before their home sells, you cut your commission in half. This removes the fear of listing at the wrong time.</p>
+        <p><strong>How to protect yourself:</strong> Define "market drop" clearly in writing — use a specific index or average sale price metric. Set a time cap (e.g., within 90 days of listing).</p>
+      </div>
+
+      <div class="offer-card">
+        <h3>Offer 3: "Skip the Hassle Buyout"</h3>
+        <p>If the home does not sell within 60 days, you or an investor partner will purchase it at an agreed-upon price. Removes the fear of being stuck on the market forever.</p>
+        <p><strong>How to protect yourself:</strong> Partner with a real estate investor or iBuyer program. Set the buyout price at 85–90% of market value. This is a safety net, not a primary exit.</p>
+      </div>
+
+      <div class="offer-card">
+        <h3>Offer 4: "The Home Sale Timing Forecast"</h3>
+        <p>A visual report that breaks down current prices, days on market, and seasonal trends to tell sellers exactly when to list for maximum return.</p>
+        <p><strong>Fulfillment:</strong> Pull 90 days of sold data from your MLS. Create a simple chart showing average sale price by month. Present it as a free consultation deliverable.</p>
+      </div>
+
+      <div class="offer-card">
+        <h3>Offer 5: "Sold Above List Case Study Report"</h3>
+        <p>A report showing real homes in your city that sold above asking price — and exactly what those sellers did differently (staging, pricing strategy, marketing).</p>
+        <p><strong>Fulfillment:</strong> Pull 5–10 recent above-asking sales from your MLS. Write a one-paragraph story for each. Format as a PDF. This doubles as a listing presentation tool.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="vsl">
+      <div class="module-header"><span class="module-tag m2">Module 2</span></div>
+      <h2 class="lesson-title">Video Sales Letter (VSL)</h2>
+      <p class="lesson-intro">Your VSL is your digital elevator pitch. It is a 5–10 minute video that explains who you help, what makes you different, why they should trust you, and how to take the next step. It works for you 24/7.</p>
+      <p>You do not need a studio, professional lighting, or video editing skills. You need a quiet room, a webcam, and a slide deck. Record it on Zoom or Loom while screen-sharing your slides.</p>
+      <h3>VSL Structure (5–10 minutes)</h3>
+      <ol class="step-list">
+        <li><strong>Hook (30 seconds):</strong> Call out your audience and their problem. "If you are a buyer in [City] frustrated by losing bidding wars, this is for you."</li>
+        <li><strong>The Problem (1–2 minutes):</strong> Describe the pain they are experiencing in detail. Show you understand their situation better than they do.</li>
+        <li><strong>The Shift (1 minute):</strong> Introduce the insight that changes everything. "Most buyers are competing for the 3% of homes on the market. Here is how to access the other 97%."</li>
+        <li><strong>Your Solution (2–3 minutes):</strong> Explain your system, your offer, and what makes you different. Be specific.</li>
+        <li><strong>Social Proof (1–2 minutes):</strong> Share 2–3 client stories. Real names and results if possible. "Sarah bought her first home with zero down payment using our lender program."</li>
+        <li><strong>The CTA (30 seconds):</strong> Tell them exactly what to do next. "Click the button below to book your free 15-minute strategy call."</li>
+      </ol>
+      <h3>Hosting Your VSL</h3>
+      <ol class="step-list">
+        <li>Record using Zoom (record to cloud) or Loom</li>
+        <li>Create a free account at <strong>Wistia.com</strong></li>
+        <li>Upload your video to Wistia</li>
+        <li>Copy the embed link and paste it into your GHL VSL funnel page</li>
+      </ol>
+      <div class="action-box">
+        <div class="action-box-label">Action Item</div>
+        <p>Record your VSL, upload it to Wistia, and add the embed link to your GHL funnel page. Save the Wistia link to your systems checklist.</p>
+      </div>
+    </div>
+
+    <!-- ── MODULE 3 ── -->
+    <div class="lesson-section" id="ai-ads">
+      <div class="module-header"><span class="module-tag m3">Module 3</span></div>
+      <h1 class="lesson-title">The Traffic Engine</h1>
+      <p class="lesson-intro">Your system is built. Your offer is chosen. Now you need traffic. This module shows you how to launch Meta (Facebook/Instagram) ads using AI-generated creatives and proven copy — without a graphic designer or agency.</p>
+      <hr class="divider" />
+      <h2 class="lesson-title">Creating Eye-Catching AI Image Ads</h2>
+      <p>High-quality ad images are no longer expensive. AI image generators can produce professional real estate visuals in minutes. You do not need to hire a photographer or designer for your first campaign.</p>
+      <h3>Using AI to Generate Ad Images</h3>
+      <ol class="step-list">
+        <li>Go to <strong>Midjourney</strong> (via Discord) or <strong>DALL-E</strong> (via ChatGPT Plus)</li>
+        <li>Use a prompt like: <code>A modern luxury home exterior in [City], hyper-realistic, 4k, bright sunlight, wide angle --ar 1:1</code></li>
+        <li>Generate 4–6 variations and download the best ones</li>
+        <li>Add simple text overlay in Canva: your offer headline and your logo</li>
+      </ol>
+      <h3>Alternative: Use Your Own Listing Photos</h3>
+      <p>If you have high-quality photos from past listings, these often outperform AI images because they are real and local. Use photos that show the exterior of an attractive home in your market. Avoid interior-only photos for ads — exterior shots stop the scroll better.</p>
+      <div class="callout">
+        <p><strong>Tip:</strong> Test 3–4 different images in your first campaign. Facebook will automatically show the best-performing one more often. Let the data decide.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="meta-campaign">
+      <div class="module-header"><span class="module-tag m3">Module 3</span></div>
+      <h2 class="lesson-title">Meta Campaign Setup (Exact Settings)</h2>
+      <p class="lesson-intro">Follow these exact settings when building your campaign in Facebook Ads Manager. Do not deviate from these until you have data to justify a change.</p>
+      <h3>Campaign Level</h3>
+      <table class="settings-table">
+        <thead><tr><th>Setting</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Buying Type</td><td>Auction</td></tr>
+          <tr><td>Campaign Objective</td><td>Leads</td></tr>
+          <tr><td>Daily Budget</td><td>$20/day to start</td></tr>
+          <tr><td>Special Ads Category</td><td><strong>Housing</strong> — you MUST select this or your account will be banned</td></tr>
+        </tbody>
+      </table>
+      <h3>Ad Set Level</h3>
+      <table class="settings-table">
+        <thead><tr><th>Setting</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Conversion Location</td><td>Instant Forms</td></tr>
+          <tr><td>Performance Goal</td><td>Maximize Number of Leads</td></tr>
+          <tr><td>Dynamic Creative</td><td>ON</td></tr>
+          <tr><td>Locations</td><td>Your target city (Housing Category restricts radius to 15 miles minimum)</td></tr>
+          <tr><td>Age / Gender</td><td>Leave as default — do not narrow targeting in Housing category</td></tr>
+          <tr><td>Placements</td><td>Advantage+ Placements (recommended)</td></tr>
+        </tbody>
+      </table>
+      <h3>Ad Level</h3>
+      <table class="settings-table">
+        <thead><tr><th>Setting</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Multi Advertiser Ads</td><td>Un-check this</td></tr>
+          <tr><td>Ad Creative</td><td>Upload all 3–4 image variations</td></tr>
+          <tr><td>Primary Text</td><td>Insert ad copy from the Ad Copy Library (Lesson 3.3)</td></tr>
+          <tr><td>Headline</td><td>Insert headline matching your offer</td></tr>
+          <tr><td>Description</td><td>"Get real homes, real data, and real results — no fake listings or spam."</td></tr>
+          <tr><td>Call to Action</td><td>Learn More</td></tr>
+        </tbody>
+      </table>
+      <div class="callout warning">
+        <p><strong>Budget guidance:</strong> Start at $20/day. Once you have 10+ leads and can see your cost per lead, scale to $30–$50/day. Do not scale before you have data.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="ad-copy">
+      <div class="module-header"><span class="module-tag m3">Module 3</span></div>
+      <h2 class="lesson-title">Ad Copy Library</h2>
+      <p class="lesson-intro">Use these proven ad copy templates directly in your Meta campaigns. Replace the bracketed placeholders with your specific city and price point.</p>
+
+      <h3>Offer 1: "See Homes Under $X"</h3>
+      <div class="email-template">
+        <div class="email-subject">Primary Text</div>
+        <p>Looking for a home in {City} under {Price} right now?</p>
+        <p>We built a live list of homes for sale today. Not old listings. Not fake ones. Real properties you can go see this week.</p>
+        <p>It's free. Takes 10 seconds. And we update it daily.</p>
+        <p>Tap Learn More, drop your name, email, and number, and we'll send you the list instantly.</p>
+      </div>
+      <div class="email-template">
+        <div class="email-subject">Headline Options (test all 3)</div>
+        <p>"{City} Homes Under {Price} — See Today's List"</p>
+        <p>"Free List: Homes Under {Price} in {City}"</p>
+        <p>"{Price} Budget? Here Are Your Options in {City}"</p>
+      </div>
+
+      <h3>Offer 2: "Off-Market / Unlisted Properties"</h3>
+      <div class="email-template">
+        <div class="email-subject">Primary Text</div>
+        <p>Looking for hidden homes in {City}? We've got them.</p>
+        <p>Our Hidden Homes List shows real properties that haven't gone public yet — off-market, private, or pre-list. They're shared quietly by local agents and sellers before they hit the big websites.</p>
+        <p>It's free to access, and we update it weekly. Tap "Learn More," enter your info, and we'll send you today's off-market list instantly.</p>
+      </div>
+      <div class="email-template">
+        <div class="email-subject">Headline Options</div>
+        <p>"Off-Market Homes in {City} — Not on Zillow"</p>
+        <p>"Secret Listings: {City} Homes Before They Go Public"</p>
+        <p>"{City} Hidden Homes List — Free Access"</p>
+      </div>
+
+      <h3>Offer 3: "Down Payment Back Challenge"</h3>
+      <div class="email-template">
+        <div class="email-subject">Primary Text</div>
+        <p>What if buying your home in {City} came with a chance to win your down payment back?</p>
+        <p>Every buyer who closes with us this quarter is entered to win up to $10,000 back. And everyone who doesn't win still gets a free home warranty.</p>
+        <p>Only 7 spots available this month. Tap Learn More to enter.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="instant-form">
+      <div class="module-header"><span class="module-tag m3">Module 3</span></div>
+      <h2 class="lesson-title">Instant Form Setup</h2>
+      <p>The Instant Form captures the lead's information directly on Facebook without them leaving the app. This dramatically increases conversion rates compared to sending people to an external landing page.</p>
+      <table class="settings-table">
+        <thead><tr><th>Setting</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Form Type</td><td>More Volume</td></tr>
+          <tr><td>Intro</td><td>Turn everything OFF</td></tr>
+          <tr><td>Questions</td><td>First Name, Last Name, Email, Phone Number</td></tr>
+          <tr><td>Privacy Policy</td><td>Link to your GHL funnel privacy policy page</td></tr>
+          <tr><td>Thank You Headline</td><td>"Your List Is Ready"</td></tr>
+          <tr><td>Thank You Description</td><td>"Tap 'View Today's Homes' to see every home in {City} under {Price}. It takes less than 60 seconds."</td></tr>
+          <tr><td>CTA Button</td><td>Link directly to your GHL VSL page or booking page</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <p><strong>Pro tip:</strong> The Thank You screen CTA is where most agents leave money on the table. Always send them to your VSL page or booking page — not just a generic "thanks" screen.</p>
+      </div>
+      <div class="action-box">
+        <div class="action-box-label">Action Item</div>
+        <p>Build your Instant Form, connect it to your ad, and publish your campaign. Your first leads should start coming in within 24–48 hours.</p>
+      </div>
+    </div>
+
+    <!-- ── MODULE 4 ── -->
+    <div class="lesson-section" id="speed-to-lead">
+      <div class="module-header"><span class="module-tag m4">Module 4</span></div>
+      <h1 class="lesson-title">Conversion & The Nurture Machine</h1>
+      <p class="lesson-intro">Generating leads is 10% of the battle. The other 90% is follow-up. This module gives you the exact scripts and automated sequences to turn cold internet leads into booked appointments — even the ones who are not ready today.</p>
+      <hr class="divider" />
+      <h2 class="lesson-title">Speed to Lead</h2>
+      <p>If you do not contact a lead within the first 5 minutes of them opting in, your chances of converting them drop by over 400%. The first text is automated through GHL — but when they reply, you need to be ready.</p>
+      <h3>Automated Initial SMS (set this up in GHL Workflows)</h3>
+      <div class="sms-template">
+        Hey {First Name}, it's {Your Name} from {Business Name}. I just sent over the {Offer Name} you requested — did you receive it? 📋
+      </div>
+      <div class="sms-template">
+        <strong>If no reply after 2 hours:</strong><br />
+        Hi {First Name}, just following up to make sure you got the list I sent. Let me know if you have any questions — happy to help. — {Your Name}
+      </div>
+      <h3>When They Reply</h3>
+      <p>The moment a lead replies to your text, jump in personally. Your goal in the first conversation is not to sell — it is to qualify and book. Ask:</p>
+      <ul>
+        <li>"Are you currently working with another agent?"</li>
+        <li>"What's your timeline — are you looking to move in the next 3 months or further out?"</li>
+        <li>"What's your budget range?"</li>
+      </ul>
+      <p>If they are qualified and motivated, send your Calendly link immediately: "I have a few spots open this week for a free 15-minute strategy call — here is my calendar: [link]."</p>
+    </div>
+
+    <div class="lesson-section" id="email-sequence">
+      <div class="module-header"><span class="module-tag m4">Module 4</span></div>
+      <h2 class="lesson-title">30-Day Email Nurture Sequence</h2>
+      <p class="lesson-intro">Load all 30 of these emails into ActiveCampaign as an automated sequence. The sequence starts the moment a lead opts in and runs for 30 days. Replace all placeholders before activating.</p>
+
+      <div class="email-template">
+        <div class="email-subject">Day 1 — Subject: Buying or Selling a Home? This Can Help</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>Let's be real… real estate can feel overwhelming. Whether you're buying your first home or trying to sell for top dollar, you're juggling appointments, paperwork, and decisions — and still unsure if you're making the right moves.</p>
+        <p>That's exactly why I created {insert your mechanism here} — a simple system that helps buyers and sellers move forward with clarity and confidence.</p>
+        <p>Here's what you'll discover: How to avoid the 3 biggest mistakes that cost people thousands. A proven way to find (or sell) your home faster, without stress. A step-by-step game plan tailored to your goals.</p>
+        <p>Want to see how it works? [Click here to book your free strategy call.]</p>
+        <p>Here's to making smart real estate moves,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 2 — Subject: %FIRSTNAME%, This Could Be You</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>Meet {insert case study/client success story here}, first-time buyers who felt completely lost before we connected. 30 days later? They found their dream home, beat out 4 other offers, and moved in under budget and ahead of schedule.</p>
+        <p>The difference? They used the same system I want to walk you through today. I only take a handful of new clients each month to make sure every buyer or seller gets personal support.</p>
+        <p>[Book your free call here] if you want to be next.</p>
+        <p>Let's do this,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 3 — Subject: The Longer You Wait, the More You Could Lose</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>Right now, the market is moving — and the best homes don't wait. Whether you're thinking about buying or selling, here's what delays usually cost: Buyers lose out on ideal homes to faster offers. Sellers miss the window for top-dollar outcomes. Everyone feels overwhelmed and behind.</p>
+        <p>Let's change that. My system is built to give you clarity, strategy, and results.</p>
+        <p>[Click here to get started] — you deserve to make moves with confidence.</p>
+        <p>Here to help,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 4 — Subject: Want to Move Without the Headaches?</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>Buying or selling a home doesn't have to be stressful. What top buyers and sellers do differently is simple — they have a plan. With my system, I'll help you: Find or sell your home faster. Avoid hidden pitfalls that cost you time and money. Navigate every step with clarity.</p>
+        <p>[Click here to book a free call] and let's build your plan.</p>
+        <p>Talk soon,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 5 — Subject: Is This Goodbye?</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>I noticed you haven't grabbed your free strategy call yet. Totally understandable — life gets busy. But if buying or selling is still on your radar, I want to help you do it the right way.</p>
+        <p>Here's what's waiting for you: A no-pressure call where we map out your goals. A custom plan for buying or selling based on your timeline. A strategy to help you avoid stress and costly mistakes.</p>
+        <p>[Click here to book your free strategy call] — before spots fill up. If you're no longer looking, just hit reply and let me know.</p>
+        <p>Wishing you the best,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 6 — Subject: What's Really Holding You Back?</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>Most people don't struggle with real estate because of bad luck — they struggle because they don't know where to start. That's where I come in. With my system, I help buyers and sellers like you: Know exactly what to do and when. Avoid the overwhelm of "figuring it out." Move with confidence, not confusion.</p>
+        <p>[Click here to book your free call.]</p>
+        <p>Talk soon,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 7 — Subject: From Confused to Confident in 30 Days</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>Meet {insert case study here} — she was selling her home while trying to buy a new one. She felt overwhelmed, unsure, and constantly second-guessing every choice. 30 days later: Her home was sold above asking. She found a perfect new place within her budget. And she had a clear plan every step of the way.</p>
+        <p>That's what happens when you stop winging it — and get real support.</p>
+        <p>[Click here to book your free strategy call] and let's get your plan in motion.</p>
+        <p>This could be your story,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 8 — Subject: 3 Common Mistakes Buyers and Sellers Make</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>Want to avoid the most expensive mistakes in real estate? Here's what I see every week: 1. Not having a plan or clear timeline. 2. Listening to friends instead of market data. 3. Trying to DIY everything and missing key opportunities.</p>
+        <p>My system is built to protect you from these traps — and get results. Let me show you how.</p>
+        <p>[Book your free strategy call here.]</p>
+        <p>Talk soon,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 9 — Subject: Only a Few Strategy Sessions Left This Month</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>Each month, I open a few 1-on-1 spots to help buyers and sellers build a rock-solid real estate game plan. This month? Only a few remain — and I'd love to help you before they're gone.</p>
+        <p>Here's what we'll cover: How to buy or sell at the best time (and price). Exactly what to do next based on your unique goals. A simple, stress-free path to your ideal outcome.</p>
+        <p>[Book your free session here] — no pressure, just clarity.</p>
+        <p>Let's take the guesswork out of this,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 10 — Subject: %FIRSTNAME%, Let's Get You a Real Plan</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>Imagine waking up and knowing exactly what to do next. No more wondering if now's the right time. No more endless scrolling through listings or waiting for buyers to show up. No more stress over making the wrong decision.</p>
+        <p>That's what happens when you have the right plan — and the right guide. Let's create one together.</p>
+        <p>[Click here to book your free strategy call.] Let's make this move your best yet,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 11 — Subject: Want Buyers (or Sellers) Chasing You?</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>Most people think the hardest part of real estate is finding the right home or offer. But here's a secret: the right strategy makes the right people come to you. With the right approach, you can: Get your home in front of eager, qualified buyers. Make the best homes appear on your radar first. Attract results instead of chasing them.</p>
+        <p>That's what I help clients do every day. Want in? [Click here to book your call.]</p>
+        <p>Talk soon,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 12 — Subject: Is This Worth It? Let's Do the Math</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>You might be thinking, "Should I really take this step?" Let's break it down: Getting even 1% more on your sale = thousands back in your pocket. Saving just one mistake when buying = peace of mind and a better deal. One clear plan = less stress and faster results.</p>
+        <p>The cost of doing nothing? Wasted time, lost money, and delayed progress.</p>
+        <p>[Book your free session here] — you deserve a better outcome. Your future self will thank you,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 13 — Subject: How Mark Sold Fast — and Bought Smart</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>{Insert case study here} came to me wanting to sell his home quickly and buy something bigger for his growing family. Here's what happened: His home sold above asking in 6 days. We negotiated $25K below list on his new purchase. He moved in 6 weeks later — without a single hiccup.</p>
+        <p>That's the power of having the right system. Want me to walk you through how to do the same?</p>
+        <p>[Click here to book your free session.] Let's get you moving,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 14 — Subject: %FIRSTNAME%, You're Running Out of Time</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>Just a heads-up: I've only got a few free sessions left this month. Whether you're buying, selling, or just thinking about it — you owe it to yourself to get expert insight and a custom plan.</p>
+        <p>Here's what you'll walk away with: A clear timeline based on your goals. A strategy to get top dollar — or the best deal. Peace of mind that you're making the right move.</p>
+        <p>[Book your session here] before it's gone. Let's do this together,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 15 — Subject: Final Call — Spots Are Filling Fast</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>Just a quick reminder: My calendar for the month is almost full. These sessions are 100% free and designed to help buyers and sellers: Get unstuck. Move with confidence. Save time and money.</p>
+        <p>Don't wait another month to start making progress. [Click here to book your strategy call] while spots are still open.</p>
+        <p>Talk soon,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 16 — Subject: Think It's Too Complicated? Think Again</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>A lot of people put off buying or selling because it seems too complicated. But here's the truth: It's only hard when you don't have the right system. What my process is all about: Step-by-step guidance. Zero guesswork. A real strategy, custom to your goals.</p>
+        <p>Let me take the complexity off your plate. [Book your free call here.] It's easier than you think,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 17 — Subject: Last Chance — Spots Close at Midnight</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>This is your last chance to book one of this month's free sessions. Don't head into next month without a plan. Don't guess your way through your biggest move.</p>
+        <p>With just one call, I'll help you: Know exactly what steps to take. Avoid mistakes that cost time and money. Get moving — on your terms.</p>
+        <p>[Click here to book before midnight] — then breathe easy. Let's get it done,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 18 — Subject: The #1 Skill That Gets the Best Results</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>Want to know what makes the difference between a smooth move and a stressful one? Clarity. That's the skill most buyers and sellers lack — and the one I'll help you gain instantly.</p>
+        <p>I'll help you: Know your options. Understand the market. Move forward confidently.</p>
+        <p>Don't leave things to chance. [Click here to book your free strategy call.] Here to simplify it,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 19 — Subject: How Megan Sold in 5 Days and Bought Her Dream Home</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>{Insert case study here} — she needed to sell and buy, but everything felt like a moving target. We built her a step-by-step game plan. Here's what happened: Her home sold in just 5 days. She found her next place 3 days later. The transition was smooth, simple, and stress-free.</p>
+        <p>I'd love to help you create the same result. [Click here to book your free call] and let's map out your next win.</p>
+        <p>Talk soon,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 20 — Subject: How to Stop Leaving Money on the Table</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>If you're thinking about selling (or buying), waiting too long could be costing you big. Every week you delay can mean: Missing out on better offers or listings. Overpaying or underpricing. More stress — and less return.</p>
+        <p>Let's make sure that doesn't happen. [Book your free strategy call here] and let's get you moving in the right direction.</p>
+        <p>Here to help you win,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 21 — Subject: What's One More Month of Waiting Costing You?</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>Another month is flying by. And if you're still thinking about buying or selling but haven't taken action — ask yourself: What opportunities did I miss? How much did the market shift? How much more time (or money) could I have saved?</p>
+        <p>Let's stop wondering and start making moves. [Click here to book your free strategy call.] Here's to smart timing,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 22 — Subject: 3 Quick Wins That Could Change Everything</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>Want to make big progress without the overwhelm? Start here: Get clear on your timeline. Understand your financing or pricing strategy. Have a real expert (me!) in your corner.</p>
+        <p>These simple wins lay the foundation for your next move — and I'll help you check all three in one quick session. [Click here to book your free strategy call] and let's make it easy.</p>
+        <p>To smart, simple progress,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 23 — Subject: From "Maybe" to "Sold" in 30 Days</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>I recently worked with {insert case study here}. They were thinking about selling — but hesitating. Fast-forward 30 days: Home sold in one weekend. Above asking price. Multiple offers, smooth close, happy ending.</p>
+        <p>The difference? They stopped guessing and got a plan. Let's do the same for you. [Book your free strategy call here.] You don't have to wing it,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 24 — Subject: Feeling Overwhelmed? Let's Fix That.</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>Real estate can feel like too much. The endless to-do lists. The market updates. The uncertainty. But when you have the right system and the right person guiding you, it all gets easier.</p>
+        <p>I'll help you: Cut through the noise. Focus only on what matters. Move forward with clarity and confidence.</p>
+        <p>[Click here to book your free strategy call.] Let's simplify this,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 25 — Subject: Don't Miss Your Chance to Win in This Market</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>Real estate isn't about luck — it's about timing and preparation. Whether you're buying or selling, now's the time to: Get your strategy locked in. Avoid last-minute scrambling. Position yourself to win.</p>
+        <p>Don't miss the window. [Click here to book your free strategy call] and let's build your advantage.</p>
+        <p>To your win,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 26 — Subject: Let's Make the Next 30 Days Count</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>Here's the truth: The next 30 days could either move you forward — or leave you in the same spot. Let's make this month the one where: You finally list with confidence. You find your dream home. You stop spinning your wheels and start seeing results.</p>
+        <p>I'll help you make every step count. [Book your free strategy call.] Let's make it happen,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 27 — Subject: Still Unsure? Let Me Walk You Through It</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>If you're still unsure whether buying or selling makes sense right now, here's what I recommend: Let's hop on a quick, no-pressure call. On the call, I'll: Walk you through current market realities. Help you assess your best options. Map out the smartest next step for you.</p>
+        <p>[Book your free strategy session here] — no guesswork, just clarity. You've got nothing to lose,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 28 — Subject: The 5-Minute Habit That Can Save You Thousands</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>Want to make smarter real estate moves? Try this simple habit: Every morning, spend 5 minutes reviewing your priorities: Are you on track with your timeline? Have you followed up with your agent (or buyer/seller)? What's changed in the market this week?</p>
+        <p>This habit alone helps my clients stay focused and move faster. And if you don't know what those next steps should be — [Click here to book your free strategy call] and let's build them together.</p>
+        <p>Small steps = big wins,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 29 — Subject: 3 Questions to Know If You're Ready</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>Wondering if now's the right time to make a move? Ask yourself these 3 questions: 1. What's your timeline — are you 3, 6, or 12 months out? 2. What's your motivation — are you upgrading, downsizing, relocating? 3. What's the cost of not moving now?</p>
+        <p>The clearer your answers, the better your results. Let's walk through these together. [Book your free call here] and let's map it all out.</p>
+        <p>Here to guide you,<br />{Your Name}</p>
+      </div>
+
+      <div class="email-template">
+        <div class="email-subject">Day 30 — Subject: The 3 Biggest Mistakes Homeowners Make</div>
+        <p>Hi %FIRSTNAME%,</p>
+        <p>Whether you're buying or selling, here are the top 3 mistakes I see people make: Waiting too long to prepare. Underestimating what the market demands. Trying to do it all alone.</p>
+        <p>The good news? Every one of these is avoidable — with the right guidance.</p>
+        <p>[Click here to book your free strategy call] and let's make sure you avoid them all.</p>
+        <p>To your success,<br />{Your Name}</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="content-portal">
+      <div class="module-header"><span class="module-tag m4">Module 4</span></div>
+      <h2 class="lesson-title">Authority Content Portal</h2>
+      <p class="lesson-intro">A content portal is a dedicated page where you host short educational videos for your leads. Studies show lead conversion rates are 6x higher when agents provide educational real estate video content.</p>
+      <p>The goal is not to talk about yourself — it is to educate your leads so thoroughly that they feel you are the only logical choice when they are ready to move. Think of it as a free mini-course for your database.</p>
+      <h3>What to Record (5 Videos to Start)</h3>
+      <ol class="step-list">
+        <li><strong>The Market Update:</strong> 3–5 minutes on current prices, inventory, and what it means for buyers and sellers in your city</li>
+        <li><strong>The Buying Process:</strong> Walk through the 8 steps from pre-approval to closing — demystify the process</li>
+        <li><strong>How to Win a Bidding War:</strong> Practical strategies for buyers in competitive markets</li>
+        <li><strong>How to Price Your Home to Sell Fast:</strong> Explain the pricing strategy that gets the most offers</li>
+        <li><strong>The Biggest Mistakes Buyers Make:</strong> Position yourself as the guide who helps them avoid costly errors</li>
+      </ol>
+      <h3>Where to Host It</h3>
+      <p>Create a hidden page on your GHL funnel or website. Do not index it for search engines — it is for your leads only. Send the link in your email sequence (around Day 7 or Day 14) as a bonus resource.</p>
+      <div class="action-box">
+        <div class="action-box-label">Action Item</div>
+        <p>Record your first market update video (5 minutes max), upload it to Wistia, and create a simple content portal page in GHL. Add the link to your Day 7 email template.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="strategy-session">
+      <div class="module-header"><span class="module-tag m4">Module 4</span></div>
+      <h2 class="lesson-title">The Strategy Session (Closing the Deal)</h2>
+      <p class="lesson-intro">When a lead books a call, your job is not to sell them. Your job is to diagnose their situation and prescribe a solution. The best closers are the best listeners.</p>
+      <h3>The 4-Step Strategy Session Framework</h3>
+      <ol class="step-list">
+        <li>
+          <strong>Discovery:</strong> "What prompted you to book the call today?" Let them talk. Do not interrupt. The more they share, the more you understand their real motivation.
+        </li>
+        <li>
+          <strong>Timeline & Motivation:</strong> "When are you hoping to make this move? And what happens if you don't?" The second question is critical — it surfaces urgency and emotional stakes.
+        </li>
+        <li>
+          <strong>The Prescription:</strong> "Based on what you've told me, here is the exact strategy we would use for your situation..." Be specific. Reference what they told you. Show them you listened.
+        </li>
+        <li>
+          <strong>The Close:</strong> "Does that sound like a plan you'd like to move forward with?" If yes: "Great — let's get started. The first step is [next action]." If no: "What would need to be different for this to make sense?"
+        </li>
+      </ol>
+      <h3>Handling Objections</h3>
+      <table class="settings-table">
+        <thead><tr><th>Objection</th><th>Response</th></tr></thead>
+        <tbody>
+          <tr><td>"I'm just looking right now"</td><td>"That's totally fine — most of my best clients started exactly where you are. The call is just to map out your options so you know what's possible. No pressure at all."</td></tr>
+          <tr><td>"I'm already working with an agent"</td><td>"I completely respect that. If things ever change or you want a second opinion on anything, I'm always here."</td></tr>
+          <tr><td>"The market is too uncertain"</td><td>"That's actually why now is a great time to get a plan in place — so when the right opportunity comes, you're ready to move fast instead of scrambling."</td></tr>
+          <tr><td>"I can't afford it right now"</td><td>"Let's figure out what you can afford and work backward from there. You might be closer than you think."</td></tr>
+        </tbody>
+      </table>
+      <div class="action-box">
+        <div class="action-box-label">Action Item</div>
+        <p>Practice the 4-step framework on your next 3 calls before your first ad campaign goes live. The system brings the leads — your job is to convert them on the call.</p>
+      </div>
+    </div>
+
+    </div><!-- end padding wrapper -->
+  </main>
+</div>
+
+<script>
+  // Active sidebar link on scroll
+  const sections = document.querySelectorAll('.lesson-section[id], .hero[id]');
+  const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        sidebarLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + entry.target.id) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(section => observer.observe(section));
+</script>
+
+</body>
+</html>
