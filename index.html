@@ -403,9 +403,10 @@
 }
 
 #le-wrapper .le-problem-item {
-  background: #1E293B !important;
+  background: #1a2535 !important;
   padding: 2rem;
   position: relative;
+  border-left: 3px solid rgba(37,99,235,0.35);
 }
 
 #le-wrapper .le-problem-item::before {
@@ -421,7 +422,7 @@
 
 #le-wrapper .le-problem-text {
   font-size: 15px;
-  color: rgba(255,255,255,0.65) !important;
+  color: rgba(255,255,255,0.82) !important;
   line-height: 1.65;
   padding-top: 1.5rem;
   font-style: italic;
@@ -430,7 +431,7 @@
 
 #le-wrapper .le-problem-source {
   font-size: 11px;
-  color: #6B7280 !important;
+  color: #9CA3AF !important;
   margin-top: .75rem;
   font-style: normal;
   font-weight: 500;
@@ -1082,18 +1083,33 @@
   #le-wrapper .le-diff-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
   #le-wrapper .le-diff-item:last-child { border-bottom: none; }
   #le-wrapper .le-problem-grid { grid-template-columns: 1fr; }
+  #le-wrapper .le-problem-item { padding: 1.5rem 1.25rem; }
   #le-wrapper .le-deliverables-grid { grid-template-columns: 1fr 1fr; }
-  #le-wrapper .le-layer { grid-template-columns: 50px 1fr; }
+  #le-wrapper .le-layer { grid-template-columns: 50px 1fr; gap: 1rem; padding: 1.25rem 1rem; }
+  #le-wrapper .le-layer-num { font-size: 26px; }
+  #le-wrapper .le-layer-title { font-size: 15px; }
+  #le-wrapper .le-layer-desc { font-size: 12px; }
   #le-wrapper .le-layer-badge { display: none; }
   #le-wrapper .le-who-grid { grid-template-columns: 1fr; }
   #le-wrapper .le-about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
   #le-wrapper .le-section-pad { padding: 4rem 0; }
+  #le-wrapper .le-roi-card { padding: 1.5rem 1.25rem; }
+  #le-wrapper .le-pricing-body { padding: 1.5rem 1.25rem; }
+  #le-wrapper .le-pricing-header { padding: 1.5rem 1.25rem; }
+  #le-wrapper .le-pricing-amount { font-size: 38px; }
+  #le-wrapper .le-hero-cta-row { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  #le-wrapper .le-btn-primary { width: 100%; justify-content: center; }
+  #le-wrapper .le-footer { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  #le-wrapper .le-section-h2 { font-size: clamp(26px, 6vw, 38px); }
+  /* Compliance callout 3-col → 1-col on mobile */
+  #le-wrapper section[style*="background:#0D1117"] .le-container > div > div[style*="grid-template-columns:repeat(3"] { grid-template-columns: 1fr !important; }
 }
 
 @media (max-width: 480px) {
   #le-wrapper .le-deliverables-grid { grid-template-columns: 1fr; }
-  #le-wrapper .le-hero-h1 { letter-spacing: -1px; font-size: clamp(36px, 9vw, 56px) !important; }
-  #le-wrapper .le-hero-sub { font-size: 15px; }
+  #le-wrapper .le-hero-h1 { letter-spacing: -1px; font-size: clamp(34px, 9vw, 52px) !important; }
+  #le-wrapper .le-hero-sub { font-size: 14px; }
+  #le-wrapper .le-pricing-grid { gap: 1.25rem; }
 }
 </style>
 
