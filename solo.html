@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LayerEngine Solo — Your AI-Powered Real Estate System</title>
+  <meta name="description" content="Your complete AI-powered real estate lead generation and follow-up system, built for you in 7 days." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0D1117;
+      --bg2: #161B22;
+      --bg3: #1C2333;
+      --border: rgba(255,255,255,0.07);
+      --blue: #2563EB;
+      --blue-light: #3B82F6;
+      --text: #E6EDF3;
+      --muted: #8B949E;
+      --accent: #F0B429;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    /* ── TOP NAV ── */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(13,17,23,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo img { height: 32px; width: auto; }
+
+    .nav-logo-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 20px;
+      color: #fff;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-logo-text span { color: var(--blue-light); }
+
+    .nav-badge {
+      background: rgba(37,99,235,0.15);
+      border: 1px solid rgba(59,130,246,0.2);
+      color: var(--blue-light);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ── MAIN CONTAINER ── */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    /* ── HERO SECTION ── */
+    .hero {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      letter-spacing: -1px;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.6;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 1rem 2.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: 1px solid var(--blue-light);
+      box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+    }
+
+    .cta-button:hover {
+      background: var(--blue-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37,99,235,0.4);
+    }
+
+    /* ── SECTION HEADINGS ── */
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    /* ── THE 6 LAYERS GRID ── */
+    .layers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 5rem;
+    }
+
+    .layer-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .layer-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(59,130,246,0.4);
+    }
+
+    .layer-number {
+      font-family: 'Syne', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: rgba(255,255,255,0.05);
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      line-height: 1;
+    }
+
+    .layer-card { position: relative; }
+
+    .layer-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(37,99,235,0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: var(--blue-light);
+    }
+
+    .layer-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+
+    .layer-card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      max-width: 600px;
+      margin: 0 auto 5rem;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 24px;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .timeline-step {
+      position: relative;
+      padding-left: 70px;
+      margin-bottom: 2.5rem;
+    }
+
+    .timeline-step:last-child { margin-bottom: 0; }
+
+    .step-marker {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50px;
+      height: 50px;
+      background: var(--bg3);
+      border: 2px solid var(--blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      color: #fff;
+      font-size: 1.2rem;
+      z-index: 2;
+    }
+
+    .timeline-step h3 {
+      font-size: 1.25rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      padding-top: 10px;
+    }
+
+    .timeline-step p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    /* ── PRICING ── */
+    .pricing-section {
+      background: var(--bg2);
+      border: 1px solid var(--blue);
+      border-radius: 16px;
+      padding: 4rem 2rem;
+      text-align: center;
+      margin-bottom: 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--blue), var(--accent));
+    }
+
+    .price {
+      font-family: 'Syne', sans-serif;
+      font-size: 4rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      margin: 1.5rem 0;
+    }
+
+    .price span {
+      font-size: 1.5rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .pricing-details {
+      font-size: 1.1rem;
+      color: #C9D1D9;
+      margin-bottom: 2.5rem;
+    }
+
+    .pricing-details strong { color: #fff; }
+
+    /* ── REQUIREMENTS ── */
+    .requirements {
+      background: rgba(240,180,41,0.05);
+      border: 1px solid rgba(240,180,41,0.2);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .requirements h3 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .requirements ul {
+      padding-left: 1.5rem;
+      color: #C9D1D9;
+    }
+
+    .requirements li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 3rem 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      .layers-grid { grid-template-columns: 1fr; }
+      .price { font-size: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="top-nav">
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-text">Layer<span>Engine.ai</span></div>
+    </a>
+    <div class="nav-badge">Solo Build</div>
+  </nav>
+
+  <div class="container">
+    
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Your Complete AI-Powered Real Estate System. Built For You.</h1>
+      <p>Stop wasting hours trying to duct-tape software together. Get a fully operational lead generation and follow-up machine, built and configured for your business in just 7 days.</p>
+      <a href="#pricing" class="cta-button">Start Your Build</a>
+    </section>
+
+    <!-- THE 6 LAYERS -->
+    <h2 class="section-title">The 6-Layer Setup</h2>
+    <p class="section-subtitle">Everything you need to generate, nurture, and close leads on autopilot.</p>
+
+    <div class="layers-grid">
+      
+      <div class="layer-card">
+        <div class="layer-number">1</div>
+        <div class="layer-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        </div>
+        <h3>CRM Sub-Account</h3>
+        <p>Your own dedicated GoHighLevel workspace, fully configured with our proprietary real estate pipelines and custom fields.</p>
+      </div>
+
+      <div class="layer-card">
+        <div class="layer-number">2</div>
+        <div class="layer-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+        </div>
+        <h3>Lead Gen Funnel</h3>
+        <p>High-converting buyer or seller landing pages deployed using our proven snapshots, ready to capture traffic.</p>
+      </div>
+
+      <div class="layer-card">
+        <div class="layer-number">3</div>
+        <div class="layer-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
+        </div>
+        <h3>VSL Setup</h3>
+        <p>Your Video Sales Letter page built and hosted, positioning you as the undeniable authority in your local market.</p>
+      </div>
+
+      <div class="layer-card">
+        <div class="layer-number">4</div>
+        <div class="layer-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        </div>
+        <h3>Follow-Up Automation</h3>
+        <p>Pre-loaded SMS and email nurture sequences designed to convert cold leads into booked appointments automatically.</p>
+      </div>
+
+      <div class="layer-card">
+        <div class="layer-number">5</div>
+        <div class="layer-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        </div>
+        <h3>Calendar Integration</h3>
+        <p>Your availability synced directly to the system so leads can book strategy calls directly onto your schedule.</p>
+      </div>
+
+      <div class="layer-card">
+        <div class="layer-number">6</div>
+        <div class="layer-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <h3>1-on-1 Delivery Call</h3>
+        <p>A private handover session where we walk you through your new system and show you exactly how to operate it.</p>
+      </div>
+
+    </div>
+
+    <!-- TIMELINE -->
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-subtitle">A streamlined process to get you live fast.</p>
+
+    <div class="timeline">
+      <div class="timeline-step">
+        <div class="step-marker">1</div>
+        <h3>Secure Your Spot</h3>
+        <p>Complete your payment below to initiate the build process and reserve your spot in our queue.</p>
+      </div>
+      <div class="timeline-step">
+        <div class="step-marker">2</div>
+        <h3>Complete Onboarding</h3>
+        <p>You'll receive access to a short 3-step mini-course and intake form. Tell us about your market, offer, and branding.</p>
+      </div>
+      <div class="timeline-step">
+        <div class="step-marker">3</div>
+        <h3>The 7-Day Build</h3>
+        <p>Our team gets to work. We build, configure, and test your entire 6-layer system inside your new account.</p>
+      </div>
+      <div class="timeline-step">
+        <div class="step-marker">4</div>
+        <h3>System Handover</h3>
+        <p>We jump on a Zoom call, hand you the keys, and show you exactly how to launch your new lead machine.</p>
+      </div>
+    </div>
+
+    <!-- REQUIREMENTS -->
+    <div class="requirements">
+      <h3>What We Need From You</h3>
+      <p style="margin-bottom: 1rem; color: #C9D1D9;">This is a "Done For You" build, but we need your expertise to make it authentic to your business. During onboarding, you'll need to provide:</p>
+      <ul>
+        <li>Basic business info and branding assets (logo, headshot)</li>
+        <li>Your specific market and target audience (buyers vs. sellers)</li>
+        <li>Access to your Facebook Business Manager (for ad setup)</li>
+        <li>A recorded VSL (we provide the framework, you record the video)</li>
+      </ul>
+    </div>
+
+    <!-- PRICING -->
+    <section id="pricing" class="pricing-section">
+      <h2 class="section-title">Ready to Launch?</h2>
+      <p class="section-subtitle" style="margin-bottom: 1rem;">Get your entire system built by experts who know real estate.</p>
+      
+      <div class="price">$1,000 <span>one-time build fee</span></div>
+      
+      <p class="pricing-details">
+        Then just <strong>$97/month</strong> for your LayerEngine platform access, CRM, and community.
+      </p>
+
+      <a href="#" class="cta-button" style="font-size: 1.25rem; padding: 1.25rem 3rem;">Start Your Build Now</a>
+      <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--muted);">Secure Stripe Checkout</p>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2026 LayerEngine.ai. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
