@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solo Build Onboarding — LayerEngine.ai</title>
+  <meta name="description" content="Start your LayerEngine Solo build. Complete this intake form to get your 6-layer system built." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0D1117;
+      color: #FFFFFF;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    /* ── NAV ── */
+    .le-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(13,17,23,0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .le-nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .le-nav-logo-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      color: #FFFFFF;
+      letter-spacing: -0.3px;
+    }
+    .le-nav-logo-text span { color: #3B82F6; }
+    .le-nav-back {
+      font-size: 13px;
+      color: #9CA3AF;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .le-nav-back:hover { color: #FFFFFF; }
+    
+    /* ── HERO ── */
+    .le-ob-hero {
+      text-align: center;
+      padding: 4rem 2rem 2.5rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .le-ob-eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #3B82F6;
+      background: rgba(37,99,235,0.1);
+      border: 1px solid rgba(37,99,235,0.25);
+      border-radius: 20px;
+      padding: 5px 14px;
+      margin-bottom: 1.25rem;
+    }
+    .le-ob-hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 1rem;
+    }
+    .le-ob-hero h1 span { color: #3B82F6; }
+    .le-ob-hero p {
+      font-size: 16px;
+      color: #9CA3AF;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ── PROGRESS STEPS ── */
+    .le-ob-steps {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      max-width: 720px;
+      margin: 2.5rem auto 0;
+      padding: 0 2rem;
+    }
+    .le-ob-step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      text-align: center;
+    }
+    .le-ob-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 16px;
+      left: calc(50% + 16px);
+      right: calc(-50% + 16px);
+      height: 1px;
+      background: rgba(37,99,235,0.25);
+    }
+    .le-ob-step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(37,99,235,0.15);
+      border: 1px solid rgba(37,99,235,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      color: #3B82F6;
+    }
+    .le-ob-step-num.active {
+      background: #2563EB;
+      border-color: #2563EB;
+      color: #FFFFFF;
+    }
+    .le-ob-step-label {
+      font-size: 11px;
+      color: #6B7280;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+    .le-ob-step-label.active { color: #9CA3AF; }
+
+    /* ── MAIN CONTENT ── */
+    .le-ob-main {
+      max-width: 760px;
+      margin: 3rem auto 0;
+      padding: 0 2rem 5rem;
+    }
+
+    /* ── SECTION CARD ── */
+    .le-ob-card {
+      background: #111827;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .le-ob-card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 1.75rem;
+    }
+    .le-ob-card-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      color: #3B82F6;
+      background: rgba(37,99,235,0.1);
+      border: 1px solid rgba(37,99,235,0.25);
+      border-radius: 6px;
+      padding: 4px 10px;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .le-ob-card-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .le-ob-card-desc {
+      font-size: 14px;
+      color: #9CA3AF;
+      line-height: 1.5;
+    }
+
+    /* ── VIDEO CONTAINER ── */
+    .le-video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .le-video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ── NEXT STEPS CARD ── */
+    .le-next-card {
+      background: rgba(37,99,235,0.03);
+      border: 1px solid rgba(37,99,235,0.15);
+      border-radius: 14px;
+      padding: 2.5rem;
+      margin-top: 2rem;
+    }
+    .le-next-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 1.5rem;
+      color: #FFFFFF;
+    }
+    .le-next-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .le-next-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .le-next-list-num {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: rgba(37,99,235,0.1);
+      color: #3B82F6;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .le-next-list-text {
+      font-size: 14px;
+      color: #9CA3AF;
+      line-height: 1.6;
+    }
+    .le-next-list-text strong {
+      color: #E5E7EB;
+      font-weight: 600;
+    }
+
+    /* ── FOOTER ── */
+    .le-ob-footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 12px;
+      color: #4B5563;
+    }
+    .le-ob-footer a {
+      color: #6B7280;
+      text-decoration: none;
+    }
+    .le-ob-footer a:hover { color: #9CA3AF; }
+
+    @media (max-width: 600px) {
+      .le-ob-hero { padding: 3rem 1.5rem 2rem; }
+      .le-ob-steps { padding: 0 1rem; }
+      .le-ob-main { padding: 0 1rem 3rem; }
+      .le-ob-card { padding: 1.5rem; }
+      .le-ob-card-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="le-nav">
+    <a href="/" class="le-nav-logo">
+      <span class="le-nav-logo-text">Layer<span>Engine.ai</span></span>
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="le-ob-hero">
+    <div class="le-ob-eyebrow">Solo Build Onboarding</div>
+    <h1>Let's build your<br><span>6-layer system.</span></h1>
+    <p>Watch the quick video below, then complete the intake form. We need this information to configure your CRM, write your VSL script, and build your funnels. Your 14-day timeline starts as soon as you hit submit.</p>
+  </div>
+
+  <!-- PROGRESS STEPS -->
+  <div class="le-ob-steps">
+    <div class="le-ob-step">
+      <div class="le-ob-step-num active">1</div>
+      <div class="le-ob-step-label active">Welcome Video</div>
+    </div>
+    <div class="le-ob-step">
+      <div class="le-ob-step-num">2</div>
+      <div class="le-ob-step-label">Intake Form</div>
+    </div>
+    <div class="le-ob-step">
+      <div class="le-ob-step-num">3</div>
+      <div class="le-ob-step-label">Build Begins</div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="le-ob-main">
+    
+    <!-- VIDEO CARD -->
+    <div class="le-ob-card">
+      <div class="le-ob-card-header">
+        <div class="le-ob-card-num">STEP 01</div>
+        <div>
+          <div class="le-ob-card-title">Welcome to your Solo Build</div>
+          <div class="le-ob-card-desc">Watch this quick 2-minute video from Adam before filling out the form.</div>
+        </div>
+      </div>
+      
+      <div class="le-video-container">
+        <!-- Placeholder for Loom video -->
+        <iframe src="https://www.loom.com/embed/placeholder" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div>
+      <p style="font-size: 13px; color: #6B7280; text-align: center;"><em>Note: Replace this placeholder video with your actual Loom recording.</em></p>
+    </div>
+
+    <!-- FORM CARD -->
+    <div class="le-ob-card">
+      <div class="le-ob-card-header">
+        <div class="le-ob-card-num">STEP 02</div>
+        <div>
+          <div class="le-ob-card-title">Complete your intake form</div>
+          <div class="le-ob-card-desc">Fill this out as thoroughly as possible. We use this exact data to write your scripts and configure your account.</div>
+        </div>
+      </div>
+      
+      <!-- GHL FORM EMBED -->
+      <div class="le-ghl-form-wrap">
+        <iframe src="https://links.layerengine.ai/widget/survey/kf9d7EMWuw2gYlyUYlZJ" style="border:none;width:100%;height:1200px;" scrolling="no" id="kf9d7EMWuw2gYlyUYlZJ" title="survey"></iframe>
+        <script src="https://links.layerengine.ai/js/form_embed.js"></script>
+      </div>
+    </div>
+
+    <!-- NEXT STEPS CARD -->
+    <div class="le-next-card">
+      <h3>What happens next</h3>
+      <ul class="le-next-list">
+        <li>
+          <div class="le-next-list-num">1</div>
+          <div class="le-next-list-text"><strong>Intake received.</strong> Our team reviews your submission within 1 business day and begins your 14-day build.</div>
+        </li>
+        <li>
+          <div class="le-next-list-num">2</div>
+          <div class="le-next-list-text"><strong>University access.</strong> Check your email for your login to LayerEngine University. You can start going through the training while we build your system.</div>
+        </li>
+        <li>
+          <div class="le-next-list-num">3</div>
+          <div class="le-next-list-text"><strong>Delivery call.</strong> Once your 6 layers are built and tested, we will schedule a 1-on-1 Zoom call to hand over the keys and show you how to use your new system.</div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="le-ob-footer">
+    LayerEngine.ai &nbsp;·&nbsp; <a href="mailto:adam@layerengine.ai">adam@layerengine.ai</a> &nbsp;·&nbsp; Confidential
+  </footer>
+
+</body>
+</html>
