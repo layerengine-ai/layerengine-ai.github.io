@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "how-to-use-gohighlevel-to-automate-your-entire-recruiting-pipeline",
+    title: "How to Use GoHighLevel to Automate Your Entire Recruiting Pipeline",
+    excerpt: "Stop dialing for dollars. Learn how to leverage GoHighLevel to build a fully automated real estate recruiting pipeline that attracts, qualifies, and books top agents on autopilot — 24 hours a day.",
+    category: "Automation",
+    date: "June 26, 2026",
+    readTime: "6 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M12 20h4l3-7 4 14 3-7h4" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+  },
+  {
     slug: "done-for-you-lead-generation-for-every-agent",
     title: "Done-For-You Lead Generation for Every Agent",
     excerpt: "Stop asking agents to generate their own leads. Learn how a done-for-you lead generation system can transform your brokerage's recruiting and retention in 2025 — and become the value proposition that wins every recruiting conversation.",
