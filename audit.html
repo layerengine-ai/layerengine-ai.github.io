@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tech Audit — LayerEngine.ai</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #0D1117;
+      color: rgba(255,255,255,0.85);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: #3B82F6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* NAV */
+    .nav {
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 1.1rem 0;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 17px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.92);
+      letter-spacing: -0.3px;
+    }
+    .nav-logo span { color: #3B82F6; }
+    .nav-back {
+      font-size: 13px;
+      color: #6B7280;
+    }
+    .nav-back:hover { color: #9CA3AF; text-decoration: none; }
+
+    /* HERO */
+    .hero {
+      padding: 4rem 0 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #3B82F6;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      color: rgba(255,255,255,0.95);
+      margin-bottom: 1rem;
+    }
+    .hero h1 span { color: #3B82F6; }
+    .hero-sub {
+      font-size: 16px;
+      color: #9CA3AF;
+      max-width: 620px;
+      line-height: 1.7;
+    }
+
+    /* INTRO CALLOUT */
+    .callout {
+      background: #1E293B;
+      border: 1px solid rgba(59,130,246,0.2);
+      border-left: 3px solid #3B82F6;
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin: 2.5rem 0;
+      font-size: 14px;
+      color: #9CA3AF;
+      line-height: 1.7;
+    }
+    .callout strong { color: rgba(255,255,255,0.85); }
+
+    /* BUCKETS */
+    .buckets { padding: 1rem 0 3rem; }
+    .bucket {
+      background: #1E293B;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 1.25rem;
+    }
+    .bucket-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .bucket-num {
+      font-size: 32px;
+      font-weight: 800;
+      color: #3B82F6;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      min-width: 44px;
+    }
+    .bucket-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.92);
+    }
+    .bucket-desc {
+      font-size: 13.5px;
+      color: #6B7280;
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+    .questions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .question {
+      display: flex;
+      gap: 0.65rem;
+      font-size: 14px;
+      color: #9CA3AF;
+      line-height: 1.55;
+    }
+    .question::before {
+      content: "→";
+      color: #3B82F6;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, #1E293B 0%, #0D1117 100%);
+      border: 1px solid rgba(59,130,246,0.2);
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin: 1rem 0 4rem;
+    }
+    .cta-section h2 {
+      font-size: 26px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.92);
+      margin-bottom: 0.75rem;
+    }
+    .cta-section h2 span { color: #3B82F6; }
+    .cta-section p {
+      font-size: 15px;
+      color: #9CA3AF;
+      margin-bottom: 2rem;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.65;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #3B82F6;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #2563EB; text-decoration: none; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 2rem 0;
+      text-align: center;
+      font-size: 12px;
+      color: #4B5563;
+    }
+    footer span { color: #3B82F6; }
+
+    @media (max-width: 600px) {
+      .bucket { padding: 1.25rem 1.25rem; }
+      .bucket-num { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <div class="nav-logo">Layer<span>Engine</span>.ai</div>
+    <a href="/" class="nav-back">← Back to site</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Discovery Framework</div>
+    <h1>The LayerEngine<br><span>Tech Audit</span></h1>
+    <p class="hero-sub">Six layers. Every organization has gaps in at least three of them. Most do not know which three until someone asks the right questions.</p>
+  </div>
+</section>
+
+<div class="container">
+
+  <div class="callout">
+    <strong>How this works:</strong> Most organizations are already paying for most of the solution — they just have it fragmented across tools that do not talk to each other, managed by people who are not fully trained on them. This audit maps your current state across six critical layers. By the end, you will know exactly where your system is leaking and what it would look like if it worked as one engine.
+  </div>
+
+  <div class="buckets">
+
+    <div class="bucket">
+      <div class="bucket-header">
+        <div class="bucket-num">01</div>
+        <div class="bucket-title">Lead Generation</div>
+      </div>
+      <div class="bucket-desc">How are you attracting new business right now — buyers, sellers, recruits, or referral partners? Most organizations are paying for tools that generate activity, not leads. This layer is about identifying what is actually working and what is just costing money.</div>
+      <div class="questions">
+        <div class="question">What are you currently doing to attract new business — buyers, sellers, recruits?</div>
+        <div class="question">What tools or platforms are you paying for right now for lead generation?</div>
+        <div class="question">Are those tools actually producing leads, or just producing activity?</div>
+        <div class="question">What does a qualified lead look like for your organization?</div>
+      </div>
+    </div>
+
+    <div class="bucket">
+      <div class="bucket-header">
+        <div class="bucket-num">02</div>
+        <div class="bucket-title">Follow-Up</div>
+      </div>
+      <div class="bucket-desc">Not every lead is ready today. Most organizations have no systematic follow-up beyond the first touch — which means they are generating leads and then losing them to whoever follows up better. This layer is about what happens after the first contact.</div>
+      <div class="questions">
+        <div class="question">What happens to a lead after the first contact — who follows up and how?</div>
+        <div class="question">Do you have automated sequences running, or is it entirely manual?</div>
+        <div class="question">How many touches does a lead get before they fall off your radar?</div>
+        <div class="question">What percentage of your pipeline is leads you have not spoken to in 30 or more days?</div>
+      </div>
+    </div>
+
+    <div class="bucket">
+      <div class="bucket-header">
+        <div class="bucket-num">03</div>
+        <div class="bucket-title">Transaction Management</div>
+      </div>
+      <div class="bucket-desc">How does a deal move from contract to close in your organization? Who is responsible for each step — and does everyone actually know that? This layer is about identifying where deals stall, fall apart, or require unnecessary manual intervention.</div>
+      <div class="questions">
+        <div class="question">How does a deal move from contract to close in your organization?</div>
+        <div class="question">Who is responsible for each step — and does everyone actually know that?</div>
+        <div class="question">Where do deals most commonly stall or fall apart?</div>
+        <div class="question">Are you using any automation, or is it all manual coordination?</div>
+      </div>
+    </div>
+
+    <div class="bucket">
+      <div class="bucket-header">
+        <div class="bucket-num">04</div>
+        <div class="bucket-title">Recruiting</div>
+      </div>
+      <div class="bucket-desc">Recruiting is just the top of a sales funnel — whether you are attracting agents to your brokerage, loan officers to your team, or clients to your service. This layer is about your outbound engine, your response rates, and where the bottleneck actually is.</div>
+      <div class="questions">
+        <div class="question">How are you currently recruiting agents or loan officers to your team?</div>
+        <div class="question">What does your outbound recruiting process look like today?</div>
+        <div class="question">How many recruiting conversations are you having per month?</div>
+        <div class="question">What is your biggest bottleneck — finding candidates, getting responses, or converting them?</div>
+      </div>
+    </div>
+
+    <div class="bucket">
+      <div class="bucket-header">
+        <div class="bucket-num">05</div>
+        <div class="bucket-title">Retention</div>
+      </div>
+      <div class="bucket-desc">Winning through people means keeping them. Most organizations lose producers in the first 90 days not because the opportunity was wrong — but because no one was paying attention. This layer is about what you are doing to keep producers engaged, producing, and loyal.</div>
+      <div class="questions">
+        <div class="question">What is your average producer tenure — how long do people typically stay?</div>
+        <div class="question">What typically causes someone to leave in the first 90 days?</div>
+        <div class="question">What are you doing today to keep producers engaged and producing?</div>
+        <div class="question">Do your producers have their own lead generation system, or are they on their own?</div>
+      </div>
+    </div>
+
+    <div class="bucket">
+      <div class="bucket-header">
+        <div class="bucket-num">06</div>
+        <div class="bucket-title">Onboarding</div>
+      </div>
+      <div class="bucket-desc">The right hand does not know what the left hand is doing — and the person at the top thinks everything is fine. Onboarding is where new hires either become producers or quietly disengage. This layer is about what happens from the day someone signs to their first transaction.</div>
+      <div class="questions">
+        <div class="question">Walk me through what happens from the day someone signs to their first transaction.</div>
+        <div class="question">Who manages the onboarding process — is it documented or tribal knowledge?</div>
+        <div class="question">What falls through the cracks most often during onboarding?</div>
+        <div class="question">How long does it typically take a new hire to become a producing professional?</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cta-section">
+    <h2>Ready to see what your<br><span>system could look like?</span></h2>
+    <p>Book a 30-minute strategy call. We will map out exactly how LayerEngine would work inside your organization — and show you what you are already paying for that could be working harder.</p>
+    <a href="https://calendly.com/adam-layerengine/30min" class="btn-primary" target="_blank">
+      Book Your Strategy Call
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="container">
+    Layer<span>Engine</span>.ai &mdash; San Diego, CA &mdash; adam@layerengine.ai &mdash; 661-236-9175
+  </div>
+</footer>
+
+</body>
+</html>
