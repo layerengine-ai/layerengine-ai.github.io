@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "the-real-cost-of-agent-turnover",
+    title: "The Real Cost of Agent Turnover",
+    excerpt: "Every agent who walks out the door costs your brokerage far more than their last commission split. Discover the hidden financial impact of real estate agent turnover — and the automated retention systems that stop the bleeding.",
+    category: "Agent Retention",
+    date: "June 30, 2026",
+    readTime: "5 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M20 10c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10S25.523 10 20 10z" stroke="#3B82F6" stroke-width="1.5"/><path d="M20 15v5l-3 3" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/><path d="M26 26l4 4" stroke="#EF4444" stroke-width="1.5" stroke-linecap="round"/></svg>`
+  },
+  {
     slug: "how-to-use-gohighlevel-to-automate-your-entire-recruiting-pipeline",
     title: "How to Use GoHighLevel to Automate Your Entire Recruiting Pipeline",
     excerpt: "Stop dialing for dollars. Learn how to leverage GoHighLevel to build a fully automated real estate recruiting pipeline that attracts, qualifies, and books top agents on autopilot — 24 hours a day.",
