@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LayerEngine Operations — Internal Playbook</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0D1117;
+      --bg2: #161B22;
+      --bg3: #1C2333;
+      --border: rgba(255,255,255,0.07);
+      --blue: #2563EB;
+      --blue-light: #3B82F6;
+      --text: #E6EDF3;
+      --muted: #8B949E;
+      --accent: #F0B429;
+      --sidebar-w: 280px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── TOP NAV ── */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(13,17,23,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img { height: 28px; width: auto; }
+
+    .nav-logo-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 17px;
+      color: #fff;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-logo-text span { color: var(--blue-light); }
+
+    .nav-badge {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .nav-back {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--text); }
+
+    /* ── LAYOUT ── */
+    .layout {
+      display: flex;
+      min-height: calc(100vh - 60px);
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: var(--sidebar-w);
+      min-width: var(--sidebar-w);
+      background: var(--bg2);
+      border-right: 1px solid var(--border);
+      position: sticky;
+      top: 60px;
+      height: calc(100vh - 60px);
+      overflow-y: auto;
+      padding: 1.5rem 0;
+      scrollbar-width: thin;
+      scrollbar-color: var(--bg3) transparent;
+    }
+
+    .sidebar::-webkit-scrollbar { width: 4px; }
+    .sidebar::-webkit-scrollbar-track { background: transparent; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 4px; }
+
+    .sidebar-section {
+      margin-bottom: 0.25rem;
+    }
+
+    .sidebar-module-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      padding: 1rem 1.25rem 0.4rem;
+    }
+
+    .sidebar-link {
+      display: block;
+      padding: 0.55rem 1.25rem;
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      border-left: 2px solid transparent;
+      transition: all 0.15s;
+      line-height: 1.4;
+    }
+
+    .sidebar-link:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+      border-left-color: var(--blue);
+    }
+
+    .sidebar-link.active {
+      color: var(--blue-light);
+      background: rgba(37,99,235,0.08);
+      border-left-color: var(--blue-light);
+    }
+
+    /* ── MAIN CONTENT ── */
+    .main {
+      flex: 1;
+      max-width: 860px;
+      padding: 3rem 3.5rem;
+      overflow-x: hidden;
+    }
+
+    /* ── LESSON SECTIONS ── */
+    .lesson-section {
+      margin-bottom: 5rem;
+      padding-top: 1rem;
+    }
+
+    .module-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .module-tag {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: rgba(37,99,235,0.15);
+      color: var(--blue-light);
+      border: 1px solid rgba(59,130,246,0.2);
+    }
+
+    .module-tag.intro { background: rgba(240,180,41,0.12); color: var(--accent); border-color: rgba(240,180,41,0.2); }
+    .module-tag.m1 { background: rgba(37,99,235,0.12); color: #60A5FA; border-color: rgba(96,165,250,0.2); }
+    .module-tag.m2 { background: rgba(16,185,129,0.12); color: #34D399; border-color: rgba(52,211,153,0.2); }
+    .module-tag.m3 { background: rgba(239,68,68,0.12); color: #F87171; border-color: rgba(248,113,113,0.2); }
+    .module-tag.m4 { background: rgba(168,85,247,0.12); color: #C084FC; border-color: rgba(192,132,252,0.2); }
+
+    h1.lesson-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    h2.lesson-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+    }
+
+    .lesson-intro {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      border-left: 3px solid var(--blue);
+      padding-left: 1rem;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #C9D1D9;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      margin: 1.75rem 0 0.6rem;
+    }
+
+    h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--blue-light);
+      margin: 1.25rem 0 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 11px;
+    }
+
+    ul, ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    li {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #C9D1D9;
+      margin-bottom: 0.3rem;
+    }
+
+    .callout {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--blue-light);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+    }
+
+    .callout.warning {
+      border-left-color: var(--accent);
+    }
+
+    .callout.success {
+      border-left-color: #34D399;
+    }
+
+    .callout p { margin-bottom: 0; font-size: 14px; }
+    .callout strong { color: #fff; }
+
+    .action-box {
+      background: rgba(37,99,235,0.08);
+      border: 1px solid rgba(37,99,235,0.25);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .action-box-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--blue-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .action-box p { margin-bottom: 0; font-size: 14px; }
+
+    .email-template {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin: 1rem 0;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .email-template .email-subject {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .email-template p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #C9D1D9;
+      margin-bottom: 0.6rem;
+    }
+
+    .offer-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .offer-card h3 {
+      margin-top: 0;
+      font-size: 15px;
+      color: #fff;
+    }
+
+    .offer-card .offer-meta {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .step-list {
+      counter-reset: steps;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .step-list li {
+      counter-increment: steps;
+      padding-left: 2.5rem;
+      position: relative;
+      margin-bottom: 0.75rem;
+    }
+
+    .step-list li::before {
+      content: counter(steps);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 22px;
+      height: 22px;
+      background: var(--blue);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .settings-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 14px;
+    }
+
+    .settings-table th {
+      text-align: left;
+      padding: 0.6rem 1rem;
+      background: var(--bg3);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .settings-table td {
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: #C9D1D9;
+      vertical-align: top;
+    }
+
+    .settings-table tr:last-child td { border-bottom: none; }
+
+    .settings-table td:first-child { color: var(--muted); width: 40%; }
+
+    code {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 7px;
+      font-size: 13px;
+      color: #79C0FF;
+      font-family: 'Courier New', monospace;
+    }
+
+    .sms-template {
+      background: var(--bg3);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin: 0.75rem 0;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #C9D1D9;
+      border-left: 3px solid #34D399;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--bg2) 0%, #0D1117 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 3.5rem 3.5rem 3rem;
+      margin-bottom: 0;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--blue-light);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.75rem;
+      font-weight: 800;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 span { color: var(--blue-light); }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 580px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .hero-stat-label {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── MOBILE ── */
+    .sidebar-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        z-index: 150;
+        height: calc(100vh - 60px);
+        width: 260px;
+      }
+
+      .sidebar.open { display: block; }
+
+      .sidebar-toggle { display: block; }
+
+      .main { padding: 2rem 1.5rem; }
+
+      .hero { padding: 2rem 1.5rem; }
+
+      .hero h1 { font-size: 1.9rem; }
+    }
+  </style>
+  <style>
+    /* Specific overrides for SOP page */
+    .nav-badge { background: #2563EB; color: white; border: none; }
+    .module-title { color: #F0B429; }
+    .content-card pre { background: #0D1117; padding: 15px; border-radius: 8px; border: 1px solid var(--border); overflow-x: auto; font-family: monospace; font-size: 13px; color: #8B949E; margin: 15px 0; }
+    .content-card code { background: #0D1117; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; color: #E6EDF3; }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="top-nav">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-text">Layer<span>Engine</span></div>
+      <div class="nav-badge">Internal Ops</div>
+    </a>
+  </nav>
+
+  <div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      
+      <div class="sidebar-module">
+        <div class="module-title">1. Fulfilment & Onboarding</div>
+        <a href="#m1-philosophy" class="lesson-link active">1.1 Philosophy & Checklist</a>
+        <a href="#m1-tracking" class="lesson-link">1.2 Client Tracking Sheet</a>
+        <a href="#m1-setup" class="lesson-link">1.3 GHL & Portal Setup</a>
+        <a href="#m1-workflow" class="lesson-link">1.4 Onboarding Workflow</a>
+      </div>
+
+      <div class="sidebar-module">
+        <div class="module-title">2. Attraction Mastery</div>
+        <a href="#m2-demo" class="lesson-link">2.1 Demo Call Process</a>
+        <a href="#m2-pipeline" class="lesson-link">2.2 Pipeline Management</a>
+        <a href="#m2-followup" class="lesson-link">2.3 Follow-Up Scripts</a>
+      </div>
+
+      <div class="sidebar-module">
+        <div class="module-title">3. Video & Assets</div>
+        <a href="#m3-vsl" class="lesson-link">3.1 VSL & Ad Guidelines</a>
+        <a href="#m3-delivery" class="lesson-link">3.2 Video Delivery Process</a>
+        <a href="#m3-sms" class="lesson-link">3.3 SMS Blast Templates</a>
+      </div>
+
+      <div class="sidebar-module">
+        <div class="module-title">4. VA Training Course</div>
+        <a href="#m4-intro" class="lesson-link">4.1 Welcome & Overview</a>
+        <a href="#m4-ghl" class="lesson-link">4.2 GHL Deep Dive</a>
+        <a href="#m4-cloudflare" class="lesson-link">4.3 Cloudflare Access SOP</a>
+      </div>
+
+      <div class="sidebar-module">
+        <div class="module-title">5. AI & Tool Stack</div>
+        <a href="#m5-tools" class="lesson-link">5.1 Internal Tool Stack</a>
+      </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      
+      <!-- MODULE 1 -->
+      <section id="m1-philosophy" class="content-section active">
+        <div class="content-header">
+          <div class="lesson-meta">Module 1 • Lesson 1</div>
+          <h1 class="lesson-title">Philosophy & Checklist</h1>
+        </div>
+        <div class="content-card">
+          <h2>The LayerEngine Philosophy</h2>
+          <p>We operate on the <strong>Serve → Solve → Transform</strong> framework. Clients pay us not just for software, but for a business transformation. Our internal operations must be flawless so the client feels supported from day one.</p>
+          <br>
+          <h2>Master Checklist</h2>
+          <p>Before any client onboarding begins, ensure you have access to:</p>
+          <ul>
+            <li>GoHighLevel Agency Dashboard</li>
+            <li>Cloudflare Zero Trust Dashboard</li>
+            <li>Client Tracking Google Sheet</li>
+            <li>Internal Slack Workspace</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="m1-tracking" class="content-section">
+        <div class="content-header">
+          <div class="lesson-meta">Module 1 • Lesson 2</div>
+          <h1 class="lesson-title">Client Tracking Sheet</h1>
+        </div>
+        <div class="content-card">
+          <h2>Daily EOD Process</h2>
+          <p>The VA must update the master Google Sheet at the end of every day. This sheet tracks the client's progress through the "7 Wins" journey.</p>
+          <ul>
+            <li><strong>Win 1 (Day 1-7):</strong> Systems access and orientation.</li>
+            <li><strong>Win 2 (Day 7-14):</strong> Offer creation and VSL scripting.</li>
+            <li><strong>Win 3 (Day 14-21):</strong> Funnel build completion.</li>
+            <li><strong>Win 4 (Day 21-30):</strong> Paid ads launch.</li>
+            <li><strong>Win 5 (Day 30-90):</strong> Sales and lead conversion.</li>
+            <li><strong>Win 6 (Day 90-120):</strong> First deal closed via the system.</li>
+            <li><strong>Win 7 (Day 120+):</strong> Scale and delegation.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="m1-setup" class="content-section">
+        <div class="content-header">
+          <div class="lesson-meta">Module 1 • Lesson 3</div>
+          <h1 class="lesson-title">GHL & Portal Setup</h1>
+        </div>
+        <div class="content-card">
+          <h2>Subaccount Creation</h2>
+          <p>For every new client:</p>
+          <ol>
+            <li>Create a new subaccount in GHL using the "LayerEngine Master" snapshot.</li>
+            <li>Add the client as a user.</li>
+            <li>Configure A2P 10DLC registration immediately.</li>
+            <li>Connect their calendar and Zoom integration.</li>
+          </ol>
+          <br>
+          <h2>JotForm Integration</h2>
+          <p>The onboarding JotForm automatically pushes data into the GHL Contact Notes field. Review these notes before the kickoff call to understand their target avatar and value props.</p>
+        </div>
+      </section>
+
+      <section id="m1-workflow" class="content-section">
+        <div class="content-header">
+          <div class="lesson-meta">Module 1 • Lesson 4</div>
+          <h1 class="lesson-title">Onboarding Workflow</h1>
+        </div>
+        <div class="content-card">
+          <h2>The Exact Sequence</h2>
+          <ol>
+            <li><strong>Payment Received:</strong> Stripe integration triggers the onboarding workflow.</li>
+            <li><strong>JotForm Sent:</strong> Automated email sends the onboarding questionnaire.</li>
+            <li><strong>Slack Channel Created:</strong> VA creates `#client-[businessname]` in Slack and invites the client.</li>
+            <li><strong>GHL Setup:</strong> VA provisions the subaccount and imports the snapshot.</li>
+            <li><strong>Welcome Email:</strong> VA sends the manual welcome email with login credentials and next steps.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- MODULE 2 -->
+      <section id="m2-demo" class="content-section">
+        <div class="content-header">
+          <div class="lesson-meta">Module 2 • Lesson 1</div>
+          <h1 class="lesson-title">Demo Call Process</h1>
+        </div>
+        <div class="content-card">
+          <h2>The 7-Hour Rule</h2>
+          <p>Prospects must consume content before the call. Ensure the pre-call workflow fires:</p>
+          <ul>
+            <li>Day Prior: Quick confirmation text.</li>
+            <li>Pre-Call Email: Contains the VSL.</li>
+            <li>Calendar: Force a "Yes" RSVP.</li>
+          </ul>
+          <br>
+          <h2>The Belief Ladder</h2>
+          <p>During the call, Adam builds 6 beliefs: Pain, Doubt, Cost, Desire, Support, Trust. The VA's job is to ensure the CRM reflects the outcome of this call immediately.</p>
+        </div>
+      </section>
+
+      <section id="m2-pipeline" class="content-section">
+        <div class="content-header">
+          <div class="lesson-meta">Module 2 • Lesson 2</div>
+          <h1 class="lesson-title">Pipeline Management</h1>
+        </div>
+        <div class="content-card">
+          <h2>EOD Pipeline Clearing</h2>
+          <p>The VA must manage the GHL pipeline daily:</p>
+          <ul>
+            <li><strong>Hot List:</strong> Follow up daily.</li>
+            <li><strong>General List:</strong> Follow up weekly.</li>
+            <li><strong>No Shows:</strong> Move to "No Show" stage. Send reschedule link.</li>
+            <li><strong>Post-Demo:</strong> Send recap email with the PDF offering and VSL link.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="m2-followup" class="content-section">
+        <div class="content-header">
+          <div class="lesson-meta">Module 2 • Lesson 3</div>
+          <h1 class="lesson-title">Follow-Up Scripts</h1>
+        </div>
+        <div class="content-card">
+          <h2>The Re-Offer Script</h2>
+          <p>Used to re-engage cold prospects. Send via SMS/Email in GHL:</p>
+          <pre>Hey {first_name}, we just updated our partnership model to include [New Incentive]. Want me to send over the updated breakdown?</pre>
+          <br>
+          <h2>Leadership Follow-Up</h2>
+          <p>Used for prospects who ghosted after a good call:</p>
+          <pre>Hey {first_name}, what's changed since we last spoke? Are you still looking to scale the brokerage this quarter?</pre>
+        </div>
+      </section>
+
+      <!-- MODULE 3 -->
+      <section id="m3-vsl" class="content-section">
+        <div class="content-header">
+          <div class="lesson-meta">Module 3 • Lesson 1</div>
+          <h1 class="lesson-title">VSL & Ad Guidelines</h1>
+        </div>
+        <div class="content-card">
+          <h2>Recording Standards</h2>
+          <p>When reviewing client-submitted videos, check for:</p>
+          <ul>
+            <li>Camera at eye level</li>
+            <li>Clean background, good lighting (facing a window)</li>
+            <li>Clear audio</li>
+          </ul>
+          <p><strong>Live VSL Example:</strong> <code>video.eliteagentblueprint.com/vsl</code></p>
+        </div>
+      </section>
+
+      <section id="m3-delivery" class="content-section">
+        <div class="content-header">
+          <div class="lesson-meta">Module 3 • Lesson 2</div>
+          <h1 class="lesson-title">Video Delivery Process</h1>
+        </div>
+        <div class="content-card">
+          <h2>How Clients Submit Videos</h2>
+          <p>Clients are instructed to create a Google Drive folder named <code>First Name Last Name - Company Name</code>, set it to Editor access, and share the link in Slack.</p>
+          <br>
+          <h2>VA Review Checklist</h2>
+          <p>When a client drops a Drive link in Slack, verify:</p>
+          <ol>
+            <li>Folder is named correctly.</li>
+            <li>Sharing is set to Editor (not Viewer).</li>
+            <li>Only one video per script is uploaded.</li>
+            <li>Files are named EXACTLY as the script names.</li>
+          </ol>
+          <p>If anything is wrong, reply in Slack immediately. If correct, move to the production queue.</p>
+        </div>
+      </section>
+
+      <section id="m3-sms" class="content-section">
+        <div class="content-header">
+          <div class="lesson-meta">Module 3 • Lesson 3</div>
+          <h1 class="lesson-title">SMS Blast Templates</h1>
+        </div>
+        <div class="content-card">
+          <p>These templates are pre-loaded into GHL workflows for client outbound recruiting.</p>
+          
+          <h3>Business-in-a-Box</h3>
+          <pre>Hey {{first_name}}, it's {{sender_name}} from {{brokerage_name}}. We built a complete business-in-a-box for agents. AI marketing, lead gen, automation, and full TC support all done for you. See how it works -> {{vsl_link}}</pre>
+          
+          <h3>Scale Without Burnout</h3>
+          <pre>Doing everything yourself? Our partnership gives you done-for-you lead gen, follow-ups, admin, and client systems so you can scale without burning out. Watch the quick tour -> {{vsl_link}}</pre>
+          
+          <h3>Scarcity Angle</h3>
+          <pre>We're only opening 5 new partnership spots this month for qualified agents ready to scale. See if it's a fit -> {{custom_values.brokerage_calendly_link}}</pre>
+        </div>
+      </section>
+
+      <!-- MODULE 4 -->
+      <section id="m4-intro" class="content-section">
+        <div class="content-header">
+          <div class="lesson-meta">Module 4 • Lesson 1</div>
+          <h1 class="lesson-title">VA Welcome & Overview</h1>
+        </div>
+        <div class="content-card">
+          <h2>Welcome to the Team</h2>
+          <p>This section is your training manual. Your primary responsibility is ensuring client fulfillment runs smoothly. You will live in GoHighLevel, Slack, and Google Drive.</p>
+          <p><strong>Your Daily Rhythms:</strong></p>
+          <ul>
+            <li>Check Slack for client messages and video uploads.</li>
+            <li>Clear the GHL pipeline (Hot List daily).</li>
+            <li>Update the Client Tracking Sheet.</li>
+            <li>Provision new subaccounts as JotForms come in.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="m4-ghl" class="content-section">
+        <div class="content-header">
+          <div class="lesson-meta">Module 4 • Lesson 2</div>
+          <h1 class="lesson-title">GHL Deep Dive</h1>
+        </div>
+        <div class="content-card">
+          <h2>Navigating GoHighLevel</h2>
+          <p>As a VA, you must master these areas:</p>
+          <ul>
+            <li><strong>Agency Dashboard:</strong> Where you create subaccounts and manage billing.</li>
+            <li><strong>Subaccounts:</strong> Where client work happens.</li>
+            <li><strong>Conversations:</strong> Where you monitor client SMS/Email replies.</li>
+            <li><strong>Opportunities:</strong> The pipeline view. Move cards left to right.</li>
+            <li><strong>Automation:</strong> Where the workflows live. Do not edit these without approval.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="m4-cloudflare" class="content-section">
+        <div class="content-header">
+          <div class="lesson-meta">Module 4 • Lesson 3</div>
+          <h1 class="lesson-title">Cloudflare Access SOP</h1>
+        </div>
+        <div class="content-card">
+          <h2>How to Grant University Access to a New Client</h2>
+          <p>When a new client onboards, they need access to <code>layerengine.ai/university</code>. This is protected by Cloudflare Zero Trust.</p>
+          <ol>
+            <li>Log into <strong>dash.cloudflare.com</strong></li>
+            <li>Navigate to <strong>Zero Trust</strong> -> <strong>Access</strong> -> <strong>Applications</strong></li>
+            <li>Click <strong>Edit</strong> on the "LayerEngine University" application.</li>
+            <li>Scroll down to the <strong>Policies</strong> section and click <strong>Edit</strong> on the active policy.</li>
+            <li>Scroll to the <strong>Include</strong> section (where it says "Emails").</li>
+            <li>Type the client's email address into the field and press Enter/Add.</li>
+            <li>Click <strong>Save policy</strong>.</li>
+          </ol>
+          <p>The client can now access the university using their email address.</p>
+        </div>
+      </section>
+
+      <!-- MODULE 5 -->
+      <section id="m5-tools" class="content-section">
+        <div class="content-header">
+          <div class="lesson-meta">Module 5 • Lesson 1</div>
+          <h1 class="lesson-title">Internal Tool Stack</h1>
+        </div>
+        <div class="content-card">
+          <h2>How We Use AI</h2>
+          <p>We use <strong>Manus AI</strong> as a core part of our workflow to move faster and deliver better work for clients. Use cases include:</p>
+          <ul>
+            <li>Crafting Gamma presentations</li>
+            <li>Making landing pages and funnels</li>
+            <li>Building tracking sheets and calculators</li>
+            <li>Fixing GHL bugs and glitches in automations</li>
+            <li>Generating custom VSL scripts from JotForm answers</li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    // Simple navigation logic
+    document.querySelectorAll('.lesson-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Update active link
+        document.querySelectorAll('.lesson-link').forEach(l => l.classList.remove('active'));
+        e.target.classList.add('active');
+        
+        // Update active section
+        const targetId = e.target.getAttribute('href').substring(1);
+        document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+        document.getElementById(targetId).classList.add('active');
+        
+        // Scroll to top
+        window.scrollTo(0, 0);
+      });
+    });
+  </script>
+</body>
+</html>
