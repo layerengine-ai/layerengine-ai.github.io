@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LayerEngine Operations — Internal Playbook</title>
+  <title>LayerEngine — Internal Operations Playbook</title>
   <meta name="robots" content="noindex, nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,6 +21,9 @@
       --text: #E6EDF3;
       --muted: #8B949E;
       --accent: #F0B429;
+      --green: #34D399;
+      --red: #F87171;
+      --purple: #C084FC;
       --sidebar-w: 280px;
     }
 
@@ -34,7 +37,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── TOP NAV ── */
     .top-nav {
       position: sticky;
       top: 0;
@@ -69,11 +71,11 @@
     .nav-logo-text span { color: var(--blue-light); }
 
     .nav-badge {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      color: var(--muted);
+      background: rgba(240,180,41,0.12);
+      border: 1px solid rgba(240,180,41,0.25);
+      color: var(--accent);
       font-size: 11px;
-      font-weight: 500;
+      font-weight: 600;
       padding: 3px 10px;
       border-radius: 20px;
       letter-spacing: 0.5px;
@@ -89,13 +91,11 @@
 
     .nav-back:hover { color: var(--text); }
 
-    /* ── LAYOUT ── */
     .layout {
       display: flex;
       min-height: calc(100vh - 60px);
     }
 
-    /* ── SIDEBAR ── */
     .sidebar {
       width: var(--sidebar-w);
       min-width: var(--sidebar-w);
@@ -114,9 +114,7 @@
     .sidebar::-webkit-scrollbar-track { background: transparent; }
     .sidebar::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 4px; }
 
-    .sidebar-section {
-      margin-bottom: 0.25rem;
-    }
+    .sidebar-section { margin-bottom: 0.25rem; }
 
     .sidebar-module-label {
       font-size: 10px;
@@ -150,7 +148,6 @@
       border-left-color: var(--blue-light);
     }
 
-    /* ── MAIN CONTENT ── */
     .main {
       flex: 1;
       max-width: 860px;
@@ -158,7 +155,6 @@
       overflow-x: hidden;
     }
 
-    /* ── LESSON SECTIONS ── */
     .lesson-section {
       margin-bottom: 5rem;
       padding-top: 1rem;
@@ -183,11 +179,14 @@
       border: 1px solid rgba(59,130,246,0.2);
     }
 
-    .module-tag.intro { background: rgba(240,180,41,0.12); color: var(--accent); border-color: rgba(240,180,41,0.2); }
-    .module-tag.m1 { background: rgba(37,99,235,0.12); color: #60A5FA; border-color: rgba(96,165,250,0.2); }
-    .module-tag.m2 { background: rgba(16,185,129,0.12); color: #34D399; border-color: rgba(52,211,153,0.2); }
-    .module-tag.m3 { background: rgba(239,68,68,0.12); color: #F87171; border-color: rgba(248,113,113,0.2); }
-    .module-tag.m4 { background: rgba(168,85,247,0.12); color: #C084FC; border-color: rgba(192,132,252,0.2); }
+    .module-tag.intro   { background: rgba(240,180,41,0.12);  color: var(--accent); border-color: rgba(240,180,41,0.2); }
+    .module-tag.s1      { background: rgba(37,99,235,0.12);   color: #60A5FA;       border-color: rgba(96,165,250,0.2); }
+    .module-tag.s2      { background: rgba(16,185,129,0.12);  color: #34D399;       border-color: rgba(52,211,153,0.2); }
+    .module-tag.s3      { background: rgba(239,68,68,0.12);   color: #F87171;       border-color: rgba(248,113,113,0.2); }
+    .module-tag.s4      { background: rgba(168,85,247,0.12);  color: #C084FC;       border-color: rgba(192,132,252,0.2); }
+    .module-tag.s5      { background: rgba(240,180,41,0.12);  color: var(--accent); border-color: rgba(240,180,41,0.2); }
+    .module-tag.s6      { background: rgba(16,185,129,0.12);  color: #34D399;       border-color: rgba(52,211,153,0.2); }
+    .module-tag.s7      { background: rgba(37,99,235,0.12);   color: #60A5FA;       border-color: rgba(96,165,250,0.2); }
 
     h1.lesson-title {
       font-family: 'Syne', sans-serif;
@@ -237,19 +236,15 @@
     }
 
     h4 {
-      font-size: 0.9rem;
+      font-size: 11px;
       font-weight: 600;
       color: var(--blue-light);
       margin: 1.25rem 0 0.4rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      font-size: 11px;
     }
 
-    ul, ol {
-      padding-left: 1.5rem;
-      margin-bottom: 1rem;
-    }
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
 
     li {
       font-size: 15px;
@@ -267,13 +262,9 @@
       margin: 1.25rem 0;
     }
 
-    .callout.warning {
-      border-left-color: var(--accent);
-    }
-
-    .callout.success {
-      border-left-color: #34D399;
-    }
+    .callout.warning { border-left-color: var(--accent); }
+    .callout.success { border-left-color: #34D399; }
+    .callout.danger  { border-left-color: #F87171; }
 
     .callout p { margin-bottom: 0; font-size: 14px; }
     .callout strong { color: #fff; }
@@ -297,49 +288,83 @@
 
     .action-box p { margin-bottom: 0; font-size: 14px; }
 
-    .email-template {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.25rem 1.5rem;
+    .settings-table {
+      width: 100%;
+      border-collapse: collapse;
       margin: 1rem 0;
-      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
     }
 
-    .email-template .email-subject {
-      font-size: 12px;
+    .settings-table th {
+      text-align: left;
+      padding: 0.6rem 1rem;
+      background: var(--bg3);
+      color: var(--muted);
+      font-size: 11px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
     }
 
-    .email-template p {
-      font-size: 14px;
-      line-height: 1.7;
+    .settings-table td {
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid var(--border);
       color: #C9D1D9;
-      margin-bottom: 0.6rem;
+      vertical-align: top;
     }
 
-    .offer-card {
-      background: var(--bg2);
+    .settings-table tr:last-child td { border-bottom: none; }
+    .settings-table td:first-child { color: var(--muted); width: 40%; }
+
+    code {
+      background: var(--bg3);
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 4px;
+      padding: 2px 7px;
+      font-size: 13px;
+      color: #79C0FF;
+      font-family: 'Courier New', monospace;
+    }
+
+    pre {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #79C0FF;
+      font-family: 'Courier New', monospace;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .sms-template {
+      background: var(--bg3);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin: 0.75rem 0;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #C9D1D9;
+      border-left: 3px solid #34D399;
+    }
+
+    .prompt-block {
+      background: var(--bg2);
+      border: 1px solid rgba(192,132,252,0.25);
+      border-left: 3px solid #C084FC;
+      border-radius: 8px;
       padding: 1.25rem 1.5rem;
       margin: 1rem 0;
-    }
-
-    .offer-card h3 {
-      margin-top: 0;
-      font-size: 15px;
-      color: #fff;
-    }
-
-    .offer-card .offer-meta {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 0.5rem;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #C9D1D9;
+      font-family: 'Courier New', monospace;
+      white-space: pre-wrap;
     }
 
     .step-list {
@@ -372,58 +397,20 @@
       justify-content: center;
     }
 
-    .settings-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0;
-      font-size: 14px;
-    }
-
-    .settings-table th {
-      text-align: left;
-      padding: 0.6rem 1rem;
-      background: var(--bg3);
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .settings-table td {
-      padding: 0.6rem 1rem;
-      border-bottom: 1px solid var(--border);
-      color: #C9D1D9;
-      vertical-align: top;
-    }
-
-    .settings-table tr:last-child td { border-bottom: none; }
-
-    .settings-table td:first-child { color: var(--muted); width: 40%; }
-
-    code {
-      background: var(--bg3);
+    .tier-card {
+      background: var(--bg2);
       border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 2px 7px;
-      font-size: 13px;
-      color: #79C0FF;
-      font-family: 'Courier New', monospace;
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin: 1rem 0;
     }
 
-    .sms-template {
-      background: var(--bg3);
-      border-radius: 12px;
-      padding: 1rem 1.25rem;
-      margin: 0.75rem 0;
-      font-size: 14px;
-      line-height: 1.6;
-      color: #C9D1D9;
-      border-left: 3px solid #34D399;
-    }
+    .tier-card h3 { margin-top: 0; font-size: 15px; color: #fff; }
+    .tier-card .tier-meta { font-size: 12px; color: var(--muted); margin-bottom: 0.75rem; }
+    .tier-card.solo    { border-left: 3px solid #60A5FA; }
+    .tier-card.launch  { border-left: 3px solid #34D399; }
+    .tier-card.managed { border-left: 3px solid var(--accent); }
 
-    /* ── HERO ── */
     .hero {
       background: linear-gradient(135deg, var(--bg2) 0%, #0D1117 100%);
       border-bottom: 1px solid var(--border);
@@ -436,7 +423,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      color: var(--blue-light);
+      color: var(--accent);
       margin-bottom: 1rem;
     }
 
@@ -459,11 +446,7 @@
       margin-bottom: 2rem;
     }
 
-    .hero-stats {
-      display: flex;
-      gap: 2.5rem;
-      flex-wrap: wrap;
-    }
+    .hero-stats { display: flex; gap: 2.5rem; flex-wrap: wrap; }
 
     .hero-stat-num {
       font-family: 'Syne', sans-serif;
@@ -472,12 +455,8 @@
       color: #fff;
     }
 
-    .hero-stat-label {
-      font-size: 12px;
-      color: var(--muted);
-    }
+    .hero-stat-label { font-size: 12px; color: var(--muted); }
 
-    /* ── MOBILE ── */
     .sidebar-toggle {
       display: none;
       background: none;
@@ -499,367 +478,792 @@
         height: calc(100vh - 60px);
         width: 260px;
       }
-
       .sidebar.open { display: block; }
-
       .sidebar-toggle { display: block; }
-
       .main { padding: 2rem 1.5rem; }
-
       .hero { padding: 2rem 1.5rem; }
-
       .hero h1 { font-size: 1.9rem; }
     }
-  </style>
-  <style>
-    /* Specific overrides for SOP page */
-    .nav-badge { background: #2563EB; color: white; border: none; }
-    .module-title { color: #F0B429; }
-    .content-card pre { background: #0D1117; padding: 15px; border-radius: 8px; border: 1px solid var(--border); overflow-x: auto; font-family: monospace; font-size: 13px; color: #8B949E; margin: 15px 0; }
-    .content-card code { background: #0D1117; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; color: #E6EDF3; }
   </style>
 </head>
 <body>
 
-  <!-- TOP NAV -->
-  <nav class="top-nav">
-    <a href="#" class="nav-logo">
-      <div class="nav-logo-text">Layer<span>Engine</span></div>
-      <div class="nav-badge">Internal Ops</div>
-    </a>
-  </nav>
-
-  <div class="layout">
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-      
-      <div class="sidebar-module">
-        <div class="module-title">1. Fulfilment & Onboarding</div>
-        <a href="#m1-philosophy" class="lesson-link active">1.1 Philosophy & Checklist</a>
-        <a href="#m1-tracking" class="lesson-link">1.2 Client Tracking Sheet</a>
-        <a href="#m1-setup" class="lesson-link">1.3 GHL & Portal Setup</a>
-        <a href="#m1-workflow" class="lesson-link">1.4 Onboarding Workflow</a>
-      </div>
-
-      <div class="sidebar-module">
-        <div class="module-title">2. Attraction Mastery</div>
-        <a href="#m2-demo" class="lesson-link">2.1 Demo Call Process</a>
-        <a href="#m2-pipeline" class="lesson-link">2.2 Pipeline Management</a>
-        <a href="#m2-followup" class="lesson-link">2.3 Follow-Up Scripts</a>
-      </div>
-
-      <div class="sidebar-module">
-        <div class="module-title">3. Video & Assets</div>
-        <a href="#m3-vsl" class="lesson-link">3.1 VSL & Ad Guidelines</a>
-        <a href="#m3-delivery" class="lesson-link">3.2 Video Delivery Process</a>
-        <a href="#m3-sms" class="lesson-link">3.3 SMS Blast Templates</a>
-      </div>
-
-      <div class="sidebar-module">
-        <div class="module-title">4. VA Training Course</div>
-        <a href="#m4-intro" class="lesson-link">4.1 Welcome & Overview</a>
-        <a href="#m4-ghl" class="lesson-link">4.2 GHL Deep Dive</a>
-        <a href="#m4-cloudflare" class="lesson-link">4.3 Cloudflare Access SOP</a>
-      </div>
-
-      <div class="sidebar-module">
-        <div class="module-title">5. AI & Tool Stack</div>
-        <a href="#m5-tools" class="lesson-link">5.1 Internal Tool Stack</a>
-      </div>
-
-    </aside>
-
-    <!-- MAIN CONTENT -->
-    <main class="main-content">
-      
-      <!-- MODULE 1 -->
-      <section id="m1-philosophy" class="content-section active">
-        <div class="content-header">
-          <div class="lesson-meta">Module 1 • Lesson 1</div>
-          <h1 class="lesson-title">Philosophy & Checklist</h1>
-        </div>
-        <div class="content-card">
-          <h2>The LayerEngine Philosophy</h2>
-          <p>We operate on the <strong>Serve → Solve → Transform</strong> framework. Clients pay us not just for software, but for a business transformation. Our internal operations must be flawless so the client feels supported from day one.</p>
-          <br>
-          <h2>Master Checklist</h2>
-          <p>Before any client onboarding begins, ensure you have access to:</p>
-          <ul>
-            <li>GoHighLevel Agency Dashboard</li>
-            <li>Cloudflare Zero Trust Dashboard</li>
-            <li>Client Tracking Google Sheet</li>
-            <li>Internal Slack Workspace</li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="m1-tracking" class="content-section">
-        <div class="content-header">
-          <div class="lesson-meta">Module 1 • Lesson 2</div>
-          <h1 class="lesson-title">Client Tracking Sheet</h1>
-        </div>
-        <div class="content-card">
-          <h2>Daily EOD Process</h2>
-          <p>The VA must update the master Google Sheet at the end of every day. This sheet tracks the client's progress through the "7 Wins" journey.</p>
-          <ul>
-            <li><strong>Win 1 (Day 1-7):</strong> Systems access and orientation.</li>
-            <li><strong>Win 2 (Day 7-14):</strong> Offer creation and VSL scripting.</li>
-            <li><strong>Win 3 (Day 14-21):</strong> Funnel build completion.</li>
-            <li><strong>Win 4 (Day 21-30):</strong> Paid ads launch.</li>
-            <li><strong>Win 5 (Day 30-90):</strong> Sales and lead conversion.</li>
-            <li><strong>Win 6 (Day 90-120):</strong> First deal closed via the system.</li>
-            <li><strong>Win 7 (Day 120+):</strong> Scale and delegation.</li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="m1-setup" class="content-section">
-        <div class="content-header">
-          <div class="lesson-meta">Module 1 • Lesson 3</div>
-          <h1 class="lesson-title">GHL & Portal Setup</h1>
-        </div>
-        <div class="content-card">
-          <h2>Subaccount Creation</h2>
-          <p>For every new client:</p>
-          <ol>
-            <li>Create a new subaccount in GHL using the "LayerEngine Master" snapshot.</li>
-            <li>Add the client as a user.</li>
-            <li>Configure A2P 10DLC registration immediately.</li>
-            <li>Connect their calendar and Zoom integration.</li>
-          </ol>
-          <br>
-          <h2>JotForm Integration</h2>
-          <p>The onboarding JotForm automatically pushes data into the GHL Contact Notes field. Review these notes before the kickoff call to understand their target avatar and value props.</p>
-        </div>
-      </section>
-
-      <section id="m1-workflow" class="content-section">
-        <div class="content-header">
-          <div class="lesson-meta">Module 1 • Lesson 4</div>
-          <h1 class="lesson-title">Onboarding Workflow</h1>
-        </div>
-        <div class="content-card">
-          <h2>The Exact Sequence</h2>
-          <ol>
-            <li><strong>Payment Received:</strong> Stripe integration triggers the onboarding workflow.</li>
-            <li><strong>JotForm Sent:</strong> Automated email sends the onboarding questionnaire.</li>
-            <li><strong>Slack Channel Created:</strong> VA creates `#client-[businessname]` in Slack and invites the client.</li>
-            <li><strong>GHL Setup:</strong> VA provisions the subaccount and imports the snapshot.</li>
-            <li><strong>Welcome Email:</strong> VA sends the manual welcome email with login credentials and next steps.</li>
-          </ol>
-        </div>
-      </section>
-
-      <!-- MODULE 2 -->
-      <section id="m2-demo" class="content-section">
-        <div class="content-header">
-          <div class="lesson-meta">Module 2 • Lesson 1</div>
-          <h1 class="lesson-title">Demo Call Process</h1>
-        </div>
-        <div class="content-card">
-          <h2>The 7-Hour Rule</h2>
-          <p>Prospects must consume content before the call. Ensure the pre-call workflow fires:</p>
-          <ul>
-            <li>Day Prior: Quick confirmation text.</li>
-            <li>Pre-Call Email: Contains the VSL.</li>
-            <li>Calendar: Force a "Yes" RSVP.</li>
-          </ul>
-          <br>
-          <h2>The Belief Ladder</h2>
-          <p>During the call, Adam builds 6 beliefs: Pain, Doubt, Cost, Desire, Support, Trust. The VA's job is to ensure the CRM reflects the outcome of this call immediately.</p>
-        </div>
-      </section>
-
-      <section id="m2-pipeline" class="content-section">
-        <div class="content-header">
-          <div class="lesson-meta">Module 2 • Lesson 2</div>
-          <h1 class="lesson-title">Pipeline Management</h1>
-        </div>
-        <div class="content-card">
-          <h2>EOD Pipeline Clearing</h2>
-          <p>The VA must manage the GHL pipeline daily:</p>
-          <ul>
-            <li><strong>Hot List:</strong> Follow up daily.</li>
-            <li><strong>General List:</strong> Follow up weekly.</li>
-            <li><strong>No Shows:</strong> Move to "No Show" stage. Send reschedule link.</li>
-            <li><strong>Post-Demo:</strong> Send recap email with the PDF offering and VSL link.</li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="m2-followup" class="content-section">
-        <div class="content-header">
-          <div class="lesson-meta">Module 2 • Lesson 3</div>
-          <h1 class="lesson-title">Follow-Up Scripts</h1>
-        </div>
-        <div class="content-card">
-          <h2>The Re-Offer Script</h2>
-          <p>Used to re-engage cold prospects. Send via SMS/Email in GHL:</p>
-          <pre>Hey {first_name}, we just updated our partnership model to include [New Incentive]. Want me to send over the updated breakdown?</pre>
-          <br>
-          <h2>Leadership Follow-Up</h2>
-          <p>Used for prospects who ghosted after a good call:</p>
-          <pre>Hey {first_name}, what's changed since we last spoke? Are you still looking to scale the brokerage this quarter?</pre>
-        </div>
-      </section>
-
-      <!-- MODULE 3 -->
-      <section id="m3-vsl" class="content-section">
-        <div class="content-header">
-          <div class="lesson-meta">Module 3 • Lesson 1</div>
-          <h1 class="lesson-title">VSL & Ad Guidelines</h1>
-        </div>
-        <div class="content-card">
-          <h2>Recording Standards</h2>
-          <p>When reviewing client-submitted videos, check for:</p>
-          <ul>
-            <li>Camera at eye level</li>
-            <li>Clean background, good lighting (facing a window)</li>
-            <li>Clear audio</li>
-          </ul>
-          <p><strong>Live VSL Example:</strong> <code>video.eliteagentblueprint.com/vsl</code></p>
-        </div>
-      </section>
-
-      <section id="m3-delivery" class="content-section">
-        <div class="content-header">
-          <div class="lesson-meta">Module 3 • Lesson 2</div>
-          <h1 class="lesson-title">Video Delivery Process</h1>
-        </div>
-        <div class="content-card">
-          <h2>How Clients Submit Videos</h2>
-          <p>Clients are instructed to create a Google Drive folder named <code>First Name Last Name - Company Name</code>, set it to Editor access, and share the link in Slack.</p>
-          <br>
-          <h2>VA Review Checklist</h2>
-          <p>When a client drops a Drive link in Slack, verify:</p>
-          <ol>
-            <li>Folder is named correctly.</li>
-            <li>Sharing is set to Editor (not Viewer).</li>
-            <li>Only one video per script is uploaded.</li>
-            <li>Files are named EXACTLY as the script names.</li>
-          </ol>
-          <p>If anything is wrong, reply in Slack immediately. If correct, move to the production queue.</p>
-        </div>
-      </section>
-
-      <section id="m3-sms" class="content-section">
-        <div class="content-header">
-          <div class="lesson-meta">Module 3 • Lesson 3</div>
-          <h1 class="lesson-title">SMS Blast Templates</h1>
-        </div>
-        <div class="content-card">
-          <p>These templates are pre-loaded into GHL workflows for client outbound recruiting.</p>
-          
-          <h3>Business-in-a-Box</h3>
-          <pre>Hey {{first_name}}, it's {{sender_name}} from {{brokerage_name}}. We built a complete business-in-a-box for agents. AI marketing, lead gen, automation, and full TC support all done for you. See how it works -> {{vsl_link}}</pre>
-          
-          <h3>Scale Without Burnout</h3>
-          <pre>Doing everything yourself? Our partnership gives you done-for-you lead gen, follow-ups, admin, and client systems so you can scale without burning out. Watch the quick tour -> {{vsl_link}}</pre>
-          
-          <h3>Scarcity Angle</h3>
-          <pre>We're only opening 5 new partnership spots this month for qualified agents ready to scale. See if it's a fit -> {{custom_values.brokerage_calendly_link}}</pre>
-        </div>
-      </section>
-
-      <!-- MODULE 4 -->
-      <section id="m4-intro" class="content-section">
-        <div class="content-header">
-          <div class="lesson-meta">Module 4 • Lesson 1</div>
-          <h1 class="lesson-title">VA Welcome & Overview</h1>
-        </div>
-        <div class="content-card">
-          <h2>Welcome to the Team</h2>
-          <p>This section is your training manual. Your primary responsibility is ensuring client fulfillment runs smoothly. You will live in GoHighLevel, Slack, and Google Drive.</p>
-          <p><strong>Your Daily Rhythms:</strong></p>
-          <ul>
-            <li>Check Slack for client messages and video uploads.</li>
-            <li>Clear the GHL pipeline (Hot List daily).</li>
-            <li>Update the Client Tracking Sheet.</li>
-            <li>Provision new subaccounts as JotForms come in.</li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="m4-ghl" class="content-section">
-        <div class="content-header">
-          <div class="lesson-meta">Module 4 • Lesson 2</div>
-          <h1 class="lesson-title">GHL Deep Dive</h1>
-        </div>
-        <div class="content-card">
-          <h2>Navigating GoHighLevel</h2>
-          <p>As a VA, you must master these areas:</p>
-          <ul>
-            <li><strong>Agency Dashboard:</strong> Where you create subaccounts and manage billing.</li>
-            <li><strong>Subaccounts:</strong> Where client work happens.</li>
-            <li><strong>Conversations:</strong> Where you monitor client SMS/Email replies.</li>
-            <li><strong>Opportunities:</strong> The pipeline view. Move cards left to right.</li>
-            <li><strong>Automation:</strong> Where the workflows live. Do not edit these without approval.</li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="m4-cloudflare" class="content-section">
-        <div class="content-header">
-          <div class="lesson-meta">Module 4 • Lesson 3</div>
-          <h1 class="lesson-title">Cloudflare Access SOP</h1>
-        </div>
-        <div class="content-card">
-          <h2>How to Grant University Access to a New Client</h2>
-          <p>When a new client onboards, they need access to <code>layerengine.ai/university</code>. This is protected by Cloudflare Zero Trust.</p>
-          <ol>
-            <li>Log into <strong>dash.cloudflare.com</strong></li>
-            <li>Navigate to <strong>Zero Trust</strong> -> <strong>Access</strong> -> <strong>Applications</strong></li>
-            <li>Click <strong>Edit</strong> on the "LayerEngine University" application.</li>
-            <li>Scroll down to the <strong>Policies</strong> section and click <strong>Edit</strong> on the active policy.</li>
-            <li>Scroll to the <strong>Include</strong> section (where it says "Emails").</li>
-            <li>Type the client's email address into the field and press Enter/Add.</li>
-            <li>Click <strong>Save policy</strong>.</li>
-          </ol>
-          <p>The client can now access the university using their email address.</p>
-        </div>
-      </section>
-
-      <!-- MODULE 5 -->
-      <section id="m5-tools" class="content-section">
-        <div class="content-header">
-          <div class="lesson-meta">Module 5 • Lesson 1</div>
-          <h1 class="lesson-title">Internal Tool Stack</h1>
-        </div>
-        <div class="content-card">
-          <h2>How We Use AI</h2>
-          <p>We use <strong>Manus AI</strong> as a core part of our workflow to move faster and deliver better work for clients. Use cases include:</p>
-          <ul>
-            <li>Crafting Gamma presentations</li>
-            <li>Making landing pages and funnels</li>
-            <li>Building tracking sheets and calculators</li>
-            <li>Fixing GHL bugs and glitches in automations</li>
-            <li>Generating custom VSL scripts from JotForm answers</li>
-          </ul>
-        </div>
-      </section>
-
-    </main>
+<nav class="top-nav">
+  <a href="/" class="nav-logo">
+    <img src="https://layerengine.ai/le-logo.png" alt="LayerEngine" onerror="this.style.display='none'" />
+    <span class="nav-logo-text">Layer<span>Engine</span></span>
+  </a>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <span class="nav-badge">Internal SOP</span>
+    <button class="sidebar-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#9776; Menu</button>
+    <a href="https://layerengine.ai/university" class="nav-back">University &rarr;</a>
   </div>
+</nav>
 
-  <script>
-    // Simple navigation logic
-    document.querySelectorAll('.lesson-link').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        
-        // Update active link
-        document.querySelectorAll('.lesson-link').forEach(l => l.classList.remove('active'));
-        e.target.classList.add('active');
-        
-        // Update active section
-        const targetId = e.target.getAttribute('href').substring(1);
-        document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-        document.getElementById(targetId).classList.add('active');
-        
-        // Scroll to top
-        window.scrollTo(0, 0);
-      });
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-module-label">Overview</div>
+      <a href="#overview" class="sidebar-link">Operations Overview</a>
+      <a href="#va-week1" class="sidebar-link">VA Week 1 Onboarding</a>
+      <a href="#tool-stack" class="sidebar-link">Tool Stack &amp; Logins</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-module-label">Section 1 &mdash; Client Tiers</div>
+      <a href="#tier-definitions" class="sidebar-link">Tier Definitions</a>
+      <a href="#onboarding-flow" class="sidebar-link">Onboarding Flow</a>
+      <a href="#google-form" class="sidebar-link">Google Form &rarr; GHL Webhook</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-module-label">Section 2 &mdash; Fulfilment</div>
+      <a href="#ghl-setup" class="sidebar-link">GHL Subaccount Setup</a>
+      <a href="#snapshot-import" class="sidebar-link">Snapshot Import</a>
+      <a href="#domain-dns" class="sidebar-link">Domain &amp; DNS</a>
+      <a href="#a2p-sms" class="sidebar-link">A2P SMS Registration</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-module-label">Section 3 &mdash; AI Asset Generation</div>
+      <a href="#ai-overview" class="sidebar-link">AI Workflow Overview</a>
+      <a href="#thesis-prompt" class="sidebar-link">Thesis Presentation Prompt</a>
+      <a href="#vsl-prompt" class="sidebar-link">VSL Script Prompt</a>
+      <a href="#asset-delivery" class="sidebar-link">Asset Delivery SOP</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-module-label">Section 4 &mdash; Attraction Mastery</div>
+      <a href="#attraction-overview" class="sidebar-link">Attraction System Overview</a>
+      <a href="#meta-ads" class="sidebar-link">Meta Ad Setup</a>
+      <a href="#ad-copy-library" class="sidebar-link">Ad Copy Library</a>
+      <a href="#sms-blast" class="sidebar-link">SMS Blast Templates</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-module-label">Section 5 &mdash; Digital Recruiter</div>
+      <a href="#digital-recruiter" class="sidebar-link">24/7 Digital Recruiter</a>
+      <a href="#email-sequences" class="sidebar-link">Email Sequences</a>
+      <a href="#speed-to-lead" class="sidebar-link">Speed to Lead SOP</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-module-label">Section 6 &mdash; Access &amp; Security</div>
+      <a href="#cloudflare-access" class="sidebar-link">Cloudflare Zero Trust</a>
+      <a href="#credentials" class="sidebar-link">Credentials Management</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-module-label">Section 7 &mdash; GHL Knowledge Base</div>
+      <a href="#kb-overview" class="sidebar-link">Knowledge Base Overview</a>
+      <a href="#kb-training" class="sidebar-link">Training Content</a>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <div class="hero" id="overview">
+      <div class="hero-eyebrow">LayerEngine &mdash; Internal Operations</div>
+      <h1>The Operations<br /><span>Playbook</span></h1>
+      <p class="hero-sub">The complete internal SOP for LayerEngine operations. This document is for the owner and VA only. It covers every fulfilment step, every automation, and every AI workflow in the business. Read it in order. Do not skip sections.</p>
+      <div class="hero-stats">
+        <div><div class="hero-stat-num">7</div><div class="hero-stat-label">Sections</div></div>
+        <div><div class="hero-stat-num">3</div><div class="hero-stat-label">Client Tiers</div></div>
+        <div><div class="hero-stat-num">2</div><div class="hero-stat-label">AI Prompts</div></div>
+        <div><div class="hero-stat-num">1</div><div class="hero-stat-label">Webhook Automation</div></div>
+      </div>
+    </div>
+
+    <div style="padding: 3rem 3.5rem 0;" id="va-week1">
+
+    <div class="lesson-section">
+      <div class="module-header"><span class="module-tag intro">Overview</span></div>
+      <h2 class="lesson-title">VA Week 1 Onboarding</h2>
+      <p class="lesson-intro">If you are the VA reading this for the first time, welcome. Your job this week is to read this entire document, get access to every tool, and complete the checklist below. By the end of Day 7 you should be able to onboard a new client from start to finish without asking for help.</p>
+      <h3>Day-by-Day Schedule</h3>
+      <table class="settings-table">
+        <thead><tr><th>Day</th><th>Focus</th></tr></thead>
+        <tbody>
+          <tr><td>Day 1</td><td>Read Sections 1&ndash;2 (Tier Definitions + Fulfilment). Request access to all tools. Log in to GHL agency account.</td></tr>
+          <tr><td>Day 2</td><td>Read Section 3 (AI Asset Generation). Practice running the Thesis Presentation and VSL prompts with a sample client profile.</td></tr>
+          <tr><td>Day 3</td><td>Read Sections 4&ndash;5 (Attraction Mastery + Digital Recruiter). Review the ad copy library and SMS templates.</td></tr>
+          <tr><td>Day 4</td><td>Read Sections 6&ndash;7 (Access + GHL Knowledge Base). Complete the Cloudflare access SOP. Review the KB training content.</td></tr>
+          <tr><td>Day 5</td><td>Shadow a live client onboarding (or walk through a test subaccount setup end-to-end).</td></tr>
+          <tr><td>Days 6&ndash;7</td><td>Complete a full mock onboarding independently. Confirm with owner before going live with real clients.</td></tr>
+        </tbody>
+      </table>
+      <div class="callout success">
+        <p><strong>Goal:</strong> By Day 7 you can receive a Google Form submission, set up a GHL subaccount, generate the AI assets, and deliver them to the client &mdash; all without asking the owner for help.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="tool-stack">
+      <div class="module-header"><span class="module-tag intro">Overview</span></div>
+      <h2 class="lesson-title">Tool Stack &amp; Logins</h2>
+      <p class="lesson-intro">Every tool the business runs on. Request credentials from the owner on Day 1. Never share passwords externally. Use a shared password manager to store them.</p>
+      <table class="settings-table">
+        <thead><tr><th>Tool</th><th>Purpose</th><th>Access Level</th></tr></thead>
+        <tbody>
+          <tr><td>GoHighLevel (Agency)</td><td>CRM, funnels, automations, subaccounts</td><td>Admin</td></tr>
+          <tr><td>Cloudflare</td><td>DNS, Zero Trust access control for /university and /sop</td><td>Read-only</td></tr>
+          <tr><td>GitHub (layerengine-ai)</td><td>Source for layerengine.ai website (Pages deployment)</td><td>Contributor</td></tr>
+          <tr><td>Google Workspace</td><td>Gmail, Drive, Forms, Docs</td><td>Editor</td></tr>
+          <tr><td>Claude / Manus AI</td><td>AI asset generation (Thesis Presentation + VSL scripts)</td><td>Full</td></tr>
+          <tr><td>Meta Business Suite</td><td>Ad account management, campaign monitoring</td><td>Advertiser</td></tr>
+          <tr><td>Canva</td><td>Ad creatives, social posts, slide decks</td><td>Editor</td></tr>
+          <tr><td>Loom</td><td>Screen recordings for client walkthroughs</td><td>Full</td></tr>
+        </tbody>
+      </table>
+      <div class="callout warning">
+        <p><strong>Security rule:</strong> Never store credentials in plain text files or share them via chat. Use the shared password manager. If you are locked out of any tool, message the owner immediately &mdash; do not attempt to reset passwords independently.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="tier-definitions">
+      <div class="module-header"><span class="module-tag s1">Section 1</span></div>
+      <h1 class="lesson-title">Client Tiers</h1>
+      <p class="lesson-intro">LayerEngine serves three high-ticket tiers. Each tier has a different scope of work, a different onboarding path, and a different level of ongoing support. Know the difference before you touch any client file.</p>
+      <hr class="divider" />
+      <h2 class="lesson-title">Tier Definitions</h2>
+
+      <div class="tier-card solo">
+        <h3>Solo &mdash; $2,500</h3>
+        <div class="tier-meta">Best for: Individual agents or small team leads just getting started with digital recruiting</div>
+        <p><strong>Deliverables:</strong></p>
+        <ul>
+          <li>GHL subaccount setup with LayerEngine snapshot</li>
+          <li>Custom Thesis Presentation (AI-generated from intake form)</li>
+          <li>VSL script (AI-generated from intake form)</li>
+          <li>Meta ad campaign setup (1 campaign, 1 ad set, 3 creatives)</li>
+          <li>30-day email nurture sequence activated</li>
+          <li>1 x 60-min onboarding call with owner</li>
+        </ul>
+        <p><strong>Ongoing support:</strong> Email only. No monthly calls. Client has access to LayerEngine University for self-serve guidance.</p>
+      </div>
+
+      <div class="tier-card launch">
+        <h3>Launch &mdash; $5,000</h3>
+        <div class="tier-meta">Best for: Office owners or team leaders who want a fully built system with hands-on launch support</div>
+        <p><strong>Deliverables:</strong></p>
+        <ul>
+          <li>Everything in Solo, plus:</li>
+          <li>Full GHL funnel build (landing page + thank you page + calendar integration)</li>
+          <li>A2P SMS registration assistance</li>
+          <li>2 x ad creative sets (6 total creatives)</li>
+          <li>Custom email sequence (branded to their office)</li>
+          <li>2 x 60-min strategy calls (onboarding + 30-day review)</li>
+          <li>Loom walkthrough video of their entire system</li>
+        </ul>
+        <p><strong>Ongoing support:</strong> Monthly check-in call for 3 months. Email support.</p>
+      </div>
+
+      <div class="tier-card managed">
+        <h3>Managed &mdash; $2,500/month</h3>
+        <div class="tier-meta">Best for: High-volume offices that want LayerEngine to run their entire attraction and recruiting operation</div>
+        <p><strong>Deliverables:</strong></p>
+        <ul>
+          <li>Everything in Launch, plus:</li>
+          <li>Monthly ad campaign management (budget optimization, creative refresh)</li>
+          <li>Weekly lead follow-up audit (checking GHL pipeline health)</li>
+          <li>Monthly new ad creative set</li>
+          <li>Bi-weekly strategy calls</li>
+          <li>Priority Slack/email support</li>
+          <li>Quarterly Thesis Presentation refresh</li>
+        </ul>
+        <p><strong>Ongoing support:</strong> Full managed service. VA handles all routine tasks. Owner handles strategy calls.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="onboarding-flow">
+      <div class="module-header"><span class="module-tag s1">Section 1</span></div>
+      <h2 class="lesson-title">Onboarding Flow</h2>
+      <p class="lesson-intro">Every Solo, Launch, and Managed client follows this exact sequence from payment to first deliverable. Do not deviate. Each step has a responsible party (Owner or VA).</p>
+      <ol class="step-list">
+        <li><strong>[Owner]</strong> Client pays via GHL payment link or Stripe. Payment confirmation email sent automatically.</li>
+        <li><strong>[Owner]</strong> Send welcome email within 24 hours with the Google Form link: <code>https://docs.google.com/forms/d/e/1FAIpQLSdL4-l8hNktO1kqWwnYSdfrnb0z1bKJORYyfQyCZq30hEml0A/viewform</code></li>
+        <li><strong>[Client]</strong> Completes the Google Form (business name, market, goals, value proposition, agent avatar, current pain points, etc.).</li>
+        <li><strong>[Automation]</strong> Google Apps Script fires on form submit &rarr; POSTs to GHL webhook &rarr; contact created in GHL CRM with all form data in the Notes field.</li>
+        <li><strong>[VA]</strong> GHL notification received. Open the new contact. Review the Notes field for all intake answers.</li>
+        <li><strong>[VA]</strong> Create a new GHL subaccount for the client (see Section 2 &mdash; GHL Subaccount Setup).</li>
+        <li><strong>[VA]</strong> Run the Thesis Presentation AI prompt using the form answers (see Section 3).</li>
+        <li><strong>[VA]</strong> Run the VSL Script AI prompt using the form answers (see Section 3).</li>
+        <li><strong>[VA]</strong> Deliver assets to client via Google Drive shared folder. Send delivery email.</li>
+        <li><strong>[Owner]</strong> Conduct onboarding call. Walk client through their GHL account and assets.</li>
+      </ol>
+      <div class="callout">
+        <p><strong>Timeline target:</strong> Steps 5&ndash;9 (VA tasks) should be completed within 48 hours of receiving the form submission. If you are delayed, message the owner immediately.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="google-form">
+      <div class="module-header"><span class="module-tag s1">Section 1</span></div>
+      <h2 class="lesson-title">Google Form &rarr; GHL Webhook</h2>
+      <p class="lesson-intro">This is the automation that converts a form submission into a GHL contact. It runs entirely on autopilot via Google Apps Script. You do not need to touch it &mdash; but you need to understand how it works so you can troubleshoot it.</p>
+      <h3>How It Works</h3>
+      <ol class="step-list">
+        <li>Client submits the Google Form at the link above.</li>
+        <li>Google Apps Script (bound to the form) fires the <code>onFormSubmit</code> trigger.</li>
+        <li>The script collects all form answers and POSTs them as JSON to the GHL webhook URL.</li>
+        <li>GHL receives the payload, creates a contact, and assigns it to the pipeline.</li>
+        <li>VA receives a GHL notification and sees the new contact in the CRM.</li>
+      </ol>
+      <h3>Webhook URL</h3>
+      <p>This is the live GHL webhook endpoint. Do not share it externally.</p>
+      <pre>https://services.leadconnectorhq.com/hooks/s45yFpjz4mgv661CXD8n/webhook-trigger/c1b52f7c-6d58-416e-a31a-501c32c5d508</pre>
+      <h3>Fields Mapped</h3>
+      <table class="settings-table">
+        <thead><tr><th>GHL Field</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>First Name</td><td>Form question: "Your first name"</td></tr>
+          <tr><td>Last Name</td><td>Form question: "Your last name"</td></tr>
+          <tr><td>Email</td><td>Form question: "Email address"</td></tr>
+          <tr><td>Phone</td><td>Form question: "Phone number"</td></tr>
+          <tr><td>Notes</td><td>All remaining form answers concatenated</td></tr>
+        </tbody>
+      </table>
+      <h3>Troubleshooting</h3>
+      <p>If a form submission does not appear in GHL within 5 minutes:</p>
+      <ol>
+        <li>Open the Google Form &rarr; click the three-dot menu &rarr; <strong>Script editor</strong>.</li>
+        <li>Click <strong>Executions</strong> in the left sidebar to see if the trigger fired.</li>
+        <li>If there is an error, check the webhook URL is still active in GHL (Automation &rarr; Workflows &rarr; LayerEngine Onboarding Webhook).</li>
+        <li>If the webhook workflow is paused or deleted, re-create it and update the URL in the Apps Script.</li>
+      </ol>
+      <div class="callout warning">
+        <p><strong>Important:</strong> The Google Form is for Solo, Launch, and Managed tiers ONLY. Lower-tier clients (Tier 1&ndash;3) use the GHL-hosted form at <code>layerengine.ai/onboarding</code>. Do not send the wrong form link to the wrong tier.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="ghl-setup">
+      <div class="module-header"><span class="module-tag s2">Section 2</span></div>
+      <h1 class="lesson-title">Fulfilment</h1>
+      <p class="lesson-intro">Fulfilment is everything that happens after the client pays. Your job is to build their system inside GHL, configure their tools, and deliver their AI-generated assets &mdash; all within 48 hours of receiving the intake form.</p>
+      <hr class="divider" />
+      <h2 class="lesson-title">GHL Subaccount Setup</h2>
+      <p>Every client gets their own GHL subaccount inside the LayerEngine agency. This keeps their data isolated and allows you to manage everything from one dashboard.</p>
+      <ol class="step-list">
+        <li>Log in to the GHL Agency account at <code>app.gohighlevel.com</code>.</li>
+        <li>Click <strong>Accounts</strong> in the left sidebar &rarr; <strong>+ New Account</strong>.</li>
+        <li>Enter the client's business name, email, phone, and timezone.</li>
+        <li>Set the plan to the appropriate tier (Solo = Starter, Launch/Managed = Pro).</li>
+        <li>Click <strong>Create Account</strong>. The subaccount is now live.</li>
+        <li>Proceed to Snapshot Import (next section).</li>
+      </ol>
+      <div class="callout">
+        <p><strong>Naming convention:</strong> Use the format <code>[ClientLastName] &mdash; [BusinessName]</code> for the subaccount name. Example: <code>Wilson &mdash; Atlas Realty Group</code>. This makes it easy to find in the agency dashboard.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="snapshot-import">
+      <div class="module-header"><span class="module-tag s2">Section 2</span></div>
+      <h2 class="lesson-title">Snapshot Import</h2>
+      <p class="lesson-intro">The LayerEngine snapshot contains the pre-built funnel, email sequences, workflows, and pipeline. Importing it saves hours of manual setup and ensures every client gets the same proven system.</p>
+      <ol class="step-list">
+        <li>Inside the new client subaccount, go to <strong>Settings &rarr; Snapshots</strong>.</li>
+        <li>Click <strong>Import Snapshot</strong> and select the <strong>LayerEngine Master Snapshot</strong>.</li>
+        <li>Choose which components to import: Funnels &#10003;, Workflows &#10003;, Email Templates &#10003;, Pipelines &#10003;, Custom Fields &#10003;.</li>
+        <li>Click <strong>Import</strong> and wait for the confirmation message.</li>
+        <li>Navigate to <strong>Funnels</strong> and confirm the recruiting funnel (landing page + thank you page) is present.</li>
+        <li>Navigate to <strong>Automation &rarr; Workflows</strong> and confirm the 30-day nurture sequence is present and set to <em>Draft</em> (not active yet).</li>
+      </ol>
+      <div class="callout warning">
+        <p><strong>Do not activate workflows yet.</strong> The email sequences need to be customized with the client's name, brokerage, and offer before going live. Activating them before customization will send generic emails to leads.</p>
+      </div>
+      <h3>Post-Import Customization Checklist</h3>
+      <ul>
+        <li>Replace all <code>[AGENT_NAME]</code> placeholders with the client's name</li>
+        <li>Replace all <code>[BROKERAGE_NAME]</code> placeholders with their office name</li>
+        <li>Replace all <code>[CALENDAR_LINK]</code> placeholders with their Calendly URL</li>
+        <li>Update the funnel headline to reflect their Thesis (from AI-generated asset)</li>
+        <li>Upload their headshot to the funnel hero section</li>
+        <li>Connect their custom domain (see Domain &amp; DNS section)</li>
+      </ul>
+    </div>
+
+    <div class="lesson-section" id="domain-dns">
+      <div class="module-header"><span class="module-tag s2">Section 2</span></div>
+      <h2 class="lesson-title">Domain &amp; DNS</h2>
+      <p class="lesson-intro">Every client's funnel needs to run on their own domain, not a generic GHL URL. This section covers how to connect their GoDaddy domain to their GHL subaccount.</p>
+      <ol class="step-list">
+        <li>Ask the client for their GoDaddy login credentials (or have them add you as a delegate user).</li>
+        <li>In GHL subaccount &rarr; <strong>Settings &rarr; Domains</strong> &rarr; <strong>+ Add Domain</strong>.</li>
+        <li>Enter the domain (e.g., <code>recruit.johnsmithrealty.com</code>) and click <strong>Save</strong>.</li>
+        <li>GHL will display a CNAME record. Copy the <strong>Name</strong> and <strong>Value</strong>.</li>
+        <li>Log in to GoDaddy &rarr; DNS Management for the domain.</li>
+        <li>Add a new CNAME record with the Name and Value from GHL.</li>
+        <li>Wait 15&ndash;60 minutes for DNS propagation. Refresh the GHL domain settings page until it shows <strong>Verified</strong>.</li>
+        <li>Assign the domain to the recruiting funnel in GHL.</li>
+      </ol>
+      <div class="callout">
+        <p><strong>DNS propagation tip:</strong> Use <a href="https://dnschecker.org" target="_blank" style="color:var(--blue-light)">dnschecker.org</a> to monitor when the CNAME record has propagated globally. Do not tell the client their site is live until it shows green in all regions.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="a2p-sms">
+      <div class="module-header"><span class="module-tag s2">Section 2</span></div>
+      <h2 class="lesson-title">A2P SMS Registration</h2>
+      <p class="lesson-intro">A2P (Application-to-Person) registration is required by US carriers before any automated SMS can be sent from a GHL account. Without it, texts will be blocked. This applies to all US-based clients.</p>
+      <h3>What You Need from the Client</h3>
+      <ul>
+        <li>Legal business name (exactly as registered)</li>
+        <li>EIN (Employer Identification Number) &mdash; US clients only</li>
+        <li>Business address</li>
+        <li>Business website URL</li>
+        <li>Sample SMS message they plan to send</li>
+      </ul>
+      <h3>Registration Steps</h3>
+      <ol class="step-list">
+        <li>In GHL subaccount &rarr; <strong>Settings &rarr; Phone Numbers &rarr; A2P Registration</strong>.</li>
+        <li>Click <strong>Register Brand</strong> and fill in the business details.</li>
+        <li>Click <strong>Register Campaign</strong> &mdash; select "Mixed" use case for recruiting/real estate.</li>
+        <li>Enter the sample message and opt-in language.</li>
+        <li>Submit. Approval typically takes 3&ndash;7 business days.</li>
+        <li>Once approved, the client's phone number will be enabled for automated SMS.</li>
+      </ol>
+      <div class="callout warning">
+        <p><strong>Canadian clients:</strong> A2P registration is not required in Canada, but clients still need a dedicated GHL phone number. Provision one from the Phone Numbers settings page.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="ai-overview">
+      <div class="module-header"><span class="module-tag s3">Section 3</span></div>
+      <h1 class="lesson-title">AI Asset Generation</h1>
+      <p class="lesson-intro">This is the highest-leverage part of your job. Using the client's intake form answers, you will generate two core assets &mdash; a custom Thesis Presentation and a VSL script &mdash; in under 30 minutes using AI. These assets are what make LayerEngine's fulfilment scalable.</p>
+      <hr class="divider" />
+      <h2 class="lesson-title">AI Workflow Overview</h2>
+      <p>The workflow is simple: copy the client's form answers &rarr; paste them into the prompt &rarr; run it in Claude or Manus AI &rarr; review and lightly edit the output &rarr; deliver to client.</p>
+      <table class="settings-table">
+        <thead><tr><th>Asset</th><th>Tool</th><th>Time</th><th>Output Format</th></tr></thead>
+        <tbody>
+          <tr><td>Thesis Presentation</td><td>Claude / Manus AI</td><td>~15 min</td><td>Google Slides or Canva deck (10&ndash;15 slides)</td></tr>
+          <tr><td>VSL Script</td><td>Claude / Manus AI</td><td>~10 min</td><td>Google Doc (teleprompter-ready script)</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <p><strong>Quality standard:</strong> Always read the AI output before delivering it. Fix any generic language, wrong names, or factual errors. The client is paying $2,500&ndash;$5,000 &mdash; the asset must feel custom, not templated.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="thesis-prompt">
+      <div class="module-header"><span class="module-tag s3">Section 3</span></div>
+      <h2 class="lesson-title">Thesis Presentation Prompt</h2>
+      <p class="lesson-intro">This prompt generates a 10&ndash;15 slide Thesis Presentation for the client. The Thesis is the core of their recruiting strategy &mdash; it is the argument they make to agents for why they should join their brokerage. Copy this prompt exactly, fill in the [BRACKETS] with the client's form answers, and run it in Claude or Manus AI.</p>
+      <h3>How to Fill In the Prompt</h3>
+      <p>Open the client's GHL contact record. The Notes field contains all their intake form answers. Copy the relevant answers into each [BRACKET] below.</p>
+      <div class="prompt-block">You are a world-class real estate recruiting strategist and presentation designer. Your job is to create a compelling, professional Thesis Presentation for a brokerage owner who wants to recruit producing agents using a logical, value-driven argument — not begging or competing on splits.
+
+CLIENT PROFILE:
+- Name: [CLIENT_FIRST_NAME] [CLIENT_LAST_NAME]
+- Brokerage/Office Name: [BROKERAGE_NAME]
+- Market/City: [MARKET]
+- Years in business: [YEARS_IN_BUSINESS]
+- Current team size: [TEAM_SIZE]
+- Primary value proposition (what makes their office unique): [VALUE_PROPOSITION]
+- Target agent avatar (who they want to recruit): [AGENT_AVATAR]
+- Top 3 pain points their system solves for agents: [PAIN_POINT_1], [PAIN_POINT_2], [PAIN_POINT_3]
+- Their signature offer or program: [SIGNATURE_OFFER]
+- Notable results or proof points: [PROOF_POINTS]
+
+TASK:
+Create a 12-slide Thesis Presentation outline with the following structure:
+
+Slide 1 — Title slide: "[BROKERAGE_NAME] — The Agent Attraction Thesis"
+Slide 2 — The Problem: What is broken about how most agents grow their business today?
+Slide 3 — The Market Opportunity: Why now is the best time for agents to plug into a system like [BROKERAGE_NAME]
+Slide 4 — The Thesis Statement: One clear, bold argument for why [BROKERAGE_NAME] is the best platform for a producing agent in [MARKET]
+Slide 5 — The Value Stack: The 5–7 specific things [BROKERAGE_NAME] provides that agents cannot easily replicate on their own
+Slide 6 — The Agent Avatar: Who this is for (and who it is NOT for)
+Slide 7 — Proof / Social Proof: Results, testimonials, or case studies from current agents
+Slide 8 — The System: How the LayerEngine attraction and nurture system works (automated lead gen + follow-up)
+Slide 9 — The Offer: What joining looks like (onboarding process, timeline, first 90 days)
+Slide 10 — Objection Handling: The 3 most common objections and how to address them
+Slide 11 — The Call to Action: What you want them to do next (book a strategy call)
+Slide 12 — Closing slide: Contact info + next steps
+
+For each slide, provide:
+- Slide title
+- 3–5 bullet points or key talking points
+- A suggested visual or layout note (e.g., "Use a split layout with headshot on right")
+- Any specific language or phrasing that should be used verbatim
+
+Write in a confident, direct, professional tone. This is not a sales pitch — it is a logical argument. The agent should feel like they are being recruited by a leader, not a salesperson.</div>
+      <div class="action-box">
+        <div class="action-box-label">Delivery Instructions</div>
+        <p>Once the AI generates the outline, build the slides in Canva using the LayerEngine presentation template. Export as PDF and upload to the client's Google Drive folder. Send the delivery email (template in Section 3 &mdash; Asset Delivery SOP).</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="vsl-prompt">
+      <div class="module-header"><span class="module-tag s3">Section 3</span></div>
+      <h2 class="lesson-title">VSL Script Prompt</h2>
+      <p class="lesson-intro">This prompt generates a Video Sales Letter (VSL) script for the client. The VSL is a 5&ndash;8 minute video the client records and embeds on their recruiting funnel landing page. Copy this prompt, fill in the [BRACKETS], and run it in Claude or Manus AI.</p>
+      <div class="prompt-block">You are an expert direct-response copywriter specializing in real estate recruiting. Your job is to write a compelling, authentic VSL (Video Sales Letter) script for a brokerage owner who wants to recruit producing agents.
+
+CLIENT PROFILE:
+- Name: [CLIENT_FIRST_NAME] [CLIENT_LAST_NAME]
+- Brokerage/Office Name: [BROKERAGE_NAME]
+- Market/City: [MARKET]
+- Primary value proposition: [VALUE_PROPOSITION]
+- Target agent avatar: [AGENT_AVATAR]
+- Top 3 pain points solved: [PAIN_POINT_1], [PAIN_POINT_2], [PAIN_POINT_3]
+- Signature offer: [SIGNATURE_OFFER]
+- Proof points / results: [PROOF_POINTS]
+- Tone preference: [TONE — e.g., "direct and confident" or "warm and conversational"]
+
+TASK:
+Write a 5–8 minute VSL script (approximately 750–1,200 words when spoken at a natural pace) with the following structure:
+
+HOOK (0:00–0:30):
+Open with a bold, pattern-interrupting statement that speaks directly to the agent's biggest frustration. Do NOT start with "Hi, my name is..." Start with the pain point.
+
+PROBLEM (0:30–1:30):
+Agitate the problem. Why is the agent stuck? What is the industry doing wrong? Make them feel understood.
+
+CREDIBILITY (1:30–2:30):
+Introduce [CLIENT_FIRST_NAME] and [BROKERAGE_NAME]. Establish authority without bragging. Use specific numbers and results.
+
+THE THESIS (2:30–4:00):
+Present the core argument. Why is [BROKERAGE_NAME] the platform that solves the agent's problem? Walk through the value stack.
+
+THE OFFER (4:00–5:30):
+Describe what joining looks like. Be specific about the first 30/60/90 days. Make it feel low-risk and high-reward.
+
+THE CLOSE (5:30–end):
+Clear call to action. Tell them exactly what to do next (click the button below, book a call). Create urgency without being pushy.
+
+FORMATTING REQUIREMENTS:
+- Write in first person as [CLIENT_FIRST_NAME]
+- Use short sentences and natural spoken language — this will be read on camera
+- Add [PAUSE] markers where the speaker should pause for emphasis
+- Add [SMILE] or [LEAN IN] stage direction notes where appropriate
+- Mark the approximate timestamp at the start of each section
+- End with a word count estimate
+
+The script should feel authentic, not scripted. The agent watching should feel like they are having a real conversation with [CLIENT_FIRST_NAME], not watching an ad.</div>
+      <div class="callout success">
+        <p><strong>Pro tip:</strong> After generating the script, read it out loud yourself. If any sentence feels unnatural to say, rewrite it. A script that sounds like the client's natural voice converts far better than polished corporate copy.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="asset-delivery">
+      <div class="module-header"><span class="module-tag s3">Section 3</span></div>
+      <h2 class="lesson-title">Asset Delivery SOP</h2>
+      <p class="lesson-intro">Once the AI assets are generated and reviewed, follow this exact process to deliver them to the client. Consistency in delivery builds trust and sets the tone for the entire relationship.</p>
+      <ol class="step-list">
+        <li>Create a new folder in Google Drive: <code>LayerEngine Clients / [ClientLastName] &mdash; [BrokerageName]</code></li>
+        <li>Upload the Thesis Presentation (PDF + Canva link) to the folder.</li>
+        <li>Upload the VSL Script (Google Doc) to the folder.</li>
+        <li>Set folder sharing to "Anyone with the link can view".</li>
+        <li>Copy the folder link.</li>
+        <li>Send the delivery email (template below) from the LayerEngine Gmail account.</li>
+        <li>Update the client's GHL contact record: add a note "Assets delivered [DATE]" and move them to the "Assets Delivered" pipeline stage.</li>
+      </ol>
+      <h3>Delivery Email Template</h3>
+      <div class="sms-template" style="border-left-color: var(--blue-light);">
+        <strong>Subject:</strong> Your LayerEngine Assets Are Ready<br /><br />
+        Hi [First Name],<br /><br />
+        Your custom assets are ready. I've put everything in a shared Google Drive folder for you:<br /><br />
+        [GOOGLE DRIVE LINK]<br /><br />
+        Inside you'll find:<br />
+        &#10003; Your Thesis Presentation (PDF + editable Canva link)<br />
+        &#10003; Your VSL Script (Google Doc &mdash; teleprompter-ready)<br /><br />
+        Next step: Review both documents and let me know if you'd like any tweaks before your onboarding call with [OWNER_NAME].<br /><br />
+        Your onboarding call is scheduled for [DATE/TIME]. You'll receive a calendar invite shortly.<br /><br />
+        Talk soon,<br />
+        [VA_NAME]<br />
+        LayerEngine Operations
+      </div>
+    </div>
+
+    <div class="lesson-section" id="attraction-overview">
+      <div class="module-header"><span class="module-tag s4">Section 4</span></div>
+      <h1 class="lesson-title">Attraction Mastery</h1>
+      <p class="lesson-intro">The Attraction System is how clients generate a consistent flow of agent leads. Your job is to set it up correctly during fulfilment and monitor it monthly for Managed clients. This section covers the Meta ad setup, ad copy library, and SMS blast templates.</p>
+      <hr class="divider" />
+      <h2 class="lesson-title">Attraction System Overview</h2>
+      <p>The system works in three stages: <strong>Attract</strong> (Meta ads drive traffic to the funnel), <strong>Capture</strong> (funnel collects lead info and books calls), and <strong>Nurture</strong> (30-day email + SMS sequence keeps leads warm until they are ready to move).</p>
+      <table class="settings-table">
+        <thead><tr><th>Stage</th><th>Tool</th><th>VA Responsibility</th></tr></thead>
+        <tbody>
+          <tr><td>Attract</td><td>Meta Ads Manager</td><td>Set up campaign, upload creatives, set budget</td></tr>
+          <tr><td>Capture</td><td>GHL Funnel + Calendar</td><td>Ensure funnel is live, calendar is connected, thank-you page is correct</td></tr>
+          <tr><td>Nurture</td><td>GHL Workflows (Email + SMS)</td><td>Activate workflow after customization is complete</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="lesson-section" id="meta-ads">
+      <div class="module-header"><span class="module-tag s4">Section 4</span></div>
+      <h2 class="lesson-title">Meta Ad Setup</h2>
+      <p class="lesson-intro">This is the standard Meta campaign structure for all LayerEngine clients. Do not deviate from this structure unless the owner specifically instructs you to.</p>
+      <h3>Campaign Structure</h3>
+      <table class="settings-table">
+        <thead><tr><th>Level</th><th>Setting</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Campaign</td><td>Objective</td><td>Leads</td></tr>
+          <tr><td>Campaign</td><td>Budget type</td><td>Campaign Budget Optimization (CBO)</td></tr>
+          <tr><td>Campaign</td><td>Daily budget</td><td>$30&ndash;$50/day (start)</td></tr>
+          <tr><td>Ad Set</td><td>Conversion location</td><td>Website (GHL funnel URL)</td></tr>
+          <tr><td>Ad Set</td><td>Audience</td><td>Broad (no interest targeting) &mdash; let Meta optimize</td></tr>
+          <tr><td>Ad Set</td><td>Age range</td><td>25&ndash;55</td></tr>
+          <tr><td>Ad Set</td><td>Placement</td><td>Advantage+ Placements (automatic)</td></tr>
+          <tr><td>Ad</td><td>Format</td><td>Single image or short video (15&ndash;30 sec)</td></tr>
+          <tr><td>Ad</td><td>Primary text</td><td>Use Ad Copy Library (below)</td></tr>
+          <tr><td>Ad</td><td>Headline</td><td>Use Ad Copy Library (below)</td></tr>
+          <tr><td>Ad</td><td>CTA button</td><td>"Learn More"</td></tr>
+        </tbody>
+      </table>
+      <div class="callout warning">
+        <p><strong>Do not use interest targeting.</strong> Meta's broad audience algorithm consistently outperforms manually selected interests for recruiting campaigns. Trust the algorithm and let it optimize for 7&ndash;14 days before making changes.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="ad-copy-library">
+      <div class="module-header"><span class="module-tag s4">Section 4</span></div>
+      <h2 class="lesson-title">Ad Copy Library</h2>
+      <p class="lesson-intro">These are proven ad copy templates. Replace [BROKERAGE_NAME], [MARKET], and [OFFER] with the client's details. Test 3 variations per campaign and pause the lowest performer after 7 days.</p>
+      <h3>Primary Text Templates</h3>
+      <div class="sms-template">
+        <strong>Version A &mdash; Pain Point Lead</strong><br />
+        If you're a producing agent in [MARKET] and you're tired of chasing leads, doing your own admin, and watching your GCI plateau &mdash; this is for you.<br /><br />
+        [BROKERAGE_NAME] is looking for 3&ndash;5 agents who want to plug into a fully automated lead generation and follow-up system &mdash; so you can focus on closing deals instead of chasing them.<br /><br />
+        Click below to watch a short video and see if this is a fit.
+      </div>
+      <div class="sms-template">
+        <strong>Version B &mdash; Curiosity Lead</strong><br />
+        What if your brokerage ran ads for you, followed up with your leads automatically, and handled your admin &mdash; so you could just show up and close?<br /><br />
+        That's what we built at [BROKERAGE_NAME].<br /><br />
+        Watch the 5-minute video below to see exactly how it works.
+      </div>
+      <div class="sms-template">
+        <strong>Version C &mdash; Direct Offer</strong><br />
+        Attention [MARKET] real estate agents:<br /><br />
+        [BROKERAGE_NAME] is offering [OFFER] to 3 producing agents who join before [DATE].<br /><br />
+        If you've been thinking about making a move, now is the time. Click below to book a 20-minute call and see if you qualify.
+      </div>
+      <h3>Headline Templates</h3>
+      <ul>
+        <li>"Stop Chasing Leads. Start Attracting Them."</li>
+        <li>"The [MARKET] Brokerage That Runs Your Marketing For You"</li>
+        <li>"Producing Agents: Is Your Brokerage Holding You Back?"</li>
+        <li>"We Built the System. You Just Close the Deals."</li>
+        <li>"Join [BROKERAGE_NAME] &mdash; [MARKET]'s Fastest-Growing Team"</li>
+      </ul>
+    </div>
+
+    <div class="lesson-section" id="sms-blast">
+      <div class="module-header"><span class="module-tag s4">Section 4</span></div>
+      <h2 class="lesson-title">SMS Blast Templates</h2>
+      <p class="lesson-intro">SMS blasts are sent to the client's existing database of agent contacts &mdash; not to cold leads. These are warm outreach messages to agents the client already knows. Use GHL's bulk SMS feature. Always get client approval before sending.</p>
+      <div class="callout danger">
+        <p><strong>Compliance rule:</strong> Only send SMS to contacts who have opted in or have an existing relationship with the client. Never blast cold lists. Violating this can get the client's GHL phone number flagged and their A2P registration revoked.</p>
+      </div>
+      <h3>Blast Templates</h3>
+      <div class="sms-template">
+        <strong>Template 1 &mdash; Soft Outreach</strong><br />
+        Hey [First Name], it's [CLIENT_NAME] from [BROKERAGE_NAME]. I've been building something I think you'll find interesting &mdash; a fully automated recruiting and lead gen system for agents. Would love to show you a quick video. Want me to send it over?
+      </div>
+      <div class="sms-template">
+        <strong>Template 2 &mdash; Direct Invite</strong><br />
+        [First Name] &mdash; [CLIENT_NAME] here. I'm hosting a quick 20-min virtual info session on [DATE] about how agents in [MARKET] are using automation to double their GCI without working more hours. Thought of you. Want the link?
+      </div>
+      <div class="sms-template">
+        <strong>Template 3 &mdash; Re-engagement</strong><br />
+        Hey [First Name], haven't talked in a while. I recently made some big changes to how I run my business at [BROKERAGE_NAME] &mdash; specifically around lead gen and admin. If you're ever open to a quick chat, I'd love to catch up. No pressure at all.
+      </div>
+      <h3>Follow-Up Sequence (After No Reply)</h3>
+      <table class="settings-table">
+        <thead><tr><th>Day</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td>Day 0</td><td>Send initial blast template</td></tr>
+          <tr><td>Day 3</td><td>Follow-up: "Hey [First Name], just wanted to make sure this didn't get buried. Happy to send over the video if you're curious."</td></tr>
+          <tr><td>Day 7</td><td>Final follow-up: "No worries if the timing isn't right. I'll leave it here &mdash; if you ever want to chat about what we're building at [BROKERAGE_NAME], just reply and I'll get back to you."</td></tr>
+          <tr><td>Day 8+</td><td>Move to long-term nurture sequence. Do not continue manual outreach.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="lesson-section" id="digital-recruiter">
+      <div class="module-header"><span class="module-tag s5">Section 5</span></div>
+      <h1 class="lesson-title">24/7 Digital Recruiter</h1>
+      <p class="lesson-intro">The 24/7 Digital Recruiter is the automated system that works while the client sleeps. It combines the Meta ad campaign, the GHL funnel, and the 30-day email + SMS nurture sequence into one continuous machine. Your job is to set it up correctly and make sure it never stops running.</p>
+      <hr class="divider" />
+      <h2 class="lesson-title">How the Digital Recruiter Works</h2>
+      <p>An agent sees the ad &rarr; clicks &rarr; lands on the funnel &rarr; watches the VSL &rarr; fills out the form &rarr; gets added to GHL &rarr; receives automated Day 1 email + SMS &rarr; receives follow-up sequence for 30 days &rarr; books a call when ready.</p>
+      <p>The client does not need to do anything in this sequence. The system handles it. Their only job is to show up for the strategy call when an agent books one.</p>
+      <div class="callout success">
+        <p><strong>Key insight:</strong> Most agents will not book a call on Day 1. The 30-day sequence is what converts them. Agents who book on Day 14, 21, or 28 are often the most serious. Do not turn off the sequence early.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="email-sequences">
+      <div class="module-header"><span class="module-tag s5">Section 5</span></div>
+      <h2 class="lesson-title">Email Sequences</h2>
+      <p class="lesson-intro">The 30-day email nurture sequence is pre-built in the GHL snapshot. After customizing the placeholders, activate the workflow and it runs automatically.</p>
+      <h3>Sequence Structure</h3>
+      <table class="settings-table">
+        <thead><tr><th>Email</th><th>Day</th><th>Subject</th><th>Goal</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>0 (immediate)</td><td>"Welcome &mdash; Here's What Happens Next"</td><td>Set expectations, deliver VSL link</td></tr>
+          <tr><td>2</td><td>1</td><td>"The #1 Mistake Agents Make (And How to Fix It)"</td><td>Educate, build authority</td></tr>
+          <tr><td>3</td><td>3</td><td>"How [AGENT_NAME] Closed 3 More Deals Without Working More Hours"</td><td>Social proof / case study</td></tr>
+          <tr><td>4</td><td>5</td><td>"The Value Stack: What You Get When You Join [BROKERAGE_NAME]"</td><td>Reinforce offer</td></tr>
+          <tr><td>5</td><td>7</td><td>"Still on the fence? Read this."</td><td>Objection handling</td></tr>
+          <tr><td>6</td><td>10</td><td>"A quick question for you"</td><td>Re-engagement, personal touch</td></tr>
+          <tr><td>7</td><td>14</td><td>"The market is moving. Are you?"</td><td>Urgency, market context</td></tr>
+          <tr><td>8</td><td>21</td><td>"Last chance to book your strategy call this month"</td><td>Urgency, CTA</td></tr>
+          <tr><td>9</td><td>28</td><td>"I'll leave this here for when you're ready"</td><td>Long-term nurture, no pressure</td></tr>
+          <tr><td>10</td><td>30</td><td>"Moving you to our monthly newsletter"</td><td>Transition to long-term list</td></tr>
+        </tbody>
+      </table>
+      <div class="callout warning">
+        <p><strong>Before activating:</strong> Read every email in the sequence. Make sure all placeholders are replaced, all links work, and the tone matches the client's voice. Send test emails to yourself before going live.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="speed-to-lead">
+      <div class="module-header"><span class="module-tag s5">Section 5</span></div>
+      <h2 class="lesson-title">Speed to Lead SOP</h2>
+      <p class="lesson-intro">Speed to lead is the single most important variable in converting inbound leads. Research shows that responding within 5 minutes increases conversion by 9x compared to responding after 30 minutes. This SOP ensures the client's system responds instantly.</p>
+      <h3>Automated Speed-to-Lead Workflow</h3>
+      <ol class="step-list">
+        <li>Lead submits form &rarr; GHL contact created instantly.</li>
+        <li>Workflow fires: immediate SMS sent from client's GHL number: <em>"Hey [First Name], it's [CLIENT_NAME] from [BROKERAGE_NAME]. Thanks for checking us out &mdash; I'd love to connect. What's the best time for a quick 20-min call this week?"</em></li>
+        <li>Simultaneous email sent (Email #1 from the nurture sequence).</li>
+        <li>GHL notification sent to client's phone: "New lead: [Lead Name] &mdash; [Lead Phone]".</li>
+        <li>If lead does not reply within 24 hours: Day 1 follow-up SMS fires automatically.</li>
+      </ol>
+      <div class="callout">
+        <p><strong>Client instruction:</strong> Tell every client to respond personally to leads who reply to the automated SMS within the first hour. The automation opens the door &mdash; the client closes it. If they are not responding to replies, the system is wasted.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="cloudflare-access">
+      <div class="module-header"><span class="module-tag s6">Section 6</span></div>
+      <h1 class="lesson-title">Access &amp; Security</h1>
+      <p class="lesson-intro">The LayerEngine internal pages (/university and /sop) are protected by Cloudflare Zero Trust. Only approved email addresses can access them. This section covers how to grant and revoke access, and how to troubleshoot login issues.</p>
+      <hr class="divider" />
+      <h2 class="lesson-title">Cloudflare Zero Trust Access</h2>
+      <h3>How It Works</h3>
+      <p>When a user visits <code>layerengine.ai/university</code> or <code>layerengine.ai/sop</code>, Cloudflare intercepts the request and checks if the user's email is on the approved list. If it is, they receive a one-time magic link via email. If it is not, access is denied.</p>
+      <h3>Granting Access to a New Client or VA</h3>
+      <ol class="step-list">
+        <li>Log in to <a href="https://dash.cloudflare.com" target="_blank" style="color:var(--blue-light)">dash.cloudflare.com</a> with the LayerEngine account.</li>
+        <li>Navigate to <strong>Zero Trust &rarr; Access &rarr; Applications</strong>.</li>
+        <li>Click on the <strong>LayerEngine University</strong> application (or SOP application).</li>
+        <li>Click <strong>Edit</strong> &rarr; <strong>Policies</strong>.</li>
+        <li>Under the "Allow" policy, add the new email address to the "Emails" list.</li>
+        <li>Click <strong>Save</strong>. Access is granted immediately.</li>
+      </ol>
+      <div class="callout warning">
+        <p><strong>SOP page access:</strong> The /sop page should only be accessible to the owner and active VAs. Do NOT add client emails to the SOP application. Clients get access to /university only.</p>
+      </div>
+      <h3>Revoking Access</h3>
+      <p>To remove a user's access (e.g., when a client's subscription expires or a VA leaves): follow steps 1&ndash;4 above, remove the email from the "Emails" list, and click <strong>Save</strong>. Access is revoked immediately.</p>
+      <h3>Troubleshooting Login Issues</h3>
+      <table class="settings-table">
+        <thead><tr><th>Issue</th><th>Fix</th></tr></thead>
+        <tbody>
+          <tr><td>"Access denied" error</td><td>Confirm the email is on the approved list. Check for typos.</td></tr>
+          <tr><td>Magic link email not received</td><td>Check spam folder. If not there, resend from the Cloudflare Access login page.</td></tr>
+          <tr><td>Magic link expired</td><td>Magic links expire after 30 minutes. Request a new one.</td></tr>
+          <tr><td>Page shows 404</td><td>The HTML file may not be deployed. Check GitHub Pages deployment status.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="lesson-section" id="credentials">
+      <div class="module-header"><span class="module-tag s6">Section 6</span></div>
+      <h2 class="lesson-title">Credentials Management</h2>
+      <p class="lesson-intro">All LayerEngine credentials are stored in the shared password manager. Never store passwords in plain text, email, or chat.</p>
+      <table class="settings-table">
+        <thead><tr><th>Service</th><th>Stored In</th><th>Who Has Access</th></tr></thead>
+        <tbody>
+          <tr><td>GoHighLevel (Agency)</td><td>Password manager</td><td>Owner + VA</td></tr>
+          <tr><td>Cloudflare</td><td>Password manager</td><td>Owner only</td></tr>
+          <tr><td>GitHub</td><td>Password manager</td><td>Owner + VA</td></tr>
+          <tr><td>Google Workspace</td><td>Password manager</td><td>Owner + VA</td></tr>
+          <tr><td>Meta Business Suite</td><td>Password manager</td><td>Owner + VA</td></tr>
+          <tr><td>GHL Webhook URL</td><td>This SOP document (internal only)</td><td>Owner + VA</td></tr>
+        </tbody>
+      </table>
+      <div class="callout danger">
+        <p><strong>If you suspect a credential has been compromised:</strong> Notify the owner immediately. Do not attempt to change passwords without owner approval. The owner will rotate all affected credentials and audit access logs.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="kb-overview">
+      <div class="module-header"><span class="module-tag s7">Section 7</span></div>
+      <h1 class="lesson-title">GHL Knowledge Base</h1>
+      <p class="lesson-intro">The GHL AI Knowledge Base is trained on LayerEngine's content so the GHL AI bot can answer client questions accurately. This section covers what content to add to the knowledge base and how to update it as the business evolves.</p>
+      <hr class="divider" />
+      <h2 class="lesson-title">Knowledge Base Overview</h2>
+      <p>The GHL AI bot is embedded in the client-facing community and chat widget. When a client asks a question, the bot searches the knowledge base first. If it finds a relevant answer, it responds automatically. If not, it escalates to the VA.</p>
+      <table class="settings-table">
+        <thead><tr><th>Category</th><th>Content to Include</th></tr></thead>
+        <tbody>
+          <tr><td>Onboarding FAQs</td><td>What happens after I pay? How long does setup take? What do I need to provide?</td></tr>
+          <tr><td>GHL Platform</td><td>How do I log in? How do I add a contact? How do I check my pipeline?</td></tr>
+          <tr><td>Meta Ads</td><td>How do I check my ad performance? What does CPL mean? When should I change my budget?</td></tr>
+          <tr><td>Email Sequences</td><td>How do I customize my emails? How do I pause the sequence? How do I add a new contact?</td></tr>
+          <tr><td>Thesis Presentation</td><td>What is a Thesis Presentation? How do I use it? Can I edit it?</td></tr>
+          <tr><td>VSL</td><td>How do I record my VSL? What equipment do I need? Where does it go on my funnel?</td></tr>
+          <tr><td>Billing</td><td>How do I upgrade my plan? How do I cancel? What is included in each tier?</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="lesson-section" id="kb-training">
+      <div class="module-header"><span class="module-tag s7">Section 7</span></div>
+      <h2 class="lesson-title">Training Content</h2>
+      <p class="lesson-intro">Add the following content to the GHL Knowledge Base. Format each entry as a Q&amp;A pair. The more specific the question, the more accurate the AI response will be.</p>
+      <h3>How to Add Content to the Knowledge Base</h3>
+      <ol class="step-list">
+        <li>In GHL Agency &rarr; <strong>Settings &rarr; AI &rarr; Knowledge Base</strong>.</li>
+        <li>Click <strong>+ Add Document</strong>.</li>
+        <li>Paste the Q&amp;A content as plain text or upload a PDF.</li>
+        <li>Click <strong>Save</strong>. The AI will index the content within a few minutes.</li>
+        <li>Test the bot by asking it the questions you just added. Confirm the answers are accurate.</li>
+      </ol>
+      <h3>Priority Q&amp;A Entries to Add First</h3>
+      <div class="sms-template" style="border-left-color: var(--blue-light);">
+        <strong>Q: What happens after I pay?</strong><br />
+        A: Within 24 hours you will receive a welcome email with a link to a short intake form. Once you complete the form, our team will build your custom GHL system and generate your Thesis Presentation and VSL script. Total setup time is 48&ndash;72 hours. You will then receive your assets and schedule your onboarding call.
+      </div>
+      <div class="sms-template" style="border-left-color: var(--blue-light);">
+        <strong>Q: How long does it take to see results from the ads?</strong><br />
+        A: Most clients see their first leads within 3&ndash;7 days of launching their Meta campaign. However, the algorithm needs 7&ndash;14 days to optimize. We recommend not making changes to the campaign in the first two weeks. Consistent results typically appear in weeks 3&ndash;4.
+      </div>
+      <div class="sms-template" style="border-left-color: var(--blue-light);">
+        <strong>Q: Can I customize my email sequence?</strong><br />
+        A: Yes. Your email sequence is fully editable inside your GHL account. Go to Automation &rarr; Workflows &rarr; [Your Nurture Sequence]. You can edit the subject lines, body copy, and timing of each email. We recommend keeping the structure but personalizing the language to match your voice.
+      </div>
+      <div class="sms-template" style="border-left-color: var(--blue-light);">
+        <strong>Q: What is a Thesis Presentation and how do I use it?</strong><br />
+        A: Your Thesis Presentation is a 12-slide deck that makes the logical argument for why a producing agent should join your brokerage. You use it in two ways: (1) as a leave-behind after a strategy call &mdash; send the PDF to agents who want to "think about it", and (2) as the foundation for your VSL script. The stronger your Thesis, the higher your conversion rate on calls.
+      </div>
+      <div class="callout">
+        <p><strong>Ongoing maintenance:</strong> Update the knowledge base whenever a new FAQ comes up in client support emails. If the same question is asked twice, it belongs in the knowledge base. The goal is for the AI bot to handle 80% of client questions without VA involvement.</p>
+      </div>
+    </div>
+
+    </div>
+  </main>
+</div>
+
+<script>
+  const sections = document.querySelectorAll('.lesson-section[id], .hero[id]');
+  const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        sidebarLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + entry.target.id) {
+            link.classList.add('active');
+          }
+        });
+      }
     });
-  </script>
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(section => observer.observe(section));
+</script>
+
 </body>
 </html>
