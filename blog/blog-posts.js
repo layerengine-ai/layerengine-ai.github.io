@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "a2p-10dlc-explained-sms-compliance-recruiting-advantage",
+    title: "A2P 10DLC Explained: The SMS Compliance Recruiting Advantage",
+    excerpt: "Most brokerages are getting their recruiting texts blocked by carriers and don't even know it. Learn how A2P 10DLC compliance transforms your SMS channel from a liability into your most powerful recruiting weapon.",
+    category: "Compliance",
+    date: "July 5, 2026",
+    readTime: "7 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M12 14h16v12a2 2 0 0 1-2 2H14a2 2 0 0 1-2-2V14z" stroke="#3B82F6" stroke-width="1.5"/><path d="M16 14v-2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="#3B82F6" stroke-width="1.5"/><path d="M16 22h8M16 19h5" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/></svg>`
+  },
+  {
     slug: "the-real-cost-of-agent-turnover",
     title: "The Real Cost of Agent Turnover",
     excerpt: "Every agent who walks out the door costs your brokerage far more than their last commission split. Discover the hidden financial impact of real estate agent turnover — and the automated retention systems that stop the bleeding.",
