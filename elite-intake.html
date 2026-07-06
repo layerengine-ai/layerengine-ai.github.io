@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elite Agent Blueprint — VSL & Offer Workshop Prep</title>
+  <meta name="description" content="Complete this intake form before your Elite Agent Blueprint workshop session. Your answers will be used to build your personalized Thesis Presentation and Video Sales Letter." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0D1117;
+      --bg2: #161B22;
+      --bg3: #1C2333;
+      --border: rgba(255,255,255,0.07);
+      --kw-red: #CC0000;
+      --kw-red-light: #E53E3E;
+      --text: #E6EDF3;
+      --muted: #8B949E;
+      --accent: #F0B429;
+      --green: #10B981;
+      --green-light: #34D399;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── TOP NAV ── */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(13,17,23,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-kw-badge {
+      background: var(--kw-red);
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      padding: 4px 12px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-program-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: #fff;
+      letter-spacing: -0.2px;
+    }
+
+    .nav-step-badge {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #0D1117 0%, #1a0a0a 50%, #0D1117 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 2rem 3.5rem;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(204,0,0,0.1);
+      border: 1px solid rgba(204,0,0,0.25);
+      color: #F87171;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: #F87171;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero h1 span { color: var(--kw-red-light); }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 2rem;
+      line-height: 1.65;
+    }
+
+    /* ── WHAT HAPPENS CALLOUT ── */
+    .what-happens {
+      max-width: 760px;
+      margin: 0 auto;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem 2rem;
+      text-align: left;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 640px) {
+      .what-happens { grid-template-columns: 1fr; }
+    }
+
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .step-num {
+      width: 28px;
+      height: 28px;
+      background: var(--kw-red);
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .step-title {
+      font-weight: 600;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .step-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .page-body {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    /* ── SECTION HEADERS ── */
+    .section-header {
+      margin-bottom: 2rem;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-tag.avatar { background: rgba(59,130,246,0.12); color: #60A5FA; border: 1px solid rgba(96,165,250,0.2); }
+    .section-tag.offer { background: rgba(240,180,41,0.12); color: var(--accent); border: 1px solid rgba(240,180,41,0.2); }
+    .section-tag.proof { background: rgba(16,185,129,0.12); color: var(--green-light); border: 1px solid rgba(52,211,153,0.2); }
+    .section-tag.cta { background: rgba(204,0,0,0.12); color: #F87171; border: 1px solid rgba(248,113,113,0.2); }
+
+    .section-header h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-header p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 620px;
+    }
+
+    /* ── EXPLAINER CARDS ── */
+    .explainer {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .explainer-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .explainer p {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .explainer p + p { margin-top: 0.5rem; }
+
+    /* ── EXAMPLE CARDS ── */
+    .examples {
+      margin-bottom: 1.5rem;
+    }
+
+    .examples-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .example-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 600px) {
+      .example-grid { grid-template-columns: 1fr; }
+    }
+
+    .example-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+    }
+
+    .example-card .ex-type {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .example-card p {
+      font-size: 0.875rem;
+      color: var(--text);
+      line-height: 1.55;
+      font-style: italic;
+    }
+
+    /* ── FORMULA BOX ── */
+    .formula-box {
+      background: linear-gradient(135deg, rgba(204,0,0,0.08), rgba(240,180,41,0.06));
+      border: 1px solid rgba(204,0,0,0.2);
+      border-radius: 10px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .formula-box .formula-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--kw-red-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .formula-text {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.5;
+    }
+
+    .formula-text .bracket {
+      color: var(--accent);
+    }
+
+    .formula-examples {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .formula-example {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.55;
+      padding-left: 1rem;
+      border-left: 2px solid rgba(240,180,41,0.3);
+      font-style: italic;
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 3rem 0;
+    }
+
+    /* ── FORM EMBED ── */
+    .form-section {
+      margin-top: 2.5rem;
+    }
+
+    .form-intro {
+      background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(52,211,153,0.04));
+      border: 1px solid rgba(52,211,153,0.15);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .form-intro-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .form-intro-text h3 {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--green-light);
+      margin-bottom: 0.35rem;
+    }
+
+    .form-intro-text p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .form-embed-wrapper {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .form-embed-wrapper iframe {
+      display: block;
+      width: 100%;
+      border: none;
+    }
+
+    /* ── TIPS SECTION ── */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .tips-grid { grid-template-columns: 1fr; }
+    }
+
+    .tip-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+    }
+
+    .tip-card .tip-icon {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .tip-card h4 {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #fff;
+      margin-bottom: 0.35rem;
+    }
+
+    .tip-card p {
+      font-size: 0.825rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── FOOTER ── */
+    .page-footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .page-footer p {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .page-footer a {
+      color: var(--muted);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="top-nav">
+    <div class="nav-brand">
+      <span class="nav-kw-badge">KW</span>
+      <span class="nav-program-name">Elite Agent Blueprint</span>
+    </div>
+    <span class="nav-step-badge">Workshop Prep</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">Before Your Workshop Session</div>
+    <h1>Build Your <span>Irresistible Offer</span><br>& Video Sales Letter</h1>
+    <p class="hero-sub">
+      Complete this intake form before your workshop session. Your answers will be used by AI to generate a personalized Thesis Presentation and Video Sales Letter — tailored to your niche, your story, and your clients.
+    </p>
+    <div class="what-happens">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-title">You Fill This Out</div>
+        <div class="step-desc">Answer 10 questions about your avatar, offer, proof, and call to action. Takes about 10–15 minutes.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-title">AI Builds Your Assets</div>
+        <div class="step-desc">Your answers are fed into AI prompts that generate your VSL script and Thesis Presentation slides.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-title">You Record & Launch</div>
+        <div class="step-desc">Record a simple screen-share video using your script. Your 24/7 digital salesperson is live.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN BODY -->
+  <main class="page-body">
+
+    <!-- SECTION: AVATAR -->
+    <div class="section-header">
+      <span class="section-tag avatar">Section 1 of 4</span>
+      <h2>Your Avatar — Who You're Talking To</h2>
+      <p>Before you can build an offer, you need to know exactly who it's for. The more specific you are here, the more powerful your VSL will be. A message that speaks to everyone speaks to no one.</p>
+    </div>
+
+    <div class="explainer">
+      <div class="explainer-label">Why this matters</div>
+      <p>Your avatar is the single person you're imagining when you record your video. Not "buyers and sellers in San Diego" — but "Sarah, a 34-year-old first-time buyer in La Jolla who's been outbid three times and is starting to wonder if she'll ever own a home."</p>
+      <p>When your VSL speaks directly to that person's specific fears and frustrations, they feel like you're reading their mind — and that's what gets them to book a call.</p>
+    </div>
+
+    <div class="examples">
+      <div class="examples-label">Worked Examples</div>
+      <div class="example-grid">
+        <div class="example-card">
+          <div class="ex-type">Buyer-Focused Agent</div>
+          <p>"First-time buyers in San Diego who keep losing out to all-cash offers and don't know how to compete without overpaying."</p>
+        </div>
+        <div class="example-card">
+          <div class="ex-type">Seller-Focused Agent</div>
+          <p>"Seniors in La Jolla who want to downsize but are overwhelmed by the idea of prepping their home for sale and don't know where to start."</p>
+        </div>
+        <div class="example-card">
+          <div class="ex-type">Relocation Specialist</div>
+          <p>"Military families relocating to Camp Pendleton who need to buy sight-unseen and are terrified of making a $600k mistake from 2,000 miles away."</p>
+        </div>
+        <div class="example-card">
+          <div class="ex-type">Investor-Focused Agent</div>
+          <p>"Local investors who want to add a rental property but don't have time to search the MLS every day and keep missing the deals before they're gone."</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="section-divider" />
+
+    <!-- SECTION: OFFER -->
+    <div class="section-header">
+      <span class="section-tag offer">Section 2 of 4</span>
+      <h2>Your Unique Solution — The Offer Formula</h2>
+      <p>This is the core of everything. One sentence that explains exactly who you help, what result you deliver, what frustration you eliminate, and how you do it differently than every other agent.</p>
+    </div>
+
+    <div class="formula-box">
+      <div class="formula-label">The Offer Formula</div>
+      <div class="formula-text">
+        I help <span class="bracket">{type of client}</span> get <span class="bracket">{desirable result}</span> without <span class="bracket">{common frustration}</span> by using <span class="bracket">{your unique method}</span>.
+      </div>
+      <div class="formula-examples">
+        <div class="formula-example">"I help first-time buyers own a home without a big down payment using my 3-step lender-approved strategy."</div>
+        <div class="formula-example">"I help downsizing seniors sell their homes in 14 days without endless showings by using our Private Buyer Pool system."</div>
+        <div class="formula-example">"I help busy professionals buy investment properties without spending hours on the MLS using my Off-Market Deal Finder system."</div>
+      </div>
+    </div>
+
+    <div class="explainer">
+      <div class="explainer-label">What are "core pillars"?</div>
+      <p>Your pillars are the 3–4 steps inside your system — the process you walk every client through. They don't need to be complicated. Think of them as the chapters of your method.</p>
+      <p>Example: If your system is called "The La Jolla Buyer Blueprint," your pillars might be: <strong>Pillar 1: Full Underwriting Before You Search</strong> → <strong>Pillar 2: Off-Market Access</strong> → <strong>Pillar 3: The Escalation Offer Strategy</strong>. These become the slide headers in your Thesis Presentation.</p>
+    </div>
+
+    <hr class="section-divider" />
+
+    <!-- SECTION: PROOF -->
+    <div class="section-header">
+      <span class="section-tag proof">Section 3 of 4</span>
+      <h2>Proof & Authority — Your Story and Results</h2>
+      <p>People don't buy promises — they buy proof. This section gives your VSL credibility. You need two things: specific results you've delivered, and the story of why you built your system.</p>
+    </div>
+
+    <div class="examples">
+      <div class="examples-label">How to write your results (with numbers)</div>
+      <div class="example-grid">
+        <div class="example-card">
+          <div class="ex-type">Too Vague</div>
+          <p>"I helped a family find a great home in a competitive market."</p>
+        </div>
+        <div class="example-card">
+          <div class="ex-type">Specific & Powerful</div>
+          <p>"Helped the Martinez family win their offer at $15k under asking price after losing out on 4 homes — closed in 28 days."</p>
+        </div>
+        <div class="example-card">
+          <div class="ex-type">Too Vague</div>
+          <p>"My seller got a good price for their home."</p>
+        </div>
+        <div class="example-card">
+          <div class="ex-type">Specific & Powerful</div>
+          <p>"Sold a 3-bed in Encinitas for $47k over asking in 6 days with 9 offers — no open houses, no price reductions."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="explainer">
+      <div class="explainer-label">Your origin story — what to write</div>
+      <p>Your origin story is 2–3 sentences that explain <em>why</em> you built your specific system. It humanizes you and makes your method feel intentional, not accidental.</p>
+      <p><strong>Template:</strong> "I built [system name] after seeing [specific problem you witnessed]. I realized [insight]. So I developed [your method] specifically to [result it delivers]."</p>
+      <p><strong>Example:</strong> "I built the La Jolla Buyer Blueprint after watching 6 clients lose their dream homes to all-cash investors in a single month. I realized the problem wasn't their budget — it was their strategy. So I developed a system that gets buyers fully underwritten and connected to off-market inventory before anyone else sees it."</p>
+    </div>
+
+    <hr class="section-divider" />
+
+    <!-- SECTION: CTA -->
+    <div class="section-header">
+      <span class="section-tag cta">Section 4 of 4</span>
+      <h2>Guarantee & Call to Action</h2>
+      <p>The last 60 seconds of your VSL are the most important. This is where you remove risk and tell people exactly what to do next. One clear action — no confusion, no options.</p>
+    </div>
+
+    <div class="examples">
+      <div class="examples-label">Guarantee examples</div>
+      <div class="example-grid">
+        <div class="example-card">
+          <div class="ex-type">Buyer Agent</div>
+          <p>"If you don't love the home you buy, I'll sell it for free within 12 months — no commissions, no questions."</p>
+        </div>
+        <div class="example-card">
+          <div class="ex-type">Listing Agent</div>
+          <p>"If I don't sell your home in 30 days, I'll cut my commission in half. No fine print."</p>
+        </div>
+        <div class="example-card">
+          <div class="ex-type">Low-Risk Option</div>
+          <p>"Our first strategy call is completely free. If you don't walk away with a clear plan, you owe me nothing."</p>
+        </div>
+        <div class="example-card">
+          <div class="ex-type">Soft Guarantee</div>
+          <p>"Cancel anytime — no long-term contracts, no pressure. I only earn your business if I earn your trust."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="explainer">
+      <div class="explainer-label">Your call to action — keep it ONE thing</div>
+      <p>The biggest mistake agents make is ending their VSL with "call me, email me, DM me, or fill out the form below." Pick one. The best CTA for most agents is a calendar booking link — it filters for serious buyers/sellers and eliminates phone tag.</p>
+      <p><strong>Examples:</strong> "Click the button below to book your free 30-minute Strategy Session" → "Download my free Home Buyer Playbook" → "Text READY to [number] to get started."</p>
+    </div>
+
+    <!-- TIPS -->
+    <hr class="section-divider" />
+
+    <div class="section-header">
+      <span class="section-tag avatar">Before You Fill Out the Form</span>
+      <h2>4 Tips to Get the Best Results</h2>
+      <p>The quality of your VSL script depends entirely on the quality of your answers. Here's how to make yours stand out.</p>
+    </div>
+
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-icon">🎯</div>
+        <h4>Be Specific, Not General</h4>
+        <p>Avoid "buyers and sellers in my area." Name a specific type of person, a specific neighborhood, a specific problem. Specificity = credibility.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🔢</div>
+        <h4>Use Real Numbers</h4>
+        <p>Don't say "sold quickly." Say "sold in 9 days for $42k over asking." Numbers are the difference between a claim and proof.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">💬</div>
+        <h4>Write Like You Talk</h4>
+        <p>Don't write how you think a professional should sound. Write how you actually talk to clients. The AI will clean it up — your job is to be real.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">⏱️</div>
+        <h4>Give Yourself 15 Minutes</h4>
+        <p>Don't rush this. Block out 15 minutes, close your other tabs, and think about your best clients. This is the foundation of everything you'll build.</p>
+      </div>
+    </div>
+
+    <!-- FORM EMBED -->
+    <div class="form-section">
+      <div class="form-intro">
+        <div class="form-intro-icon">✅</div>
+        <div class="form-intro-text">
+          <h3>Ready? Complete your intake form below.</h3>
+          <p>Your answers are saved automatically as you go. The form has 5 short sections and takes about 10–15 minutes. Once submitted, your coach will use your answers to build your personalized VSL script and Thesis Presentation before the workshop.</p>
+        </div>
+      </div>
+      <div class="form-embed-wrapper">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSeYKVFBEQJB26pQ1WnQ9YBY5LgSG2oRN6kwsPMpVgqRhjTWcA/viewform?embedded=true"
+          width="100%"
+          height="1600"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          title="Elite Agent Blueprint: VSL & Offer Workshop Prep Form"
+        >Loading form…</iframe>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    <p>Elite Agent Blueprint &mdash; Keller Williams La Jolla &mdash; Powered by LayerEngine AI</p>
+  </footer>
+
+</body>
+</html>
