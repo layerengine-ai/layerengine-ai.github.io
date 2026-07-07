@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "how-to-onboard-a-new-real-estate-agent-in-30-days-without-touching-the-technology",
+    title: "How to Onboard a New Real Estate Agent in 30 Days Without Touching the Technology",
+    excerpt: "Stop losing agents to bad onboarding. Discover the fully automated 30-day onboarding blueprint that top brokerages use to give new agents a VIP experience — without the broker ever touching the technology.",
+    category: "Agent Retention",
+    date: "July 7, 2026",
+    readTime: "6 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M13 12h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H13a2 2 0 0 1-2-2V14a2 2 0 0 1 2-2z" stroke="#3B82F6" stroke-width="1.5"/><path d="M16 20h8M16 24h5M20 12v-2" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="10" r="2" stroke="#3B82F6" stroke-width="1.5"/></svg>`
+  },
+  {
     slug: "a2p-10dlc-explained-sms-compliance-recruiting-advantage",
     title: "A2P 10DLC Explained: The SMS Compliance Recruiting Advantage",
     excerpt: "Most brokerages are getting their recruiting texts blocked by carriers and don't even know it. Learn how A2P 10DLC compliance transforms your SMS channel from a liability into your most powerful recruiting weapon.",
