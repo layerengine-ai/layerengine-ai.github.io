@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "the-6-layer-growth-system",
+    title: "The 6-Layer Growth System",
+    excerpt: "Most brokerages hit a growth ceiling because they rely on manual effort. Discover the 6-Layer Growth System — the automated framework that top real estate teams use to attract, convert, and retain top agents at scale in 2026.",
+    category: "Growth Systems",
+    date: "July 10, 2026",
+    readTime: "6 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><rect x="9" y="11" width="22" height="3" rx="1.5" fill="#3B82F6" opacity="0.4"/><rect x="9" y="18" width="22" height="3" rx="1.5" fill="#3B82F6" opacity="0.7"/><rect x="9" y="25" width="22" height="3" rx="1.5" fill="#3B82F6"/></svg>`
+  },
+  {
     slug: "how-to-onboard-a-new-real-estate-agent-in-30-days-without-touching-the-technology",
     title: "How to Onboard a New Real Estate Agent in 30 Days Without Touching the Technology",
     excerpt: "Stop losing agents to bad onboarding. Discover the fully automated 30-day onboarding blueprint that top brokerages use to give new agents a VIP experience — without the broker ever touching the technology.",
