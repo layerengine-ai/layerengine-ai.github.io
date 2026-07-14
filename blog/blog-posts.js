@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "mortgage-team-recruiting-in-2025",
+    title: "Mortgage Team Recruiting in 2025: A Proven Playbook",
+    excerpt: "The mortgage teams that win productive loan officers do more than offer a bigger check. Build a repeatable recruiting engine with sharper targeting, a stronger producer offer, automated follow-up, and a structured 90-day ramp.",
+    category: "Mortgage Recruiting",
+    date: "July 14, 2026",
+    readTime: "7 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M10 20.5L20 12l10 8.5" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 19v10h13V19M17 29v-6h6v6" stroke="#3B82F6" stroke-width="1.5" stroke-linejoin="round"/><path d="M27 14v5" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/></svg>`
+  },
+  {
     slug: "the-6-layer-growth-system",
     title: "The 6-Layer Growth System",
     excerpt: "Most brokerages hit a growth ceiling because they rely on manual effort. Discover the 6-Layer Growth System — the automated framework that top real estate teams use to attract, convert, and retain top agents at scale in 2026.",
