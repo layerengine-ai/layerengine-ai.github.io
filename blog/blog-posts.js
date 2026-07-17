@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "what-agents-actually-want-from-their-brokerage",
+    title: "What Agents Actually Want From Their Brokerage",
+    excerpt: "Discover the true drivers of real estate agent retention. Hint: It is not just about the split. Learn how automated support, done-for-you marketing, and clear systems keep top producers loyal.",
+    category: "Agent Retention",
+    date: "July 17, 2026",
+    readTime: "6 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M20 10a10 10 0 1 0 0 20 10 10 0 0 0 0-20z" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/><path d="M20 14v6l4 2" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/></svg>`
+  },
+  {
     slug: "mortgage-team-recruiting-in-2025",
     title: "Mortgage Team Recruiting in 2025: A Proven Playbook",
     excerpt: "The mortgage teams that win productive loan officers do more than offer a bigger check. Build a repeatable recruiting engine with sharper targeting, a stronger producer offer, automated follow-up, and a structured 90-day ramp.",
