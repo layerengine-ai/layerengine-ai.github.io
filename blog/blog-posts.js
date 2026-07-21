@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "gohighlevel-vs-other-crms-for-real-estate-recruiting",
+    title: "GoHighLevel vs Other CRMs for Real Estate Recruiting",
+    excerpt: "Most real estate CRMs are built to manage clients, not recruit agents. Discover why GoHighLevel outperforms traditional real estate CRMs when it comes to automated talent attraction and brokerage growth.",
+    category: "Automation",
+    date: "July 21, 2026",
+    readTime: "7 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M10 12h20v16H10z" stroke="#3B82F6" stroke-width="1.5" stroke-linejoin="round"/><path d="M15 18h10M15 23h6" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/><path d="M27 10l3 3-3 3" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+  },
+  {
     slug: "what-agents-actually-want-from-their-brokerage",
     title: "What Agents Actually Want From Their Brokerage",
     excerpt: "Discover the true drivers of real estate agent retention. Hint: It is not just about the split. Learn how automated support, done-for-you marketing, and clear systems keep top producers loyal.",
