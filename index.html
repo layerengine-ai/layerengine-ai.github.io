@@ -569,15 +569,49 @@
 
 #le-wrapper .le-pricing-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 2rem;
-  max-width: 960px;
+  max-width: 1200px;
   margin: 3.5rem auto 0;
   align-items: start;
 }
 
+@media (max-width: 1024px) {
+  #le-wrapper .le-pricing-grid { grid-template-columns: 1fr 1fr; }
+}
+
 @media (max-width: 768px) {
   #le-wrapper .le-pricing-grid { grid-template-columns: 1fr; }
+}
+
+#le-wrapper .le-pricing-enterprise {
+  grid-column: 1 / -1;
+  background: #0D1117 !important;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  #le-wrapper .le-pricing-enterprise { flex-direction: column; text-align: center; }
+}
+
+#le-wrapper .le-pricing-commitment-note {
+  text-align: center;
+  font-size: 13px;
+  color: #9CA3AF !important;
+  margin: 2rem auto 0;
+  max-width: 700px;
+  padding: 1rem 1.5rem;
+  background: rgba(37,99,235,0.07);
+  border: 1px solid rgba(37,99,235,0.2);
+  border-radius: 10px;
+  line-height: 1.6;
 }
 
 #le-wrapper .le-pricing-card {
@@ -1409,105 +1443,141 @@ function leCloseNav() {
     <div style="text-align:center;">
       <div class="le-section-eyebrow">Pricing</div>
       <h2 class="le-section-h2">Simple pricing.<br><span>Serious results.</span></h2>
-      <p class="le-section-sub" style="margin: 0 auto; max-width: 620px;">Two plans built for real estate brokerages and mortgage lending teams. We start with an audit of your current stack — most clients are already paying for most of the solution. LayerEngine consolidates it, builds what is missing, and runs it. No revenue share. No long-term contracts.</p>
+      <p class="le-section-sub" style="margin: 0 auto; max-width: 680px;">Three tiers built for every stage of growth &mdash; from self-run to fully managed. Every plan includes a complete system build. You choose how much support you want after that.</p>
     </div>
 
     <div class="le-pricing-grid">
 
-      <!-- STANDARD -->
+      <!-- TIER 1: SELF-MANAGED -->
       <div class="le-pricing-card">
         <div class="le-pricing-header">
-          <div class="le-pricing-label">Launch</div>
-          <div class="le-pricing-name">We Build It. Your Team Runs It.</div>
+          <div class="le-pricing-label">Tier 1 &mdash; Self-Managed</div>
+          <div class="le-pricing-name">We Build It. You Run It.</div>
         </div>
         <div class="le-pricing-body">
           <div class="le-pricing-setup">
-            <div class="le-pricing-amount">$1,000</div>
-            <div class="le-pricing-period">/month</div>
+            <div class="le-pricing-amount">$197</div>
+            <div class="le-pricing-period">/mo</div>
           </div>
           <div class="le-pricing-setup-note">
-            + <strong>$2,500 System Build Investment</strong> &mdash; your full system built and launched in 14 days
+            + <strong>$2,500 setup fee</strong> (one-time) &mdash; tech fee only after handoff
           </div>
           <div class="le-pricing-includes">What's included</div>
           <div class="le-pricing-feature">
             <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div class="le-pricing-feature-text"><strong>Full CRM build</strong> &mdash; pipelines, automations, and sequences configured for your organization</div>
+            <div class="le-pricing-feature-text"><strong>Full system build</strong> &mdash; your complete LayerEngine system built and configured</div>
           </div>
           <div class="le-pricing-feature">
             <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div class="le-pricing-feature-text"><strong>AI voice &amp; SMS recruiting engine</strong> &mdash; 24/7 outbound outreach and candidate qualification</div>
+            <div class="le-pricing-feature-text"><strong>Snapshot &amp; training resources</strong> &mdash; everything you need to run the system yourself</div>
           </div>
           <div class="le-pricing-feature">
             <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div class="le-pricing-feature-text"><strong>Branded recruiting funnel</strong> &mdash; VSL and landing page built under your brand</div>
+            <div class="le-pricing-feature-text"><strong>Access to the University</strong> &mdash; full training library included</div>
           </div>
-          <div class="le-pricing-feature">
-            <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div class="le-pricing-feature-text"><strong>Onboarding automation</strong> &mdash; every touchpoint from signed to producing</div>
-          </div>
-          <div class="le-pricing-feature">
-            <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div class="le-pricing-feature-text"><strong>Team training &amp; handoff</strong> &mdash; your team gets the keys and learns to manage the system</div>
-          </div>
-          <div class="le-pricing-feature">
-            <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div class="le-pricing-feature-text"><strong>Zero revenue share</strong> &mdash; we never touch your transaction income</div>
-          </div>
-          <div style="margin-top:1.25rem;padding:0.65rem 1rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:8px;font-size:12px;color:#9CA3AF;line-height:1.5;">&#43; Producer Lead Generation System available as an add-on</div>
-          <div style="margin-top:1.25rem; padding-top:1.25rem; border-top:1px solid rgba(255,255,255,0.07); font-size:12px; color:#6B7280;">Client responsible for: texting/AI usage costs (competitive per-message rates) + A2P registration (~$100&ndash;$200 one-time)</div>
+          <div style="margin-top:1.25rem;padding:0.75rem 1rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:8px;font-size:12px;color:#9CA3AF;line-height:1.6;">After handoff, you own and operate the system. No ongoing support included.</div>
+          <div style="margin-top:1rem; padding-top:1rem; border-top:1px solid rgba(255,255,255,0.07); font-size:12px; color:#6B7280;">Client also responsible for: texting/AI usage costs (offered at a discounted rate through our platform).</div>
           <a href="https://calendly.com/adam-layerengine/30min" class="le-pricing-cta" style="margin-top:1.5rem;" target="_blank">Book a Strategy Call &rarr;</a>
-          <div class="le-pricing-note">System Build Investment is due when you sign. System delivered in 14 days. Monthly billing begins 30 days after signing — giving you the full build window plus a 14-day buffer before your first invoice. Month-to-month. Cancel anytime.</div>
+          <div class="le-pricing-note">Setup fee due at signing. Monthly billing begins 30 days after signing.</div>
         </div>
       </div>
 
-      <!-- MANAGED -->
+      <!-- TIER 2: SUPPORTED -->
+      <div class="le-pricing-card">
+        <div class="le-pricing-header">
+          <div class="le-pricing-label">Tier 2 &mdash; Supported</div>
+          <div class="le-pricing-name">We Build It. We Support You.</div>
+        </div>
+        <div class="le-pricing-body">
+          <div class="le-pricing-setup">
+            <div class="le-pricing-amount">$697</div>
+            <div class="le-pricing-period">/mo</div>
+          </div>
+          <div class="le-pricing-setup-note">
+            + <strong>$1,000 setup fee</strong> (one-time) &mdash; requires 6-month commitment &bull; <span style="color:#93C5FD;">$197 tech + $500 service</span>
+          </div>
+          <div class="le-pricing-includes">What's included</div>
+          <div class="le-pricing-feature">
+            <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="le-pricing-feature-text"><strong>Full system build</strong> &mdash; complete LayerEngine system built and configured</div>
+          </div>
+          <div class="le-pricing-feature">
+            <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="le-pricing-feature-text"><strong>Ongoing optimization support</strong> &mdash; we stay in it with you throughout your commitment</div>
+          </div>
+          <div class="le-pricing-feature">
+            <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="le-pricing-feature-text"><strong>Accountability check-ins</strong> &mdash; regular touchpoints to keep your system performing</div>
+          </div>
+          <div class="le-pricing-feature">
+            <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="le-pricing-feature-text"><strong>Access to our team</strong> &mdash; throughout the full commitment period</div>
+          </div>
+          <div style="margin-top:1rem; padding-top:1rem; border-top:1px solid rgba(255,255,255,0.07); font-size:12px; color:#6B7280;">Client also responsible for: texting/AI usage costs (offered at a discounted rate through our platform).</div>
+          <a href="https://calendly.com/adam-layerengine/30min" class="le-pricing-cta" style="margin-top:1.5rem;" target="_blank">Book a Strategy Call &rarr;</a>
+          <div class="le-pricing-note">Setup fee due at signing. Monthly billing begins 30 days after signing. Month-to-month available after 6 months.</div>
+        </div>
+      </div>
+
+      <!-- TIER 3: FULLY MANAGED -->
       <div class="le-pricing-card le-pricing-card-featured">
         <div class="le-pricing-badge">Most Popular</div>
         <div class="le-pricing-header">
-          <div class="le-pricing-label">Managed</div>
+          <div class="le-pricing-label">Tier 3 &mdash; Fully Managed</div>
           <div class="le-pricing-name">We Build It. We Run It. Daily.</div>
         </div>
         <div class="le-pricing-body">
           <div class="le-pricing-setup">
-            <div class="le-pricing-amount">$2,000</div>
-            <div class="le-pricing-period">/month</div>
+            <div class="le-pricing-amount">$1,197</div>
+            <div class="le-pricing-period">/mo</div>
           </div>
           <div class="le-pricing-setup-note">
-            + <strong>$5,000 System Build Investment</strong> &mdash; advanced build with custom AI scripts, strategy, and full system configuration
+            + <strong>$1,000 setup fee</strong> (one-time) &mdash; requires 6-month commitment &bull; <span style="color:#93C5FD;">$197 tech + $1,000 service</span>
           </div>
-          <div style="background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.3);border-radius:8px;padding:0.75rem 1rem;margin-bottom:1.25rem;font-size:13px;color:#93C5FD;font-weight:500;line-height:1.5;">&#10003;&nbsp; We manage the system daily &mdash; your team never touches it.</div>
-          <div class="le-pricing-includes">Everything in Launch, plus</div>
+          <div style="background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.3);border-radius:8px;padding:0.75rem 1rem;margin-bottom:1.25rem;font-size:13px;color:#93C5FD;font-weight:500;line-height:1.5;">&#10003;&nbsp; Everything in Supported &mdash; plus daily active management.</div>
+          <div class="le-pricing-includes">Everything in Supported, plus</div>
           <div class="le-pricing-feature">
             <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div class="le-pricing-feature-text"><strong>LayerEngine operates the system daily</strong> &mdash; AI agents built, updated, and optimized on your behalf using the latest tools available. Your team never touches it.</div>
-          </div>
-          <div class="le-pricing-feature">
-            <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div class="le-pricing-feature-text"><strong>Custom AI agent scripts</strong> &mdash; tailored recruiting conversations for your market and culture</div>
+            <div class="le-pricing-feature-text"><strong>Daily active management</strong> &mdash; we operate the system for you, every day</div>
           </div>
           <div class="le-pricing-feature">
             <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div class="le-pricing-feature-text"><strong>Producer Lead Generation System &mdash; included &amp; managed</strong> &mdash; every producer gets their own done-for-you buyer &amp; seller lead gen system, fully deployed and run for them</div>
+            <div class="le-pricing-feature-text"><strong>Custom AI scripts</strong> &mdash; tailored conversations for your market and culture</div>
           </div>
           <div class="le-pricing-feature">
             <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div class="le-pricing-feature-text"><strong>Ongoing optimization &amp; A/B testing</strong> &mdash; sequences, scripts, and funnels continuously improved</div>
+            <div class="le-pricing-feature-text"><strong>Ongoing A/B testing</strong> &mdash; sequences, scripts, and funnels continuously optimized</div>
           </div>
           <div class="le-pricing-feature">
             <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div class="le-pricing-feature-text"><strong>Weekly reporting &amp; strategy calls</strong> &mdash; pipeline, appointments booked, producers signed, onboarding status</div>
+            <div class="le-pricing-feature-text"><strong>Weekly reporting calls</strong> &mdash; pipeline, performance, and strategy every week</div>
           </div>
           <div class="le-pricing-feature">
             <div class="le-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="le-pricing-feature-text"><strong>Dedicated growth partner</strong> &mdash; we're invested in your results, not just your setup</div>
           </div>
-          <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.07); font-size:12px; color:#6B7280;">Client responsible for: texting/AI usage costs (competitive per-message rates) + A2P registration (~$100&ndash;$200 one-time)</div>
+          <div style="margin-top:1rem; padding-top:1rem; border-top:1px solid rgba(255,255,255,0.07); font-size:12px; color:#6B7280;">Client also responsible for: texting/AI usage costs (offered at a discounted rate through our platform).</div>
           <a href="https://calendly.com/adam-layerengine/30min" class="le-pricing-cta" style="margin-top:1.5rem;" target="_blank">Book a Strategy Call &rarr;</a>
-          <div class="le-pricing-note">System Build Investment is due when you sign. System delivered in 14 days. Monthly billing begins 30 days after signing — giving you the full build window plus a 14-day buffer before your first invoice. Month-to-month. Cancel anytime.</div>
+          <div class="le-pricing-note">Setup fee due at signing. Monthly billing begins 30 days after signing. Month-to-month available after 6 months.</div>
         </div>
       </div>
 
+      <!-- ENTERPRISE -->
+      <div class="le-pricing-enterprise">
+        <div>
+          <div class="le-pricing-label" style="margin-bottom:0.5rem;">Multi-Office / Enterprise</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:#FFFFFF;letter-spacing:-0.5px;margin-bottom:0.75rem;">Managing multiple offices?</div>
+          <p style="font-size:14px;color:rgba(255,255,255,0.65);line-height:1.6;max-width:600px;margin:0;">We build custom packages for multi-location operations. The $197/mo tech fee applies per office across all tiers. Book a call and let&rsquo;s map out exactly what your organization needs.</p>
+        </div>
+        <a href="https://calendly.com/adam-layerengine/30min" class="le-pricing-cta" style="margin-top:0;white-space:nowrap;min-width:180px;flex-shrink:0;" target="_blank">Book a Call &rarr;</a>
+      </div>
+
     </div>
+
+    <div class="le-pricing-commitment-note">
+      <strong style="color:#FFFFFF;">&#9432; 6-Month Commitment Note:</strong> The reduced $1,000 setup fee on Tiers 2 and 3 is unlocked by committing to 6 months. After 6 months, both tiers move to month-to-month. The $197/mo tech fee is non-negotiable and applies per office across all tiers.
+    </div>
+
   </div>
 </section>
 
