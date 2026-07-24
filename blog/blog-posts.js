@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "how-to-build-a-passive-recruiting-funnel",
+    title: "How to Build a Passive Recruiting Funnel",
+    excerpt: "Stop chasing agents. Learn how to build a passive recruiting funnel that consistently attracts top-producing real estate agents and mortgage professionals to your brokerage automatically — 24 hours a day, 7 days a week.",
+    category: "Automation",
+    date: "July 24, 2026",
+    readTime: "6 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M10 28c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="14" r="4" stroke="#3B82F6" stroke-width="1.5"/><path d="M20 18v4M16 30h8" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/></svg>`
+  },
+  {
     slug: "gohighlevel-vs-other-crms-for-real-estate-recruiting",
     title: "GoHighLevel vs Other CRMs for Real Estate Recruiting",
     excerpt: "Most real estate CRMs are built to manage clients, not recruit agents. Discover why GoHighLevel outperforms traditional real estate CRMs when it comes to automated talent attraction and brokerage growth.",
