@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "the-real-roi-of-automated-brokerage-operations",
+    title: "The Real ROI of Automated Brokerage Operations",
+    excerpt: "Stop letting manual tasks drain your brokerage's profit margins. Discover the true ROI of automating real estate brokerage operations — from recruiting follow-up to agent onboarding — and how top brokerages scale without adding headcount.",
+    category: "Automation",
+    date: "July 28, 2026",
+    readTime: "7 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M10 30V20l5-5 5 5 5-8 5 8" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 30h20" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/></svg>`
+  },
+  {
     slug: "how-to-build-a-passive-recruiting-funnel",
     title: "How to Build a Passive Recruiting Funnel",
     excerpt: "Stop chasing agents. Learn how to build a passive recruiting funnel that consistently attracts top-producing real estate agents and mortgage professionals to your brokerage automatically — 24 hours a day, 7 days a week.",
