@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "how-ai-voice-agents-are-transforming-real-estate-recruiting",
+    title: "How AI Voice Agents Are Transforming Real Estate Recruiting",
+    excerpt: "The traditional cold-calling playbook is broken. Discover how AI voice agents are replacing human dialers in real estate recruiting — booking more appointments, eliminating burnout, and scaling your brokerage growth automatically.",
+    category: "AI Recruiting",
+    date: "July 31, 2026",
+    readTime: "6 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M28 24.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 10.15 20a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 9.05 9h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 27 23z" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/><circle cx="30" cy="11" r="4" fill="#3B82F6" opacity="0.3"/><path d="M30 9v2l1 1" stroke="#3B82F6" stroke-width="1.2" stroke-linecap="round"/></svg>`
+  },
+  {
     slug: "the-real-roi-of-automated-brokerage-operations",
     title: "The Real ROI of Automated Brokerage Operations",
     excerpt: "Stop letting manual tasks drain your brokerage's profit margins. Discover the true ROI of automating real estate brokerage operations — from recruiting follow-up to agent onboarding — and how top brokerages scale without adding headcount.",
