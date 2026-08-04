@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "how-to-use-ai-to-recruit-real-estate-agents-while-you-sleep",
+    title: "How to Use AI to Recruit Real Estate Agents While You Sleep",
+    excerpt: "Stop dialing for dollars. Discover how AI voice agents and automated recruiting pipelines allow real estate brokerage owners to fill their calendars with qualified agent appointments — 24 hours a day, without lifting a finger.",
+    category: "AI Recruiting",
+    date: "August 4, 2026",
+    readTime: "7 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M20 10c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10S25.523 10 20 10z" stroke="#3B82F6" stroke-width="1.5"/><path d="M20 15v5l3 3" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/><circle cx="30" cy="12" r="4" fill="#3B82F6" opacity="0.3"/><path d="M28.5 12h3M30 10.5v3" stroke="#3B82F6" stroke-width="1.2" stroke-linecap="round"/></svg>`
+  },
+  {
     slug: "how-ai-voice-agents-are-transforming-real-estate-recruiting",
     title: "How AI Voice Agents Are Transforming Real Estate Recruiting",
     excerpt: "The traditional cold-calling playbook is broken. Discover how AI voice agents are replacing human dialers in real estate recruiting — booking more appointments, eliminating burnout, and scaling your brokerage growth automatically.",
