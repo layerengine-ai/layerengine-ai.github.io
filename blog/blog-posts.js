@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "gohighlevel-workflows-for-real-estate-recruiting",
+    title: "GoHighLevel Workflows for Real Estate Recruiting: The Complete 2026 Setup Guide",
+    excerpt: "Discover the exact GoHighLevel workflows and automation setups top real estate brokerages use in 2026 to attract, nurture, and recruit top-producing agents on autopilot — without lifting a finger.",
+    category: "Automation",
+    date: "August 7, 2026",
+    readTime: "8 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M12 20h4l3-7 4 14 3-7h4" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="22" y="10" width="8" height="6" rx="2" stroke="#60A5FA" stroke-width="1.2"/><path d="M25 13h2" stroke="#60A5FA" stroke-width="1.2" stroke-linecap="round"/></svg>`
+  },
+  {
     slug: "how-to-use-ai-to-recruit-real-estate-agents-while-you-sleep",
     title: "How to Use AI to Recruit Real Estate Agents While You Sleep",
     excerpt: "Stop dialing for dollars. Discover how AI voice agents and automated recruiting pipelines allow real estate brokerage owners to fill their calendars with qualified agent appointments — 24 hours a day, without lifting a finger.",
