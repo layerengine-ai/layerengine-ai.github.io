@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "real-estate-recruiting-scorecard-metrics",
+    title: "The Real Estate Recruiting Scorecard: 7 Metrics Every Brokerage Owner Must Track",
+    excerpt: "Stop managing recruiting with disconnected activity counts. Learn the seven stage-based metrics that show exactly where your brokerage or mortgage-team recruiting funnel needs attention.",
+    category: "Recruiting Strategy",
+    date: "August 14, 2026",
+    readTime: "7 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><rect x="10" y="11" width="20" height="18" rx="2" stroke="#3B82F6" stroke-width="1.5"/><path d="M14 24v-4M20 24v-8M26 24v-6" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/><path d="M13 15h14" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/></svg>`
+  },
+  {
     slug: "gohighlevel-workflows-for-real-estate-recruiting",
     title: "GoHighLevel Workflows for Real Estate Recruiting: The Complete 2026 Setup Guide",
     excerpt: "Discover the exact GoHighLevel workflows and automation setups top real estate brokerages use in 2026 to attract, nurture, and recruit top-producing agents on autopilot — without lifting a finger.",
