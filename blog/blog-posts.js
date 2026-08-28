@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "real-estate-recruiting-follow-up-system",
+    title: "The Real Estate Recruiting Follow-Up System: A 21-Day Blueprint",
+    excerpt: "Build a 21-day recruiting follow-up system that helps brokerage owners and mortgage team leaders turn agent interest into qualified conversations — without depending on manual reminders.",
+    category: "Recruiting Strategy",
+    date: "August 28, 2026",
+    readTime: "7 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M13 20a7 7 0 0 1 12-4.9" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/><path d="M25 11v4h-4" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M27 20a7 7 0 0 1-12 4.9" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/><path d="M15 29v-4h4" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20" cy="20" r="2" fill="#3B82F6"/></svg>`
+  },
+  {
     slug: "real-estate-recruiting-scorecard-metrics",
     title: "The Real Estate Recruiting Scorecard: 7 Metrics Every Brokerage Owner Must Track",
     excerpt: "Stop managing recruiting with disconnected activity counts. Learn the seven stage-based metrics that show exactly where your brokerage or mortgage-team recruiting funnel needs attention.",
