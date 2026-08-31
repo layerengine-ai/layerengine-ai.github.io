@@ -21,11 +21,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Inject webhook URL
+      - name: Inject webhook URLs
         env:
           GHL_WEBHOOK_URL: ${{ secrets.GHL_WEBHOOK_URL }}
+          INB_WEBHOOK_URL: ${{ secrets.INB_WEBHOOK_URL }}
         run: |
           sed -i "s|__GHL_WEBHOOK_URL__|$GHL_WEBHOOK_URL|g" sop.html
+          sed -i "s|__INB_WEBHOOK_URL__|$INB_WEBHOOK_URL|g" onboarding.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

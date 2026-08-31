@@ -235,18 +235,6 @@
         margin-top: 2px;
       }
 
-      /* ── GHL FORM WRAPPER ── */
-      .le-ghl-form-wrap {
-        width: 100%;
-        min-height: 600px;
-      }
-
-      .le-ghl-form-wrap iframe {
-        width: 100%;
-        border: none;
-        min-height: 800px;
-      }
-
       /* ── SLACK CARD ── */
       .le-slack-card {
         background: linear-gradient(135deg, #1a1f2e 0%, #111827 100%);
@@ -383,6 +371,253 @@
         color: #9ca3af;
       }
 
+      /* ══════════════════════════════════════════
+         INTAKE FORM (native, replaces GHL iframe)
+         Reuses the site's Syne / DM Sans / blue tokens
+         ══════════════════════════════════════════ */
+
+      .le-form-progress {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 2rem;
+      }
+      .le-form-seg {
+        flex: 1;
+        height: 3px;
+        border-radius: 3px;
+        background: rgba(255, 255, 255, 0.08);
+        overflow: hidden;
+      }
+      .le-form-seg span {
+        display: block;
+        height: 100%;
+        width: 0%;
+        background: #3b82f6;
+        transition: width 0.3s ease;
+      }
+      .le-form-seg.done span,
+      .le-form-seg.active span {
+        width: 100%;
+      }
+
+      .le-fstep {
+        display: none;
+      }
+      .le-fstep.active {
+        display: block;
+        animation: leFade 0.25s ease;
+      }
+      @keyframes leFade {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      .le-fstep-eyebrow {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #3b82f6;
+        background: rgba(37, 99, 235, 0.1);
+        border: 1px solid rgba(37, 99, 235, 0.25);
+        border-radius: 6px;
+        padding: 4px 10px;
+        display: inline-block;
+        margin-bottom: 14px;
+      }
+
+      .le-fstep h2 {
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        letter-spacing: -0.3px;
+        color: #ffffff;
+        margin-bottom: 6px;
+      }
+
+      .le-fstep-desc {
+        font-size: 13px;
+        color: #6b7280;
+        font-weight: 300;
+        margin-bottom: 1.75rem;
+      }
+
+      .le-field {
+        margin-bottom: 1.4rem;
+      }
+      .le-field:last-child {
+        margin-bottom: 0;
+      }
+
+      .le-field label {
+        display: block;
+        font-size: 13px;
+        font-weight: 500;
+        color: #d1d5db;
+        margin-bottom: 8px;
+      }
+      .le-field label .le-req {
+        color: #f87171;
+        margin-left: 2px;
+      }
+      .le-field .le-hint {
+        display: block;
+        font-weight: 300;
+        font-size: 12px;
+        color: #6b7280;
+        margin-top: 3px;
+      }
+
+      .le-field input[type="text"],
+      .le-field input[type="email"],
+      .le-field input[type="tel"],
+      .le-field textarea {
+        width: 100%;
+        background: #0d1117;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: #ffffff;
+        font-family: "DM Sans", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 12px 14px;
+        border-radius: 8px;
+        outline: none;
+        transition:
+          border-color 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+      .le-field textarea {
+        resize: vertical;
+        min-height: 84px;
+      }
+      .le-field input::placeholder,
+      .le-field textarea::placeholder {
+        color: #4b5563;
+        font-weight: 300;
+      }
+      .le-field input:focus,
+      .le-field textarea:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+      }
+      .le-field input.le-error {
+        border-color: #f87171;
+      }
+      .le-error-msg {
+        display: none;
+        color: #f87171;
+        font-size: 12px;
+        margin-top: 6px;
+        font-weight: 400;
+      }
+      .le-error-msg.show {
+        display: block;
+      }
+
+      .le-radio-group,
+      .le-check-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .le-option {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #0d1117;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+        padding: 11px 14px;
+        cursor: pointer;
+        transition:
+          border-color 0.15s ease,
+          background 0.15s ease;
+        font-size: 14px;
+        font-weight: 400;
+        color: #e5e7eb;
+      }
+      .le-option:hover {
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+      .le-option.selected {
+        border-color: #3b82f6;
+        background: rgba(37, 99, 235, 0.08);
+      }
+      .le-option input {
+        accent-color: #3b82f6;
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+      }
+
+      .le-fbtn-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 2rem;
+        gap: 12px;
+      }
+
+      .le-fbtn {
+        font-family: "DM Sans", sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        border-radius: 8px;
+        padding: 11px 22px;
+        cursor: pointer;
+        border: none;
+        transition:
+          background 0.2s ease,
+          opacity 0.15s ease,
+          transform 0.1s ease;
+      }
+      .le-fbtn:active {
+        transform: scale(0.98);
+      }
+      .le-fbtn-back {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #9ca3af;
+      }
+      .le-fbtn-back:hover {
+        border-color: rgba(255, 255, 255, 0.25);
+        color: #ffffff;
+      }
+      .le-fbtn-back:disabled {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .le-fbtn-next {
+        background: #2563eb;
+        color: #ffffff;
+        margin-left: auto;
+      }
+      .le-fbtn-next:hover {
+        background: #3b82f6;
+      }
+
+      .le-fdone {
+        text-align: center;
+        padding: 1.5rem 0;
+      }
+      .le-fdone-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: #2563eb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 18px;
+      }
+
       /* ── RESPONSIVE ── */
       @media (max-width: 600px) {
         .le-ob-hero {
@@ -476,52 +711,312 @@
           </div>
         </div>
 
-        <!-- GHL FORM EMBED -->
-        <div class="le-ghl-form-wrap">
-          <iframe
-            src="https://links.layerengine.ai/widget/form/2r5UzrsFu5JWQoGlX9Gg"
-            style="width: 100%; height: 100%; border: none; border-radius: 8px"
-            id="inline-2r5UzrsFu5JWQoGlX9Gg"
-            data-layout="{'id':'INLINE'}"
-            data-trigger-type="alwaysShow"
-            data-trigger-value=""
-            data-activation-type="alwaysActivated"
-            data-activation-value=""
-            data-deactivation-type="neverDeactivate"
-            data-deactivation-value=""
-            data-form-name="Layer Engine Ai Onboarding Form - Copy"
-            data-height="1583"
-            data-layout-iframe-id="inline-2r5UzrsFu5JWQoGlX9Gg"
-            data-form-id="2r5UzrsFu5JWQoGlX9Gg"
-            title="Layer Engine Ai Onboarding Form - Copy"
-          >
-          </iframe>
-          <script src="https://links.layerengine.ai/js/form_embed.js"></script>
-          <!-- <iframe
-            src="https://api.leadconnectorhq.com/widget/form/KS6zTzbNvgEYwBIiPaCz"
-            style="width: 100%; height: 800px; border: none; border-radius: 4px"
-            id="inline-KS6zTzbNvgEYwBIiPaCz"
-            data-layout="{'id':'INLINE'}"
-            data-trigger-type="alwaysShow"
-            data-trigger-value=""
-            data-activation-type="alwaysActivated"
-            data-activation-value=""
-            data-deactivation-type="neverDeactivate"
-            data-deactivation-value=""
-            data-form-name="LayerEngine Onboarding"
-            data-height="800"
-            data-layout-iframe-id="inline-KS6zTzbNvgEYwBIiPaCz"
-            data-form-id="KS6zTzbNvgEYwBIiPaCz"
-            title="LayerEngine Onboarding"
-          ></iframe>
-          <script src="https://link.msgsndr.com/js/form_embed.js"></script> -->
-        </div>
+        <!-- NATIVE INTAKE FORM -->
+        <div class="le-form-progress" id="leProgress"></div>
+
+        <form id="leIntakeForm" novalidate>
+          <!-- 1: Contact Info -->
+          <div class="le-fstep active" data-fstep="1">
+            <span class="le-fstep-eyebrow">Contact Info</span>
+            <h2>Who are we building this for?</h2>
+            <p class="le-fstep-desc">The basics — how our team gets in touch with you.</p>
+
+            <div class="le-field">
+              <label>First Name <span class="le-req">*</span></label>
+              <input type="text" name="firstName" placeholder="Enter your first name" required />
+              <span class="le-error-msg">First name is required</span>
+            </div>
+            <div class="le-field">
+              <label>Last Name <span class="le-req">*</span></label>
+              <input type="text" name="lastName" placeholder="Enter your last name" required />
+              <span class="le-error-msg">Last name is required</span>
+            </div>
+            <div class="le-field">
+              <label>Email <span class="le-req">*</span></label>
+              <input type="email" name="email" placeholder="name@email.com" required />
+              <span class="le-error-msg">A valid email is required</span>
+            </div>
+            <div class="le-field">
+              <label>Phone <span class="le-req">*</span></label>
+              <input type="tel" name="phone" placeholder="+1 (555) 000-0000" required />
+              <span class="le-error-msg">Phone is required</span>
+            </div>
+            <div class="le-field">
+              <label>Brokerage</label>
+              <input type="text" name="brokerage" placeholder="e.g. KW, eXp, Compass" />
+            </div>
+          </div>
+
+          <!-- 2: Business Info -->
+          <div class="le-fstep" data-fstep="2">
+            <span class="le-fstep-eyebrow">Business Info</span>
+            <h2>Your business structure</h2>
+            <p class="le-fstep-desc">Helps us configure your account and paperwork correctly.</p>
+
+            <div class="le-field">
+              <label
+                >Do you have a registered business with an EIN? <span class="le-req">*</span></label
+              >
+              <div class="le-radio-group" data-name="hasEIN">
+                <label class="le-option"
+                  ><input type="radio" name="hasEIN" value="Yes" /> Yes</label
+                >
+                <label class="le-option"><input type="radio" name="hasEIN" value="No" /> No</label>
+              </div>
+            </div>
+            <div class="le-field">
+              <label>Business type</label>
+              <div class="le-check-group">
+                <label class="le-option"
+                  ><input type="checkbox" name="businessType" value="LLC" /> LLC</label
+                >
+                <label class="le-option"
+                  ><input type="checkbox" name="businessType" value="Sole Prop" /> Sole Prop</label
+                >
+                <label class="le-option"
+                  ><input type="checkbox" name="businessType" value="S-corp" /> S-corp</label
+                >
+                <label class="le-option"
+                  ><input type="checkbox" name="businessType" value="C-corp" /> C-corp</label
+                >
+              </div>
+            </div>
+            <div class="le-field">
+              <label
+                >Industry
+                <span class="le-hint" style="display: inline; margin: 0"
+                  >— Real estate, lending, solar, plumbing etc...</span
+                ></label
+              >
+              <input type="text" name="industry" placeholder="Real estate" />
+            </div>
+            <div class="le-field">
+              <label>EIN / Business Number</label>
+              <input type="text" name="ein" placeholder="00-0000000" />
+            </div>
+            <div class="le-field">
+              <label>Legal Business Name</label>
+              <input type="text" name="legalBusinessName" placeholder="Business" />
+            </div>
+            <div class="le-field">
+              <label>Business Address</label>
+              <input type="text" name="businessAddress" placeholder="1234 address" />
+            </div>
+          </div>
+
+          <!-- 3: Your Market -->
+          <div class="le-fstep" data-fstep="3">
+            <span class="le-fstep-eyebrow">Your Market</span>
+            <h2>Where you operate</h2>
+            <p class="le-fstep-desc">
+              This shapes how we target and message your recruiting campaigns.
+            </p>
+
+            <div class="le-field">
+              <label>Primary City / County to Target</label>
+              <input type="text" name="primaryCity" placeholder="Riverside" />
+            </div>
+            <div class="le-field">
+              <label>State</label>
+              <input type="text" name="state" placeholder="California" />
+            </div>
+            <div class="le-field">
+              <label
+                >How much volume has your Brokerage / Team produced in the past 12 months?</label
+              >
+              <div class="le-radio-group" data-name="volume">
+                <label class="le-option"
+                  ><input type="radio" name="volume" value="Less than $10M" /> Less than $10M</label
+                >
+                <label class="le-option"
+                  ><input type="radio" name="volume" value="$10M-$30M" /> $10M–$30M</label
+                >
+                <label class="le-option"
+                  ><input type="radio" name="volume" value="$30M-$50M" /> $30M–$50M</label
+                >
+                <label class="le-option"
+                  ><input type="radio" name="volume" value="$50M-$100M" /> $50M–$100M</label
+                >
+                <label class="le-option"
+                  ><input type="radio" name="volume" value="$100M+" /> $100M+</label
+                >
+              </div>
+            </div>
+            <div class="le-field">
+              <label>How many agents are currently on your team or brokerage?</label>
+              <div class="le-radio-group" data-name="agentCount">
+                <label class="le-option"
+                  ><input type="radio" name="agentCount" value="Just me" /> Just me</label
+                >
+                <label class="le-option"
+                  ><input type="radio" name="agentCount" value="2-5" /> 2–5</label
+                >
+                <label class="le-option"
+                  ><input type="radio" name="agentCount" value="6-15" /> 6–15</label
+                >
+                <label class="le-option"
+                  ><input type="radio" name="agentCount" value="16-50" /> 16–50</label
+                >
+                <label class="le-option"
+                  ><input type="radio" name="agentCount" value="50+" /> 50+</label
+                >
+              </div>
+            </div>
+            <div class="le-field">
+              <label>What is the average agent's production in your market?</label>
+              <input type="text" name="avgProduction" placeholder="e.g. $1.2M / year" />
+            </div>
+            <div class="le-field">
+              <label>What's your ideal agent avatar in a quick 1–2 sentences?</label>
+              <span class="le-hint" style="margin-bottom: 8px"
+                >Ex. Minimum production numbers, values, market, experience</span
+              >
+              <textarea name="idealAgent" placeholder="Describe your ideal agent..."></textarea>
+            </div>
+          </div>
+
+          <!-- 4: Offer & Value Stack -->
+          <div class="le-fstep" data-fstep="4">
+            <span class="le-fstep-eyebrow">Offer &amp; Value Stack</span>
+            <h2>What makes agents choose you</h2>
+            <p class="le-fstep-desc">We'll use this to write your recruiting ads and messaging.</p>
+
+            <div class="le-field">
+              <label>What is the biggest thing you offer agents that your competitors don't?</label>
+              <input type="text" name="biggestOffer" placeholder="Your answer" />
+            </div>
+            <div class="le-field">
+              <label>Do you currently offer any of the following to agents?</label>
+              <div class="le-check-group">
+                <label class="le-option"
+                  ><input type="checkbox" name="currentOffers" value="Lead generation" /> Lead
+                  generation</label
+                >
+                <label class="le-option"
+                  ><input type="checkbox" name="currentOffers" value="Transaction coordination" />
+                  Transaction coordination</label
+                >
+                <label class="le-option"
+                  ><input type="checkbox" name="currentOffers" value="Marketing support" />
+                  Marketing support</label
+                >
+                <label class="le-option"
+                  ><input type="checkbox" name="currentOffers" value="Coaching" /> Coaching</label
+                >
+                <label class="le-option"
+                  ><input type="checkbox" name="currentOffers" value="Revenue Share" /> Revenue
+                  Share</label
+                >
+                <label class="le-option"
+                  ><input type="checkbox" name="currentOffers" value="Other" /> Other</label
+                >
+              </div>
+            </div>
+            <div class="le-field">
+              <label>What is your current recruiting process?</label>
+              <span class="le-hint" style="margin-bottom: 8px"
+                >How do you find and attract agents today?</span
+              >
+              <textarea name="recruitingProcess" placeholder="Your answer"></textarea>
+            </div>
+            <div class="le-field">
+              <label>Have you run Facebook or Instagram ads before?</label>
+              <div class="le-radio-group" data-name="ranAds">
+                <label class="le-option"
+                  ><input type="radio" name="ranAds" value="Yes, successfully" /> Yes,
+                  successfully</label
+                >
+                <label class="le-option"
+                  ><input type="radio" name="ranAds" value="Yes, but it didn't work" /> Yes, but it
+                  didn't work</label
+                >
+                <label class="le-option"
+                  ><input type="radio" name="ranAds" value="No, never" /> No, never</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 5: Meta Ads Access -->
+          <div class="le-fstep" data-fstep="5">
+            <span class="le-fstep-eyebrow">Meta Ads Access</span>
+            <h2>Ad account access</h2>
+            <p class="le-fstep-desc">We'll need this to launch and manage your campaigns.</p>
+
+            <div class="le-field">
+              <label>Your Facebook Profile URL</label>
+              <input type="text" name="fbProfile" placeholder="facebook.com/yourname" />
+            </div>
+            <div class="le-field">
+              <label
+                >Did you add admin@layerengine.ai to your Meta Business Manager with Full
+                Access?</label
+              >
+              <div class="le-radio-group" data-name="metaAdded">
+                <label class="le-option"
+                  ><input type="radio" name="metaAdded" value="Yes" /> Yes</label
+                >
+                <label class="le-option"
+                  ><input type="radio" name="metaAdded" value="No, I need help with this" /> No, I
+                  need help with this</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 6: Goals -->
+          <div class="le-fstep" data-fstep="6">
+            <span class="le-fstep-eyebrow">Goals</span>
+            <h2>Prepping for your kickoff call</h2>
+            <p class="le-fstep-desc">Last step — this is what we'll build your plan around.</p>
+
+            <div class="le-field">
+              <label>How many agents are you looking to recruit in the next 90 days?</label>
+              <input type="text" name="recruitGoal90" placeholder="Your answer" />
+            </div>
+            <div class="le-field">
+              <label>What does success look like for you 6 months from now?</label>
+              <textarea name="successDefinition" placeholder="Your answer"></textarea>
+            </div>
+            <div class="le-field">
+              <label>Is there anything else we should know before your kickoff call?</label>
+              <textarea name="notes" placeholder="Your answer"></textarea>
+            </div>
+          </div>
+
+          <!-- DONE -->
+          <div class="le-fstep" data-fstep="7">
+            <div class="le-fdone">
+              <div class="le-fdone-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M5 13l4 4L19 7"
+                    stroke="white"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <span class="le-fstep-eyebrow">All set</span>
+              <h2>You're all done</h2>
+              <p class="le-fstep-desc">
+                Thanks — your answers have been recorded. Next, join our Slack workspace below so we
+                can reach you the moment your build starts.
+              </p>
+            </div>
+          </div>
+
+          <div class="le-fbtn-row" id="leBtnRow">
+            <button type="button" class="le-fbtn le-fbtn-back" id="leBackBtn">Back</button>
+            <button type="button" class="le-fbtn le-fbtn-next" id="leNextBtn">Continue</button>
+          </div>
+        </form>
       </div>
 
       <!-- SLACK CARD -->
       <div class="le-slack-card">
         <div class="le-slack-icon">
-          <!-- Slack-style hash icon -->
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
             <path
               d="M9 3H7L5 21h2M17 3h2l2 18h-2M3 9h18M3 15h18"
@@ -596,5 +1091,146 @@
       LayerEngine.ai &nbsp;·&nbsp;
       <a href="mailto:hello@layerengine.ai">hello@layerengine.ai</a> &nbsp;·&nbsp; Confidential
     </footer>
+
+    <script>
+      const leFormSteps = 6;
+      const leTotalSteps = 7;
+      let leCurrent = 1;
+
+      const leProgressEl = document.getElementById("leProgress");
+      for (let i = 1; i <= leFormSteps; i++) {
+        const seg = document.createElement("div");
+        seg.className = "le-form-seg";
+        seg.dataset.seg = i;
+        seg.innerHTML = "<span></span>";
+        leProgressEl.appendChild(seg);
+      }
+
+      const leSteps = document.querySelectorAll(".le-fstep");
+      const leBackBtn = document.getElementById("leBackBtn");
+      const leNextBtn = document.getElementById("leNextBtn");
+      const leBtnRow = document.getElementById("leBtnRow");
+
+      function leRenderProgress() {
+        document.querySelectorAll(".le-form-seg").forEach((seg) => {
+          const i = parseInt(seg.dataset.seg);
+          seg.classList.toggle("done", i < leCurrent);
+          seg.classList.toggle("active", i === leCurrent);
+        });
+      }
+
+      function leShowStep(n) {
+        leSteps.forEach((s) => s.classList.toggle("active", parseInt(s.dataset.fstep) === n));
+        leBackBtn.disabled = n === 1;
+        leNextBtn.textContent = n === leFormSteps ? "Submit" : "Continue";
+        leBtnRow.style.display = n === leTotalSteps ? "none" : "flex";
+        leRenderProgress();
+      }
+
+      function leValidateStep(n) {
+        let valid = true;
+        const stepEl = document.querySelector('.le-fstep[data-fstep="' + n + '"]');
+        stepEl.querySelectorAll("input[required]").forEach((inp) => {
+          const errEl = inp.closest(".le-field").querySelector(".le-error-msg");
+          let fieldValid = inp.value.trim() !== "";
+          if (inp.type === "email" && fieldValid) {
+            fieldValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inp.value.trim());
+          }
+          inp.classList.toggle("le-error", !fieldValid);
+          if (errEl) errEl.classList.toggle("show", !fieldValid);
+          if (!fieldValid) valid = false;
+        });
+        return valid;
+      }
+
+      document.querySelectorAll(".le-option").forEach((opt) => {
+        const input = opt.querySelector("input");
+        input.addEventListener("change", () => {
+          if (input.type === "radio") {
+            document.querySelectorAll('input[name="' + input.name + '"]').forEach((sib) => {
+              sib.closest(".le-option").classList.toggle("selected", sib.checked);
+            });
+          } else {
+            opt.classList.toggle("selected", input.checked);
+          }
+        });
+      });
+
+      document.querySelectorAll("input[required]").forEach((inp) => {
+        inp.addEventListener("input", () => {
+          inp.classList.remove("le-error");
+          const errEl = inp.closest(".le-field").querySelector(".le-error-msg");
+          if (errEl) errEl.classList.remove("show");
+        });
+      });
+
+      const LE_WEBHOOK_URL = "__INB_WEBHOOK_URL__";
+
+      function leCollectFormData() {
+        const form = document.getElementById("leIntakeForm");
+        const data = {};
+
+        form.querySelectorAll("input, textarea, select").forEach((field) => {
+          if (!field.name) return;
+
+          if (field.type === "checkbox") {
+            if (!Array.isArray(data[field.name])) data[field.name] = [];
+            if (field.checked) data[field.name].push(field.value);
+          } else if (field.type === "radio") {
+            if (field.checked) data[field.name] = field.value;
+          } else {
+            data[field.name] = field.value.trim();
+          }
+        });
+
+        return data;
+      }
+
+      async function leSubmitToWebhook() {
+        const payload = leCollectFormData();
+
+        try {
+          const response = await fetch(LE_WEBHOOK_URL, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          });
+
+          if (!response.ok) {
+            console.error("Webhook submission failed with status", response.status);
+          }
+        } catch (err) {
+          console.error("Webhook submission error:", err);
+        }
+      }
+
+      leNextBtn.addEventListener("click", async () => {
+        if (!leValidateStep(leCurrent)) return;
+        if (leCurrent < leFormSteps) {
+          leCurrent++;
+          leShowStep(leCurrent);
+        } else {
+          leNextBtn.disabled = true;
+          leNextBtn.textContent = "Submitting...";
+
+          await leSubmitToWebhook();
+
+          leNextBtn.disabled = false;
+          leCurrent = leTotalSteps;
+          leShowStep(leCurrent);
+        }
+      });
+
+      leBackBtn.addEventListener("click", () => {
+        if (leCurrent > 1 && leCurrent <= leFormSteps) {
+          leCurrent--;
+          leShowStep(leCurrent);
+        }
+      });
+
+      leShowStep(leCurrent);
+    </script>
   </body>
 </html>
