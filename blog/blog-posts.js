@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "the-brokerage-recruiting-operating-system",
+    title: "The Brokerage Recruiting Operating System: Scale Agent Growth Without Adding Headcount",
+    excerpt: "Build a repeatable recruiting operating system that attracts, qualifies, and advances real estate agents and mortgage professionals without adding more manual work for owners and team leaders.",
+    category: "Growth Systems",
+    date: "September 1, 2026",
+    readTime: "8 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><rect x="10" y="11" width="20" height="3" rx="1.5" fill="#3B82F6" opacity="0.4"/><rect x="10" y="18" width="20" height="3" rx="1.5" fill="#3B82F6" opacity="0.7"/><rect x="10" y="25" width="20" height="3" rx="1.5" fill="#3B82F6"/><path d="M14 9v22M26 9v22" stroke="#60A5FA" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/></svg>`
+  },
+  {
     slug: "real-estate-recruiting-follow-up-system",
     title: "The Real Estate Recruiting Follow-Up System: A 21-Day Blueprint",
     excerpt: "Build a 21-day recruiting follow-up system that helps brokerage owners and mortgage team leaders turn agent interest into qualified conversations — without depending on manual reminders.",
