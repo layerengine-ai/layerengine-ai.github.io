@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "how-to-create-a-brokerage-value-proposition-that-attracts-top-agents",
+    title: "How to Create a Brokerage Value Proposition That Attracts Top Agents",
+    excerpt: "Learn how brokerage owners and mortgage team leaders can build a clear recruiting value proposition that wins attention, earns trust, and creates better-fit conversations with productive agents.",
+    category: "Recruiting Strategy",
+    date: "September 4, 2026",
+    readTime: "7 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M12 14h16v14H12z" stroke="#3B82F6" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 14v-2a4 4 0 0 1 8 0v2" stroke="#60A5FA" stroke-width="1.5"/><path d="M16 20h8M16 24h5" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/></svg>`
+  },
+  {
     slug: "the-brokerage-recruiting-operating-system",
     title: "The Brokerage Recruiting Operating System: Scale Agent Growth Without Adding Headcount",
     excerpt: "Build a repeatable recruiting operating system that attracts, qualifies, and advances real estate agents and mortgage professionals without adding more manual work for owners and team leaders.",
