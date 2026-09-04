@@ -603,6 +603,13 @@
         background: #3b82f6;
       }
 
+      .le-role-block {
+        display: none;
+      }
+      .le-role-block.active {
+        display: block;
+      }
+
       .le-fdone {
         text-align: center;
         padding: 1.5rem 0;
@@ -802,122 +809,317 @@
               <label>Business Address</label>
               <input type="text" name="businessAddress" placeholder="1234 address" />
             </div>
+            <div class="le-field">
+              <label>Business Website</label>
+              <input type="text" name="businessWebsite" placeholder="www.yourbusiness.com" />
+            </div>
           </div>
 
-          <!-- 3: Your Market -->
+          <!-- 3: What Do You Do -->
           <div class="le-fstep" data-fstep="3">
-            <span class="le-fstep-eyebrow">Your Market</span>
-            <h2>Where you operate</h2>
+            <span class="le-fstep-eyebrow">Your Role</span>
+            <h2>What do you do?</h2>
             <p class="le-fstep-desc">
-              This shapes how we target and message your recruiting campaigns.
+              This determines which questions we ask next — pick the one that fits best.
             </p>
 
             <div class="le-field">
-              <label>Primary City / County to Target</label>
-              <input type="text" name="primaryCity" placeholder="Riverside" />
-            </div>
-            <div class="le-field">
-              <label>State</label>
-              <input type="text" name="state" placeholder="California" />
-            </div>
-            <div class="le-field">
-              <label
-                >How much volume has your Brokerage / Team produced in the past 12 months?</label
-              >
-              <div class="le-radio-group" data-name="volume">
+              <div class="le-radio-group le-role-select" data-name="role">
                 <label class="le-option"
-                  ><input type="radio" name="volume" value="Less than $10M" /> Less than $10M</label
+                  ><input type="radio" name="role" value="Agent" /> Agent</label
                 >
                 <label class="le-option"
-                  ><input type="radio" name="volume" value="$10M-$30M" /> $10M–$30M</label
+                  ><input type="radio" name="role" value="Brokerage" /> Brokerage</label
                 >
                 <label class="le-option"
-                  ><input type="radio" name="volume" value="$30M-$50M" /> $30M–$50M</label
+                  ><input type="radio" name="role" value="Recruiter" /> Recruiter</label
                 >
                 <label class="le-option"
-                  ><input type="radio" name="volume" value="$50M-$100M" /> $50M–$100M</label
-                >
-                <label class="le-option"
-                  ><input type="radio" name="volume" value="$100M+" /> $100M+</label
+                  ><input type="radio" name="role" value="Lender" /> Lender</label
                 >
               </div>
-            </div>
-            <div class="le-field">
-              <label>How many agents are currently on your team or brokerage?</label>
-              <div class="le-radio-group" data-name="agentCount">
-                <label class="le-option"
-                  ><input type="radio" name="agentCount" value="Just me" /> Just me</label
-                >
-                <label class="le-option"
-                  ><input type="radio" name="agentCount" value="2-5" /> 2–5</label
-                >
-                <label class="le-option"
-                  ><input type="radio" name="agentCount" value="6-15" /> 6–15</label
-                >
-                <label class="le-option"
-                  ><input type="radio" name="agentCount" value="16-50" /> 16–50</label
-                >
-                <label class="le-option"
-                  ><input type="radio" name="agentCount" value="50+" /> 50+</label
-                >
-              </div>
-            </div>
-            <div class="le-field">
-              <label>What is the average agent's production in your market?</label>
-              <input type="text" name="avgProduction" placeholder="e.g. $1.2M / year" />
-            </div>
-            <div class="le-field">
-              <label>What's your ideal agent avatar in a quick 1–2 sentences?</label>
-              <span class="le-hint" style="margin-bottom: 8px"
-                >Ex. Minimum production numbers, values, market, experience</span
-              >
-              <textarea name="idealAgent" placeholder="Describe your ideal agent..."></textarea>
+              <span class="le-error-msg" id="leRoleError">Please select one to continue</span>
             </div>
           </div>
 
-          <!-- 4: Offer & Value Stack -->
+          <!-- 4: Role-Specific Questions -->
           <div class="le-fstep" data-fstep="4">
-            <span class="le-fstep-eyebrow">Offer &amp; Value Stack</span>
-            <h2>What makes agents choose you</h2>
-            <p class="le-fstep-desc">We'll use this to write your recruiting ads and messaging.</p>
+            <span class="le-fstep-eyebrow" id="leRoleEyebrow">Your Questions</span>
+            <h2 id="leRoleHeading">A few questions for you</h2>
+            <p class="le-fstep-desc" id="leRoleDesc">
+              These help us tailor your build to how you actually work.
+            </p>
 
-            <div class="le-field">
-              <label>What is the biggest thing you offer agents that your competitors don't?</label>
-              <input type="text" name="biggestOffer" placeholder="Your answer" />
-            </div>
-            <div class="le-field">
-              <label>Do you currently offer any of the following to agents?</label>
-              <div class="le-check-group">
-                <label class="le-option"
-                  ><input type="checkbox" name="currentOffers" value="Lead generation" /> Lead
-                  generation</label
+            <!-- AGENT -->
+            <div class="le-role-block" data-role="Agent">
+              <div class="le-field">
+                <label>Are you currently with a brokerage or team, or working independently?</label>
+                <div class="le-radio-group" data-name="agentAffiliation">
+                  <label class="le-option"
+                    ><input type="radio" name="agentAffiliation" value="With a brokerage/team" />
+                    With a brokerage/team</label
+                  >
+                  <label class="le-option"
+                    ><input type="radio" name="agentAffiliation" value="Independent" />
+                    Independent</label
+                  >
+                </div>
+              </div>
+              <div class="le-field">
+                <label>What's your specialty or niche?</label>
+                <input
+                  type="text"
+                  name="agentNiche"
+                  placeholder="e.g. Luxury, investment, first-time buyers"
+                />
+              </div>
+              <div class="le-field">
+                <label>How many transactions did you close in the past 12 months?</label>
+                <input type="text" name="agentTransactions" placeholder="e.g. 18" />
+              </div>
+              <div class="le-field">
+                <label>What's your average sale price?</label>
+                <input type="text" name="agentAvgSalePrice" placeholder="e.g. $450,000" />
+              </div>
+              <div class="le-field">
+                <label>What are you hoping this system helps you with most?</label>
+                <span class="le-hint" style="margin-bottom: 8px"
+                  >Ex. More buyer/seller leads, staying in touch with past clients, automating
+                  follow-up</span
                 >
-                <label class="le-option"
-                  ><input type="checkbox" name="currentOffers" value="Transaction coordination" />
-                  Transaction coordination</label
-                >
-                <label class="le-option"
-                  ><input type="checkbox" name="currentOffers" value="Marketing support" />
-                  Marketing support</label
-                >
-                <label class="le-option"
-                  ><input type="checkbox" name="currentOffers" value="Coaching" /> Coaching</label
-                >
-                <label class="le-option"
-                  ><input type="checkbox" name="currentOffers" value="Revenue Share" /> Revenue
-                  Share</label
-                >
-                <label class="le-option"
-                  ><input type="checkbox" name="currentOffers" value="Other" /> Other</label
-                >
+                <textarea name="agentGoalHelp" placeholder="Your answer"></textarea>
               </div>
             </div>
+
+            <!-- BROKERAGE / TEAM -->
+            <div class="le-role-block" data-role="Brokerage">
+              <div class="le-field">
+                <label>Primary City / County to Target</label>
+                <input type="text" name="primaryCity" placeholder="Riverside" />
+              </div>
+              <div class="le-field">
+                <label>State</label>
+                <input type="text" name="state" placeholder="California" />
+              </div>
+              <div class="le-field">
+                <label
+                  >How much volume has your Brokerage / Team produced in the past 12 months?</label
+                >
+                <div class="le-radio-group" data-name="volume">
+                  <label class="le-option"
+                    ><input type="radio" name="volume" value="Less than $10M" /> Less than
+                    $10M</label
+                  >
+                  <label class="le-option"
+                    ><input type="radio" name="volume" value="$10M-$30M" /> $10M–$30M</label
+                  >
+                  <label class="le-option"
+                    ><input type="radio" name="volume" value="$30M-$50M" /> $30M–$50M</label
+                  >
+                  <label class="le-option"
+                    ><input type="radio" name="volume" value="$50M-$100M" /> $50M–$100M</label
+                  >
+                  <label class="le-option"
+                    ><input type="radio" name="volume" value="$100M+" /> $100M+</label
+                  >
+                </div>
+              </div>
+              <div class="le-field">
+                <label>How many agents are currently on your team or brokerage?</label>
+                <div class="le-radio-group" data-name="agentCount">
+                  <label class="le-option"
+                    ><input type="radio" name="agentCount" value="Just me" /> Just me</label
+                  >
+                  <label class="le-option"
+                    ><input type="radio" name="agentCount" value="2-5" /> 2–5</label
+                  >
+                  <label class="le-option"
+                    ><input type="radio" name="agentCount" value="6-15" /> 6–15</label
+                  >
+                  <label class="le-option"
+                    ><input type="radio" name="agentCount" value="16-50" /> 16–50</label
+                  >
+                  <label class="le-option"
+                    ><input type="radio" name="agentCount" value="50+" /> 50+</label
+                  >
+                </div>
+              </div>
+              <div class="le-field">
+                <label>What is the average agent's production in your market?</label>
+                <input type="text" name="avgProduction" placeholder="e.g. $1.2M / year" />
+              </div>
+              <div class="le-field">
+                <label>What's your ideal agent avatar in a quick 1–2 sentences?</label>
+                <span class="le-hint" style="margin-bottom: 8px"
+                  >Ex. Minimum production numbers, values, market, experience</span
+                >
+                <textarea name="idealAgent" placeholder="Describe your ideal agent..."></textarea>
+              </div>
+              <div class="le-field">
+                <label
+                  >What is the biggest thing you offer agents that your competitors don't?</label
+                >
+                <input type="text" name="biggestOffer" placeholder="Your answer" />
+              </div>
+              <div class="le-field">
+                <label>Do you currently offer any of the following to agents?</label>
+                <div class="le-check-group">
+                  <label class="le-option"
+                    ><input type="checkbox" name="currentOffers" value="Lead generation" /> Lead
+                    generation</label
+                  >
+                  <label class="le-option"
+                    ><input type="checkbox" name="currentOffers" value="Transaction coordination" />
+                    Transaction coordination</label
+                  >
+                  <label class="le-option"
+                    ><input type="checkbox" name="currentOffers" value="Marketing support" />
+                    Marketing support</label
+                  >
+                  <label class="le-option"
+                    ><input type="checkbox" name="currentOffers" value="Coaching" /> Coaching</label
+                  >
+                  <label class="le-option"
+                    ><input type="checkbox" name="currentOffers" value="Revenue Share" /> Revenue
+                    Share</label
+                  >
+                  <label class="le-option"
+                    ><input type="checkbox" name="currentOffers" value="Other" /> Other</label
+                  >
+                </div>
+              </div>
+              <div class="le-field">
+                <label>What is your current recruiting process?</label>
+                <span class="le-hint" style="margin-bottom: 8px"
+                  >How do you find and attract agents today?</span
+                >
+                <textarea name="recruitingProcess" placeholder="Your answer"></textarea>
+              </div>
+            </div>
+
+            <!-- RECRUITER -->
+            <div class="le-role-block" data-role="Recruiter">
+              <div class="le-field">
+                <label>Who do you recruit for?</label>
+                <div class="le-radio-group" data-name="recruiterFor">
+                  <label class="le-option"
+                    ><input type="radio" name="recruiterFor" value="Myself / my own team" /> Myself
+                    / my own team</label
+                  >
+                  <label class="le-option"
+                    ><input type="radio" name="recruiterFor" value="Multiple brokerages" /> Multiple
+                    brokerages</label
+                  >
+                  <label class="le-option"
+                    ><input type="radio" name="recruiterFor" value="A staffing agency" /> A staffing
+                    agency</label
+                  >
+                </div>
+              </div>
+              <div class="le-field">
+                <label>What industries or roles do you typically recruit for?</label>
+                <input
+                  type="text"
+                  name="recruiterIndustries"
+                  placeholder="e.g. Real estate agents, loan officers"
+                />
+              </div>
+              <div class="le-field">
+                <label>How many placements or hires did you make in the past 12 months?</label>
+                <input type="text" name="recruiterPlacements" placeholder="e.g. 25" />
+              </div>
+              <div class="le-field">
+                <label>What's your average recruiting fee or commission?</label>
+                <input type="text" name="recruiterAvgFee" placeholder="Your answer" />
+              </div>
+              <div class="le-field">
+                <label>What's your ideal candidate profile in a quick 1–2 sentences?</label>
+                <textarea
+                  name="recruiterIdealCandidate"
+                  placeholder="Describe your ideal candidate..."
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- LENDER -->
+            <div class="le-role-block" data-role="Lender">
+              <div class="le-field">
+                <label>Are you an independent loan officer or with a mortgage company?</label>
+                <div class="le-radio-group" data-name="lenderType">
+                  <label class="le-option"
+                    ><input type="radio" name="lenderType" value="Independent loan officer" />
+                    Independent loan officer</label
+                  >
+                  <label class="le-option"
+                    ><input type="radio" name="lenderType" value="With a mortgage company" /> With a
+                    mortgage company</label
+                  >
+                </div>
+              </div>
+              <div class="le-field">
+                <label>What loan types do you specialize in?</label>
+                <div class="le-check-group">
+                  <label class="le-option"
+                    ><input type="checkbox" name="loanTypes" value="Conventional" />
+                    Conventional</label
+                  >
+                  <label class="le-option"
+                    ><input type="checkbox" name="loanTypes" value="FHA" /> FHA</label
+                  >
+                  <label class="le-option"
+                    ><input type="checkbox" name="loanTypes" value="VA" /> VA</label
+                  >
+                  <label class="le-option"
+                    ><input type="checkbox" name="loanTypes" value="Jumbo" /> Jumbo</label
+                  >
+                  <label class="le-option"
+                    ><input type="checkbox" name="loanTypes" value="Hard money" /> Hard money</label
+                  >
+                </div>
+              </div>
+              <div class="le-field">
+                <label>What's your average monthly loan volume?</label>
+                <input type="text" name="lenderMonthlyVolume" placeholder="e.g. $2M / month" />
+              </div>
+              <div class="le-field">
+                <label>What states are you licensed in?</label>
+                <input type="text" name="lenderLicensedStates" placeholder="e.g. CA, AZ, NV" />
+              </div>
+              <div class="le-field">
+                <label>Who's your ideal referral partner?</label>
+                <span class="le-hint" style="margin-bottom: 8px"
+                  >Ex. Agents, builders, financial planners</span
+                >
+                <textarea name="lenderIdealReferralPartner" placeholder="Your answer"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5: Meta Ads Access (skipped for Agent role) -->
+          <div class="le-fstep" data-fstep="5" data-skip-for-role="Agent">
+            <span class="le-fstep-eyebrow">Meta Ads Access</span>
+            <h2>Ad account access</h2>
+            <p class="le-fstep-desc">We'll need this to launch and manage your campaigns.</p>
+
             <div class="le-field">
-              <label>What is your current recruiting process?</label>
-              <span class="le-hint" style="margin-bottom: 8px"
-                >How do you find and attract agents today?</span
+              <label>Your Facebook Profile URL</label>
+              <input type="text" name="fbProfile" placeholder="facebook.com/yourname" />
+            </div>
+            <div class="le-field">
+              <label
+                >Do you have access to your Meta Ads Manager, or do you need help setting it
+                up?</label
               >
-              <textarea name="recruitingProcess" placeholder="Your answer"></textarea>
+              <div class="le-radio-group" data-name="metaAdded">
+                <label class="le-option"
+                  ><input type="radio" name="metaAdded" value="Yes, I have access" /> Yes, I have
+                  access</label
+                >
+                <label class="le-option"
+                  ><input type="radio" name="metaAdded" value="No, I need help setting it up" /> No,
+                  I need help setting it up</label
+                >
+              </div>
             </div>
             <div class="le-field">
               <label>Have you run Facebook or Instagram ads before?</label>
@@ -937,33 +1139,6 @@
             </div>
           </div>
 
-          <!-- 5: Meta Ads Access -->
-          <div class="le-fstep" data-fstep="5">
-            <span class="le-fstep-eyebrow">Meta Ads Access</span>
-            <h2>Ad account access</h2>
-            <p class="le-fstep-desc">We'll need this to launch and manage your campaigns.</p>
-
-            <div class="le-field">
-              <label>Your Facebook Profile URL</label>
-              <input type="text" name="fbProfile" placeholder="facebook.com/yourname" />
-            </div>
-            <div class="le-field">
-              <label
-                >Did you add admin@layerengine.ai to your Meta Business Manager with Full
-                Access?</label
-              >
-              <div class="le-radio-group" data-name="metaAdded">
-                <label class="le-option"
-                  ><input type="radio" name="metaAdded" value="Yes" /> Yes</label
-                >
-                <label class="le-option"
-                  ><input type="radio" name="metaAdded" value="No, I need help with this" /> No, I
-                  need help with this</label
-                >
-              </div>
-            </div>
-          </div>
-
           <!-- 6: Goals -->
           <div class="le-fstep" data-fstep="6">
             <span class="le-fstep-eyebrow">Goals</span>
@@ -971,7 +1146,10 @@
             <p class="le-fstep-desc">Last step — this is what we'll build your plan around.</p>
 
             <div class="le-field">
-              <label>How many agents are you looking to recruit in the next 90 days?</label>
+              <label
+                >How many agents are you looking to recruit in the next 90 days (Skip if it doesn't
+                apply)?</label
+              >
               <input type="text" name="recruitGoal90" placeholder="Your answer" />
             </div>
             <div class="le-field">
@@ -1140,7 +1318,79 @@
           if (errEl) errEl.classList.toggle("show", !fieldValid);
           if (!fieldValid) valid = false;
         });
+
+        // Step 3: require a role selection before continuing
+        if (n === 3) {
+          const roleSelected = !!leGetSelectedRole();
+          const roleErrEl = document.getElementById("leRoleError");
+          if (roleErrEl) roleErrEl.classList.toggle("show", !roleSelected);
+          if (!roleSelected) valid = false;
+        }
+
         return valid;
+      }
+
+      // ── ROLE-BASED BRANCHING ──
+      const leRoleHeadings = {
+        Agent: {
+          eyebrow: "Agent Questions",
+          heading: "Tell us about your business as an agent",
+          desc: "This helps us tailor lead flow and follow-up to how you sell.",
+        },
+        Brokerage: {
+          eyebrow: "Your Market",
+          heading: "Where you operate & what makes agents choose you",
+          desc: "This shapes how we target and message your recruiting campaigns.",
+        },
+        Recruiter: {
+          eyebrow: "Recruiting Questions",
+          heading: "Tell us about who and how you recruit",
+          desc: "This helps us tailor sourcing and outreach to your process.",
+        },
+        Lender: {
+          eyebrow: "Lending Questions",
+          heading: "Tell us about your lending business",
+          desc: "This helps us tailor referral and lead flow to your loan business.",
+        },
+      };
+
+      function leGetSelectedRole() {
+        const checked = document.querySelector('input[name="role"]:checked');
+        return checked ? checked.value : null;
+      }
+
+      function leApplyRoleBlock() {
+        const role = leGetSelectedRole();
+        if (!role) return;
+
+        document.querySelectorAll(".le-role-block").forEach((block) => {
+          block.classList.toggle("active", block.dataset.role === role);
+        });
+
+        const copy = leRoleHeadings[role];
+        if (copy) {
+          const eyebrowEl = document.getElementById("leRoleEyebrow");
+          const headingEl = document.getElementById("leRoleHeading");
+          const descEl = document.getElementById("leRoleDesc");
+          if (eyebrowEl) eyebrowEl.textContent = copy.eyebrow;
+          if (headingEl) headingEl.textContent = copy.heading;
+          if (descEl) descEl.textContent = copy.desc;
+        }
+      }
+
+      document.querySelectorAll('input[name="role"]').forEach((inp) => {
+        inp.addEventListener("change", () => {
+          leApplyRoleBlock();
+          const roleErrEl = document.getElementById("leRoleError");
+          if (roleErrEl) roleErrEl.classList.remove("show");
+        });
+      });
+
+      function leShouldSkipStep(n) {
+        const stepEl = document.querySelector('.le-fstep[data-fstep="' + n + '"]');
+        const skipRole = stepEl && stepEl.dataset.skipForRole;
+        if (!skipRole) return false;
+        return leGetSelectedRole() === skipRole;
       }
 
       document.querySelectorAll(".le-option").forEach((opt) => {
@@ -1185,6 +1435,8 @@
           }
         });
 
+        data.submittedAt = new Date().toISOString();
+
         return data;
       }
 
@@ -1212,6 +1464,9 @@
         if (!leValidateStep(leCurrent)) return;
         if (leCurrent < leFormSteps) {
           leCurrent++;
+          while (leCurrent < leFormSteps && leShouldSkipStep(leCurrent)) {
+            leCurrent++;
+          }
           leShowStep(leCurrent);
         } else {
           leNextBtn.disabled = true;
@@ -1228,6 +1483,9 @@
       leBackBtn.addEventListener("click", () => {
         if (leCurrent > 1 && leCurrent <= leFormSteps) {
           leCurrent--;
+          while (leCurrent > 1 && leShouldSkipStep(leCurrent)) {
+            leCurrent--;
+          }
           leShowStep(leCurrent);
         }
       });
