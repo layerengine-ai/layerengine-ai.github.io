@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "real-estate-recruiting-content-engine",
+    title: "The Recruiting Content Engine: Attract Real Estate Agents Before the First Conversation",
+    excerpt: "Learn how brokerage owners and mortgage team leaders can build a recruiting content engine that attracts productive agents, creates trust, and turns attention into qualified conversations.",
+    category: "Recruiting Strategy",
+    date: "September 8, 2026",
+    readTime: "8 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M11 13h18v14H11z" stroke="#3B82F6" stroke-width="1.5" stroke-linejoin="round"/><path d="M15 17h10M15 21h7" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/><path d="M25 29l3 2v-5" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+  },
+  {
     slug: "how-to-create-a-brokerage-value-proposition-that-attracts-top-agents",
     title: "How to Create a Brokerage Value Proposition That Attracts Top Agents",
     excerpt: "Learn how brokerage owners and mortgage team leaders can build a clear recruiting value proposition that wins attention, earns trust, and creates better-fit conversations with productive agents.",
