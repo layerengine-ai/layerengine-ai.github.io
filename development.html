@@ -6,7 +6,7 @@
     <script>
       (function () {
         try {
-          var saved = localStorage.getItem("le-theme");
+          var saved = localStorage.getItem("le-theme-v2");
           if (saved === "light") {
             document.documentElement.setAttribute("data-theme", "light");
           }
@@ -32,6 +32,17 @@
       body {
         overflow-x: hidden;
         width: 100%;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
       }
 
       #le-wrapper {
@@ -612,7 +623,7 @@
 
       #le-wrapper .le-layer {
         display: grid;
-        grid-template-columns: 80px 1fr auto;
+        grid-template-columns: 64px 72px 1fr auto;
         align-items: center;
         gap: 1.5rem;
         padding: 1.75rem 2rem;
@@ -621,6 +632,23 @@
         transition:
           background 0.2s,
           border-color 0.2s;
+      }
+
+      #le-wrapper .le-layer-visual {
+        width: 72px;
+        height: 72px;
+        border-radius: 14px;
+        overflow: hidden;
+        flex-shrink: 0;
+        background: rgba(37, 99, 235, 0.08);
+        border: 1px solid rgba(37, 99, 235, 0.15);
+      }
+
+      #le-wrapper .le-layer-visual img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
       #le-wrapper .le-layer:first-child {
@@ -678,6 +706,9 @@
         font-weight: 500;
         color: #3b82f6 !important;
         white-space: nowrap;
+        text-align: center;
+        width: 150px;
+        justify-self: end;
       }
 
       #le-wrapper .le-layer-badge.le-green {
@@ -815,7 +846,7 @@
       #le-wrapper .le-pricing-commitment-note {
         text-align: center;
         font-size: 13px;
-        color: var(--le-text-2) !important;
+        color: rgba(var(--le-ink), 0.75) !important;
         margin: 2rem auto 0;
         max-width: 700px;
         padding: 1rem 1.5rem;
@@ -891,6 +922,7 @@
         display: flex;
         flex: 1;
         flex-direction: column;
+        justify-content: space-between;
       }
 
       #le-wrapper .le-pricing-setup {
@@ -980,7 +1012,7 @@
         font-size: 15px;
         font-weight: 500;
         text-decoration: none !important;
-        margin-top: auto !important;
+        /* margin-top: auto !important; */
         transition: all 0.2s;
         border: none;
         cursor: pointer;
@@ -1399,9 +1431,14 @@
           grid-template-columns: 1fr 1fr;
         }
         #le-wrapper .le-layer {
-          grid-template-columns: 50px 1fr;
-          gap: 1rem;
+          grid-template-columns: 40px 44px 1fr;
+          gap: 0.85rem;
           padding: 1.25rem 1rem;
+        }
+        #le-wrapper .le-layer-visual {
+          width: 44px;
+          height: 44px;
+          border-radius: 10px;
         }
         #le-wrapper .le-layer-num {
           font-size: 26px;
@@ -1413,7 +1450,10 @@
           font-size: 12px;
         }
         #le-wrapper .le-layer-badge {
-          display: none;
+          grid-column: 3 / -1;
+          justify-self: start;
+          width: 150px;
+          margin-top: 0.6rem;
         }
         #le-wrapper .le-who-grid {
           grid-template-columns: 1fr;
@@ -1461,6 +1501,10 @@
       }
 
       @media (max-width: 480px) {
+        #le-wrapper .le-layer-badge {
+          width: 128px;
+          font-size: 10px;
+        }
         #le-wrapper .le-deliverables-grid {
           grid-template-columns: 1fr;
         }
@@ -1593,12 +1637,12 @@
           if (isLight) {
             html.removeAttribute("data-theme");
             try {
-              localStorage.setItem("le-theme", "dark");
+              localStorage.setItem("le-theme-v2", "dark");
             } catch (e) {}
           } else {
             html.setAttribute("data-theme", "light");
             try {
-              localStorage.setItem("le-theme", "light");
+              localStorage.setItem("le-theme-v2", "light");
             } catch (e) {}
           }
         }
@@ -1778,21 +1822,13 @@
             Six layers. One engine.<br /><span>Built around how your business actually works.</span>
           </h2>
           <p class="le-section-sub">
-            Before we build anything, we audit your organization across six critical layers:
-            <br /><strong>Lead Generation</strong> — how you attract new business.
-            <br /><strong>Follow-Up</strong> — how you nurture the ones who are not ready yet.
-            <br /><strong>Transaction Management</strong> — how deals move from contract to close.
-            <br /><strong>Recruiting</strong> — how you attract people to your organization.
-            <br /><strong>Retention</strong> — how you keep them once they are in.
-            <br /><strong>Onboarding</strong> — how you turn a new hire into a producing professional.
-            <br />Most organizations are strong in one or two of these and leaking everywhere else.
-            LayerEngine identifies the gaps, builds the infrastructure, and runs it — so every layer
-            works together as one system.
+            Most growing real-estate businesses run these six jobs in separate tools, with unclear handoffs between them. LayerEngine maps the gaps, connects the work, and builds the operating system around how your team actually sells, serves, recruits, and grows. Each layer below has a role; together, they make the business easier to run.
           </p>
 
           <div class="le-layers-stack">
             <div class="le-layer">
               <div class="le-layer-num">01</div>
+              <div class="le-layer-visual"><img src="assets/growth-system/lead-generation.png" alt="Abstract lead-generation system visualization" loading="lazy" /></div>
               <div>
                 <div class="le-layer-title">Lead Generation</div>
                 <div class="le-layer-desc">
@@ -1805,6 +1841,7 @@
             </div>
             <div class="le-layer">
               <div class="le-layer-num">02</div>
+              <div class="le-layer-visual"><img src="assets/growth-system/follow-up.png" alt="Abstract follow-up automation visualization" loading="lazy" /></div>
               <div>
                 <div class="le-layer-title">Follow-Up</div>
                 <div class="le-layer-desc">
@@ -1818,6 +1855,7 @@
             </div>
             <div class="le-layer">
               <div class="le-layer-num">03</div>
+              <div class="le-layer-visual"><img src="assets/growth-system/transaction-management.png" alt="Abstract transaction-management visualization" loading="lazy" /></div>
               <div>
                 <div class="le-layer-title">Transaction Management</div>
                 <div class="le-layer-desc">
@@ -1831,6 +1869,7 @@
             </div>
             <div class="le-layer">
               <div class="le-layer-num">04</div>
+              <div class="le-layer-visual"><img src="assets/growth-system/recruiting.png" alt="Abstract recruiting system visualization" loading="lazy" /></div>
               <div>
                 <div class="le-layer-title">Recruiting</div>
                 <div class="le-layer-desc">
@@ -1843,6 +1882,7 @@
             </div>
             <div class="le-layer">
               <div class="le-layer-num">05</div>
+              <div class="le-layer-visual"><img src="assets/growth-system/retention.png" alt="Abstract retention system visualization" loading="lazy" /></div>
               <div>
                 <div class="le-layer-title">Retention</div>
                 <div class="le-layer-desc">
@@ -1857,6 +1897,7 @@
             </div>
             <div class="le-layer">
               <div class="le-layer-num">06</div>
+              <div class="le-layer-visual"><img src="assets/growth-system/onboarding.png" alt="Abstract onboarding system visualization" loading="lazy" /></div>
               <div>
                 <div class="le-layer-title">Onboarding</div>
                 <div class="le-layer-desc">
@@ -2218,18 +2259,18 @@
 
           <div class="le-pricing-grid">
             <!-- TIER 1: SELF-MANAGED -->
-            <div class="le-pricing-card">
+            <!-- <div class="le-pricing-card">
               <div class="le-pricing-header">
                 <div class="le-pricing-label">Tier 1 &mdash; Self-Managed</div>
                 <div class="le-pricing-name">We Build It. You Run It.</div>
               </div>
               <div class="le-pricing-body">
                 <div class="le-pricing-setup">
-                  <div class="le-pricing-amount">$197</div>
+                  <div class="le-pricing-amount">$240</div>
                   <div class="le-pricing-period">/mo</div>
                 </div>
                 <div class="le-pricing-setup-note">
-                  + <strong>$2,500 setup fee</strong> (one-time) &mdash; tech fee only after handoff
+                  + <strong>$1,500 setup fee</strong> (one-time) &mdash; tech fee only after handoff
                 </div>
                 <div class="le-pricing-includes">What's included</div>
                 <div class="le-pricing-feature">
@@ -2319,10 +2360,10 @@
                   Setup fee due at signing. Monthly billing begins 30 days after signing.
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <!-- TIER 2: SUPPORTED -->
-            <div class="le-pricing-card">
+            <!-- <div class="le-pricing-card">
               <div class="le-pricing-header">
                 <div class="le-pricing-label">Tier 2 &mdash; Supported</div>
                 <div class="le-pricing-name">We Build It. We Support You.</div>
@@ -2449,10 +2490,10 @@
                   flexibility with no minimum term.
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <!-- TIER 3: FULLY MANAGED -->
-            <div class="le-pricing-card le-pricing-card-featured">
+            <!-- <div class="le-pricing-card le-pricing-card-featured">
               <div class="le-pricing-badge">Most Popular</div>
               <div class="le-pricing-header">
                 <div class="le-pricing-label">Tier 3 &mdash; Fully Managed</div>
@@ -2594,17 +2635,399 @@
                   Month-to-month available after 6 months.
                 </div>
               </div>
+            </div> -->
+
+            <!-- TIER 1: SELF-MANAGED -->
+            <div class="le-pricing-card">
+              <div class="le-pricing-header">
+                <div class="le-pricing-label">Tier 1 &mdash; Self-Managed</div>
+                <div class="le-pricing-name">We Build It. You Run It.</div>
+              </div>
+              <div class="le-pricing-body">
+                <div class="le-pricing-container">
+                  <div class="le-pricing-setup">
+                    <div class="le-pricing-amount">$240</div>
+                    <div class="le-pricing-period">/mo</div>
+                  </div>
+                  <div class="le-pricing-setup-note">
+                    + <strong>$1,500 one-time setup</strong> &mdash; no minimum term
+                  </div>
+                  <div class="le-pricing-includes">What's included</div>
+                  <div class="le-pricing-feature">
+                    <div class="le-check">
+                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                        <path
+                          d="M2 6l3 3 5-5"
+                          stroke="#10B981"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                    <div class="le-pricing-feature-text">
+                      <strong>Approved system foundation</strong> &mdash; the selected LayerEngine system is built, configured, and prepared for handoff
+                    </div>
+                  </div>
+                  <div class="le-pricing-feature">
+                    <div class="le-check">
+                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                        <path
+                          d="M2 6l3 3 5-5"
+                          stroke="#10B981"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                    <div class="le-pricing-feature-text">
+                      <strong>System handoff &amp; training resources</strong> &mdash; the knowledge and materials to run the approved system yourself
+                    </div>
+                  </div>
+                  <div class="le-pricing-feature">
+                    <div class="le-check">
+                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                        <path
+                          d="M2 6l3 3 5-5"
+                          stroke="#10B981"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                    <div class="le-pricing-feature-text">
+                      <strong>Access to the University</strong> &mdash; full training library included
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      margin-top: 1.25rem;
+                      padding: 0.75rem 1rem;
+                      background: rgba(var(--le-ink), 0.03);
+                      border: 1px solid rgba(var(--le-ink), 0.08);
+                      border-radius: 8px;
+                      font-size: 12px;
+                      color: var(--le-text-2);
+                      line-height: 1.6;
+                    "
+                  >
+                    After handoff, you own and operate the system. No ongoing support included.
+                  </div>
+                </div>
+                <div>
+                  <div
+                    style="
+                      margin-top: 1rem;
+                      padding-top: 1rem;
+                      border-top: 1px solid rgba(var(--le-ink), 0.07);
+                      font-size: 12px;
+                      color: var(--le-text-3);
+                    "
+                  >
+                    Client also responsible for: texting and AI usage costs, which vary by usage and are provided through the platform arrangement.
+                  </div>
+                  <a
+                    href="https://calendly.com/adam-layerengine/30min"
+                    class="le-pricing-cta"
+                    style="margin-top: 1.5rem"
+                    target="_blank"
+                    >Book a Strategy Call &rarr;</a
+                  >
+                  <div class="le-pricing-note">
+                    Setup fee due at signing. Monthly billing begins 30 days after signing.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TIER 2: SUPPORTED -->
+            <div class="le-pricing-card">
+              <div class="le-pricing-header">
+                <div class="le-pricing-label">Tier 2 &mdash; Supported</div>
+                <div class="le-pricing-name">We Build It. We Support You.</div>
+              </div>
+              <div class="le-pricing-body">
+                <div class="le-pricing-container">
+                <div class="le-pricing-setup">
+                  <div class="le-pricing-amount">$697</div>
+                  <div class="le-pricing-period">/mo</div>
+                </div>
+                <div class="le-pricing-setup-note">
+                  + <strong>$2,500 one-time setup</strong> &mdash; 3-month minimum commitment
+                </div>
+                <div class="le-pricing-includes">What's included</div>
+                <div class="le-pricing-feature">
+                  <div class="le-check">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke="#10B981"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="le-pricing-feature-text">
+                    <strong>Focused growth build</strong> &mdash; one primary system plus up to three approved automated workflows, built for your operation
+                  </div>
+                </div>
+                <div class="le-pricing-feature">
+                  <div class="le-check">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke="#10B981"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="le-pricing-feature-text">
+                    <strong>Access to the University</strong> &mdash; full training library included
+                  </div>
+                </div>
+                <div class="le-pricing-feature">
+                  <div class="le-check">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke="#10B981"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="le-pricing-feature-text">
+                    <strong>Ongoing optimization support</strong> &mdash; keep the approved system tuned and improving within the agreed operating scope
+                  </div>
+                </div>
+                <div class="le-pricing-feature">
+                  <div class="le-check">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke="#10B981"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="le-pricing-feature-text">
+                    <strong>3 strategic check-ins monthly</strong> &mdash; focused sessions to
+                    review performance and adjust direction
+                  </div>
+                </div>
+                <div class="le-pricing-feature">
+                  <div class="le-check">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke="#10B981"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="le-pricing-feature-text">
+                    <strong>Slack support within scope</strong> &mdash; a clear channel for in-scope questions between strategic check-ins
+                  </div>
+                </div>
+                </div>
+                <div>
+                <div
+                  style="
+                    margin-top: 1rem;
+                    padding-top: 1rem;
+                    border-top: 1px solid rgba(var(--le-ink), 0.07);
+                    font-size: 12px;
+                    color: var(--le-text-3);
+                  "
+                >
+                  Client also responsible for: texting and AI usage costs, which vary by usage and are provided through the platform arrangement.
+                </div>
+                <a
+                  href="https://calendly.com/adam-layerengine/30min"
+                  class="le-pricing-cta"
+                  style="margin-top: 1.5rem"
+                  target="_blank"
+                  >Book a Strategy Call &rarr;</a
+                >
+                <div class="le-pricing-note">
+                  Setup fee due at signing. Monthly billing begins 30 days after signing.
+                  Three-month minimum commitment applies.
+                </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TIER 3: FULLY MANAGED -->
+            <div class="le-pricing-card le-pricing-card-featured">
+              <div class="le-pricing-badge">Most Popular</div>
+              <div class="le-pricing-header">
+                <div class="le-pricing-label">Tier 3 &mdash; Fully Managed</div>
+                <div class="le-pricing-name">We Build It. We Run It. Daily.</div>
+              </div>
+              <div class="le-pricing-body">
+                <div class="le-pricing-container">
+                <div class="le-pricing-setup">
+                  <div class="le-pricing-amount">$1,197</div>
+                  <div class="le-pricing-period">/mo</div>
+                </div>
+                <div class="le-pricing-setup-note">
+                  + <strong>$5,000 one-time setup</strong> &mdash; 3-month minimum commitment
+                </div>
+                
+                <div class="le-pricing-includes">Everything in Supported, plus</div>
+                <div class="le-pricing-feature">
+                  <div class="le-check">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke="#10B981"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="le-pricing-feature-text">
+                    <strong>Approved full-growth system</strong> &mdash; the complete infrastructure is built, configured, and prepared to operate
+                  </div>
+                </div>
+                <div class="le-pricing-feature">
+                  <div class="le-check">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke="#10B981"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="le-pricing-feature-text">
+                    <strong>Managed operations</strong> &mdash; approved campaigns, communications, and workflows are run within your operating plan
+                  </div>
+                </div>
+                <div class="le-pricing-feature">
+                  <div class="le-check">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke="#10B981"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="le-pricing-feature-text">
+                    <strong>Custom AI workflows &amp; automation</strong> &mdash; configured for your market, team, and agreed growth goals
+                  </div>
+                </div>
+                <div class="le-pricing-feature">
+                  <div class="le-check">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke="#10B981"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="le-pricing-feature-text">
+                    <strong>Ongoing optimization &amp; reporting</strong> &mdash; approved sequences, scripts, and funnels are refined with regular performance visibility
+                  </div>
+                </div>
+                <div class="le-pricing-feature">
+                  <div class="le-check">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke="#10B981"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="le-pricing-feature-text">
+                    <strong>Coordinated dual-system rollout</strong> &mdash; Client Attraction and Brokerage Recruiting systems are deployed where included, with a defined agent-enablement plan
+                  </div>
+                </div>
+                
+                
+                <div
+                  style="
+                    background: rgba(37, 99, 235, 0.1);
+                    border: 1px solid rgba(37, 99, 235, 0.3);
+                    border-radius: 8px;
+                    padding: 0.75rem 1rem;
+                    margin-bottom: 1.25rem;
+                    font-size: 13px;
+                    color: #93c5fd;
+                    font-weight: 500;
+                    line-height: 1.5;
+                  "
+                >
+                  &#10003;&nbsp; Everything in Supported &mdash; plus the approved full-growth system and managed operations.
+                </div>
+                </div>
+                <div>
+                <div
+                  style="
+                    margin-top: 1rem;
+                    padding-top: 1rem;
+                    border-top: 1px solid rgba(var(--le-ink), 0.07);
+                    font-size: 12px;
+                    color: var(--le-text-3);
+                  "
+                >
+                  Client also responsible for: texting and AI usage costs, which vary by usage and are provided through the platform arrangement.
+                </div>
+                <a
+                  href="https://calendly.com/adam-layerengine/30min"
+                  class="le-pricing-cta"
+                  style="margin-top: 1.5rem"
+                  target="_blank"
+                  >Book a Strategy Call &rarr;</a
+                >
+                <div class="le-pricing-note">
+                  Setup fee due at signing. Monthly billing begins 30 days after signing.
+                  Three-month minimum commitment applies.
+                </div>
+                </div>
+              </div>
             </div>
 
             <!-- ENTERPRISE -->
             <div class="le-pricing-enterprise">
               <div>
-                <div class="le-pricing-label" style="margin-bottom: 0.5rem">
+                <div
+                  style="
+                    font-size: 11px;
+                    font-weight: 500;
+                    letter-spacing: 0.15em;
+                    text-transform: uppercase;
+                    color: var(--le-text-2);
+                    margin-bottom: 0.5rem;
+                  "
+                >
                   Multi-Office / Enterprise
                 </div>
                 <div
                   style="
-                    font-family: &quot;Syne&quot;, "Segoe UI", sans-serif;
+                    font-family: &quot;Syne&quot;, &quot;Segoe UI&quot;, sans-serif;
                     font-weight: 800;
                     font-size: 22px;
                     color: var(--le-text-1);
@@ -2623,9 +3046,7 @@
                     margin: 0;
                   "
                 >
-                  We build custom packages for multi-location operations. The $197/mo tech fee
-                  applies per office across all tiers. Book a call and let&rsquo;s map out exactly
-                  what your organization needs.
+                  We build custom packages for multi-location operations. Platform, texting, and AI usage costs are scoped separately and may vary by office and usage. Book a call and let&rsquo;s map out exactly what your organization needs.
                 </p>
               </div>
               <a
@@ -2647,14 +3068,7 @@
           </div>
 
           <div class="le-pricing-commitment-note">
-            <strong style="color: var(--le-text-1)">&#9432; 6-Month Commitment Note:</strong> The reduced
-            $1,000 setup fee on Tiers 2 and 3 is unlocked by committing to 6 months. After 6 months,
-            both tiers move to month-to-month. The $197/mo tech fee is non-negotiable and applies
-            per office across all tiers.
-            <span style="color: rgba(var(--le-ink), 0.55)"
-              >Prefer no commitment on Tier 2? A $5,000 setup fee applies for full month-to-month
-              flexibility with no minimum term.</span
-            >
+            <strong style="color: var(--le-text-1)">&#9432; Commitment &amp; billing note:</strong> Tiers 2 and 3 require a three-month minimum commitment. Setup fees are due at signing; monthly billing begins 30 days after signing. Texting and AI usage costs are separate, usage-based, and may vary by client.
           </div>
         </div>
       </section>
