@@ -1,8 +1,20 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("le-theme-v2");
+          if (saved === "light") {
+            document.documentElement.setAttribute("data-theme", "light");
+          }
+        } catch (e) {}
+      })();
+    </script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap"
       rel="stylesheet"
     />
 
@@ -16,12 +28,101 @@
         -webkit-font-smoothing: antialiased;
       }
 
-      #le-wrapper {
-        font-family: "DM Sans", sans-serif !important;
-        background: #0d1117 !important;
-        color: #ffffff !important;
+      html,
+      body {
         overflow-x: hidden;
         width: 100%;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      #le-wrapper {
+        /* ── THEME TOKENS (dark = default) ── */
+        --le-bg: #0d1117;
+        --le-bg-soft: #1e293b;
+        --le-bg-soft2: #1a2535;
+        --le-bg-soft3: #131c27;
+        --le-text-1: #ffffff;
+        --le-text-2: #9ca3af;
+        --le-text-3: #6b7280;
+        --le-ink: 255, 255, 255;
+        --le-nav-rgb: 13, 17, 23;
+
+        font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+        background: var(--le-bg) !important;
+        color: var(--le-text-1) !important;
+        width: 100%;
+        transition:
+          background-color 0.25s ease,
+          color 0.25s ease;
+      }
+
+      html[data-theme="light"] #le-wrapper {
+        --le-bg: #ffffff;
+        --le-bg-soft: #f1f5f9;
+        --le-bg-soft2: #e7ecf3;
+        --le-bg-soft3: #eef2f7;
+        --le-text-1: #0f172a;
+        --le-text-2: #52606d;
+        --le-text-3: #64748b;
+        --le-ink: 15, 23, 42;
+        --le-nav-rgb: 255, 255, 255;
+      }
+
+      html[data-theme="light"] #le-wrapper .le-btn-white {
+        box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.08);
+      }
+
+      html[data-theme="light"] #le-wrapper .le-hero-grid-lines {
+        opacity: 0.5;
+      }
+
+      /* ── THEME TOGGLE ── */
+      #le-wrapper .le-theme-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 1px solid rgba(var(--le-ink), 0.12);
+        background: rgba(var(--le-ink), 0.05);
+        color: var(--le-text-1) !important;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          border-color 0.2s;
+        flex-shrink: 0;
+      }
+
+      #le-wrapper .le-theme-toggle:hover {
+        background: rgba(var(--le-ink), 0.1);
+      }
+
+      #le-wrapper .le-theme-toggle svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      #le-wrapper .le-theme-toggle .le-icon-moon {
+        display: none;
+      }
+
+      html[data-theme="light"] #le-wrapper .le-theme-toggle .le-icon-sun {
+        display: none;
+      }
+
+      html[data-theme="light"] #le-wrapper .le-theme-toggle .le-icon-moon {
+        display: block;
       }
 
       /* ── NAV ── */
@@ -35,9 +136,9 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background: rgba(13, 17, 23, 0.95) !important;
+        background: rgba(var(--le-nav-rgb), 0.95) !important;
         backdrop-filter: blur(16px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid rgba(var(--le-ink), 0.05);
       }
 
       #le-wrapper .le-nav-logo {
@@ -48,15 +149,21 @@
       }
 
       #le-wrapper .le-nav-logo-text {
-        font-family: "Syne", sans-serif !important;
+        font-family: "Syne", "Segoe UI", sans-serif !important;
         font-weight: 800;
         font-size: 18px;
-        color: #ffffff !important;
+        color: var(--le-text-1) !important;
         letter-spacing: -0.3px;
       }
 
       #le-wrapper .le-nav-logo-text span {
         color: #3b82f6 !important;
+      }
+
+      #le-wrapper .le-nav-right {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
       }
 
       #le-wrapper .le-nav-links {
@@ -66,16 +173,16 @@
         list-style: none;
       }
 
-      #le-wrapper .le-nav-links a {
+      #le-wrapper .le-nav-links a:not(.le-nav-cta) {
         font-size: 13px;
         font-weight: 400;
-        color: #9ca3af !important;
+        color: var(--le-text-2) !important;
         text-decoration: none;
         transition: color 0.2s;
       }
 
-      #le-wrapper .le-nav-links a:hover {
-        color: #ffffff !important;
+      #le-wrapper .le-nav-links a:not(.le-nav-cta):hover {
+        color: var(--le-text-1) !important;
       }
 
       #le-wrapper .le-nav-cta {
@@ -85,11 +192,12 @@
         border-radius: 7px;
         font-weight: 500 !important;
         font-size: 13px !important;
+        text-decoration: none !important;
         transition: background 0.2s !important;
       }
 
       #le-wrapper .le-nav-cta:hover {
-        background: #3b82f6 !important;
+        background: #1d4ed8 !important;
       }
 
       /* ── HAMBURGER MENU ── */
@@ -107,9 +215,19 @@
         display: block;
         width: 22px;
         height: 2px;
-        background: #ffffff;
+        background: var(--le-text-1);
         border-radius: 2px;
         transition: all 0.25s;
+      }
+
+      #le-wrapper .le-nav-hamburger.le-open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      #le-wrapper .le-nav-hamburger.le-open span:nth-child(2) {
+        opacity: 0;
+      }
+      #le-wrapper .le-nav-hamburger.le-open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
       }
 
       #le-wrapper .le-nav-mobile {
@@ -118,9 +236,12 @@
         top: 57px;
         left: 0;
         right: 0;
-        background: rgba(13, 17, 23, 0.98) !important;
+        max-height: calc(100vh - 57px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        background: rgba(var(--le-nav-rgb), 0.98) !important;
         backdrop-filter: blur(20px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        border-bottom: 1px solid rgba(var(--le-ink), 0.07);
         padding: 1.5rem;
         z-index: 9999;
         flex-direction: column;
@@ -131,22 +252,22 @@
         display: flex;
       }
 
-      #le-wrapper .le-nav-mobile a {
+      #le-wrapper .le-nav-mobile a:not(.le-nav-cta) {
         display: block;
         padding: 0.9rem 0;
         font-size: 16px;
         font-weight: 400;
-        color: #9ca3af !important;
+        color: var(--le-text-2) !important;
         text-decoration: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid rgba(var(--le-ink), 0.05);
         transition: color 0.2s;
       }
 
       #le-wrapper .le-nav-mobile a:last-child {
         border-bottom: none;
       }
-      #le-wrapper .le-nav-mobile a:hover {
-        color: #ffffff !important;
+      #le-wrapper .le-nav-mobile a:not(.le-nav-cta):hover {
+        color: var(--le-text-1) !important;
       }
 
       #le-wrapper .le-nav-mobile .le-nav-cta {
@@ -165,7 +286,7 @@
         align-items: center;
         padding: 8rem 2rem 5rem;
         overflow: hidden;
-        background: #0d1117 !important;
+        background: var(--le-bg) !important;
       }
 
       #le-wrapper .le-hero-glow {
@@ -183,8 +304,8 @@
         position: absolute;
         inset: 0;
         background-image:
-          linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+          linear-gradient(rgba(var(--le-ink), 0.025) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(var(--le-ink), 0.025) 1px, transparent 1px);
         background-size: 60px 60px;
         -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 100%);
         mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 100%);
@@ -237,13 +358,13 @@
       }
 
       #le-wrapper .le-hero-h1 {
-        font-family: "Syne", sans-serif !important;
+        font-family: "Syne", "Segoe UI", sans-serif !important;
         font-weight: 800;
         font-size: clamp(42px, 6vw, 72px);
-        line-height: 1.05;
+        line-height: 1.08;
         letter-spacing: -2px;
-        color: #ffffff !important;
-        margin-bottom: 1.5rem;
+        color: var(--le-text-1) !important;
+        margin-bottom: 1.75rem;
         animation: leFadeUp 0.6s 0.1s ease both;
       }
 
@@ -251,13 +372,13 @@
         color: #3b82f6 !important;
       }
       #le-wrapper .le-hero-h1 .le-dim {
-        color: rgba(255, 255, 255, 0.45) !important;
+        color: rgba(var(--le-ink), 0.45) !important;
       }
 
       #le-wrapper .le-hero-sub {
         font-size: 17px;
-        font-weight: 300;
-        color: #9ca3af !important;
+        font-weight: 400;
+        color: var(--le-text-2) !important;
         line-height: 1.7;
         max-width: 580px;
         margin-bottom: 2.5rem;
@@ -265,7 +386,7 @@
       }
 
       #le-wrapper .le-hero-sub strong {
-        color: rgba(255, 255, 255, 0.8) !important;
+        color: rgba(var(--le-ink), 0.8) !important;
         font-weight: 500;
       }
 
@@ -288,6 +409,85 @@
         }
       }
 
+      /* ── SCROLL REVEAL ── */
+      #le-wrapper .le-section-eyebrow,
+      #le-wrapper .le-section-h2,
+      #le-wrapper .le-section-sub,
+      #le-wrapper .le-pricing-card,
+      #le-wrapper .le-layer,
+      #le-wrapper .le-deliverable-card,
+      #le-wrapper .le-problem-item,
+      #le-wrapper .le-who-item,
+      #le-wrapper .le-roi-card,
+      #le-wrapper .le-roi-result-card,
+      #le-wrapper .le-about-quote,
+      #le-wrapper .le-compliance-grid > div,
+      #le-wrapper .le-pricing-enterprise,
+      #le-wrapper .le-pricing-commitment-note {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      #le-wrapper .le-in-view {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+
+      #le-wrapper .le-pricing-grid .le-pricing-card:nth-child(2) {
+        transition-delay: 0.08s;
+      }
+      #le-wrapper .le-pricing-grid .le-pricing-card:nth-child(3) {
+        transition-delay: 0.16s;
+      }
+      #le-wrapper .le-deliverables-grid .le-deliverable-card:nth-child(2) {
+        transition-delay: 0.06s;
+      }
+      #le-wrapper .le-deliverables-grid .le-deliverable-card:nth-child(3) {
+        transition-delay: 0.12s;
+      }
+      #le-wrapper .le-deliverables-grid .le-deliverable-card:nth-child(4) {
+        transition-delay: 0.06s;
+      }
+      #le-wrapper .le-deliverables-grid .le-deliverable-card:nth-child(5) {
+        transition-delay: 0.12s;
+      }
+      #le-wrapper .le-deliverables-grid .le-deliverable-card:nth-child(6) {
+        transition-delay: 0.18s;
+      }
+      #le-wrapper .le-compliance-grid > div:nth-child(2) {
+        transition-delay: 0.08s;
+      }
+      #le-wrapper .le-compliance-grid > div:nth-child(3) {
+        transition-delay: 0.16s;
+      }
+      #le-wrapper .le-compliance-grid > div:nth-child(4) {
+        transition-delay: 0.24s;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        #le-wrapper .le-section-eyebrow,
+        #le-wrapper .le-section-h2,
+        #le-wrapper .le-section-sub,
+        #le-wrapper .le-pricing-card,
+        #le-wrapper .le-layer,
+        #le-wrapper .le-deliverable-card,
+        #le-wrapper .le-problem-item,
+        #le-wrapper .le-who-item,
+        #le-wrapper .le-roi-card,
+        #le-wrapper .le-roi-result-card,
+        #le-wrapper .le-about-quote,
+        #le-wrapper .le-compliance-grid > div,
+        #le-wrapper .le-pricing-enterprise,
+        #le-wrapper .le-pricing-commitment-note {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+
       /* ── BUTTONS ── */
       #le-wrapper .le-btn-primary {
         display: inline-flex;
@@ -297,7 +497,7 @@
         color: #ffffff !important;
         padding: 14px 28px;
         border-radius: 9px;
-        font-family: "DM Sans", sans-serif;
+        font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         font-size: 15px;
         font-weight: 500;
         text-decoration: none !important;
@@ -307,16 +507,20 @@
       }
 
       #le-wrapper .le-btn-primary:hover {
-        background: #3b82f6 !important;
+        background: #1d4ed8 !important;
         transform: translateY(-1px);
         box-shadow: 0 8px 30px rgba(37, 99, 235, 0.35);
+      }
+
+      #le-wrapper .le-btn-primary:active {
+        transform: translateY(0) scale(0.97);
       }
 
       #le-wrapper .le-btn-ghost {
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        color: #9ca3af !important;
+        color: var(--le-text-2) !important;
         font-size: 14px;
         font-weight: 400;
         text-decoration: none !important;
@@ -327,7 +531,7 @@
       }
 
       #le-wrapper .le-btn-ghost:hover {
-        color: #ffffff !important;
+        color: var(--le-text-1) !important;
       }
 
       /* ── SECTION BASE ── */
@@ -338,8 +542,10 @@
 
       #le-wrapper .le-container {
         max-width: 1100px;
+        width: 100%;
         margin: 0 auto;
-        padding: 0 2rem;
+        padding: 0 clamp(1.1rem, 4vw, 2rem);
+        box-sizing: border-box;
       }
 
       #le-wrapper .le-section-pad {
@@ -352,17 +558,17 @@
         letter-spacing: 0.15em;
         text-transform: uppercase;
         color: #3b82f6 !important;
-        margin-bottom: 1rem;
+        margin-bottom: 1.1rem;
       }
 
       #le-wrapper .le-section-h2 {
-        font-family: "Syne", sans-serif !important;
+        font-family: "Syne", "Segoe UI", sans-serif !important;
         font-weight: 800;
         font-size: clamp(30px, 4vw, 46px);
         letter-spacing: -1px;
-        line-height: 1.1;
-        color: #ffffff !important;
-        margin-bottom: 1rem;
+        line-height: 1.15;
+        color: var(--le-text-1) !important;
+        margin-bottom: 1.25rem;
       }
 
       #le-wrapper .le-section-h2 span {
@@ -371,17 +577,17 @@
 
       #le-wrapper .le-section-sub {
         font-size: 16px;
-        color: #9ca3af !important;
+        color: var(--le-text-2) !important;
         line-height: 1.7;
-        font-weight: 300;
+        font-weight: 400;
         max-width: 580px;
       }
 
       /* ── DIFFERENTIATOR STRIP ── */
       #le-wrapper .le-diff-strip {
-        background: #1e293b !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        background: var(--le-bg-soft) !important;
+        border-top: 1px solid rgba(var(--le-ink), 0.05);
+        border-bottom: 1px solid rgba(var(--le-ink), 0.05);
         padding: 2rem 0;
       }
 
@@ -399,7 +605,7 @@
         align-items: center;
         gap: 1rem;
         padding: 1rem 2rem;
-        border-right: 1px solid rgba(255, 255, 255, 0.06);
+        border-right: 1px solid rgba(var(--le-ink), 0.06);
       }
 
       #le-wrapper .le-diff-item:last-child {
@@ -419,38 +625,38 @@
       }
 
       #le-wrapper .le-diff-label {
-        font-family: "Syne", sans-serif !important;
+        font-family: "Syne", "Segoe UI", sans-serif !important;
         font-weight: 700;
         font-size: 14px;
-        color: #ffffff !important;
+        color: var(--le-text-1) !important;
         letter-spacing: -0.2px;
         margin-bottom: 2px;
       }
 
       #le-wrapper .le-diff-desc {
         font-size: 12px;
-        color: #6b7280 !important;
-        font-weight: 300;
-        line-height: 1.4;
+        color: var(--le-text-3) !important;
+        font-weight: 400;
+        line-height: 1.5;
       }
 
       /* ── PROBLEM SECTION ── */
       #le-wrapper .le-problem-section {
-        background: #0d1117 !important;
+        background: var(--le-bg) !important;
       }
 
       #le-wrapper .le-problem-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 1px;
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(var(--le-ink), 0.05);
         border-radius: 16px;
         overflow: hidden;
         margin-top: 3rem;
       }
 
       #le-wrapper .le-problem-item {
-        background: #1a2535 !important;
+        background: var(--le-bg-soft2) !important;
         padding: 2rem;
         position: relative;
         border-left: 3px solid rgba(37, 99, 235, 0.35);
@@ -461,7 +667,7 @@
         position: absolute;
         top: 1.25rem;
         left: 1.75rem;
-        font-family: "Syne", sans-serif;
+        font-family: "Syne", "Segoe UI", sans-serif;
         font-size: 48px;
         color: rgba(37, 99, 235, 0.2);
         line-height: 1;
@@ -469,16 +675,16 @@
 
       #le-wrapper .le-problem-text {
         font-size: 15px;
-        color: rgba(255, 255, 255, 0.82) !important;
+        color: rgba(var(--le-ink), 0.82) !important;
         line-height: 1.65;
         padding-top: 1.5rem;
         font-style: italic;
-        font-weight: 300;
+        font-weight: 400;
       }
 
       #le-wrapper .le-problem-source {
         font-size: 11px;
-        color: #9ca3af !important;
+        color: var(--le-text-2) !important;
         margin-top: 0.75rem;
         font-style: normal;
         font-weight: 500;
@@ -487,8 +693,8 @@
 
       /* ── HOW IT WORKS ── */
       #le-wrapper .le-how-section {
-        background: #1e293b !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        background: var(--le-bg-soft) !important;
+        border-top: 1px solid rgba(var(--le-ink), 0.05);
       }
 
       #le-wrapper .le-layers-stack {
@@ -500,15 +706,37 @@
 
       #le-wrapper .le-layer {
         display: grid;
-        grid-template-columns: 80px 1fr auto;
+        grid-template-columns: 64px 72px 1fr auto;
         align-items: center;
         gap: 1.5rem;
         padding: 1.75rem 2rem;
-        background: #0d1117 !important;
-        border: 1px solid rgba(255, 255, 255, 0.04);
+        background: var(--le-bg) !important;
+        border: 1px solid rgba(var(--le-ink), 0.04);
         transition:
           background 0.2s,
           border-color 0.2s;
+      }
+
+      #le-wrapper .le-layer-visual {
+        width: 72px;
+        height: 72px;
+        border-radius: 14px;
+        overflow: hidden;
+        flex-shrink: 0;
+        background: rgba(37, 99, 235, 0.08);
+        border: 1px solid rgba(37, 99, 235, 0.15);
+      }
+
+      #le-wrapper .le-layer-visual img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+
+      #le-wrapper .le-layer:hover .le-layer-visual img {
+        transform: scale(1.08);
       }
 
       #le-wrapper .le-layer:first-child {
@@ -519,12 +747,12 @@
       }
 
       #le-wrapper .le-layer:hover {
-        background: #131c27 !important;
+        background: var(--le-bg-soft3) !important;
         border-color: rgba(37, 99, 235, 0.25);
       }
 
       #le-wrapper .le-layer-num {
-        font-family: "Syne", sans-serif !important;
+        font-family: "Syne", "Segoe UI", sans-serif !important;
         font-weight: 800;
         font-size: 32px;
         color: rgba(
@@ -542,19 +770,19 @@
       }
 
       #le-wrapper .le-layer-title {
-        font-family: "Syne", sans-serif !important;
+        font-family: "Syne", "Segoe UI", sans-serif !important;
         font-weight: 700;
         font-size: 17px;
-        color: #ffffff !important;
+        color: var(--le-text-1) !important;
         margin-bottom: 0.25rem;
         letter-spacing: -0.3px;
       }
 
       #le-wrapper .le-layer-desc {
         font-size: 13px;
-        color: #9ca3af !important;
-        line-height: 1.6;
-        font-weight: 300;
+        color: var(--le-text-2) !important;
+        line-height: 1.65;
+        font-weight: 400;
       }
 
       #le-wrapper .le-layer-badge {
@@ -566,6 +794,9 @@
         font-weight: 500;
         color: #3b82f6 !important;
         white-space: nowrap;
+        text-align: center;
+        width: 150px;
+        justify-self: end;
       }
 
       #le-wrapper .le-layer-badge.le-green {
@@ -574,9 +805,28 @@
         color: #34d399 !important;
       }
 
+      #le-wrapper .le-compliance-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      @media (max-width: 900px) {
+        #le-wrapper .le-compliance-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 480px) {
+        #le-wrapper .le-compliance-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+
       /* ── DELIVERABLES ── */
       #le-wrapper .le-deliverables-section {
-        background: #0d1117 !important;
+        background: var(--le-bg) !important;
       }
 
       #le-wrapper .le-deliverables-grid {
@@ -587,8 +837,8 @@
       }
 
       #le-wrapper .le-deliverable-card {
-        background: #1e293b !important;
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: var(--le-bg-soft) !important;
+        border: 1px solid rgba(var(--le-ink), 0.06);
         border-radius: 12px;
         padding: 1.5rem;
         transition:
@@ -614,57 +864,64 @@
       }
 
       #le-wrapper .le-deliverable-title {
-        font-family: "Syne", sans-serif !important;
+        font-family: "Syne", "Segoe UI", sans-serif !important;
         font-weight: 700;
         font-size: 15px;
-        color: #ffffff !important;
+        color: var(--le-text-1) !important;
         margin-bottom: 0.4rem;
         letter-spacing: -0.2px;
       }
 
       #le-wrapper .le-deliverable-desc {
         font-size: 13px;
-        color: #9ca3af !important;
-        line-height: 1.6;
-        font-weight: 300;
+        color: var(--le-text-2) !important;
+        line-height: 1.65;
+        font-weight: 400;
       }
 
       /* ── PRICING ── */
       #le-wrapper .le-pricing-section {
-        background: #1e293b !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        background: var(--le-bg-soft) !important;
+        border-top: 1px solid rgba(var(--le-ink), 0.05);
       }
 
       #le-wrapper .le-pricing-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 2rem;
         max-width: 1200px;
+        width: 100%;
         margin: 3.5rem auto 0;
         align-items: stretch;
+        box-sizing: border-box;
       }
 
       @media (max-width: 1024px) {
         #le-wrapper .le-pricing-grid {
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        #le-wrapper .le-pricing-card-featured {
+          grid-column: 1 / -1;
+          max-width: 420px;
+          margin: 0 auto;
         }
       }
 
-      /* @media (max-width: 768px) {
+      @media (max-width: 768px) {
         #le-wrapper .le-pricing-grid {
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: minmax(0, 1fr);
+          gap: 1.75rem;
         }
-
-        #le-wrapper .le-pricing-enterprise {
-          flex-direction: column;
-          text-align: center;
+        #le-wrapper .le-pricing-card-featured {
+          max-width: none;
+          margin: 0;
         }
-      } */
+      }
 
       #le-wrapper .le-pricing-enterprise {
         grid-column: 1 / -1;
-        background: #0d1117 !important;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--le-bg) !important;
+        border: 1px solid rgba(var(--le-ink), 0.1);
         border-radius: 20px;
         padding: 2.5rem;
         display: flex;
@@ -674,17 +931,10 @@
         margin-top: 0;
       }
 
-      /* @media (max-width: 768px) {
-        #le-wrapper .le-pricing-enterprise {
-          flex-direction: column;
-          text-align: center;
-        }
-      } */
-
       #le-wrapper .le-pricing-commitment-note {
         text-align: center;
         font-size: 13px;
-        color: #9ca3af !important;
+        color: rgba(var(--le-ink), 0.75) !important;
         margin: 2rem auto 0;
         max-width: 700px;
         padding: 1rem 1.5rem;
@@ -695,7 +945,7 @@
       }
 
       #le-wrapper .le-pricing-card {
-        background: #0d1117 !important;
+        background: var(--le-bg) !important;
         border: 1px solid rgba(37, 99, 235, 0.25);
         border-radius: 20px;
         overflow: visible;
@@ -703,6 +953,14 @@
         position: relative;
         display: flex;
         flex-direction: column;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      #le-wrapper .le-pricing-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 40px rgba(37, 99, 235, 0.2);
       }
 
       #le-wrapper .le-pricing-card-featured {
@@ -748,7 +1006,7 @@
       }
 
       #le-wrapper .le-pricing-name {
-        font-family: "Syne", sans-serif !important;
+        font-family: "Syne", "Segoe UI", sans-serif !important;
         font-weight: 800;
         font-size: 26px;
         color: #ffffff !important;
@@ -760,6 +1018,7 @@
         display: flex;
         flex: 1;
         flex-direction: column;
+        justify-content: space-between;
       }
 
       #le-wrapper .le-pricing-setup {
@@ -770,30 +1029,30 @@
       }
 
       #le-wrapper .le-pricing-amount {
-        font-family: "Syne", sans-serif !important;
+        font-family: "Syne", "Segoe UI", sans-serif !important;
         font-weight: 800;
         font-size: 48px;
-        color: #ffffff !important;
+        color: var(--le-text-1) !important;
         letter-spacing: -2px;
         line-height: 1;
       }
 
       #le-wrapper .le-pricing-period {
         font-size: 14px;
-        color: #9ca3af !important;
-        font-weight: 300;
+        color: var(--le-text-2) !important;
+        font-weight: 400;
       }
 
       #le-wrapper .le-pricing-setup-note {
         font-size: 12px;
-        color: #6b7280 !important;
+        color: var(--le-text-3) !important;
         margin-bottom: 2rem;
         padding-bottom: 2rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        border-bottom: 1px solid rgba(var(--le-ink), 0.07);
       }
 
       #le-wrapper .le-pricing-setup-note strong {
-        color: #9ca3af !important;
+        color: var(--le-text-2) !important;
       }
 
       #le-wrapper .le-pricing-includes {
@@ -801,7 +1060,7 @@
         font-weight: 500;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: #6b7280 !important;
+        color: var(--le-text-3) !important;
         margin-bottom: 1rem;
       }
 
@@ -827,13 +1086,13 @@
 
       #le-wrapper .le-pricing-feature-text {
         font-size: 14px;
-        color: rgba(255, 255, 255, 0.75) !important;
-        line-height: 1.5;
-        font-weight: 300;
+        color: rgba(var(--le-ink), 0.8) !important;
+        line-height: 1.55;
+        font-weight: 400;
       }
 
       #le-wrapper .le-pricing-feature-text strong {
-        color: #ffffff !important;
+        color: var(--le-text-1) !important;
         font-weight: 500;
       }
 
@@ -845,151 +1104,35 @@
         text-align: center;
         padding: 15px;
         border-radius: 10px;
-        font-family: "DM Sans", sans-serif;
+        font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         font-size: 15px;
         font-weight: 500;
         text-decoration: none !important;
-        margin-top: auto !important;
+        /* margin-top: auto !important; */
         transition: all 0.2s;
         border: none;
         cursor: pointer;
       }
 
       #le-wrapper .le-pricing-cta:hover {
-        background: #3b82f6 !important;
+        background: #1d4ed8 !important;
         box-shadow: 0 8px 30px rgba(37, 99, 235, 0.35);
+      }
+
+      #le-wrapper .le-pricing-cta:active {
+        transform: scale(0.97);
       }
 
       #le-wrapper .le-pricing-note {
         text-align: center;
         font-size: 12px;
-        color: #6b7280 !important;
+        color: var(--le-text-3) !important;
         margin-top: 1rem;
-      }
-
-      /* ── SELECTIVE PUBLIC CLARITY REFRESH ── */
-      #le-wrapper .le-layer {
-        grid-template-columns: 60px 72px 1fr auto;
-      }
-
-      #le-wrapper .le-layer-visual {
-        width: 72px;
-        height: 72px;
-        border-radius: 10px;
-        overflow: hidden;
-        border: 1px solid rgba(59, 130, 246, 0.22);
-        background: #0b1a2c;
-      }
-
-      #le-wrapper .le-layer-visual img {
-        width: 100%;
-        height: 100%;
-        display: block;
-        object-fit: cover;
-      }
-
-      #le-wrapper .le-pricing-section {
-        background: #f4f7fb !important;
-        border-top: 1px solid #dbe5f1;
-      }
-
-      #le-wrapper .le-pricing-section .le-section-h2 {
-        color: #0f172a !important;
-      }
-
-      #le-wrapper .le-pricing-section .le-section-sub {
-        color: #475569 !important;
-        max-width: 700px;
-      }
-
-      #le-wrapper .le-pricing-grid {
-        gap: 1.25rem;
-      }
-
-      #le-wrapper .le-pricing-card {
-        background: #ffffff !important;
-        border: 1px solid #d8e1ec;
-        border-radius: 16px;
-        box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
-      }
-
-      #le-wrapper .le-pricing-card-featured {
-        border-color: #2563eb !important;
-        box-shadow: 0 18px 44px rgba(37, 99, 235, 0.18) !important;
-      }
-
-      #le-wrapper .le-pricing-card:nth-child(1) .le-pricing-header {
-        background: #e9f1ff !important;
-      }
-
-      #le-wrapper .le-pricing-card:nth-child(1) .le-pricing-label {
-        color: #2563eb !important;
-      }
-
-      #le-wrapper .le-pricing-card:nth-child(1) .le-pricing-name {
-        color: #0f172a !important;
-      }
-
-      #le-wrapper .le-pricing-card:nth-child(2) .le-pricing-header {
-        background: #10243e !important;
-      }
-
-      #le-wrapper .le-pricing-card:nth-child(3) .le-pricing-header {
-        background: #2563eb !important;
-      }
-
-      #le-wrapper .le-pricing-header {
-        min-height: 158px;
-        padding: 1.75rem 2rem;
-      }
-
-      #le-wrapper .le-pricing-body {
-        padding: 2rem;
-      }
-
-      #le-wrapper .le-pricing-amount,
-      #le-wrapper .le-pricing-feature-text strong {
-        color: #0f172a !important;
-      }
-
-      #le-wrapper .le-pricing-period,
-      #le-wrapper .le-pricing-feature-text,
-      #le-wrapper .le-pricing-setup-note,
-      #le-wrapper .le-pricing-note {
-        color: #475569 !important;
-      }
-
-      #le-wrapper .le-pricing-setup-note {
-        border-bottom-color: #e2e8f0;
-      }
-
-      #le-wrapper .le-pricing-includes {
-        color: #64748b !important;
-      }
-
-      #le-wrapper .le-pricing-cta {
-        background: #2563eb !important;
-      }
-
-      #le-wrapper .le-pricing-enterprise {
-        background: #10243e !important;
-        border-color: #223c5d;
-        border-radius: 16px;
-      }
-
-      #le-wrapper .le-pricing-commitment-note {
-        color: #334155 !important;
-        background: #e9f1ff;
-        border-color: #bed4f4;
-      }
-
-      #le-wrapper .le-pricing-commitment-note span {
-        color: #475569 !important;
       }
 
       /* ── WHO THIS IS FOR ── */
       #le-wrapper .le-who-section {
-        background: #0d1117 !important;
+        background: var(--le-bg) !important;
       }
 
       #le-wrapper .le-who-grid {
@@ -1012,6 +1155,7 @@
         border: 1px solid rgba(239, 68, 68, 0.1);
         border-radius: 14px;
         padding: 2rem;
+        height: 100%;
       }
 
       #le-wrapper .le-who-label {
@@ -1035,9 +1179,9 @@
         gap: 0.6rem;
         margin-bottom: 0.75rem;
         font-size: 14px;
-        color: rgba(255, 255, 255, 0.7) !important;
-        line-height: 1.5;
-        font-weight: 300;
+        color: rgba(var(--le-ink), 0.75) !important;
+        line-height: 1.55;
+        font-weight: 400;
       }
 
       #le-wrapper .le-who-item-dot {
@@ -1057,8 +1201,8 @@
 
       /* ── ABOUT ── */
       #le-wrapper .le-about-section {
-        background: #1e293b !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        background: var(--le-bg-soft) !important;
+        border-top: 1px solid rgba(var(--le-ink), 0.05);
       }
 
       #le-wrapper .le-about-inner {
@@ -1080,8 +1224,8 @@
         align-items: center;
         gap: 0.75rem;
         font-size: 14px;
-        color: rgba(255, 255, 255, 0.65) !important;
-        font-weight: 300;
+        color: rgba(var(--le-ink), 0.7) !important;
+        font-weight: 400;
       }
 
       #le-wrapper .le-cred-dot {
@@ -1093,18 +1237,18 @@
       }
 
       #le-wrapper .le-about-quote {
-        background: #0d1117 !important;
-        border: 1px solid rgba(255, 255, 255, 0.07);
+        background: var(--le-bg) !important;
+        border: 1px solid rgba(var(--le-ink), 0.07);
         border-left: 3px solid #2563eb;
         border-radius: 0 12px 12px 0;
         padding: 2rem;
       }
 
       #le-wrapper .le-about-quote-text {
-        font-family: "Syne", sans-serif !important;
+        font-family: "Syne", "Segoe UI", sans-serif !important;
         font-size: 20px;
         font-weight: 600;
-        color: #ffffff !important;
+        color: var(--le-text-1) !important;
         line-height: 1.45;
         letter-spacing: -0.3px;
         margin-bottom: 1rem;
@@ -1112,8 +1256,8 @@
 
       #le-wrapper .le-about-quote-sub {
         font-size: 13px;
-        color: #9ca3af !important;
-        font-weight: 300;
+        color: var(--le-text-2) !important;
+        font-weight: 400;
         line-height: 1.6;
       }
 
@@ -1139,7 +1283,7 @@
       }
 
       #le-wrapper .le-final-cta-h2 {
-        font-family: "Syne", sans-serif !important;
+        font-family: "Syne", "Segoe UI", sans-serif !important;
         font-weight: 800;
         font-size: clamp(28px, 4vw, 46px);
         color: #ffffff !important;
@@ -1152,7 +1296,7 @@
       #le-wrapper .le-final-cta-sub {
         font-size: 16px;
         color: rgba(255, 255, 255, 0.7) !important;
-        font-weight: 300;
+        font-weight: 400;
         margin-bottom: 2.5rem;
         position: relative;
       }
@@ -1165,7 +1309,7 @@
         color: #2563eb !important;
         padding: 15px 32px;
         border-radius: 10px;
-        font-family: "DM Sans", sans-serif;
+        font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         font-size: 15px;
         font-weight: 500;
         text-decoration: none !important;
@@ -1181,8 +1325,8 @@
 
       /* ── FOOTER ── */
       #le-wrapper .le-footer {
-        background: #0d1117 !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        background: var(--le-bg) !important;
+        border-top: 1px solid rgba(var(--le-ink), 0.05);
         padding: 2.5rem 2rem;
         display: flex;
         align-items: center;
@@ -1192,10 +1336,10 @@
       }
 
       #le-wrapper .le-footer-logo {
-        font-family: "Syne", sans-serif !important;
+        font-family: "Syne", "Segoe UI", sans-serif !important;
         font-weight: 800;
         font-size: 16px;
-        color: #ffffff !important;
+        color: var(--le-text-1) !important;
         letter-spacing: -0.3px;
       }
 
@@ -1205,7 +1349,7 @@
 
       #le-wrapper .le-footer-copy {
         font-size: 12px;
-        color: #6b7280 !important;
+        color: var(--le-text-3) !important;
       }
 
       #le-wrapper .le-footer-links {
@@ -1215,26 +1359,26 @@
 
       #le-wrapper .le-footer-links a {
         font-size: 12px;
-        color: #6b7280 !important;
+        color: var(--le-text-3) !important;
         text-decoration: none;
         transition: color 0.2s;
       }
 
       #le-wrapper .le-footer-links a:hover {
-        color: #9ca3af !important;
+        color: var(--le-text-2) !important;
       }
 
       /* ── RESPONSIVE ── */
       /* ── ROI CALCULATOR ── */
       #le-wrapper .le-roi-section {
-        background: #0d1117 !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        background: var(--le-bg) !important;
+        border-top: 1px solid rgba(var(--le-ink), 0.05);
       }
 
       #le-wrapper .le-roi-card {
         max-width: 760px;
         margin: 3rem auto 0;
-        background: #1e293b !important;
+        background: var(--le-bg-soft) !important;
         border: 1px solid rgba(37, 99, 235, 0.2);
         border-radius: 20px;
         padding: 2.5rem;
@@ -1257,19 +1401,19 @@
         font-size: 12px;
         font-weight: 500;
         letter-spacing: 0.05em;
-        color: #9ca3af !important;
+        color: var(--le-text-2) !important;
         margin-bottom: 8px;
         text-transform: uppercase;
       }
 
       #le-wrapper .le-roi-input {
         width: 100%;
-        background: #0d1117 !important;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--le-bg) !important;
+        border: 1px solid rgba(var(--le-ink), 0.1);
         border-radius: 10px;
         padding: 12px 16px;
-        color: #ffffff !important;
-        font-family: "DM Sans", sans-serif;
+        color: var(--le-text-1) !important;
+        font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         font-size: 16px;
         font-weight: 500;
         box-sizing: border-box;
@@ -1286,7 +1430,7 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
         padding-top: 2rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        border-top: 1px solid rgba(var(--le-ink), 0.07);
       }
 
       @media (max-width: 600px) {
@@ -1299,7 +1443,7 @@
       }
 
       #le-wrapper .le-roi-result-card {
-        background: #0d1117 !important;
+        background: var(--le-bg) !important;
         border-radius: 12px;
         padding: 1.25rem;
         text-align: center;
@@ -1307,14 +1451,14 @@
 
       #le-wrapper .le-roi-result-label {
         font-size: 11px;
-        color: #6b7280 !important;
+        color: var(--le-text-3) !important;
         text-transform: uppercase;
         letter-spacing: 0.1em;
         margin-bottom: 8px;
       }
 
       #le-wrapper .le-roi-result-value {
-        font-family: "Syne", sans-serif !important;
+        font-family: "Syne", "Segoe UI", sans-serif !important;
         font-size: 28px;
         font-weight: 800;
         color: #10b981 !important;
@@ -1325,24 +1469,24 @@
         color: #ef4444 !important;
       }
       #le-wrapper .le-roi-result-value.le-roi-neutral {
-        color: #ffffff !important;
+        color: var(--le-text-1) !important;
       }
 
       #le-wrapper .le-roi-result-sub {
         font-size: 11px;
-        color: #6b7280 !important;
+        color: var(--le-text-3) !important;
         margin-top: 4px;
       }
 
       #le-wrapper .le-roi-disclaimer {
         text-align: center;
         font-size: 11px;
-        color: #4b5563 !important;
+        color: var(--le-text-3) !important;
         margin-top: 1.5rem;
         line-height: 1.6;
       }
 
-      @media (max-width: 768px) {
+      @media (max-width: 1024px) {
         #le-wrapper .le-nav {
           padding: 1rem 1.25rem;
         }
@@ -1352,6 +1496,9 @@
         #le-wrapper .le-nav-hamburger {
           display: flex;
         }
+      }
+
+      @media (max-width: 768px) {
         #le-wrapper .le-hero {
           min-height: 0 !important;
           height: auto !important;
@@ -1364,15 +1511,12 @@
         #le-wrapper .le-hero-grid-lines {
           display: none !important;
         }
-        #le-wrapper .le-container {
-          padding: 0 1.25rem;
-        }
         #le-wrapper .le-diff-inner {
           grid-template-columns: 1fr;
         }
         #le-wrapper .le-diff-item {
           border-right: none;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+          border-bottom: 1px solid rgba(var(--le-ink), 0.06);
         }
         #le-wrapper .le-diff-item:last-child {
           border-bottom: none;
@@ -1387,13 +1531,14 @@
           grid-template-columns: 1fr 1fr;
         }
         #le-wrapper .le-layer {
-          grid-template-columns: 42px 58px 1fr;
+          grid-template-columns: 40px 44px 1fr;
           gap: 0.85rem;
           padding: 1.25rem 1rem;
         }
         #le-wrapper .le-layer-visual {
-          width: 58px;
-          height: 58px;
+          width: 44px;
+          height: 44px;
+          border-radius: 10px;
         }
         #le-wrapper .le-layer-num {
           font-size: 26px;
@@ -1405,7 +1550,10 @@
           font-size: 12px;
         }
         #le-wrapper .le-layer-badge {
-          display: none;
+          grid-column: 3 / -1;
+          justify-self: start;
+          width: 150px;
+          margin-top: 0.6rem;
         }
         #le-wrapper .le-who-grid {
           grid-template-columns: 1fr;
@@ -1446,26 +1594,17 @@
         #le-wrapper .le-section-h2 {
           font-size: clamp(26px, 6vw, 38px);
         }
-        #le-wrapper .le-pricing-grid {
-          grid-template-columns: repeat(1, 1fr);
-        }
-
         #le-wrapper .le-pricing-enterprise {
           flex-direction: column;
           text-align: center;
         }
-
-        /* Compliance callout 3-col → 1-col on mobile */
-        #le-wrapper
-          section[style*="background:#0D1117"]
-          .le-container
-          > div
-          > div[style*="grid-template-columns:repeat(3"] {
-          grid-template-columns: 1fr !important;
-        }
       }
 
       @media (max-width: 480px) {
+        #le-wrapper .le-layer-badge {
+          width: 128px;
+          font-size: 10px;
+        }
         #le-wrapper .le-deliverables-grid {
           grid-template-columns: 1fr;
         }
@@ -1477,8 +1616,20 @@
           font-size: 14px;
         }
         #le-wrapper .le-pricing-grid {
-          gap: 2.25rem;
-          /* grid-template-columns: 1fr; */
+          gap: 1.75rem;
+        }
+        #le-wrapper .le-pricing-header {
+          padding: 1.25rem 1.1rem;
+          min-height: 0;
+        }
+        #le-wrapper .le-pricing-body {
+          padding: 1.5rem 1.1rem;
+        }
+        #le-wrapper .le-pricing-amount {
+          font-size: 32px;
+        }
+        #le-wrapper .le-pricing-name {
+          font-size: 21px;
         }
       }
     </style>
@@ -1497,28 +1648,51 @@
           </svg>
           <span class="le-nav-logo-text">Layer<span>Engine</span>.ai</span>
         </a>
-        <ul class="le-nav-links">
-          <li><a href="#le-how">How It Works</a></li>
-          <li><a href="#le-deliverables">What You Get</a></li>
-          <li><a href="#le-pricing">Pricing</a></li>
-          <li><a href="#le-roi">Calculator</a></li>
-          <li><a href="#le-about">About</a></li>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/solo.html">Self-Managed</a></li>
-          <li>
-            <a href="https://calendly.com/adam-layerengine/30min" class="le-nav-cta" target="_blank"
-              >Book a Call</a
-            >
-          </li>
-        </ul>
-        <button
-          class="le-nav-hamburger"
-          id="le-hamburger"
-          onclick="leToggleNav()"
-          aria-label="Menu"
-        >
-          <span></span><span></span><span></span>
-        </button>
+        <div class="le-nav-right">
+          <ul class="le-nav-links">
+            <li><a href="#le-how">How It Works</a></li>
+            <li><a href="#le-deliverables">What You Get</a></li>
+            <li><a href="#le-pricing">Pricing</a></li>
+            <li><a href="#le-roi">Calculator</a></li>
+            <li><a href="#le-about">About</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/solo.html">Self-Managed</a></li>
+            <li>
+              <a href="https://calendly.com/adam-layerengine/30min" class="le-nav-cta" target="_blank"
+                >Book a Call</a
+              >
+            </li>
+          </ul>
+          <button
+            class="le-theme-toggle"
+            id="le-theme-toggle"
+            onclick="leToggleTheme()"
+            aria-label="Toggle light and dark mode"
+          >
+            <svg class="le-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4"></circle>
+              <line x1="12" y1="2" x2="12" y2="4"></line>
+              <line x1="12" y1="20" x2="12" y2="22"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="2" y1="12" x2="4" y2="12"></line>
+              <line x1="20" y1="12" x2="22" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="le-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <button
+            class="le-nav-hamburger"
+            id="le-hamburger"
+            onclick="leToggleNav()"
+            aria-label="Menu"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </nav>
 
       <!-- MOBILE NAV -->
@@ -1529,7 +1703,7 @@
         <a href="#le-roi" onclick="leCloseNav()">Calculator</a>
         <a href="#le-about" onclick="leCloseNav()">About</a>
         <a href="/blog/" onclick="leCloseNav()">Blog</a>
-        <a href="/solo.html" onclick="leCloseNav()">Self-Managed</a>
+        <a href="/solo.html" onclick="leCloseNav()">Solo Build</a>
         <a
           href="https://calendly.com/adam-layerengine/30min"
           class="le-nav-cta"
@@ -1542,10 +1716,35 @@
       <script>
         function leToggleNav() {
           var nav = document.getElementById("le-mobile-nav");
-          nav.classList.toggle("le-open");
+          var burger = document.getElementById("le-hamburger");
+          var isOpen = nav.classList.toggle("le-open");
+          burger.classList.toggle("le-open", isOpen);
+          document.body.style.overflow = isOpen ? "hidden" : "";
+          document.documentElement.style.overflow = isOpen ? "hidden" : "";
         }
         function leCloseNav() {
           document.getElementById("le-mobile-nav").classList.remove("le-open");
+          document.getElementById("le-hamburger").classList.remove("le-open");
+          document.body.style.overflow = "";
+          document.documentElement.style.overflow = "";
+        }
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") leCloseNav();
+        });
+        function leToggleTheme() {
+          var html = document.documentElement;
+          var isLight = html.getAttribute("data-theme") === "light";
+          if (isLight) {
+            html.removeAttribute("data-theme");
+            try {
+              localStorage.setItem("le-theme-v2", "dark");
+            } catch (e) {}
+          } else {
+            html.setAttribute("data-theme", "light");
+            try {
+              localStorage.setItem("le-theme-v2", "light");
+            } catch (e) {}
+          }
         }
       </script>
 
@@ -1819,9 +2018,9 @@
       <!-- COMPLIANCE CALLOUT -->
       <section
         style="
-          background: #0d1117;
-          border-top: 1px solid rgba(255, 255, 255, 0.05);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+          background: var(--le-bg);
+          border-top: 1px solid rgba(var(--le-ink), 0.05);
+          border-bottom: 1px solid rgba(var(--le-ink), 0.05);
           padding: 4rem 0;
         "
       >
@@ -1842,18 +2041,11 @@
               LayerEngine helps configure the right follow-up, routing, consent, and human-handoff
               process so your team can scale conversations without losing visibility or control.
             </p>
-            <div
-              style="
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 1.5rem;
-                margin-top: 1rem;
-              "
-            >
+            <div class="le-compliance-grid">
               <div
                 style="
-                  background: #1e293b;
-                  border: 1px solid rgba(255, 255, 255, 0.07);
+                  background: var(--le-bg-soft);
+                  border: 1px solid rgba(var(--le-ink), 0.07);
                   border-radius: 14px;
                   padding: 1.5rem;
                   text-align: left;
@@ -1871,15 +2063,15 @@
                 >
                   Built for Responsible Use
                 </div>
-                <div style="font-size: 14px; color: #9ca3af; line-height: 1.6">
+                <div style="font-size: 14px; color: var(--le-text-2); line-height: 1.6">
                   Business profiles, consent language, and messaging requirements are addressed
                   before eligible automation goes live.
                 </div>
               </div>
               <div
                 style="
-                  background: #1e293b;
-                  border: 1px solid rgba(255, 255, 255, 0.07);
+                  background: var(--le-bg-soft);
+                  border: 1px solid rgba(var(--le-ink), 0.07);
                   border-radius: 14px;
                   padding: 1.5rem;
                   text-align: left;
@@ -1897,15 +2089,15 @@
                 >
                   Follow-Up at Scale
                 </div>
-                <div style="font-size: 14px; color: #9ca3af; line-height: 1.6">
+                <div style="font-size: 14px; color: var(--le-text-2); line-height: 1.6">
                   Approved workflows help nurture, route, and surface the conversations that deserve
                   a human response.
                 </div>
               </div>
               <div
                 style="
-                  background: #1e293b;
-                  border: 1px solid rgba(255, 255, 255, 0.07);
+                  background: var(--le-bg-soft);
+                  border: 1px solid rgba(var(--le-ink), 0.07);
                   border-radius: 14px;
                   padding: 1.5rem;
                   text-align: left;
@@ -1923,15 +2115,15 @@
                 >
                   One Connected Data Layer
                 </div>
-                <div style="font-size: 14px; color: #9ca3af; line-height: 1.6">
+                <div style="font-size: 14px; color: var(--le-text-2); line-height: 1.6">
                   The same operating system can support lead growth, producer growth, and clearer
                   internal ownership.
                 </div>
               </div>
               <div
                 style="
-                  background: #1e293b;
-                  border: 1px solid rgba(255, 255, 255, 0.07);
+                  background: var(--le-bg-soft);
+                  border: 1px solid rgba(var(--le-ink), 0.07);
                   border-radius: 14px;
                   padding: 1.5rem;
                   text-align: left;
@@ -1949,7 +2141,7 @@
                 >
                   Clear Human Handoffs
                 </div>
-                <div style="font-size: 14px; color: #9ca3af; line-height: 1.6">
+                <div style="font-size: 14px; color: var(--le-text-2); line-height: 1.6">
                   Your team sees the status, owns the decision points, and steps in when the
                   conversation requires judgment.
                 </div>
@@ -2104,7 +2296,7 @@
               class="le-deliverable-card"
               style="
                 border-color: rgba(37, 99, 235, 0.2);
-                background: linear-gradient(135deg, #1e293b, #131c27) !important;
+                background: linear-gradient(135deg, var(--le-bg-soft), var(--le-bg-soft3)) !important;
               "
             >
               <div
@@ -2159,13 +2351,15 @@
             <div class="le-section-eyebrow">Pricing</div>
             <h2 class="le-section-h2">Simple pricing.<br /><span>Serious results.</span></h2>
             <p class="le-section-sub" style="margin: 0 auto; max-width: 680px">
-              One connected growth system, delivered at the level your team needs. Start with a focused foundation, add structured support, or let LayerEngine manage the approved operation with you.
+              Three tiers built for every stage of growth &mdash; from self-run to fully managed.
+              Every plan includes a complete system build. You choose how much support you want
+              after that.
             </p>
           </div>
 
           <div class="le-pricing-grid">
             <!-- TIER 1: SELF-MANAGED -->
-            <div class="le-pricing-card">
+            <!-- <div class="le-pricing-card">
               <div class="le-pricing-header">
                 <div class="le-pricing-label">Tier 1 &mdash; Self-Managed</div>
                 <div class="le-pricing-name">We Build It. You Run It.</div>
@@ -2176,7 +2370,7 @@
                   <div class="le-pricing-period">/mo</div>
                 </div>
                 <div class="le-pricing-setup-note">
-                  + <strong>$1,500 one-time setup</strong> &mdash; no minimum term
+                  + <strong>$1,500 setup fee</strong> (one-time) &mdash; tech fee only after handoff
                 </div>
                 <div class="le-pricing-includes">What's included</div>
                 <div class="le-pricing-feature">
@@ -2192,7 +2386,8 @@
                     </svg>
                   </div>
                   <div class="le-pricing-feature-text">
-                    <strong>Approved system foundation</strong> &mdash; the selected LayerEngine system is built, configured, and prepared for handoff
+                    <strong>Full system build</strong> &mdash; your complete LayerEngine system
+                    built and configured
                   </div>
                 </div>
                 <div class="le-pricing-feature">
@@ -2208,7 +2403,8 @@
                     </svg>
                   </div>
                   <div class="le-pricing-feature-text">
-                    <strong>System handoff &amp; training resources</strong> &mdash; the knowledge and materials to run the approved system yourself
+                    <strong>Snapshot &amp; training resources</strong> &mdash; everything you need
+                    to run the system yourself
                   </div>
                 </div>
                 <div class="le-pricing-feature">
@@ -2231,11 +2427,11 @@
                   style="
                     margin-top: 1.25rem;
                     padding: 0.75rem 1rem;
-                    background: rgba(255, 255, 255, 0.03);
-                    border: 1px solid rgba(255, 255, 255, 0.08);
+                    background: rgba(var(--le-ink), 0.03);
+                    border: 1px solid rgba(var(--le-ink), 0.08);
                     border-radius: 8px;
                     font-size: 12px;
-                    color: #9ca3af;
+                    color: var(--le-text-2);
                     line-height: 1.6;
                   "
                 >
@@ -2245,12 +2441,13 @@
                   style="
                     margin-top: 1rem;
                     padding-top: 1rem;
-                    border-top: 1px solid rgba(255, 255, 255, 0.07);
+                    border-top: 1px solid rgba(var(--le-ink), 0.07);
                     font-size: 12px;
-                    color: #6b7280;
+                    color: var(--le-text-3);
                   "
                 >
-                  Client also responsible for: texting and AI usage costs, which vary by usage and are provided through the platform arrangement.
+                  Client also responsible for: texting/AI usage costs (offered at a discounted rate
+                  through our platform).
                 </div>
                 <a
                   href="https://calendly.com/adam-layerengine/30min"
@@ -2263,10 +2460,10 @@
                   Setup fee due at signing. Monthly billing begins 30 days after signing.
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <!-- TIER 2: SUPPORTED -->
-            <div class="le-pricing-card">
+            <!-- <div class="le-pricing-card">
               <div class="le-pricing-header">
                 <div class="le-pricing-label">Tier 2 &mdash; Supported</div>
                 <div class="le-pricing-name">We Build It. We Support You.</div>
@@ -2277,7 +2474,389 @@
                   <div class="le-pricing-period">/mo</div>
                 </div>
                 <div class="le-pricing-setup-note">
+                  + <strong>$1,000 setup fee</strong> (one-time) &mdash; requires 6-month commitment
+                  &bull; <span style="color: #93c5fd">$197 tech + $500 service</span>
+                </div>
+                <div class="le-pricing-includes">What's included</div>
+                <div class="le-pricing-feature">
+                  <div class="le-check">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke="#10B981"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="le-pricing-feature-text">
+                    <strong>Complete growth build</strong> &mdash; up to 3 automated agent workflows
+                    built and deployed for your operation
+                  </div>
+                </div>
+                <div class="le-pricing-feature">
+                  <div class="le-check">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke="#10B981"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="le-pricing-feature-text">
+                    <strong>Access to the University</strong> &mdash; full training library included
+                  </div>
+                </div>
+                <div class="le-pricing-feature">
+                  <div class="le-check">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke="#10B981"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="le-pricing-feature-text">
+                    <strong>Ongoing optimization support</strong> &mdash; your system improves
+                    throughout the commitment period, not just at launch
+                  </div>
+                </div>
+                <div class="le-pricing-feature">
+                  <div class="le-check">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke="#10B981"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="le-pricing-feature-text">
+                    <strong>3 strategic check-ins monthly</strong> &mdash; focused sessions to
+                    review performance and adjust direction
+                  </div>
+                </div>
+                <div class="le-pricing-feature">
+                  <div class="le-check">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke="#10B981"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="le-pricing-feature-text">
+                    <strong>Constant availability via Slack</strong> &mdash; reach our team between
+                    sessions, no waiting for the next call
+                  </div>
+                </div>
+                <div
+                  style="
+                    margin-top: 1rem;
+                    padding-top: 1rem;
+                    border-top: 1px solid rgba(var(--le-ink), 0.07);
+                    font-size: 12px;
+                    color: var(--le-text-3);
+                  "
+                >
+                  Client also responsible for: texting/AI usage costs (offered at a discounted rate
+                  through our platform).
+                </div>
+                <a
+                  href="https://calendly.com/adam-layerengine/30min"
+                  class="le-pricing-cta"
+                  style="margin-top: 1.5rem"
+                  target="_blank"
+                  >Book a Strategy Call &rarr;</a
+                >
+                <div class="le-pricing-note">
+                  Setup fee due at signing. Monthly billing begins 30 days after signing.
+                  Month-to-month available after 6 months.
+                </div>
+                <div style="margin-top: 0.75rem; font-size: 11px; color: var(--le-text-3); line-height: 1.5">
+                  Prefer no commitment? A $5,000 setup fee applies for full month-to-month
+                  flexibility with no minimum term.
+                </div>
+              </div>
+            </div> -->
+
+            <!-- TIER 3: FULLY MANAGED -->
+            <!-- <div class="le-pricing-card le-pricing-card-featured">
+              <div class="le-pricing-badge">Most Popular</div>
+              <div class="le-pricing-header">
+                <div class="le-pricing-label">Tier 3 &mdash; Fully Managed</div>
+                <div class="le-pricing-name">We Build It. We Run It. Daily.</div>
+              </div>
+              <div class="le-pricing-body">
+                <div class="le-pricing-setup">
+                  <div class="le-pricing-amount">$1,197</div>
+                  <div class="le-pricing-period">/mo</div>
+                </div>
+                <div class="le-pricing-setup-note">
+                  + <strong>$1,000 setup fee</strong> (one-time) &mdash; requires 6-month commitment
+                  &bull; <span style="color: #93c5fd">$197 tech + $1,000 service</span>
+                </div>
+                <div
+                  style="
+                    background: rgba(37, 99, 235, 0.1);
+                    border: 1px solid rgba(37, 99, 235, 0.3);
+                    border-radius: 8px;
+                    padding: 0.75rem 1rem;
+                    margin-bottom: 1.25rem;
+                    font-size: 13px;
+                    color: #93c5fd;
+                    font-weight: 500;
+                    line-height: 1.5;
+                  "
+                >
+                  &#10003;&nbsp; Everything in Supported &mdash; plus full system build and daily
+                  operations.
+                </div>
+                <div class="le-pricing-includes">Everything in Supported, plus</div>
+                <div class="le-pricing-feature">
+                  <div class="le-check">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke="#10B981"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="le-pricing-feature-text">
+                    <strong>Full system build</strong> &mdash; your complete growth infrastructure
+                    built, configured, and handed off ready to run
+                  </div>
+                </div>
+                <div class="le-pricing-feature">
+                  <div class="le-check">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke="#10B981"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="le-pricing-feature-text">
+                    <strong>Daily operations management</strong> &mdash; campaigns, communications,
+                    and workflows run without you managing them
+                  </div>
+                </div>
+                <div class="le-pricing-feature">
+                  <div class="le-check">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke="#10B981"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="le-pricing-feature-text">
+                    <strong>Custom AI scripts &amp; automation</strong> &mdash; built for your
+                    market, culture, and specific growth goals
+                  </div>
+                </div>
+                <div class="le-pricing-feature">
+                  <div class="le-check">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke="#10B981"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="le-pricing-feature-text">
+                    <strong>Ongoing optimization &amp; reporting</strong> &mdash; sequences,
+                    scripts, and funnels continuously refined with weekly performance updates
+                  </div>
+                </div>
+                <div class="le-pricing-feature">
+                  <div class="le-check">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke="#10B981"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="le-pricing-feature-text">
+                    <strong>Operational support beyond recruiting</strong> &mdash; internal
+                    communications, event coordination, onboarding workflows, and more — handled
+                    systematically
+                  </div>
+                </div>
+                <div
+                  style="
+                    margin-top: 1rem;
+                    padding-top: 1rem;
+                    border-top: 1px solid rgba(var(--le-ink), 0.07);
+                    font-size: 12px;
+                    color: var(--le-text-3);
+                  "
+                >
+                  Client also responsible for: texting/AI usage costs (offered at a discounted rate
+                  through our platform).
+                </div>
+                <a
+                  href="https://calendly.com/adam-layerengine/30min"
+                  class="le-pricing-cta"
+                  style="margin-top: 1.5rem"
+                  target="_blank"
+                  >Book a Strategy Call &rarr;</a
+                >
+                <div class="le-pricing-note">
+                  Setup fee due at signing. Monthly billing begins 30 days after signing.
+                  Month-to-month available after 6 months.
+                </div>
+              </div>
+            </div> -->
+
+            <!-- TIER 1: SELF-MANAGED -->
+            <div class="le-pricing-card">
+              <div class="le-pricing-header">
+                <div class="le-pricing-label">Tier 1 &mdash; Self-Managed</div>
+                <div class="le-pricing-name">We Build It. You Run It.</div>
+              </div>
+              <div class="le-pricing-body">
+                <div class="le-pricing-container">
+                  <div class="le-pricing-setup">
+                    <div class="le-pricing-amount">$240</div>
+                    <div class="le-pricing-period">/mo</div>
+                  </div>
+                  <div class="le-pricing-setup-note">
+                    + <strong>$1,500 one-time setup</strong> &mdash; no minimum term
+                  </div>
+                  <div class="le-pricing-includes">What's included</div>
+                  <div class="le-pricing-feature">
+                    <div class="le-check">
+                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                        <path
+                          d="M2 6l3 3 5-5"
+                          stroke="#10B981"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                    <div class="le-pricing-feature-text">
+                      <strong>Approved system foundation</strong> &mdash; the selected LayerEngine system is built, configured, and prepared for handoff
+                    </div>
+                  </div>
+                  <div class="le-pricing-feature">
+                    <div class="le-check">
+                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                        <path
+                          d="M2 6l3 3 5-5"
+                          stroke="#10B981"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                    <div class="le-pricing-feature-text">
+                      <strong>System handoff &amp; training resources</strong> &mdash; the knowledge and materials to run the approved system yourself
+                    </div>
+                  </div>
+                  <div class="le-pricing-feature">
+                    <div class="le-check">
+                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                        <path
+                          d="M2 6l3 3 5-5"
+                          stroke="#10B981"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                    <div class="le-pricing-feature-text">
+                      <strong>Access to the University</strong> &mdash; full training library included
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      margin-top: 1.25rem;
+                      padding: 0.75rem 1rem;
+                      background: rgba(var(--le-ink), 0.03);
+                      border: 1px solid rgba(var(--le-ink), 0.08);
+                      border-radius: 8px;
+                      font-size: 12px;
+                      color: var(--le-text-2);
+                      line-height: 1.6;
+                    "
+                  >
+                    After handoff, you own and operate the system. No ongoing support included.
+                  </div>
+                </div>
+                <div>
+                  <div
+                    style="
+                      margin-top: 1rem;
+                      padding-top: 1rem;
+                      border-top: 1px solid rgba(var(--le-ink), 0.07);
+                      font-size: 12px;
+                      color: var(--le-text-3);
+                    "
+                  >
+                    Client also responsible for: texting and AI usage costs, which vary by usage and are provided through the platform arrangement.
+                  </div>
+                  <a
+                    href="https://calendly.com/adam-layerengine/30min"
+                    class="le-pricing-cta"
+                    style="margin-top: 1.5rem"
+                    target="_blank"
+                    >Book a Strategy Call &rarr;</a
+                  >
+                  <div class="le-pricing-note">
+                    Setup fee due at signing. Monthly billing begins 30 days after signing.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TIER 2: SUPPORTED -->
+            <div class="le-pricing-card">
+              <div class="le-pricing-header">
+                <div class="le-pricing-label">Tier 2 &mdash; Supported</div>
+                <div class="le-pricing-name">We Build It. We Support You.</div>
+              </div>
+              <div class="le-pricing-body">
+                <div class="le-pricing-container">
+                <div class="le-pricing-setup">
+                  <div class="le-pricing-amount">$697</div>
+                  <div class="le-pricing-period">/mo</div>
+                </div>
+                <div class="le-pricing-setup-note">
                   + <strong>$2,500 one-time setup</strong> &mdash; 3-month minimum commitment
+                  &bull; <span style="color: #93c5fd">$197 tech + $500 service</span>
                 </div>
                 <div class="le-pricing-includes">What's included</div>
                 <div class="le-pricing-feature">
@@ -2361,13 +2940,15 @@
                     <strong>Slack support within scope</strong> &mdash; a clear channel for in-scope questions between strategic check-ins
                   </div>
                 </div>
+                </div>
+                <div>
                 <div
                   style="
                     margin-top: 1rem;
                     padding-top: 1rem;
-                    border-top: 1px solid rgba(255, 255, 255, 0.07);
+                    border-top: 1px solid rgba(var(--le-ink), 0.07);
                     font-size: 12px;
-                    color: #6b7280;
+                    color: var(--le-text-3);
                   "
                 >
                   Client also responsible for: texting and AI usage costs, which vary by usage and are provided through the platform arrangement.
@@ -2383,6 +2964,7 @@
                   Setup fee due at signing. Monthly billing begins 30 days after signing.
                   Three-month minimum commitment applies.
                 </div>
+                </div>
               </div>
             </div>
 
@@ -2394,28 +2976,16 @@
                 <div class="le-pricing-name">We Build It. We Run It. Daily.</div>
               </div>
               <div class="le-pricing-body">
+                <div class="le-pricing-container">
                 <div class="le-pricing-setup">
                   <div class="le-pricing-amount">$1,197</div>
                   <div class="le-pricing-period">/mo</div>
                 </div>
                 <div class="le-pricing-setup-note">
                   + <strong>$5,000 one-time setup</strong> &mdash; 3-month minimum commitment
+                  &bull; <span style="color: #93c5fd">$197 tech + $1,000 service</span>
                 </div>
-                <div
-                  style="
-                    background: #edf4ff;
-                    border: 1px solid #bfdbfe;
-                    border-radius: 8px;
-                    padding: 0.75rem 1rem;
-                    margin-bottom: 1.25rem;
-                    font-size: 13px;
-                    color: #1e3a5f;
-                    font-weight: 500;
-                    line-height: 1.5;
-                  "
-                >
-                  &#10003;&nbsp; Everything in Supported &mdash; plus the approved full-growth system and managed operations.
-                </div>
+                
                 <div class="le-pricing-includes">Everything in Supported, plus</div>
                 <div class="le-pricing-feature">
                   <div class="le-check">
@@ -2497,13 +3067,32 @@
                     <strong>Coordinated dual-system rollout</strong> &mdash; Client Attraction and Brokerage Recruiting systems are deployed where included, with a defined agent-enablement plan
                   </div>
                 </div>
+                
+                
+                <div
+                  style="
+                    background: rgba(37, 99, 235, 0.1);
+                    border: 1px solid rgba(37, 99, 235, 0.3);
+                    border-radius: 8px;
+                    padding: 0.75rem 1rem;
+                    margin-bottom: 1.25rem;
+                    font-size: 13px;
+                    color: #93c5fd;
+                    font-weight: 500;
+                    line-height: 1.5;
+                  "
+                >
+                  &#10003;&nbsp; Everything in Supported &mdash; plus the approved full-growth system and managed operations.
+                </div>
+                </div>
+                <div>
                 <div
                   style="
                     margin-top: 1rem;
                     padding-top: 1rem;
-                    border-top: 1px solid rgba(255, 255, 255, 0.07);
+                    border-top: 1px solid rgba(var(--le-ink), 0.07);
                     font-size: 12px;
-                    color: #6b7280;
+                    color: var(--le-text-3);
                   "
                 >
                   Client also responsible for: texting and AI usage costs, which vary by usage and are provided through the platform arrangement.
@@ -2519,21 +3108,31 @@
                   Setup fee due at signing. Monthly billing begins 30 days after signing.
                   Three-month minimum commitment applies.
                 </div>
+                </div>
               </div>
             </div>
 
             <!-- ENTERPRISE -->
             <div class="le-pricing-enterprise">
               <div>
-                <div class="le-pricing-label" style="margin-bottom: 0.5rem">
+                <div
+                  style="
+                    font-size: 11px;
+                    font-weight: 500;
+                    letter-spacing: 0.15em;
+                    text-transform: uppercase;
+                    color: var(--le-text-2);
+                    margin-bottom: 0.5rem;
+                  "
+                >
                   Multi-Office / Enterprise
                 </div>
                 <div
                   style="
-                    font-family: &quot;Syne&quot;, sans-serif;
+                    font-family: &quot;Syne&quot;, &quot;Segoe UI&quot;, sans-serif;
                     font-weight: 800;
                     font-size: 22px;
-                    color: #ffffff;
+                    color: var(--le-text-1);
                     letter-spacing: -0.5px;
                     margin-bottom: 0.75rem;
                   "
@@ -2543,7 +3142,7 @@
                 <p
                   style="
                     font-size: 14px;
-                    color: rgba(255, 255, 255, 0.65);
+                    color: rgba(var(--le-ink), 0.65);
                     line-height: 1.6;
                     max-width: 600px;
                     margin: 0;
@@ -2571,7 +3170,7 @@
           </div>
 
           <div class="le-pricing-commitment-note">
-            <strong style="color: #0f172a">&#9432; Commitment &amp; billing note:</strong> Tiers 2 and 3 require a three-month minimum commitment. Setup fees are due at signing; monthly billing begins 30 days after signing. Texting and AI usage costs are separate, usage-based, and may vary by client.
+            <strong style="color: var(--le-text-1)">&#9432; Commitment &amp; billing note:</strong> Tiers 2 and 3 require a three-month minimum commitment. Setup fees are due at signing; monthly billing begins 30 days after signing. Texting and AI usage costs are separate, usage-based, and may vary by client.
           </div>
         </div>
       </section>
@@ -2579,9 +3178,9 @@
       <!-- 14-DAY LAUNCH -->
       <section
         style="
-          background: #0d1117;
-          border-top: 1px solid rgba(255, 255, 255, 0.05);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+          background: var(--le-bg);
+          border-top: 1px solid rgba(var(--le-ink), 0.05);
+          border-bottom: 1px solid rgba(var(--le-ink), 0.05);
           padding: 4rem 0;
         "
       >
@@ -2610,8 +3209,8 @@
           >
             <div
               style="
-                background: #1e293b;
-                border: 1px solid rgba(255, 255, 255, 0.07);
+                background: var(--le-bg-soft);
+                border: 1px solid rgba(var(--le-ink), 0.07);
                 border-radius: 14px;
                 padding: 1.35rem;
               "
@@ -2627,15 +3226,15 @@
               >
                 DAY 0–2
               </div>
-              <div style="font-weight: 600; color: #f8fafc; margin-bottom: 0.4rem">Align</div>
-              <div style="font-size: 13px; line-height: 1.6; color: #9ca3af">
+              <div style="font-weight: 600; color: var(--le-text-1); margin-bottom: 0.4rem">Align</div>
+              <div style="font-size: 13px; line-height: 1.6; color: var(--le-text-2)">
                 Confirm your priorities, inputs, access, and internal owner.
               </div>
             </div>
             <div
               style="
-                background: #1e293b;
-                border: 1px solid rgba(255, 255, 255, 0.07);
+                background: var(--le-bg-soft);
+                border: 1px solid rgba(var(--le-ink), 0.07);
                 border-radius: 14px;
                 padding: 1.35rem;
               "
@@ -2651,15 +3250,15 @@
               >
                 DAY 3–10
               </div>
-              <div style="font-weight: 600; color: #f8fafc; margin-bottom: 0.4rem">Build</div>
-              <div style="font-size: 13px; line-height: 1.6; color: #9ca3af">
+              <div style="font-weight: 600; color: var(--le-text-1); margin-bottom: 0.4rem">Build</div>
+              <div style="font-size: 13px; line-height: 1.6; color: var(--le-text-2)">
                 Configure the approved foundation, workflows, and conversion path.
               </div>
             </div>
             <div
               style="
-                background: #1e293b;
-                border: 1px solid rgba(255, 255, 255, 0.07);
+                background: var(--le-bg-soft);
+                border: 1px solid rgba(var(--le-ink), 0.07);
                 border-radius: 14px;
                 padding: 1.35rem;
               "
@@ -2675,15 +3274,15 @@
               >
                 DAY 11–13
               </div>
-              <div style="font-weight: 600; color: #f8fafc; margin-bottom: 0.4rem">Test</div>
-              <div style="font-size: 13px; line-height: 1.6; color: #9ca3af">
+              <div style="font-weight: 600; color: var(--le-text-1); margin-bottom: 0.4rem">Test</div>
+              <div style="font-size: 13px; line-height: 1.6; color: var(--le-text-2)">
                 Test the handoffs, clarify ownership, and prepare your team to use it.
               </div>
             </div>
             <div
               style="
-                background: #1e293b;
-                border: 1px solid rgba(255, 255, 255, 0.07);
+                background: var(--le-bg-soft);
+                border: 1px solid rgba(var(--le-ink), 0.07);
                 border-radius: 14px;
                 padding: 1.35rem;
               "
@@ -2699,10 +3298,10 @@
               >
                 DAY 14+
               </div>
-              <div style="font-weight: 600; color: #f8fafc; margin-bottom: 0.4rem">
+              <div style="font-weight: 600; color: var(--le-text-1); margin-bottom: 0.4rem">
                 Launch &amp; Improve
               </div>
-              <div style="font-size: 13px; line-height: 1.6; color: #9ca3af">
+              <div style="font-size: 13px; line-height: 1.6; color: var(--le-text-2)">
                 Review what was built, activate the right next step, and optimize by tier.
               </div>
             </div>
@@ -2779,7 +3378,7 @@
               </h2>
               <p class="le-section-sub" style="margin-top: 1rem">
                 LayerEngine.ai was built by
-                <strong style="color: rgba(255, 255, 255, 0.9)">Adam Wilson</strong> — a former
+                <strong style="color: rgba(var(--le-ink), 0.9)">Adam Wilson</strong> — a former
                 top-producing team leader and agent who got tired of watching growth leaders
                 struggle with problems that had solvable, automatable answers.
               </p>
@@ -2797,8 +3396,8 @@
                   display: flex;
                   align-items: center;
                   gap: 1.5rem;
-                  background: #0d1117;
-                  border: 1px solid rgba(255, 255, 255, 0.07);
+                  background: var(--le-bg);
+                  border: 1px solid rgba(var(--le-ink), 0.07);
                   border-radius: 14px;
                   padding: 1.5rem;
                   overflow: hidden;
@@ -2819,16 +3418,16 @@
                 <div>
                   <div
                     style="
-                      font-family: &quot;Syne&quot;, sans-serif;
+                      font-family: &quot;Syne&quot;, "Segoe UI", sans-serif;
                       font-weight: 700;
                       font-size: 16px;
-                      color: #ffffff;
+                      color: var(--le-text-1);
                       letter-spacing: -0.3px;
                     "
                   >
                     Adam Wilson
                   </div>
-                  <div style="font-size: 12px; color: #6b7280; margin-top: 3px">
+                  <div style="font-size: 12px; color: var(--le-text-3); margin-top: 3px">
                     Founder, LayerEngine.ai
                   </div>
                 </div>
@@ -2911,14 +3510,14 @@
                   onchange="leCalcROI()"
                   style="cursor: pointer"
                 >
-                  <option value="240" data-setup="1500">
-                    Self-Managed &mdash; $240/mo + $1,500 setup
+                  <option value="197" data-setup="2500">
+                    Self-Managed &mdash; $197/mo + $2,500 setup
                   </option>
-                  <option value="697" data-setup="2500">
-                    Supported &mdash; $697/mo + $2,500 setup
+                  <option value="697" data-setup="1000">
+                    Supported &mdash; $697/mo + $1,000 setup
                   </option>
-                  <option value="1197" data-setup="5000" selected>
-                    Fully Managed &mdash; $1,197/mo + $5,000 setup
+                  <option value="1197" data-setup="1000" selected>
+                    Fully Managed &mdash; $1,197/mo + $1,000 setup
                   </option>
                 </select>
               </div>
@@ -3002,8 +3601,8 @@
       <!-- GROWTH SYSTEMS AUDIT -->
       <section
         style="
-          background: #0d1117;
-          border-top: 1px solid rgba(255, 255, 255, 0.05);
+          background: var(--le-bg);
+          border-top: 1px solid rgba(var(--le-ink), 0.05);
           padding: 4.5rem 0;
         "
       >
@@ -3033,44 +3632,44 @@
             >
               <div
                 style="
-                  background: #1e293b;
-                  border: 1px solid rgba(255, 255, 255, 0.07);
+                  background: var(--le-bg-soft);
+                  border: 1px solid rgba(var(--le-ink), 0.07);
                   border-radius: 14px;
                   padding: 1.25rem;
                 "
               >
-                <div style="font-weight: 600; color: #f8fafc; margin-bottom: 0.4rem">
+                <div style="font-weight: 600; color: var(--le-text-1); margin-bottom: 0.4rem">
                   1. Diagnose
                 </div>
-                <div style="font-size: 13px; color: #9ca3af; line-height: 1.6">
+                <div style="font-size: 13px; color: var(--le-text-2); line-height: 1.6">
                   Find the layer creating the most friction today.
                 </div>
               </div>
               <div
                 style="
-                  background: #1e293b;
-                  border: 1px solid rgba(255, 255, 255, 0.07);
+                  background: var(--le-bg-soft);
+                  border: 1px solid rgba(var(--le-ink), 0.07);
                   border-radius: 14px;
                   padding: 1.25rem;
                 "
               >
-                <div style="font-weight: 600; color: #f8fafc; margin-bottom: 0.4rem">2. Map</div>
-                <div style="font-size: 13px; color: #9ca3af; line-height: 1.6">
+                <div style="font-weight: 600; color: var(--le-text-1); margin-bottom: 0.4rem">2. Map</div>
+                <div style="font-size: 13px; color: var(--le-text-2); line-height: 1.6">
                   See how your current tools, people, and workflows connect.
                 </div>
               </div>
               <div
                 style="
-                  background: #1e293b;
-                  border: 1px solid rgba(255, 255, 255, 0.07);
+                  background: var(--le-bg-soft);
+                  border: 1px solid rgba(var(--le-ink), 0.07);
                   border-radius: 14px;
                   padding: 1.25rem;
                 "
               >
-                <div style="font-weight: 600; color: #f8fafc; margin-bottom: 0.4rem">
+                <div style="font-weight: 600; color: var(--le-text-1); margin-bottom: 0.4rem">
                   3. Prioritize
                 </div>
-                <div style="font-size: 13px; color: #9ca3af; line-height: 1.6">
+                <div style="font-size: 13px; color: var(--le-text-2); line-height: 1.6">
                   Leave with a practical next system—not a generic pitch.
                 </div>
               </div>
@@ -3126,8 +3725,8 @@
       <!-- FAQ -->
       <section
         style="
-          background: #0d1117;
-          border-top: 1px solid rgba(255, 255, 255, 0.05);
+          background: var(--le-bg);
+          border-top: 1px solid rgba(var(--le-ink), 0.05);
           padding: 5rem 0;
         "
       >
@@ -3147,8 +3746,8 @@
           >
             <div
               style="
-                background: #1e293b;
-                border: 1px solid rgba(255, 255, 255, 0.07);
+                background: var(--le-bg-soft);
+                border: 1px solid rgba(var(--le-ink), 0.07);
                 border-radius: 14px;
                 padding: 1.75rem;
               "
@@ -3157,13 +3756,13 @@
                 style="
                   font-size: 16px;
                   font-weight: 600;
-                  color: rgba(255, 255, 255, 0.92);
+                  color: rgba(var(--le-ink), 0.92);
                   margin-bottom: 0.65rem;
                 "
               >
                 What exactly happens in the first 14 days?
               </div>
-              <div style="font-size: 14px; color: #9ca3af; line-height: 1.7">
+              <div style="font-size: 14px; color: var(--le-text-2); line-height: 1.7">
                 We build. Days 1 through 14 are protected build time — we are inside your system
                 configuring your CRM, AI outbound engine, branded funnel, onboarding automations,
                 and pipelines. You do not hear from us with questions. You hear from us on Day 14
@@ -3175,8 +3774,8 @@
 
             <div
               style="
-                background: #1e293b;
-                border: 1px solid rgba(255, 255, 255, 0.07);
+                background: var(--le-bg-soft);
+                border: 1px solid rgba(var(--le-ink), 0.07);
                 border-radius: 14px;
                 padding: 1.75rem;
               "
@@ -3185,13 +3784,13 @@
                 style="
                   font-size: 16px;
                   font-weight: 600;
-                  color: rgba(255, 255, 255, 0.92);
+                  color: rgba(var(--le-ink), 0.92);
                   margin-bottom: 0.65rem;
                 "
               >
                 When does billing start?
               </div>
-              <div style="font-size: 14px; color: #9ca3af; line-height: 1.7">
+              <div style="font-size: 14px; color: var(--le-text-2); line-height: 1.7">
                 Your System Build Investment is due when you sign. Your system is delivered in 14
                 days. Monthly billing begins 30 days after you sign — giving you the full build
                 window plus a 14-day buffer to review and confirm everything before your first
@@ -3202,8 +3801,8 @@
 
             <div
               style="
-                background: #1e293b;
-                border: 1px solid rgba(255, 255, 255, 0.07);
+                background: var(--le-bg-soft);
+                border: 1px solid rgba(var(--le-ink), 0.07);
                 border-radius: 14px;
                 padding: 1.75rem;
               "
@@ -3212,13 +3811,13 @@
                 style="
                   font-size: 16px;
                   font-weight: 600;
-                  color: rgba(255, 255, 255, 0.92);
+                  color: rgba(var(--le-ink), 0.92);
                   margin-bottom: 0.65rem;
                 "
               >
                 What is the difference between the three tiers after the build?
               </div>
-              <div style="font-size: 14px; color: #9ca3af; line-height: 1.7">
+              <div style="font-size: 14px; color: var(--le-text-2); line-height: 1.7">
                 Self-Managed is a handoff: we build the agreed foundation, provide the snapshot and
                 University resources, and your team operates it. Supported adds a complete growth
                 build, up to three approved automated workflows, strategic check-ins, and Slack
@@ -3231,8 +3830,8 @@
 
             <div
               style="
-                background: #1e293b;
-                border: 1px solid rgba(255, 255, 255, 0.07);
+                background: var(--le-bg-soft);
+                border: 1px solid rgba(var(--le-ink), 0.07);
                 border-radius: 14px;
                 padding: 1.75rem;
               "
@@ -3241,13 +3840,13 @@
                 style="
                   font-size: 16px;
                   font-weight: 600;
-                  color: rgba(255, 255, 255, 0.92);
+                  color: rgba(var(--le-ink), 0.92);
                   margin-bottom: 0.65rem;
                 "
               >
                 Who handles support and questions after the build?
               </div>
-              <div style="font-size: 14px; color: #9ca3af; line-height: 1.7">
+              <div style="font-size: 14px; color: var(--le-text-2); line-height: 1.7">
                 Support follows your selected tier and agreed operating scope. Supported and Fully
                 Managed clients have a defined Slack path for questions, visibility into the right
                 next action, and scheduled strategic reviews. Routine requests are tracked and
@@ -3258,8 +3857,8 @@
 
             <div
               style="
-                background: #1e293b;
-                border: 1px solid rgba(255, 255, 255, 0.07);
+                background: var(--le-bg-soft);
+                border: 1px solid rgba(var(--le-ink), 0.07);
                 border-radius: 14px;
                 padding: 1.75rem;
               "
@@ -3268,13 +3867,13 @@
                 style="
                   font-size: 16px;
                   font-weight: 600;
-                  color: rgba(255, 255, 255, 0.92);
+                  color: rgba(var(--le-ink), 0.92);
                   margin-bottom: 0.65rem;
                 "
               >
                 What are we responsible for as the client?
               </div>
-              <div style="font-size: 14px; color: #9ca3af; line-height: 1.7">
+              <div style="font-size: 14px; color: var(--le-text-2); line-height: 1.7">
                 Complete the onboarding intake, provide the approved business details and assets,
                 record your VSL when it is part of your implementation, and designate an internal
                 point person for the Day 14 review. We make the process clear; your timely input
@@ -3284,8 +3883,8 @@
 
             <div
               style="
-                background: #1e293b;
-                border: 1px solid rgba(255, 255, 255, 0.07);
+                background: var(--le-bg-soft);
+                border: 1px solid rgba(var(--le-ink), 0.07);
                 border-radius: 14px;
                 padding: 1.75rem;
               "
@@ -3294,13 +3893,13 @@
                 style="
                   font-size: 16px;
                   font-weight: 600;
-                  color: rgba(255, 255, 255, 0.92);
+                  color: rgba(var(--le-ink), 0.92);
                   margin-bottom: 0.65rem;
                 "
               >
                 Are there additional costs beyond the setup and monthly fee?
               </div>
-              <div style="font-size: 14px; color: #9ca3af; line-height: 1.7">
+              <div style="font-size: 14px; color: var(--le-text-2); line-height: 1.7">
                 Yes. Messaging, AI, and other platform usage costs are separate from your service
                 tier and vary by the systems you activate. Registration or compliance-related fees
                 may also apply where required. We review the expected costs before launch so there
@@ -3310,8 +3909,8 @@
 
             <div
               style="
-                background: #1e293b;
-                border: 1px solid rgba(255, 255, 255, 0.07);
+                background: var(--le-bg-soft);
+                border: 1px solid rgba(var(--le-ink), 0.07);
                 border-radius: 14px;
                 padding: 1.75rem;
               "
@@ -3320,13 +3919,13 @@
                 style="
                   font-size: 16px;
                   font-weight: 600;
-                  color: rgba(255, 255, 255, 0.92);
+                  color: rgba(var(--le-ink), 0.92);
                   margin-bottom: 0.65rem;
                 "
               >
                 Who is LayerEngine built for?
               </div>
-              <div style="font-size: 14px; color: #9ca3af; line-height: 1.7">
+              <div style="font-size: 14px; color: var(--le-text-2); line-height: 1.7">
                 LayerEngine is built for growth-stage real-estate businesses and adjacent teams
                 whose tools, follow-up, and team execution are no longer keeping pace with the
                 business. Brokerage owners, multi-office operators, high-producing teams, and
@@ -3350,8 +3949,8 @@
         "
       >
         <div class="le-footer-logo">Layer<span>Engine</span>.ai</div>
-        <div style="font-size: 12px; color: #6b7280">
-          Operating as <strong style="color: #9ca3af">LayerEngine.ai</strong> (DBA) &mdash; San
+        <div style="font-size: 12px; color: var(--le-text-3)">
+          Operating as <strong style="color: var(--le-text-2)">LayerEngine.ai</strong> (DBA) &mdash; San
           Diego, CA
         </div>
         <div class="le-footer-links" style="flex-wrap: wrap; justify-content: center; gap: 1.25rem">
@@ -3364,6 +3963,37 @@
         <div class="le-footer-copy">&copy; 2025 LayerEngine.ai. All rights reserved.</div>
       </footer>
     </div>
+
+    <script>
+      (function () {
+        var selector =
+          ".le-section-eyebrow, .le-section-h2, .le-section-sub, .le-pricing-card, .le-layer, .le-deliverable-card, .le-problem-item, .le-who-item, .le-roi-card, .le-roi-result-card, .le-about-quote, .le-compliance-grid > div, .le-pricing-enterprise, .le-pricing-commitment-note";
+        var targets = document.querySelectorAll(selector);
+
+        if (!("IntersectionObserver" in window) || !targets.length) {
+          targets.forEach(function (el) {
+            el.classList.add("le-in-view");
+          });
+          return;
+        }
+
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("le-in-view");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+        );
+
+        targets.forEach(function (el) {
+          observer.observe(el);
+        });
+      })();
+    </script>
 
     <!-- GHL CHAT WIDGET -->
     <script
