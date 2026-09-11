@@ -4,6 +4,16 @@
 
 const BLOG_POSTS = [
   {
+    slug: "90-day-real-estate-brokerage-recruiting-plan",
+    title: "90-Day Real Estate Brokerage Recruiting Plan for Consistent Agent Growth",
+    excerpt: "Use this 90-day real estate brokerage recruiting plan to create consistent agent growth with clear positioning, targeted outreach, automated follow-up, and a measurable recruiting scorecard.",
+    category: "Recruiting Strategy",
+    date: "September 11, 2026",
+    readTime: "8 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M12 29V13h16v16" stroke="#3B82F6" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 25v-5M20 25v-9M24 25v-6" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/><path d="M10 29h20" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/></svg>`
+  },
+
+  {
     slug: "real-estate-recruiting-content-engine",
     title: "The Recruiting Content Engine: Attract Real Estate Agents Before the First Conversation",
     excerpt: "Learn how brokerage owners and mortgage team leaders can build a recruiting content engine that attracts productive agents, creates trust, and turns attention into qualified conversations.",
