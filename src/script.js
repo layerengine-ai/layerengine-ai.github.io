@@ -185,14 +185,22 @@ async function main() {
     ),
   );
 
-  const stageLines = stages.map((stage, i) => `   - ${stage.name}: *${stageCounts[i]}*`).join("\n");
+  const stageLines = stages
+    .map((stage, i) => ({ name: stage.name, count: stageCounts[i] }))
+    .filter((stage) => stage.count > 0) // skip empty stages
+    .map((stage) => `   - ${stage.name}: *${stage.count}*`)
+    .join("\n");
+
+  const stageSection = stageLines
+    ? `• Pipeline stage breakdown:\n${stageLines}`
+    : "• Pipeline stage breakdown: no activity in this period.";
 
   const message =
     `📊 *GHL Report* (${startISO} → ${endISO})\n` +
     `• New leads/contacts: *${newContacts}*\n` +
     `• Opportunities — Open: *${openOpps}*, Won: *${wonOpps}*, Lost: *${lostOpps}*\n` +
     // `• Conversion rate: *${conversionRate}%*\n` +
-    `• Pipeline stage breakdown:\n${stageLines}`;
+    `${stageSection}`;
 
   console.log(message);
   await postToSlack(message);
