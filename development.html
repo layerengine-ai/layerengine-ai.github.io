@@ -1531,17 +1531,40 @@
           grid-template-columns: 1fr 1fr;
         }
         #le-wrapper .le-layer {
-          grid-template-columns: 40px 44px 1fr;
-          gap: 0.85rem;
+          display: block;
+          position: relative;
+          min-height: 96px;
           padding: 1.25rem 1rem;
         }
         #le-wrapper .le-layer-visual {
-          width: 44px;
-          height: 44px;
-          border-radius: 10px;
+          position: absolute;
+          top: 1.25rem;
+          left: 1rem;
+          width: 56px;
+          height: 56px;
+          border-radius: 12px;
+          z-index: 1;
         }
         #le-wrapper .le-layer-num {
-          font-size: 26px;
+          position: absolute;
+          top: calc(1.25rem + 4px);
+          left: calc(1rem + 4px);
+          width: 18px;
+          height: 18px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(13, 17, 23, 0.75) !important;
+          border: none;
+          border-radius: 5px;
+          font-size: 9px !important;
+          letter-spacing: 0;
+          line-height: 1;
+          color: rgba(37, 99, 235, 0.6) !important;
+          z-index: 2;
+        }
+        #le-wrapper .le-layer > div:nth-child(3) {
+          margin-left: 72px;
         }
         #le-wrapper .le-layer-title {
           font-size: 15px;
@@ -1550,8 +1573,7 @@
           font-size: 12px;
         }
         #le-wrapper .le-layer-badge {
-          grid-column: 3 / -1;
-          justify-self: start;
+          margin-left: 72px;
           width: 150px;
           margin-top: 0.6rem;
         }
@@ -2856,7 +2878,6 @@
                 </div>
                 <div class="le-pricing-setup-note">
                   + <strong>$2,500 one-time setup</strong> &mdash; 3-month minimum commitment
-                  &bull; <span style="color: #93c5fd">$197 tech + $500 service</span>
                 </div>
                 <div class="le-pricing-includes">What's included</div>
                 <div class="le-pricing-feature">
@@ -2983,7 +3004,6 @@
                 </div>
                 <div class="le-pricing-setup-note">
                   + <strong>$5,000 one-time setup</strong> &mdash; 3-month minimum commitment
-                  &bull; <span style="color: #93c5fd">$197 tech + $1,000 service</span>
                 </div>
                 
                 <div class="le-pricing-includes">Everything in Supported, plus</div>
