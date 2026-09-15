@@ -1531,40 +1531,17 @@
           grid-template-columns: 1fr 1fr;
         }
         #le-wrapper .le-layer {
-          display: block;
-          position: relative;
-          min-height: 96px;
+          grid-template-columns: 40px 44px 1fr;
+          gap: 0.85rem;
           padding: 1.25rem 1rem;
         }
         #le-wrapper .le-layer-visual {
-          position: absolute;
-          top: 1.25rem;
-          left: 1rem;
-          width: 56px;
-          height: 56px;
-          border-radius: 12px;
-          z-index: 1;
+          width: 44px;
+          height: 44px;
+          border-radius: 10px;
         }
         #le-wrapper .le-layer-num {
-          position: absolute;
-          top: calc(1.25rem + 4px);
-          left: calc(1rem + 4px);
-          width: 18px;
-          height: 18px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: rgba(13, 17, 23, 0.75) !important;
-          border: none;
-          border-radius: 5px;
-          font-size: 9px !important;
-          letter-spacing: 0;
-          line-height: 1;
-          color: rgba(37, 99, 235, 0.6) !important;
-          z-index: 2;
-        }
-        #le-wrapper .le-layer > div:nth-child(3) {
-          margin-left: 72px;
+          font-size: 26px;
         }
         #le-wrapper .le-layer-title {
           font-size: 15px;
@@ -1573,7 +1550,8 @@
           font-size: 12px;
         }
         #le-wrapper .le-layer-badge {
-          margin-left: 72px;
+          grid-column: 3 / -1;
+          justify-self: start;
           width: 150px;
           margin-top: 0.6rem;
         }
@@ -1678,7 +1656,7 @@
             <li><a href="#le-roi">Calculator</a></li>
             <li><a href="#le-about">About</a></li>
             <li><a href="/blog/">Blog</a></li>
-            <li><a href="/solo.html">Solo</a></li>
+            <!-- <li><a href="/solo.html">Self-Managed</a></li> -->
             <li>
               <a href="https://calendly.com/adam-layerengine/30min" class="le-nav-cta" target="_blank"
                 >Book a Call</a
@@ -1725,7 +1703,7 @@
         <a href="#le-roi" onclick="leCloseNav()">Calculator</a>
         <a href="#le-about" onclick="leCloseNav()">About</a>
         <a href="/blog/" onclick="leCloseNav()">Blog</a>
-        <a href="/solo.html" onclick="leCloseNav()">Solo</a>
+        <a href="/solo.html" onclick="leCloseNav()">Solo Build</a>
         <a
           href="https://calendly.com/adam-layerengine/30min"
           class="le-nav-cta"
@@ -2373,15 +2351,17 @@
             <div class="le-section-eyebrow">Pricing</div>
             <h2 class="le-section-h2">Simple pricing.<br /><span>Serious results.</span></h2>
             <p class="le-section-sub" style="margin: 0 auto; max-width: 680px">
-              Every tier includes a done-for-you LayerEngine build. Choose the account type and level of ongoing management that fits your operation—from guided solo campaigns to a fully managed team or office growth plan.
+              Three tiers built for every stage of growth &mdash; from self-run to fully managed.
+              Every plan includes a complete system build. You choose how much support you want
+              after that.
             </p>
           </div>
 
           <div class="le-pricing-grid">
-            <!-- TIER 1: DONE FOR YOU -->
+            <!-- TIER 1: SELF-MANAGED -->
             <!-- <div class="le-pricing-card">
               <div class="le-pricing-header">
-                <div class="le-pricing-label">Tier 1 &mdash; Done For You</div>
+                <div class="le-pricing-label">Tier 1 &mdash; Self-Managed</div>
                 <div class="le-pricing-name">We Build It. You Run It.</div>
               </div>
               <div class="le-pricing-body">
@@ -2455,7 +2435,7 @@
                     line-height: 1.6;
                   "
                 >
-                  Built for one solo agent or solo account. You operate the day-to-day account after launch, with LayerEngine guidance to help you keep approved campaigns moving.
+                  After handoff, you own and operate the system. No ongoing support included.
                 </div>
                 <div
                   style="
@@ -2757,10 +2737,10 @@
               </div>
             </div> -->
 
-            <!-- TIER 1: DONE FOR YOU -->
+            <!-- TIER 1: SELF-MANAGED -->
             <div class="le-pricing-card">
               <div class="le-pricing-header">
-                <div class="le-pricing-label">Tier 1 &mdash; Done For You</div>
+                <div class="le-pricing-label">Tier 1 &mdash; Self-Managed</div>
                 <div class="le-pricing-name">We Build It. You Run It.</div>
               </div>
               <div class="le-pricing-body">
@@ -2786,7 +2766,7 @@
                       </svg>
                     </div>
                     <div class="le-pricing-feature-text">
-                      <strong>Done-for-you solo system build</strong> &mdash; one agreed LayerEngine foundation is built and configured for one solo agent or solo account
+                      <strong>Approved system foundation</strong> &mdash; the selected LayerEngine system is built, configured, and prepared for handoff
                     </div>
                   </div>
                   <div class="le-pricing-feature">
@@ -2802,7 +2782,7 @@
                       </svg>
                     </div>
                     <div class="le-pricing-feature-text">
-                      <strong>Ongoing campaign guidance &amp; training</strong> &mdash; we help you launch, keep approved campaigns moving, and use the system with confidence
+                      <strong>System handoff &amp; training resources</strong> &mdash; the knowledge and materials to run the approved system yourself
                     </div>
                   </div>
                   <div class="le-pricing-feature">
@@ -2833,7 +2813,7 @@
                       line-height: 1.6;
                     "
                   >
-                    Built for one solo agent or solo account. You operate the day-to-day account after launch, with LayerEngine guidance to help you keep approved campaigns moving.
+                    After handoff, you own and operate the system. No ongoing support included.
                   </div>
                 </div>
                 <div>
@@ -2846,7 +2826,7 @@
                       color: var(--le-text-3);
                     "
                   >
-                    Client also responsible for: advertising spend, texting, and AI usage costs. These are separate, client-funded, usage-based costs that vary by campaign and activity.
+                    Client also responsible for: texting and AI usage costs, which vary by usage and are provided through the platform arrangement.
                   </div>
                   <a
                     href="https://calendly.com/adam-layerengine/30min"
@@ -2876,6 +2856,7 @@
                 </div>
                 <div class="le-pricing-setup-note">
                   + <strong>$2,500 one-time setup</strong> &mdash; 3-month minimum commitment
+                  &bull; <span style="color: #93c5fd">$197 tech + $500 service</span>
                 </div>
                 <div class="le-pricing-includes">What's included</div>
                 <div class="le-pricing-feature">
@@ -2891,7 +2872,7 @@
                     </svg>
                   </div>
                   <div class="le-pricing-feature-text">
-                    <strong>Done-for-you team or office build</strong> &mdash; one primary system plus up to three approved automated workflows, built for one team or office account
+                    <strong>Focused growth build</strong> &mdash; one primary system plus up to three approved automated workflows, built for your operation
                   </div>
                 </div>
                 <div class="le-pricing-feature">
@@ -2956,7 +2937,7 @@
                     </svg>
                   </div>
                   <div class="le-pricing-feature-text">
-                    <strong>Slack support within scope</strong> &mdash; a clear channel for campaign, system, and in-scope questions between strategic check-ins
+                    <strong>Slack support within scope</strong> &mdash; a clear channel for in-scope questions between strategic check-ins
                   </div>
                 </div>
                 </div>
@@ -2970,7 +2951,7 @@
                     color: var(--le-text-3);
                   "
                 >
-                  Client also responsible for: advertising spend, texting, and AI usage costs. These are separate, client-funded, usage-based costs that vary by campaign and activity.
+                  Client also responsible for: texting and AI usage costs, which vary by usage and are provided through the platform arrangement.
                 </div>
                 <a
                   href="https://calendly.com/adam-layerengine/30min"
@@ -3002,6 +2983,7 @@
                 </div>
                 <div class="le-pricing-setup-note">
                   + <strong>$5,000 one-time setup</strong> &mdash; 3-month minimum commitment
+                  &bull; <span style="color: #93c5fd">$197 tech + $1,000 service</span>
                 </div>
                 
                 <div class="le-pricing-includes">Everything in Supported, plus</div>
@@ -3018,7 +3000,7 @@
                     </svg>
                   </div>
                   <div class="le-pricing-feature-text">
-                    <strong>Done-for-you team or office growth operation</strong> &mdash; the approved full-growth infrastructure is built and configured for one team or office account
+                    <strong>Approved full-growth system</strong> &mdash; the complete infrastructure is built, configured, and prepared to operate
                   </div>
                 </div>
                 <div class="le-pricing-feature">
@@ -3034,7 +3016,7 @@
                     </svg>
                   </div>
                   <div class="le-pricing-feature-text">
-                    <strong>Managed Meta campaigns</strong> &mdash; we build, launch, and manage approved Meta campaigns within your operating plan
+                    <strong>Managed operations</strong> &mdash; approved campaigns, communications, and workflows are run within your operating plan
                   </div>
                 </div>
                 <div class="le-pricing-feature">
@@ -3050,7 +3032,7 @@
                     </svg>
                   </div>
                   <div class="le-pricing-feature-text">
-                    <strong>AI-agent follow-up &amp; appointment booking</strong> &mdash; approved follow-up and booking systems are configured and managed for your team
+                    <strong>Custom AI workflows &amp; automation</strong> &mdash; configured for your market, team, and agreed growth goals
                   </div>
                 </div>
                 <div class="le-pricing-feature">
@@ -3066,7 +3048,7 @@
                     </svg>
                   </div>
                   <div class="le-pricing-feature-text">
-                    <strong>Flexible approved bot deployment</strong> &mdash; add approved AI-agent bots as your operating plan requires, with ongoing optimization and reporting
+                    <strong>Ongoing optimization &amp; reporting</strong> &mdash; approved sequences, scripts, and funnels are refined with regular performance visibility
                   </div>
                 </div>
                 <div class="le-pricing-feature">
@@ -3100,7 +3082,7 @@
                     line-height: 1.5;
                   "
                 >
-                  &#10003;&nbsp; Everything in Supported &mdash; plus fully managed campaigns, AI-agent follow-up, and appointment booking.
+                  &#10003;&nbsp; Everything in Supported &mdash; plus the approved full-growth system and managed operations.
                 </div>
                 </div>
                 <div>
@@ -3113,7 +3095,7 @@
                     color: var(--le-text-3);
                   "
                 >
-                  Client also responsible for: advertising spend, texting, and AI usage costs. These are separate, client-funded, usage-based costs that vary by campaign and activity.
+                  Client also responsible for: texting and AI usage costs, which vary by usage and are provided through the platform arrangement.
                 </div>
                 <a
                   href="https://calendly.com/adam-layerengine/30min"
@@ -3188,7 +3170,7 @@
           </div>
 
           <div class="le-pricing-commitment-note">
-            <strong style="color: var(--le-text-1)">&#9432; Commitment &amp; billing note:</strong> Tiers 2 and 3 require a three-month minimum commitment. Setup fees are due at signing; monthly billing begins 30 days after signing. Paid Meta ad spend, texting, and AI usage are client-funded, separate, usage-based costs that vary by campaign and activity.
+            <strong style="color: var(--le-text-1)">&#9432; Commitment &amp; billing note:</strong> Tiers 2 and 3 require a three-month minimum commitment. Setup fees are due at signing; monthly billing begins 30 days after signing. Texting and AI usage costs are separate, usage-based, and may vary by client.
           </div>
         </div>
       </section>
@@ -3528,14 +3510,14 @@
                   onchange="leCalcROI()"
                   style="cursor: pointer"
                 >
-                  <option value="240" data-setup="1500">
-                    Done For You &mdash; $240/mo + $1,500 setup
+                  <option value="197" data-setup="2500">
+                    Self-Managed &mdash; $197/mo + $2,500 setup
                   </option>
-                  <option value="697" data-setup="2500">
-                    Supported &mdash; $697/mo + $2,500 setup
+                  <option value="697" data-setup="1000">
+                    Supported &mdash; $697/mo + $1,000 setup
                   </option>
-                  <option value="1197" data-setup="5000" selected>
-                    Fully Managed &mdash; $1,197/mo + $5,000 setup
+                  <option value="1197" data-setup="1000" selected>
+                    Fully Managed &mdash; $1,197/mo + $1,000 setup
                   </option>
                 </select>
               </div>
@@ -3836,7 +3818,13 @@
                 What is the difference between the three tiers after the build?
               </div>
               <div style="font-size: 14px; color: var(--le-text-2); line-height: 1.7">
-                Done For You is built for one solo agent or solo account: we build the agreed foundation, help prepare it for launch, and provide ongoing campaign guidance and University resources while you operate the day-to-day account. Supported is built for one team or office account and adds one primary system, up to three approved automated workflows, strategic check-ins, and in-scope Slack support. Fully Managed adds managed Meta campaigns, AI-agent follow-up, appointment booking, flexible approved bot deployment, and defined operations support within your approved scope. Your agreement makes the boundaries clear before we begin.
+                Self-Managed is a handoff: we build the agreed foundation, provide the snapshot and
+                University resources, and your team operates it. Supported adds a complete growth
+                build, up to three approved automated workflows, strategic check-ins, and Slack
+                access during the commitment period. Fully Managed adds the full system
+                configuration and defined operations support for the approved workflows, campaigns,
+                communications, and optimization in your scope. Your agreement makes the boundaries
+                clear before we begin.
               </div>
             </div>
 
