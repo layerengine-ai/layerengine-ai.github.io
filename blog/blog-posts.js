@@ -4,6 +4,16 @@
 
 const BLOG_POSTS = [
   {
+    slug: "how-to-build-a-brokerage-recruiting-content-calendar",
+    title: "How to Build a Brokerage Recruiting Content Calendar That Attracts Productive Agents",
+    excerpt: "Build a brokerage recruiting content calendar that attracts productive real estate agents and loan officers, creates qualified conversations, and supports consistent growth.",
+    category: "Recruiting Strategy",
+    date: "September 15, 2026",
+    readTime: "7 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><rect x="11" y="12" width="18" height="16" rx="2" stroke="#3B82F6" stroke-width="1.5"/><path d="M15 17h10M15 21h7M15 25h5" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/><path d="M25 29l3 2v-5" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+  },
+
+  {
     slug: "90-day-real-estate-brokerage-recruiting-plan",
     title: "90-Day Real Estate Brokerage Recruiting Plan for Consistent Agent Growth",
     excerpt: "Use this 90-day real estate brokerage recruiting plan to create consistent agent growth with clear positioning, targeted outreach, automated follow-up, and a measurable recruiting scorecard.",
