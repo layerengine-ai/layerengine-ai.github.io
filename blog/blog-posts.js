@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "agent-recruiting-dashboard-for-brokerages",
+    title: "How to Build an Agent Recruiting Dashboard for Your Brokerage",
+    excerpt: "Build an agent recruiting dashboard that shows brokerage owners and mortgage team leaders where qualified recruiting opportunities are created, delayed, and lost.",
+    category: "Growth Systems",
+    date: "September 18, 2026",
+    readTime: "8 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><rect x="10" y="11" width="20" height="18" rx="2" stroke="#3B82F6" stroke-width="1.5"/><path d="M14 24v-5M20 24v-9M26 24v-6" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/><path d="M13 15h14" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/></svg>`
+  },
+  {
     slug: "how-to-build-a-brokerage-recruiting-content-calendar",
     title: "How to Build a Brokerage Recruiting Content Calendar That Attracts Productive Agents",
     excerpt: "Build a brokerage recruiting content calendar that attracts productive real estate agents and loan officers, creates qualified conversations, and supports consistent growth.",

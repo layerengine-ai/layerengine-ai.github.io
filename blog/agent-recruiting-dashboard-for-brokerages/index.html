@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Build an Agent Recruiting Dashboard for Your Brokerage | LayerEngine.ai</title>
+  <meta name="description" content="Build an agent recruiting dashboard that shows brokerage owners and mortgage team leaders where qualified recruiting opportunities are created, delayed, and lost.">
+  <meta name="keywords" content="agent recruiting dashboard, real estate brokerage recruiting metrics, mortgage team recruiting dashboard, recruiting pipeline dashboard, brokerage growth system, recruit real estate agents">
+  <meta name="author" content="LayerEngine.ai">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://layerengine.ai/blog/agent-recruiting-dashboard-for-brokerages/">
+  <meta property="og:title" content="How to Build an Agent Recruiting Dashboard for Your Brokerage">
+  <meta property="og:description" content="A practical agent recruiting dashboard framework for brokerage owners and mortgage team leaders who want clear visibility from first touch to signed agreement.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://layerengine.ai/blog/agent-recruiting-dashboard-for-brokerages/">
+  <meta property="og:site_name" content="LayerEngine.ai">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:published_time" content="2026-09-18">
+  <meta property="article:modified_time" content="2026-09-18">
+  <meta property="article:section" content="Growth Systems">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="How to Build an Agent Recruiting Dashboard for Your Brokerage">
+  <meta name="twitter:description" content="Use a simple recruiting dashboard to turn agent attraction, follow-up, conversations, and onboarding into a measurable growth system.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "headline": "How to Build an Agent Recruiting Dashboard for Your Brokerage",
+        "description": "Build an agent recruiting dashboard that shows brokerage owners and mortgage team leaders where qualified recruiting opportunities are created, delayed, and lost.",
+        "author": { "@type": "Organization", "name": "LayerEngine.ai", "url": "https://layerengine.ai" },
+        "publisher": { "@type": "Organization", "name": "LayerEngine.ai", "url": "https://layerengine.ai" },
+        "datePublished": "2026-09-18",
+        "dateModified": "2026-09-18",
+        "url": "https://layerengine.ai/blog/agent-recruiting-dashboard-for-brokerages/",
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://layerengine.ai/blog/agent-recruiting-dashboard-for-brokerages/" },
+        "articleSection": "Growth Systems",
+        "keywords": ["agent recruiting dashboard", "real estate brokerage recruiting metrics", "mortgage team recruiting dashboard", "recruiting pipeline dashboard"]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What should an agent recruiting dashboard track?",
+            "acceptedAnswer": { "@type": "Answer", "text": "An agent recruiting dashboard should track qualified leads, response time, conversations, appointments, offers, signed agreements, source, stage aging, and the reasons opportunities are delayed or lost." }
+          },
+          {
+            "@type": "Question",
+            "name": "How often should a brokerage review recruiting metrics?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Review activity and stalled stages weekly, then use a monthly review to compare lead sources, appointment quality, signed agreements, and onboarding outcomes." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can a mortgage team use the same recruiting dashboard?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. A mortgage team can use the same structure while adapting the stages and outcomes to loan officer conversations, production goals, referral support, processing capacity, and team fit." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'DM Sans', sans-serif; background: #0D1117; color: #FFFFFF; overflow-x: hidden; }
+    .le-nav { position: sticky; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; background: rgba(13,17,23,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .le-nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .le-nav-logo-text { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; color: #FFFFFF; letter-spacing: -0.3px; }
+    .le-nav-logo-text span { color: #3B82F6; }
+    .le-nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .le-nav-links a { font-size: 13px; font-weight: 400; color: #9CA3AF; text-decoration: none; transition: color 0.2s; }
+    .le-nav-links a:hover { color: #FFFFFF; }
+    .le-nav-cta { background: #2563EB !important; color: #FFFFFF !important; padding: 8px 18px; border-radius: 7px; font-weight: 500 !important; font-size: 13px !important; }
+    .le-nav-cta:hover { background: #3B82F6 !important; }
+    .le-nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .le-nav-hamburger span { display: block; width: 22px; height: 2px; background: #FFFFFF; border-radius: 2px; }
+    .le-nav-mobile { display: none; position: fixed; top: 57px; left: 0; right: 0; background: rgba(13,17,23,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.07); padding: 1.5rem; z-index: 9999; flex-direction: column; }
+    .le-nav-mobile.le-open { display: flex; }
+    .le-nav-mobile a { display: block; padding: 0.9rem 0; font-size: 16px; color: #9CA3AF; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.05); transition: color 0.2s; }
+    .le-nav-mobile a:last-child { border-bottom: none; }
+    .le-nav-mobile a:hover { color: #FFFFFF; }
+    .le-nav-mobile .le-nav-cta { margin-top: 1rem; text-align: center; padding: 12px 18px; border-radius: 9px; border-bottom: none; }
+    .article-hero { padding: 5rem 2rem 3rem; background: #0D1117; position: relative; overflow: hidden; }
+    .article-hero-glow { position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 600px; height: 400px; background: radial-gradient(ellipse, rgba(37,99,235,0.12) 0%, transparent 65%); pointer-events: none; }
+    .article-inner { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
+    .article-breadcrumb { display: flex; align-items: center; gap: 0.5rem; font-size: 12px; color: #6B7280; margin-bottom: 1.5rem; }
+    .article-breadcrumb a { color: #6B7280; text-decoration: none; transition: color 0.2s; }
+    .article-breadcrumb a:hover { color: #9CA3AF; }
+    .article-breadcrumb span { color: #3B82F6; }
+    .article-tag { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #3B82F6; background: rgba(37,99,235,0.1); border: 1px solid rgba(37,99,235,0.2); border-radius: 4px; padding: 3px 10px; margin-bottom: 1.25rem; }
+    .article-hero h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(28px, 4vw, 44px); line-height: 1.1; letter-spacing: -1px; color: #FFFFFF; margin-bottom: 1.25rem; }
+    .article-meta { display: flex; align-items: center; gap: 1.25rem; font-size: 13px; color: #6B7280; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 2.5rem; }
+    .article-meta span { display: flex; align-items: center; gap: 5px; }
+    .article-content { max-width: 760px; margin: 0 auto; padding: 0 2rem 5rem; }
+    .article-content p { font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; font-weight: 300; }
+    .article-content h2 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: clamp(20px, 2.5vw, 26px); letter-spacing: -0.5px; color: #FFFFFF; margin: 2.5rem 0 1rem; }
+    .article-content h3 { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 18px; color: #FFFFFF; margin: 2rem 0 0.75rem; }
+    .article-content strong { color: #FFFFFF; font-weight: 500; }
+    .article-content a { color: #60A5FA; text-decoration: underline; text-underline-offset: 3px; }
+    .article-content ul, .article-content ol { margin: -0.25rem 0 1.5rem 1.35rem; color: rgba(255,255,255,0.8); }
+    .article-content li { font-size: 15px; line-height: 1.8; padding-left: 0.35rem; margin-bottom: 0.35rem; font-weight: 300; }
+    .article-content blockquote { border-left: 3px solid #3B82F6; padding: 1rem 1.5rem; background: rgba(37,99,235,0.06); border-radius: 0 8px 8px 0; margin: 2rem 0; }
+    .article-content blockquote p { color: rgba(255,255,255,0.7); font-style: italic; margin: 0; font-size: 15px; }
+    .article-content blockquote cite { display: block; margin-top: 0.5rem; font-size: 12px; color: #6B7280; font-style: normal; }
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 14px; }
+    .comparison-table th { background: #1E293B; color: #9CA3AF; font-weight: 500; padding: 0.75rem 1rem; text-align: left; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .comparison-table th:first-child { border-radius: 8px 0 0 0; }
+    .comparison-table th:last-child { border-radius: 0 8px 0 0; }
+    .comparison-table td { padding: 0.85rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.75); vertical-align: top; line-height: 1.5; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table td:first-child { color: #9CA3AF; font-weight: 500; }
+    .highlight-box { background: linear-gradient(135deg, rgba(37,99,235,0.08), rgba(37,99,235,0.03)); border: 1px solid rgba(37,99,235,0.2); border-radius: 12px; padding: 1.5rem 2rem; margin: 2rem 0; }
+    .highlight-box p { margin: 0; font-size: 15px; color: rgba(255,255,255,0.75); }
+    .stat-box { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(59,130,246,0.2); border: 1px solid rgba(59,130,246,0.2); border-radius: 12px; overflow: hidden; margin: 2rem 0; }
+    .stat-box div { background: #111827; padding: 1.25rem 1rem; text-align: center; }
+    .stat-box strong { display: block; font-family: 'Syne', sans-serif; font-size: 25px; color: #60A5FA; margin-bottom: 0.35rem; }
+    .stat-box span { display: block; color: #9CA3AF; font-size: 12px; line-height: 1.45; }
+    .stat-note { color: #6B7280 !important; font-size: 12px !important; text-align: center; margin-top: -1.25rem !important; }
+    .article-cta { background: #1E293B; border: 1px solid rgba(37,99,235,0.2); border-radius: 16px; padding: 2.5rem; text-align: center; margin: 3rem 0; }
+    .article-cta h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 22px; color: #FFFFFF; margin-bottom: 0.75rem; letter-spacing: -0.3px; }
+    .article-cta p { font-size: 15px; color: #9CA3AF; line-height: 1.7; margin-bottom: 1.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .le-btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #2563EB; color: #FFFFFF !important; padding: 14px 28px; border-radius: 9px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; text-decoration: none !important; transition: all 0.2s; }
+    .le-btn-primary:hover { background: #3B82F6; transform: translateY(-1px); box-shadow: 0 8px 30px rgba(37,99,235,0.35); }
+    .le-footer { background: #0D1117; border-top: 1px solid rgba(255,255,255,0.05); padding: 3rem 2rem; text-align: center; }
+    .le-footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 16px; color: #FFFFFF; margin-bottom: 0.75rem; }
+    .le-footer-logo span { color: #3B82F6; }
+    .le-footer p { font-size: 12px; color: #6B7280; }
+    .le-footer-links { display: flex; justify-content: center; gap: 1.5rem; margin: 1rem 0; }
+    .le-footer-links a { font-size: 12px; color: #6B7280; text-decoration: none; transition: color 0.2s; }
+    .le-footer-links a:hover { color: #9CA3AF; }
+    .faq-section { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06); }
+    .faq-item { margin-bottom: 1.5rem; }
+    .faq-item h3 { font-size: 18px; margin-bottom: 0.5rem; color: #3B82F6; }
+    .faq-item p { font-size: 15px; color: rgba(255,255,255,0.7); }
+    @media (max-width: 640px) {
+      .le-nav-links { display: none; }
+      .le-nav-hamburger { display: flex; }
+      .article-content { padding: 0 1rem 4rem; }
+      .article-inner { padding: 0 1rem; }
+      .comparison-table { font-size: 12px; }
+      .comparison-table td, .comparison-table th { padding: 0.6rem 0.75rem; }
+      .stat-box { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="le-nav">
+  <a href="/" class="le-nav-logo">
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+      <rect width="34" height="34" rx="8" fill="#1E293B"/>
+      <rect x="8" y="10" width="18" height="3" rx="1.5" fill="#3B82F6" opacity="0.4"/>
+      <rect x="8" y="15.5" width="18" height="3" rx="1.5" fill="#3B82F6" opacity="0.7"/>
+      <rect x="8" y="21" width="18" height="3" rx="1.5" fill="#3B82F6"/>
+    </svg>
+    <span class="le-nav-logo-text">Layer<span>Engine</span>.ai</span>
+  </a>
+  <ul class="le-nav-links">
+    <li><a href="/#le-how">How It Works</a></li>
+    <li><a href="/#le-deliverables">What You Get</a></li>
+    <li><a href="/#le-pricing">Pricing</a></li>
+    <li><a href="/#le-roi">Calculator</a></li>
+    <li><a href="/#le-about">About</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="https://calendly.com/adam-layerengine/30min" class="le-nav-cta" target="_blank" rel="noopener">Book a Call</a></li>
+  </ul>
+  <button class="le-nav-hamburger" id="le-hamburger" onclick="leToggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="le-nav-mobile" id="le-mobile-nav">
+  <a href="/#le-how" onclick="leCloseNav()">How It Works</a>
+  <a href="/#le-deliverables" onclick="leCloseNav()">What You Get</a>
+  <a href="/#le-pricing" onclick="leCloseNav()">Pricing</a>
+  <a href="/#le-roi" onclick="leCloseNav()">Calculator</a>
+  <a href="/#le-about" onclick="leCloseNav()">About</a>
+  <a href="/blog/" onclick="leCloseNav()">Blog</a>
+  <a href="https://calendly.com/adam-layerengine/30min" class="le-nav-cta" target="_blank" rel="noopener" onclick="leCloseNav()">Book a Strategy Call</a>
+</div>
+
+<div class="article-hero">
+  <div class="article-hero-glow"></div>
+  <div class="article-inner">
+    <div class="article-breadcrumb">
+      <a href="/">Home</a> / <a href="/blog/">Blog</a> / <span>Growth Systems</span>
+    </div>
+    <div class="article-tag">Growth Systems</div>
+    <h1>How to Build an Agent Recruiting Dashboard for Your Brokerage</h1>
+    <div class="article-meta">
+      <span>
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="12" rx="2" stroke="#6B7280" stroke-width="1.5"/><path d="M5 1v4M11 1v4M2 7h12" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        September 18, 2026
+      </span>
+      <span>
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#6B7280" stroke-width="1.5"/><path d="M8 5v3l2 2" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        8 min read
+      </span>
+      <span>LayerEngine.ai</span>
+    </div>
+  </div>
+</div>
+
+<main class="article-content">
+  <p>Most brokerage owners know how many agents they have today. Far fewer can answer a more useful question: <strong>where exactly is the next productive agent getting stuck?</strong> Without that answer, recruiting becomes a collection of conversations, reminders, and opinions. A recruiting dashboard turns those scattered activities into a visible operating system.</p>
+  <p>An <strong>agent recruiting dashboard</strong> is a focused view of the journey from first touch to signed agreement and successful onboarding. It helps real estate brokerage owners and mortgage team leaders see which sources create qualified interest, which stages are slowing down, and which follow-up actions deserve attention this week.</p>
+
+  <div class="stat-box" aria-label="Practical recruiting dashboard design targets">
+    <div><strong>5</strong><span>core stages to make visible</span></div>
+    <div><strong>3</strong><span>weekly questions for a useful review</span></div>
+    <div><strong>1</strong><span>owner for every stalled opportunity</span></div>
+  </div>
+  <p class="stat-note">These are practical design targets for a first dashboard, not industry-wide benchmarks.</p>
+
+  <h2>Why recruiting activity is not the same as recruiting progress</h2>
+  <p>A team can make hundreds of calls, send follow-up messages, publish recruiting content, and attend networking events without creating a predictable pipeline. Activity counts tell you that work happened. They do not tell you whether the right people were reached, whether the conversation advanced, or whether the offer matched the candidate’s priorities.</p>
+  <p>The dashboard should therefore be built around <em>stage movement</em>. A candidate who moves from a qualified inquiry to a conversation is different from one who only downloaded a guide. A producer who attends a strategy call is different from one who clicked an ad. When your reporting reflects movement, your team can improve the actual recruiting experience instead of celebrating noise.</p>
+
+  <h2>Choose the five stages that explain your pipeline</h2>
+  <p>The exact labels can vary by organization, but the sequence should be simple enough for every recruiter, manager, and owner to use consistently. Start with five stages that answer what happened and what should happen next.</p>
+
+  <h3>1. Qualified interest</h3>
+  <p>Record the source, market, role, current production context, and stated reason for exploring a change. A lead is not qualified merely because they submitted a form. Qualification means the person fits the audience you can serve and has a reason to continue the conversation.</p>
+
+  <h3>2. Two-way conversation</h3>
+  <p>This stage begins when a candidate replies, speaks with a team member, or otherwise shares enough context for a real dialogue. Track response time and the topic that opened the conversation. That information can improve recruiting content and follow-up scripts later.</p>
+
+  <h3>3. Strategy appointment</h3>
+  <p>A booked appointment is useful only when the conversation has a purpose. The dashboard should show the appointment date, owner, agenda, and the candidate’s stated goals. For mortgage teams, this may include production targets, referral leverage, processing support, or the need for a clearer operating model.</p>
+
+  <h3>4. Offer and decision</h3>
+  <p>Capture what was presented, what questions remain, and the expected decision window. This is where vague objections become operational data. If candidates repeatedly ask about lead flow, onboarding, split structure, technology, or manager access, your offer and content should answer those questions before the next call.</p>
+
+  <h3>5. Signed and activated</h3>
+  <p>Recruiting does not end at a signature. Mark the agreement date, onboarding owner, first-week milestones, and first value-producing action. A dashboard that connects recruiting to activation protects the investment you made to win the person and shows whether the promise survived the handoff.</p>
+
+  <blockquote>
+    <p>“I do not need another report that tells me our team was busy. I need to know which candidates require a decision, which promise is creating momentum, and where my involvement will change the outcome.”</p>
+    <cite>— Brokerage owner perspective</cite>
+  </blockquote>
+
+  <h2>What to measure on the dashboard</h2>
+  <p>Keep the first version small. A dashboard becomes useful when it creates a decision, not when it contains every possible field. The table below gives each metric a job in the weekly operating rhythm.</p>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>What it reveals</th>
+        <th>Decision it supports</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Qualified opportunities</td><td>Whether the top of the funnel is reaching the intended audience.</td><td>Keep, refine, or replace a source or campaign.</td></tr>
+      <tr><td>Response time</td><td>How quickly interested people receive a useful human reply.</td><td>Improve routing, alerts, or ownership.</td></tr>
+      <tr><td>Stage aging</td><td>Where candidates are sitting without a clear next step.</td><td>Assign a task, change the message, or close the loop.</td></tr>
+      <tr><td>Appointment quality</td><td>Whether booked conversations match the team’s recruiting profile.</td><td>Adjust qualification and pre-call education.</td></tr>
+      <tr><td>Activation progress</td><td>Whether signed agents or loan officers are receiving early value.</td><td>Strengthen onboarding before retention becomes a problem.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Build a review rhythm that creates action</h2>
+  <p>A dashboard should not be a place your team visits once a month to produce a retrospective. Use a short weekly review to answer three questions: <strong>What moved?</strong> <strong>What stalled?</strong> <strong>Who owns the next action?</strong> If a row does not lead to one of those answers, it probably does not belong in the first version of the dashboard.</p>
+  <p>Use a deeper monthly review to compare sources and messages. Look for patterns in candidate fit, appointment quality, reasons for delay, and first-30-day activation. The purpose is not to punish a team member for a lost candidate. The purpose is to find the recurring friction that better positioning, automation, or leadership can remove.</p>
+
+  <h2>Connect the dashboard to your recruiting systems</h2>
+  <p>Visibility is only half the system. Each meaningful dashboard event should create an appropriate next step. A new qualified inquiry can trigger an immediate acknowledgement and an owner alert. A missed appointment can start a respectful rescheduling path. A signed agreement can launch onboarding tasks, resources, and a first-week check-in.</p>
+  <p>Automation should handle the predictable work while leaders handle judgment. The candidate should not feel passed from one sequence to another. They should feel that the organization remembers their goals, keeps its promises, and makes the next step easy. That is the difference between a dashboard that reports the funnel and a system that improves it.</p>
+
+  <div class="highlight-box">
+    <p><strong>The practical starting point:</strong> Create one shared pipeline, define five stages, assign an owner to every opportunity, and review stalled movement every week. Add complexity only after the team consistently uses the simple version.</p>
+  </div>
+
+  <h2>Make the dashboard a recruiting advantage</h2>
+  <p>Brokerages and mortgage teams often compete on the same visible promises: support, leads, technology, culture, and opportunity. The advantage comes from delivering those promises with more consistency. A recruiting dashboard makes that consistency inspectable. It shows whether an interested professional received a response, whether the conversation was prepared, and whether the new team member experienced the promised support after joining.</p>
+  <p>Start with the questions your leaders already ask when a candidate is delayed or an agent leaves early. Turn those questions into stages, fields, and weekly decisions. Over time, your dashboard becomes more than a reporting page. It becomes a recruiting memory: a record of what attracts the right people, what earns trust, and what helps them become productive.</p>
+
+  <div class="article-cta">
+    <h3>Ready to Turn Recruiting Into a Visible Growth System?</h3>
+    <p>LayerEngine.ai helps brokerages and mortgage teams connect recruiting strategy, content, automation, follow-up, and onboarding into one practical operating system.</p>
+    <a href="https://calendly.com/adam-layerengine/30min" class="le-btn-primary" target="_blank" rel="noopener">
+      Book a Strategy Call
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
+  <section class="faq-section" aria-labelledby="faq-heading">
+    <h2 id="faq-heading">Frequently Asked Questions (FAQ)</h2>
+    <div class="faq-item">
+      <h3>What should an agent recruiting dashboard track?</h3>
+      <p>An agent recruiting dashboard should track qualified leads, response time, conversations, appointments, offers, signed agreements, source, stage aging, and the reasons opportunities are delayed or lost.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How often should a brokerage review recruiting metrics?</h3>
+      <p>Review activity and stalled stages weekly, then use a monthly review to compare lead sources, appointment quality, signed agreements, and onboarding outcomes.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can a mortgage team use the same recruiting dashboard?</h3>
+      <p>Yes. A mortgage team can use the same structure while adapting the stages and outcomes to loan officer conversations, production goals, referral support, processing capacity, and team fit.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="le-footer">
+  <div class="le-footer-logo">Layer<span>Engine</span>.ai</div>
+  <div class="le-footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/terms.html">Terms</a>
+  </div>
+  <p>&copy; 2026 LayerEngine.ai. All rights reserved.</p>
+</footer>
+
+<script>
+function leToggleNav() { document.getElementById('le-mobile-nav').classList.toggle('le-open'); }
+function leCloseNav() { document.getElementById('le-mobile-nav').classList.remove('le-open'); }
+</script>
+
+</body>
+</html>
