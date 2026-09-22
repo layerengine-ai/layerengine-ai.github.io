@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "how-to-use-gohighlevel-to-automate-real-estate-recruiting-pipeline-2026",
+    title: "How to Use GoHighLevel to Automate a Real Estate Recruiting Pipeline in 2026",
+    excerpt: "See how real estate brokerages and mortgage teams use GoHighLevel to automate recruiting capture, nurture, qualification, booking, and follow-up.",
+    category: "Automation",
+    date: "September 22, 2026",
+    readTime: "8 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M12 20h4l3-7 4 14 3-7h4" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="28" cy="12" r="3" fill="#3B82F6" opacity="0.35"/></svg>`
+  },
+  {
     slug: "agent-recruiting-dashboard-for-brokerages",
     title: "How to Build an Agent Recruiting Dashboard for Your Brokerage",
     excerpt: "Build an agent recruiting dashboard that shows brokerage owners and mortgage team leaders where qualified recruiting opportunities are created, delayed, and lost.",
