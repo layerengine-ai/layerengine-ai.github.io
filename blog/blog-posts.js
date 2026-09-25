@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "real-cost-of-agent-turnover-2026",
+    title: "The Real Cost of Agent Turnover in 2026",
+    excerpt: "A practical retention model for brokerage owners and mortgage team leaders who want to measure turnover beyond the final commission split and protect productive capacity.",
+    category: "Agent Retention",
+    date: "September 25, 2026",
+    readTime: "8 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><circle cx="17" cy="15" r="4" stroke="#3B82F6" stroke-width="1.5"/><path d="M10 29c.7-4.2 3.2-6.5 7-6.5s6.3 2.3 7 6.5" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/><path d="M27 16v8M23 20h8" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/></svg>`
+  },
+  {
     slug: "how-to-use-gohighlevel-to-automate-real-estate-recruiting-pipeline-2026",
     title: "How to Use GoHighLevel to Automate a Real Estate Recruiting Pipeline in 2026",
     excerpt: "See how real estate brokerages and mortgage teams use GoHighLevel to automate recruiting capture, nurture, qualification, booking, and follow-up.",
