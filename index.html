@@ -488,6 +488,24 @@
         }
       }
 
+      @media (prefers-reduced-motion: reduce) {
+        #le-wrapper .le-how-section .le-layer::before {
+          opacity: 1;
+          transform: scaleY(1);
+          animation: none;
+        }
+        #le-wrapper .le-how-section .le-layer::after {
+          display: none;
+          animation: none;
+        }
+        #le-wrapper .le-how-section .le-layer.le-in-view .le-layer-num,
+        #le-wrapper .le-how-section .le-layer.le-in-view .le-layer-visual {
+          animation: none;
+          opacity: 1;
+          transform: none;
+        }
+      }
+
       /* ── BUTTONS ── */
       #le-wrapper .le-btn-primary {
         display: inline-flex;
@@ -749,6 +767,125 @@
       #le-wrapper .le-layer:hover {
         background: var(--le-bg-soft3) !important;
         border-color: rgba(37, 99, 235, 0.25);
+      }
+
+      /* Animated system-flow sequence for the six operating layers. */
+      #le-wrapper .le-how-section .le-layer {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+        --le-layer-delay: 0ms;
+      }
+
+      #le-wrapper .le-how-section .le-layer:nth-child(2) {
+        --le-layer-delay: 90ms;
+      }
+      #le-wrapper .le-how-section .le-layer:nth-child(3) {
+        --le-layer-delay: 180ms;
+      }
+      #le-wrapper .le-how-section .le-layer:nth-child(4) {
+        --le-layer-delay: 270ms;
+      }
+      #le-wrapper .le-how-section .le-layer:nth-child(5) {
+        --le-layer-delay: 360ms;
+      }
+      #le-wrapper .le-how-section .le-layer:nth-child(6) {
+        --le-layer-delay: 450ms;
+      }
+
+      #le-wrapper .le-how-section .le-layer > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      #le-wrapper .le-how-section .le-layer::before {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 3px;
+        border-radius: 3px;
+        background: linear-gradient(180deg, #60a5fa, #2563eb);
+        opacity: 0;
+        transform: scaleY(0.08);
+        transform-origin: top;
+      }
+
+      #le-wrapper .le-how-section .le-layer::after {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        width: 42%;
+        pointer-events: none;
+        opacity: 0;
+        transform: translateX(-180%);
+        background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.16), transparent);
+      }
+
+      #le-wrapper .le-how-section .le-layer.le-in-view::before {
+        animation: leLayerActivate 0.48s var(--le-layer-delay) cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      #le-wrapper .le-how-section .le-layer.le-in-view::after {
+        animation: leLayerSweep 1.15s calc(var(--le-layer-delay) + 100ms) cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+
+      #le-wrapper .le-how-section .le-layer.le-in-view .le-layer-num {
+        animation: leLayerNumber 0.5s calc(var(--le-layer-delay) + 40ms) cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+
+      #le-wrapper .le-how-section .le-layer.le-in-view .le-layer-visual {
+        animation: leLayerVisual 0.7s calc(var(--le-layer-delay) + 80ms) cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+
+      @keyframes leLayerActivate {
+        to {
+          opacity: 1;
+          transform: scaleY(1);
+        }
+      }
+
+      @keyframes leLayerSweep {
+        0% {
+          opacity: 0;
+          transform: translateX(-180%);
+        }
+        18% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          transform: translateX(360%);
+        }
+      }
+
+      @keyframes leLayerNumber {
+        from {
+          opacity: 0.2;
+          transform: translateX(-8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes leLayerVisual {
+        0% {
+          opacity: 0.55;
+          transform: scale(0.9);
+        }
+        70% {
+          opacity: 1;
+          transform: scale(1.05);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
       }
 
       #le-wrapper .le-layer-num {
