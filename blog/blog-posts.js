@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "done-for-you-lead-generation-for-every-agent-2026",
+    title: "Done-For-You Lead Generation for Every Agent in 2026",
+    excerpt: "Build a brokerage-operated lead-generation system that gives every real estate agent and loan officer a repeatable path to more conversations, appointments, and growth.",
+    category: "Lead Generation",
+    date: "September 29, 2026",
+    readTime: "8 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M12 27V16a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v11" stroke="#3B82F6" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 28h20M16 20h8M16 24h5" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/><circle cx="28" cy="12" r="3" fill="#3B82F6" opacity="0.35"/></svg>`
+  },
+  {
     slug: "real-cost-of-agent-turnover-2026",
     title: "The Real Cost of Agent Turnover in 2026",
     excerpt: "A practical retention model for brokerage owners and mortgage team leaders who want to measure turnover beyond the final commission split and protect productive capacity.",
