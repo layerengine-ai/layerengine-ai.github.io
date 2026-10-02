@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "a2p-10dlc-sms-compliance-real-estate-recruiting-2026",
+    title: "A2P 10DLC Explained: The SMS Compliance Recruiting Advantage in 2026",
+    excerpt: "A practical A2P 10DLC compliance framework for real estate brokerages and mortgage teams that use SMS to recruit agents and loan officers with confidence.",
+    category: "Compliance",
+    date: "October 2, 2026",
+    readTime: "8 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M12 14h16v12a2 2 0 0 1-2 2H14a2 2 0 0 1-2-2V14z" stroke="#3B82F6" stroke-width="1.5"/><path d="M16 14v-2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="#60A5FA" stroke-width="1.5"/><path d="M16 22h8M16 19h5" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/></svg>`
+  },
+  {
     slug: "done-for-you-lead-generation-for-every-agent-2026",
     title: "Done-For-You Lead Generation for Every Agent in 2026",
     excerpt: "Build a brokerage-operated lead-generation system that gives every real estate agent and loan officer a repeatable path to more conversations, appointments, and growth.",
