@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "how-to-onboard-a-new-real-estate-agent-in-30-days-2026",
+    title: "How to Onboard a New Real Estate Agent in 30 Days Without Touching the Technology in 2026",
+    excerpt: "Use this 30-day real estate agent onboarding blueprint to create an automated, high-touch path to activation, accountability, and early momentum without adding technology work for brokerage leaders.",
+    category: "Agent Retention",
+    date: "October 6, 2026",
+    readTime: "8 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M13 12h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H13a2 2 0 0 1-2-2V14a2 2 0 0 1 2-2z" stroke="#3B82F6" stroke-width="1.5"/><path d="M16 20h8M16 24h5M20 12v-2" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="10" r="2" stroke="#60A5FA" stroke-width="1.5"/></svg>`
+  },
+  {
     slug: "a2p-10dlc-sms-compliance-real-estate-recruiting-2026",
     title: "A2P 10DLC Explained: The SMS Compliance Recruiting Advantage in 2026",
     excerpt: "A practical A2P 10DLC compliance framework for real estate brokerages and mortgage teams that use SMS to recruit agents and loan officers with confidence.",
