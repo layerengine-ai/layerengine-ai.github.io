@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "the-6-layer-growth-system-2026",
+    title: "The 6-Layer Growth System: A Scalable Brokerage Framework for 2026",
+    excerpt: "Use a connected six-layer operating framework to align recruiting, onboarding, producer support, retention, and referrals across your brokerage or mortgage team.",
+    category: "Growth Systems",
+    date: "October 9, 2026",
+    readTime: "8 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><rect x="10" y="11" width="20" height="3" rx="1.5" fill="#3B82F6" opacity="0.35"/><rect x="10" y="18.5" width="20" height="3" rx="1.5" fill="#3B82F6" opacity="0.65"/><rect x="10" y="26" width="20" height="3" rx="1.5" fill="#3B82F6"/><path d="M14 9v22M26 9v22" stroke="#60A5FA" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/></svg>`
+  },
+  {
     slug: "how-to-onboard-a-new-real-estate-agent-in-30-days-2026",
     title: "How to Onboard a New Real Estate Agent in 30 Days Without Touching the Technology in 2026",
     excerpt: "Use this 30-day real estate agent onboarding blueprint to create an automated, high-touch path to activation, accountability, and early momentum without adding technology work for brokerage leaders.",
