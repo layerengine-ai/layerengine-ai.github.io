@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "mortgage-team-recruiting-2026",
+    title: "Mortgage Team Recruiting in 2026: A Proven Playbook for Loan Officers",
+    excerpt: "Use a practical mortgage recruiting system to attract, qualify, and activate better-fit loan officers with a clear value proposition, structured follow-up, and a measurable first-90-day launch.",
+    category: "Mortgage Recruiting",
+    date: "October 13, 2026",
+    readTime: "8 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M10 20.5L20 12l10 8.5" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 19v10h13V19M17 29v-6h6v6" stroke="#3B82F6" stroke-width="1.5" stroke-linejoin="round"/><path d="M27 14v5" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/><circle cx="30" cy="11" r="3" fill="#3B82F6" opacity="0.3"/></svg>`
+  },
+  {
     slug: "the-6-layer-growth-system-2026",
     title: "The 6-Layer Growth System: A Scalable Brokerage Framework for 2026",
     excerpt: "Use a connected six-layer operating framework to align recruiting, onboarding, producer support, retention, and referrals across your brokerage or mortgage team.",
