@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "what-agents-actually-want-from-their-brokerage-2026",
+    title: "What Real Estate Agents Actually Want From Their Brokerage in 2026",
+    excerpt: "Build a credible brokerage value proposition around visible opportunity, practical support, simpler systems, and a clear path to growth for real estate agents and loan officers.",
+    category: "Agent Retention",
+    date: "October 16, 2026",
+    readTime: "8 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><circle cx="16" cy="16" r="4" stroke="#3B82F6" stroke-width="1.5"/><path d="M9.5 29c.7-4.2 3.2-6.5 6.5-6.5s5.8 2.3 6.5 6.5" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/><path d="M26 14h5M26 19h5M26 24h3" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/></svg>`
+  },
+  {
     slug: "mortgage-team-recruiting-2026",
     title: "Mortgage Team Recruiting in 2026: A Proven Playbook for Loan Officers",
     excerpt: "Use a practical mortgage recruiting system to attract, qualify, and activate better-fit loan officers with a clear value proposition, structured follow-up, and a measurable first-90-day launch.",
