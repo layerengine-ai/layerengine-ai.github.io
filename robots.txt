@@ -1,0 +1,11 @@
+# LayerEngine.ai public-site crawling policy
+# This file does not provide access control for private or protected content.
+
+User-agent: *
+Allow: /
+
+# Allow public LayerEngine pages to be eligible for ChatGPT Search discovery.
+User-agent: OAI-SearchBot
+Allow: /
+
+Sitemap: https://www.layerengine.ai/sitemap.xml
