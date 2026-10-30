@@ -4,6 +4,15 @@
 
 const BLOG_POSTS = [
   {
+    slug: "agent-turnover-cost-calculator-2026",
+    title: "Agent Turnover Cost Calculator: Measure Brokerage Growth Lost in 2026",
+    excerpt: "Use a practical agent turnover cost calculator to measure lost brokerage capacity, replacement effort, ramp cost, and retention risk—then turn the numbers into better operating decisions.",
+    category: "Agent Retention",
+    date: "October 30, 2026",
+    readTime: "8 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M12 28V18l5-5 5 5 6-8" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 30h18M15 25h3M20 21h3M25 16h3" stroke="#60A5FA" stroke-width="1.2" stroke-linecap="round"/><circle cx="28" cy="12" r="3" fill="#3B82F6" opacity="0.35"/></svg>`
+  },
+  {
     slug: "how-to-use-gohighlevel-to-automate-your-entire-recruiting-pipeline-2026",
     title: "How to Use GoHighLevel to Automate Your Entire Recruiting Pipeline in 2026",
     excerpt: "Build a connected GoHighLevel recruiting system that captures, nurtures, qualifies, books, and advances better-fit real estate agents and loan officers without losing the human conversation.",
