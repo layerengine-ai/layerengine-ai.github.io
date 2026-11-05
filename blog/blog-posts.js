@@ -3,6 +3,15 @@
 // DO NOT edit manually — changes will be overwritten on the next scheduled run.
 
 const BLOG_POSTS = [
+    {
+    slug: "agent-turnover-cost-calculator-brokerage-2026",
+    title: "Agent Turnover Cost Calculator: Measure the Brokerage Growth You Lose in 2026",
+    excerpt: "13% of agents switched brokerages in 2024. Calculate the real cost of agent turnover — lost production, recruiting fees, onboarding, and team disruption — and learn the warning signs to act before it's too late.",
+    category: "Agent Retention",
+    date: "November 4, 2026",
+    readTime: "7 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M12 28V18l5-5 5 5 6-8" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 30h18M15 25h3M20 21h3M25 16h3" stroke="#60A5FA" stroke-width="1.2" stroke-linecap="round"/><circle cx="28" cy="12" r="3" fill="#3B82F6" opacity="0.35"/></svg>`
+  },
   {
     slug: "agent-turnover-cost-calculator-2026",
     title: "Agent Turnover Cost Calculator: Measure Brokerage Growth Lost in 2026",
