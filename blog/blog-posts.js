@@ -3,6 +3,15 @@
 // DO NOT edit manually — changes will be overwritten on the next scheduled run.
 
 const BLOG_POSTS = [
+      {
+    slug: "gohighlevel-recruiting-pipeline-automation-2026",
+    title: "GoHighLevel Recruiting Pipeline Automation for Real Estate in 2026",
+    excerpt: "49% of companies using inbound systems saw faster time-to-hire. Learn how to build a GoHighLevel recruiting pipeline for real estate that automates follow-up, captures after-hours leads, and surfaces top agents before your competition does.",
+    category: "Automation",
+    date: "November 6, 2026",
+    readTime: "7 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M12 20h4l3-7 4 14 3-7h4" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="22" y="10" width="8" height="6" rx="2" stroke="#60A5FA" stroke-width="1.2"/><path d="M25 13h2" stroke="#60A5FA" stroke-width="1.2" stroke-linecap="round"/></svg>`
+  },
     {
     slug: "agent-turnover-cost-calculator-brokerage-2026",
     title: "Agent Turnover Cost Calculator: Measure the Brokerage Growth You Lose in 2026",
