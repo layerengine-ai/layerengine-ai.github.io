@@ -3,6 +3,15 @@
 // DO NOT edit manually — changes will be overwritten on the next scheduled run.
 
 const BLOG_POSTS = [
+        {
+    slug: "passive-recruiting-funnel-real-estate-2026",
+    title: "Passive Recruiting Funnel for Real Estate Brokerages in 2026",
+    excerpt: "70% of agents are passive talent. Build a passive recruiting funnel that compounds — content, automation, and employer brand that bring the right agents to you before they start actively looking.",
+    category: "Recruiting Strategy",
+    date: "November 7, 2026",
+    readTime: "8 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M10 28c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="14" r="4" stroke="#3B82F6" stroke-width="1.5"/><path d="M20 18v4M16 30h8" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/><path d="M29 11l2 2-2 2" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+  },
       {
     slug: "gohighlevel-recruiting-pipeline-automation-2026",
     title: "GoHighLevel Recruiting Pipeline Automation for Real Estate in 2026",
