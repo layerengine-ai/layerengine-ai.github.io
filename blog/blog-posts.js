@@ -3,6 +3,15 @@
 // DO NOT edit manually — changes will be overwritten on the next scheduled run.
 
 const BLOG_POSTS = [
+          {
+    slug: "gohighlevel-vs-crms-real-estate-recruiting-2026",
+    title: "GoHighLevel vs. Other CRMs for Real Estate Recruiting in 2026",
+    excerpt: "13% of agents switched brokerages in 2024. Compare GoHighLevel to standard real estate and sales CRMs — automation, after-hours response, lead routing, and total cost — and see which platform wins for recruiting.",
+    category: "Automation",
+    date: "November 14, 2026",
+    readTime: "8 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><rect x="10" y="11" width="20" height="18" rx="2" stroke="#3B82F6" stroke-width="1.5"/><path d="M14 17h12M14 22h7M24 22h2M14 26h5" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/><path d="M27 9l3 3-3 3" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+  },
         {
     slug: "passive-recruiting-funnel-real-estate-2026",
     title: "Passive Recruiting Funnel for Real Estate Brokerages in 2026",
