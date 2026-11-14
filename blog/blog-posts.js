@@ -3,6 +3,15 @@
 // DO NOT edit manually — changes will be overwritten on the next scheduled run.
 
 const BLOG_POSTS = [
+            {
+    slug: "what-real-estate-agents-want-from-brokerage-2026",
+    title: "What Real Estate Agents Actually Want From Their Brokerage in 2026",
+    excerpt: "Only 13% of agents say pay is their biggest reason for staying. Here's what experienced agents actually evaluate — and how brokerages can make the answer visible in an agent's ordinary week.",
+    category: "Agent Retention",
+    date: "November 14, 2026",
+    readTime: "9 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><circle cx="16" cy="16" r="4" stroke="#3B82F6" stroke-width="1.5"/><path d="M9.5 29c.7-4.2 3.2-6.5 6.5-6.5s5.8 2.3 6.5 6.5" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/><path d="M26 14h5M26 19h5M26 24h3" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/></svg>`
+  },
           {
     slug: "gohighlevel-vs-crms-real-estate-recruiting-2026",
     title: "GoHighLevel vs. Other CRMs for Real Estate Recruiting in 2026",
