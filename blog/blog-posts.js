@@ -3,6 +3,15 @@
 // DO NOT edit manually — changes will be overwritten on the next scheduled run.
 
 const BLOG_POSTS = [
+              {
+    slug: "mortgage-team-recruiting-playbook-2026",
+    title: "Mortgage Team Recruiting in 2026: A Proven Playbook for Loan Officers",
+    excerpt: "21% of producing loan officers switched firms in 2024. Use this mortgage team recruiting playbook to attract, qualify, and launch better-fit loan officers.",
+    category: "Mortgage Recruiting",
+    date: "November 14, 2026",
+    readTime: "8 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M10 20.5L20 12l10 8.5" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 19v10h13V19M17 29v-6h6v6" stroke="#3B82F6" stroke-width="1.5" stroke-linejoin="round"/><path d="M27 14v5" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/><circle cx="30" cy="11" r="3" fill="#3B82F6" opacity="0.3"/></svg>`
+  },
             {
     slug: "what-real-estate-agents-want-from-brokerage-2026",
     title: "What Real Estate Agents Actually Want From Their Brokerage in 2026",
