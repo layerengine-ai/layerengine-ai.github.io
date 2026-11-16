@@ -3,6 +3,15 @@
 // DO NOT edit manually — changes will be overwritten on the next scheduled run.
 
 const BLOG_POSTS = [
+    {
+    slug: "6-layer-growth-system-brokerage-2026",
+    title: "The 6-Layer Growth System: A Scalable Brokerage Framework for 2026",
+    excerpt: "16% of agents switched brokerages in 2024. Use the 6-Layer Growth System to connect recruiting, onboarding, support, retention, and referrals in one framework.",
+    category: "Growth Systems",
+    date: "November 16, 2026",
+    readTime: "9 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><rect x="10" y="11" width="20" height="3" rx="1.5" fill="#3B82F6" opacity="0.35"/><rect x="10" y="18.5" width="20" height="3" rx="1.5" fill="#3B82F6" opacity="0.65"/><rect x="10" y="26" width="20" height="3" rx="1.5" fill="#3B82F6"/><path d="M14 9v22M26 9v22" stroke="#60A5FA" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/></svg>`
+  },
               {
     slug: "mortgage-team-recruiting-playbook-2026",
     title: "Mortgage Team Recruiting in 2026: A Proven Playbook for Loan Officers",
