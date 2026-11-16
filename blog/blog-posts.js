@@ -3,6 +3,15 @@
 // DO NOT edit manually — changes will be overwritten on the next scheduled run.
 
 const BLOG_POSTS = [
+          {
+    slug: "done-for-you-lead-generation-brokerage-2026",
+    title: "Done-For-You Lead Generation for Every Agent in 2026",
+    excerpt: "78% of buyers pick the first agent who responds, yet the average brokerage takes 15 hours. See how a done-for-you lead generation system closes the gap.",
+    category: "Lead Generation",
+    date: "November 16, 2026",
+    readTime: "8 min read",
+    icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M12 14h16v12a2 2 0 0 1-2 2H14a2 2 0 0 1-2-2V14z" stroke="#3B82F6" stroke-width="1.5"/><path d="M16 14v-2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="#60A5FA" stroke-width="1.5"/><path d="M16 22h8M16 19h5" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/></svg>`
+  },
         {
     slug: "a2p-10dlc-sms-compliance-recruiting-2026",
     title: "A2P 10DLC Explained: The SMS Compliance Recruiting Advantage in 2026",
