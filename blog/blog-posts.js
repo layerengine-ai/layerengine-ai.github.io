@@ -120,7 +120,7 @@ const BLOG_POSTS = [
     readTime: "8 min read",
     icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M10 28c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="14" r="4" stroke="#3B82F6" stroke-width="1.5"/><path d="M20 18v4M16 30h8" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/><path d="M29 11l2 2-2 2" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`
   },*/
-  {
+  /*{
     slug: "gohighlevel-vs-other-crms-for-real-estate-recruiting-2026",
     title: "GoHighLevel vs. Other CRMs for Real Estate Recruiting in 2026",
     excerpt: "Compare GoHighLevel with traditional CRMs for real estate recruiting and learn which capabilities help brokerage owners and mortgage team leaders create a connected, measurable candidate journey.",
@@ -128,8 +128,8 @@ const BLOG_POSTS = [
     date: "October 20, 2026",
     readTime: "8 min read",
     icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><rect x="10" y="11" width="20" height="18" rx="2" stroke="#3B82F6" stroke-width="1.5"/><path d="M14 17h12M14 22h7M24 22h2M14 26h5" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/><path d="M27 9l3 3-3 3" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`
-  },
-  {
+  },*/
+  /*{
     slug: "what-agents-actually-want-from-their-brokerage-2026",
     title: "What Real Estate Agents Actually Want From Their Brokerage in 2026",
     excerpt: "Build a credible brokerage value proposition around visible opportunity, practical support, simpler systems, and a clear path to growth for real estate agents and loan officers.",
@@ -137,8 +137,8 @@ const BLOG_POSTS = [
     date: "October 16, 2026",
     readTime: "8 min read",
     icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><circle cx="16" cy="16" r="4" stroke="#3B82F6" stroke-width="1.5"/><path d="M9.5 29c.7-4.2 3.2-6.5 6.5-6.5s5.8 2.3 6.5 6.5" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/><path d="M26 14h5M26 19h5M26 24h3" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/></svg>`
-  },
-  {
+  },*/
+  /*{
     slug: "mortgage-team-recruiting-2026",
     title: "Mortgage Team Recruiting in 2026: A Proven Playbook for Loan Officers",
     excerpt: "Use a practical mortgage recruiting system to attract, qualify, and activate better-fit loan officers with a clear value proposition, structured follow-up, and a measurable first-90-day launch.",
@@ -146,8 +146,8 @@ const BLOG_POSTS = [
     date: "October 13, 2026",
     readTime: "8 min read",
     icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M10 20.5L20 12l10 8.5" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 19v10h13V19M17 29v-6h6v6" stroke="#3B82F6" stroke-width="1.5" stroke-linejoin="round"/><path d="M27 14v5" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/><circle cx="30" cy="11" r="3" fill="#3B82F6" opacity="0.3"/></svg>`
-  },
-  {
+  },*/
+  /*{
     slug: "the-6-layer-growth-system-2026",
     title: "The 6-Layer Growth System: A Scalable Brokerage Framework for 2026",
     excerpt: "Use a connected six-layer operating framework to align recruiting, onboarding, producer support, retention, and referrals across your brokerage or mortgage team.",
@@ -155,8 +155,8 @@ const BLOG_POSTS = [
     date: "October 9, 2026",
     readTime: "8 min read",
     icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><rect x="10" y="11" width="20" height="3" rx="1.5" fill="#3B82F6" opacity="0.35"/><rect x="10" y="18.5" width="20" height="3" rx="1.5" fill="#3B82F6" opacity="0.65"/><rect x="10" y="26" width="20" height="3" rx="1.5" fill="#3B82F6"/><path d="M14 9v22M26 9v22" stroke="#60A5FA" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/></svg>`
-  },
-  {
+  },*/
+  /*{
     slug: "how-to-onboard-a-new-real-estate-agent-in-30-days-2026",
     title: "How to Onboard a New Real Estate Agent in 30 Days Without Touching the Technology in 2026",
     excerpt: "Use this 30-day real estate agent onboarding blueprint to create an automated, high-touch path to activation, accountability, and early momentum without adding technology work for brokerage leaders.",
@@ -164,8 +164,8 @@ const BLOG_POSTS = [
     date: "October 6, 2026",
     readTime: "8 min read",
     icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M13 12h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H13a2 2 0 0 1-2-2V14a2 2 0 0 1 2-2z" stroke="#3B82F6" stroke-width="1.5"/><path d="M16 20h8M16 24h5M20 12v-2" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="10" r="2" stroke="#60A5FA" stroke-width="1.5"/></svg>`
-  },
-  {
+  },*/
+  /*{
     slug: "a2p-10dlc-sms-compliance-real-estate-recruiting-2026",
     title: "A2P 10DLC Explained: The SMS Compliance Recruiting Advantage in 2026",
     excerpt: "A practical A2P 10DLC compliance framework for real estate brokerages and mortgage teams that use SMS to recruit agents and loan officers with confidence.",
@@ -173,8 +173,8 @@ const BLOG_POSTS = [
     date: "October 2, 2026",
     readTime: "8 min read",
     icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M12 14h16v12a2 2 0 0 1-2 2H14a2 2 0 0 1-2-2V14z" stroke="#3B82F6" stroke-width="1.5"/><path d="M16 14v-2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="#60A5FA" stroke-width="1.5"/><path d="M16 22h8M16 19h5" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/></svg>`
-  },
-  {
+  },*/
+  /*{
     slug: "done-for-you-lead-generation-for-every-agent-2026",
     title: "Done-For-You Lead Generation for Every Agent in 2026",
     excerpt: "Build a brokerage-operated lead-generation system that gives every real estate agent and loan officer a repeatable path to more conversations, appointments, and growth.",
@@ -182,7 +182,7 @@ const BLOG_POSTS = [
     date: "September 29, 2026",
     readTime: "8 min read",
     icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M12 27V16a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v11" stroke="#3B82F6" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 28h20M16 20h8M16 24h5" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/><circle cx="28" cy="12" r="3" fill="#3B82F6" opacity="0.35"/></svg>`
-  },
+  },*/
   {
     slug: "real-cost-of-agent-turnover-2026",
     title: "The Real Cost of Agent Turnover in 2026",
