@@ -111,7 +111,7 @@ const BLOG_POSTS = [
     readTime: "8 min read",
     icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M12 20h4l3-7 4 14 3-7h4" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="22" y="10" width="8" height="6" rx="2" stroke="#60A5FA" stroke-width="1.2"/><path d="M25 13h2" stroke="#60A5FA" stroke-width="1.2" stroke-linecap="round"/></svg>`
   },*/
-  {
+  /*{
     slug: "how-to-build-a-passive-recruiting-funnel-2026",
     title: "How to Build a Passive Recruiting Funnel for Real Estate in 2026",
     excerpt: "Build a practical passive recruiting funnel that helps brokerage owners and mortgage team leaders attract, educate, qualify, and advance better-fit producers with clear systems and accountable follow-up.",
@@ -119,7 +119,7 @@ const BLOG_POSTS = [
     date: "October 23, 2026",
     readTime: "8 min read",
     icon: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="rgba(37,99,235,0.1)"/><path d="M10 28c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="14" r="4" stroke="#3B82F6" stroke-width="1.5"/><path d="M20 18v4M16 30h8" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round"/><path d="M29 11l2 2-2 2" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`
-  },
+  },*/
   {
     slug: "gohighlevel-vs-other-crms-for-real-estate-recruiting-2026",
     title: "GoHighLevel vs. Other CRMs for Real Estate Recruiting in 2026",
